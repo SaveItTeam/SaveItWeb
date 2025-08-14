@@ -1,0 +1,50 @@
+/* ! Arquivo CSS globalmente utilizado para Header e Footer */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 0 auto;
+    /* width: 834px;
+    height: 80px; */
+    width: 750px;
+    height: 60px;
+    background-color: #3E5543;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin-top: 15px;
+    position: fixed;
+    
+    nav {
+        width: 686px;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 74px;
+        margin-right: 74px;
+        font-size: 20px;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color: #F0ECE1;
+
+            img {
+                width: 50;
+                height: 50px;
+            }
+        }
+
+        a:hover {
+            transition: 0.5s ease;
+            color: #6B8E4E;
+        }
+    }
+}
