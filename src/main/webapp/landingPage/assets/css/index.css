@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 
+* {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -28,22 +32,23 @@ body {
     height: 545px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     text-align: left;
     margin-left: 80px;
-    margin-top: 100px;
+    margin-top: 130px;
+    z-index: 2;
     
     h1 {
-        font-size: 110px;
+        font-size: 100px;
         line-height: 90%;
         color: #f0ece1;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
 
     p {
         width: 778px;
         height: 102px;
-        font-size: 28px;
+        font-size: 25px;
         margin-top: -60px;
         color: #f0ece1ea;
         font-weight: 400;
@@ -52,32 +57,84 @@ body {
 
     #botoes-hero-section {
         display: flex;
+        gap: 35px;
 
-        button:nth-child(1) {
+        a:nth-child(1) {
             width: 275px;
             height: 55px;
             background-color: #405d49;
             border: none;
             border-radius: 10px;
-
-            a {
-                text-decoration: none;
-                color: #f0ece1;
-                font-family: 'Plus Jakarta Sans', sans-serif;
-                font-weight: 500;
-                font-size: 23px;
-                text-align: center;
-            }
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #f0ece1;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            font-size: 23px;
+            transition: 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            
         }
 
-        button:nth-last-child() {
+        a:nth-child(1):hover {
+            background-color: #405d49d8;
+
+            color: #f0ece1;
+        }
+
+        a:nth-child(2) {
             background-color: transparent;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 300;
+            color: #f0ece1;
 
+            span {
+                margin-left: 3px;
+                font-size: 20px;
+                color: #f0ece1;
+            }
         }
 
-    }
 
-    
+        a:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 8px;
+            width: 0%;
+            height: 2px;
+            background-color: #f0ece1;
+            transition: ease 0.3s;
+        }
+
+        a:nth-child(2):hover {
+            color: white;
+
+            span {
+                color: white;
+            } 
+        }
+
+        a:nth-child(2):hover::after {
+            width: 100%;
+            color: white;
+        }
+    }
+}
+
+#imagem-hero-section {
+    display: flex;
+    justify-content: center;
+    width: 700px;
+    z-index: 0;
+    margin-left: -200px;
 
 }

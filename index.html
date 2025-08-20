@@ -4,19 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Essentia - Início</title>
-    <link rel="shortcut icon" href="../assets/images/logos/Frame 27.png
-    " type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/global.css" />
-    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="shortcut icon" href="src/main/webapp/landingPage/assets/images/logos/favicon_essentia.png" type="image/x-icon">
+    <link rel="stylesheet" href="src/main/webapp/landingPage/assets/css/global.css" />
+    <link rel="stylesheet" href="src/main/webapp/landingPage/assets/css/index.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+
   </head>
   <body>
+
     <!--* --------------- HEADER ---------------------------->
     <header>
       <nav>
         <a href="index.html"
           ><img
-            src="../assets/images/logos/essentia_logo_verde.svg"
-            alt="logo"
+            src="src/main/webapp/landingPage/assets/images/logos/essentia_logo_verde.svg"
+            alt="logo essentia"
             width="50px"
             height="50px"
         /></a>
@@ -26,6 +28,9 @@
         <a href="contato.html">Contato</a>
       </nav>
     </header>
+
+    <a href="" class="botao-admin">Entrar como Admin</a>
+
     <!--* --------------- MAIN ---------------------------->
     <main>
       <!--* --------------- HERO SECTION ---------------------------->
@@ -33,13 +38,18 @@
         <div id="texto-hero-section">
           <h1 class="titulo-geist">Transforme o modo de gerenciar o seu estoque.</h1>
           <p class="texto-jakarta">Lorem ipsum dolor sit amet consectetur. Duis nulla non ut sagittis eu senectus. Mi orci tincidunt est faucibus suscipit vestibulum libero donec.</p>
-
+        
           <div id="botoes-hero-section">
-            <button><a href="">Conheça o SaveIt</a></button>
-            <button><a href="">Sobre Nós</a></button> <!-- TODO: Colocar ícone seta-->
+            <a href="">Conheça o SaveIt</a>
+            <a href="">Sobre Nós <span><i class="ri-arrow-right-up-line"></i></span></a>
           </div>
+        </div>
+
+        <div id="imagem-hero-section">
+          <img src="src/main/webapp/landingPage/assets/images/mockups/Mockup 1.svg" alt="Mockup Celular SaveIt">
         </div>
       </section>
     </main>
+
   </body>
 </html>
