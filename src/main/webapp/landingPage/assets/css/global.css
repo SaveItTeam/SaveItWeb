@@ -1,15 +1,26 @@
 /* ! Arquivo CSS globalmente utilizado para Header e Footer */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
+
+* {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
+    top: 0;
+    bottom: 0;
 }
 
+
+.titulo-geist {
+    font-family: 'Geist', sans-serif;
+    font-weight: bold;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
 header {
     margin: 0 auto;
-    /* width: 834px;
-    height: 80px; */
     width: 750px;
     height: 60px;
     background-color: #3E5543;
@@ -20,11 +31,13 @@ header {
     border-radius: 100px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 15px;
-    position: fixed;
+    margin-top: 10px;
+    position: sticky;
+    top: 5px;
     z-index: 1000;
+    transition: 0.3 ease;
     
-    nav {
+    nav { /* ! MUDAR PARA ul */
         width: 686px;
         display: flex;
         justify-content: space-between;
@@ -38,9 +51,11 @@ header {
             color: #F0ECE1;
 
             img {
-                width: 50;
+                width: 50px;
                 height: 50px;
+                padding-top: 5px;
             }
+
         }
 
         a:hover {
@@ -50,13 +65,17 @@ header {
     }
 }
 
+.transicaoSvg {
+    transition: ease 0.125s;
+}
+
 .botao-admin {
     position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 150px;
-    top: 25px;
+    top: 16px;
     right: 80px;
     text-align: center;
     background-color: #6B8E4E;
@@ -76,8 +95,14 @@ header {
 }
 
 .botao-admin:hover {
-    background-color: #6b8e4eb0;
+    background-color: #5d8c37;
     color: #f0ece1;
     transition: 0.3s ease;
+}
+
+header.scrolled {
+    transition: 0.3 ease;
+    backdrop-filter: blur(10px);
+    background-color: #3e554332;
 }
 
