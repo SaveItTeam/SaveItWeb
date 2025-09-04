@@ -7,7 +7,7 @@
     <groupId>br.com.example.saveit</groupId>
     <artifactId>Saveit-Web</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Saveit-Web</name>
+    <name>SaveItWeb</name>
     <packaging>war</packaging>
 
     <properties>
