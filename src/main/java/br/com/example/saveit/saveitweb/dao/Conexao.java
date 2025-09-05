@@ -18,7 +18,8 @@ public class Conexao {
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao conectar ao banco de dados", ex);
+            System.out.println("Erro ao conectar ao banco de dados" + ex);
         }
+        return null;
     }
 }

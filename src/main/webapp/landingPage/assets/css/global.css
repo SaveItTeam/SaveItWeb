@@ -49,6 +49,7 @@ header {
         a {
             text-decoration: none;
             color: #F0ECE1;
+            transition: 0.3s ease;
 
             img {
                 width: 50px;
@@ -92,12 +93,12 @@ header {
     font-weight: 400;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: ease 0.3s;
-}
 
-.botao-admin:hover {
-    background-color: #5d8c37;
-    color: #f0ece1;
-    transition: 0.3s ease;
+    &:hover {
+        background-color: #608046;
+        color: #f0ece1;
+        transition: 0.3s ease;
+    }
 }
 
 header.scrolled {
