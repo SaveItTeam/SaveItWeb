@@ -12,13 +12,34 @@ public class Conexao {
     private static final String USER = dotenv.get("DB_USER");
     private static final String PASSWORD = dotenv.get("DB_PASSWORD");
 
-    private Conexao() {}
+    public Conexao() {}
 
-    public static Connection getConnection() {
+    public static Connection conectar() {
+        Connection conn = null;
         try {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            return conn;
+
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao conectar ao banco de dados", ex);
+
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Driver do banco de dados não encontrado", e);
         }
     }
+
+    public boolean desconectar(Connection conn) {
+        try{
+            if(conn != null && !conn.isClosed()){
+                conn.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
 }

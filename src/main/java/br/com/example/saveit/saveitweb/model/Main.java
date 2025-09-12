@@ -1,0 +1,14 @@
+package br.com.example.saveit.saveitweb.model;
+
+import br.com.example.saveit.saveitweb.dao.Conexao;
+
+public class Main {
+    public static void main(String[] args) {
+        Conexao conexao = new Conexao();
+        if (conexao.conectar() == null) {;
+            System.out.println("Falha ao conectar ao banco de dados.");
+        } else {
+            System.out.println("Conexão bem-sucedida ao banco de dados.");
+        }
+    }
+}
