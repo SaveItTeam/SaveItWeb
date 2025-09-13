@@ -1,6 +1,6 @@
 package br.com.example.saveit.saveitweb.model;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Funcionario {
     public int id;
@@ -8,14 +8,16 @@ public class Funcionario {
     public String cpf;
     public String rg;
     public char sexo;
-    public LocalDate dt_nascimento;
+    public Date dt_nascimento;
     public String email;
     public String senha;
     public String cargo;
-    public LocalDate dt_contratacao;
+    public Date dt_contratacao;
     public String telefone;
     public String experiencia;
-    public String id_empresa, id_industria, id_admin;
+    public int id_empresa;
+    public int id_industria;
+    public int id_admin;
 
     public int getId() {
         return this.id;
@@ -57,11 +59,11 @@ public class Funcionario {
         this.rg = rg;
     }
 
-    public LocalDate getDt_nascimento() {
+    public Date getDt_nascimento() {
         return dt_nascimento;
     }
 
-    public void setDt_nascimento(LocalDate dt_nascimento) {
+    public void setDt_nascimento(Date dt_nascimento) {
         this.dt_nascimento = dt_nascimento;
     }
 
@@ -89,11 +91,11 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
-    public LocalDate getDt_contratacao() {
+    public Date getDt_contratacao() {
         return dt_contratacao;
     }
 
-    public void setDt_contratacao(LocalDate dt_contratacao) {
+    public void setDt_contratacao(Date dt_contratacao) {
         this.dt_contratacao = dt_contratacao;
     }
 
@@ -113,27 +115,27 @@ public class Funcionario {
         this.experiencia = experiencia;
     }
 
-    public String getId_empresa() {
+    public int getId_empresa() {
         return id_empresa;
     }
 
-    public void setId_empresa(String id_empresa) {
+    public void setId_empresa(int id_empresa) {
         this.id_empresa = id_empresa;
     }
 
-    public String getId_industria() {
+    public int getId_industria() {
         return id_industria;
     }
 
-    public void setId_industria(String id_industria) {
+    public void setId_industria(int id_industria) {
         this.id_industria = id_industria;
     }
 
-    public String getId_admin() {
+    public int getId_admin() {
         return id_admin;
     }
 
-    public void setId_admin(String id_admin) {
+    public void setId_admin(int id_admin) {
         this.id_admin = id_admin;
     }
 }

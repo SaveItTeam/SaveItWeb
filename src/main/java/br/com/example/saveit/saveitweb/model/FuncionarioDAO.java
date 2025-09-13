@@ -9,25 +9,26 @@ import java.sql.SQLException;
 public class FuncionarioDAO {
     public boolean inserirFuncionario(Funcionario funcionario) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();
+        Connection conn = Conexao.conectar();
 
-        String sql = "Insert into funcionario (nome, cpf, rg, sexo, dt_nascimento, email, senha, cargo, dt_contratacao, telefone, experiencia, id_empresa, id_industria, id_admin) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "Insert into funcionario (nome, cpf, rg, sexo, dt_nascimento, email, senha, cargo, dt_contratacao, phone_pessoal, experiencia, id_empresa, id_industria, id_admin) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, funcionario.getNome());
             stmt.setString(2, funcionario.getCpf());
             stmt.setString(3, funcionario.getRg());
             stmt.setString(4, String.valueOf(funcionario.getSexo()));
-            stmt.setObject(5, funcionario.getDt_nascimento());
+            stmt.setDate(5, funcionario.getDt_nascimento());
             stmt.setString(6, funcionario.getEmail());
             stmt.setString(7, funcionario.getSenha());
             stmt.setString(8, funcionario.getCargo());
-            stmt.setObject(9, funcionario.getDt_contratacao());
+            stmt.setDate(9, funcionario.getDt_contratacao());
             stmt.setString(10, funcionario.getTelefone());
             stmt.setString(11, funcionario.getExperiencia());
-            stmt.setString(12, funcionario.getId_empresa());
-            stmt.setString(13, funcionario.getId_industria());
-            stmt.setString(14, funcionario.getId_admin());
+            stmt.setInt(12, funcionario.getId_empresa());
+            stmt.setInt(13, funcionario.getId_industria());
+            stmt.setInt(14, funcionario.getId_admin());
 
             int validar = stmt.executeUpdate();
 
