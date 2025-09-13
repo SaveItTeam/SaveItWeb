@@ -1,6 +1,4 @@
-package br.com.example.saveit.saveitweb.model;
-
-import br.com.example.saveit.saveitweb.dao.Conexao;
+package br.com.example.saveit.saveitweb.dao;
 
 public class Main {
     public static void main(String[] args) {
