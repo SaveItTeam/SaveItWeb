@@ -47,6 +47,8 @@
 
     <input type="submit" value="Registrar" />
 </form>
+<br>
+<a href="logar.html">Já tem cadastro?</a>
 
 </body>
 </html>

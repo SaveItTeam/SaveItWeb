@@ -52,6 +52,7 @@ public class FuncionarioDAO {
         ResultSet rs = null;
 
         String sql = "SELECT email, senha FROM funcionario WHERE email = ? AND senha = ?";
+        String sql2 = "SELECT cpf, senha FROM funcionario WHERE cpf = ? AND senha = ?";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -63,7 +64,17 @@ public class FuncionarioDAO {
             if (rs.next()) {
                 return rs;
             } else {
-                return null;
+                PreparedStatement stmt2 = conn.prepareStatement(sql2);
+                stmt2.setString(1, email);
+                stmt2.setString(2, senha);
+
+                rs = stmt2.executeQuery();
+
+                if (rs.next()) {
+                    return rs;
+                } else {
+                    return null;
+                }
             }
 
         } catch (SQLException e) {

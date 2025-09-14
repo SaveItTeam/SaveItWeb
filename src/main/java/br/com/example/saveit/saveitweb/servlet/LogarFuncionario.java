@@ -13,10 +13,10 @@ public class LogarFuncionario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        String email = request.getParameter("email");
+        String emailOUcpf = request.getParameter("email");
         String senha = request.getParameter("senha");
 
-        if (funcionarioDAO.logarFuncionario(email, senha) != null) {
+        if (funcionarioDAO.logarFuncionario(emailOUcpf, senha) != null) {
             response.getWriter().println("Login bem-sucedido!");
         } else {
             response.getWriter().println("Falha no login. Verifique suas credenciais.");
