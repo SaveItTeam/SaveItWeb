@@ -4,7 +4,9 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class FuncionarioDAO {
     public boolean inserirFuncionario(Funcionario funcionario) {
@@ -43,4 +45,33 @@ public class FuncionarioDAO {
             conexao.desconectar(conn);
         }
     }
+
+    public ResultSet logarFuncionario(String email, String senha) {
+        Conexao conexao = new Conexao();
+        Connection conn = Conexao.conectar();
+        ResultSet rs = null;
+
+        String sql = "SELECT email, senha FROM funcionario WHERE email = ? AND senha = ?";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
 }
