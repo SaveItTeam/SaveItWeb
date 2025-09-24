@@ -288,6 +288,7 @@ html {
       background-color: #2e2e2e;
       cursor: pointer;
       margin-bottom: -1rem;
+      transition: .3s ease;
 
       &:nth-child(1) {
         background-color: #405d49;
@@ -532,7 +533,7 @@ html {
         transition: 0.3s ease;
 
         &:hover {
-          background-color: #2b2727;
+          background-color: #3a3a3a;
         }
       }
     }
@@ -583,7 +584,7 @@ html {
         margin-left: 10rem;
 
         &:hover {
-          background-color: #e3dfd3;
+          background-color: #c5c2b9;
         }
       }
     }

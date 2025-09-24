@@ -10,29 +10,23 @@ divBotoes.addEventListener("click", () => {
     3: "Texto Bacana 3",
   };
 
-  let h3 = document.getElementById("inicio-funcionalidades-quadro-texto-h3");
-  const botao1 = divBotoes.children[0];
-  const botao2 = divBotoes.children[1];
-  const botao3 = divBotoes.children[2];
+  const h3 = document.getElementById("inicio-funcionalidades-quadro-texto-h3");
+  const botoes = [
+    divBotoes.children[0],
+    divBotoes.children[1],
+    divBotoes.children[2],
+  ];
 
-  botao1.onclick = () => {
-    h3.textContent = textos[1];
-    botao1.style.backgroundColor = "#405d49";
-    botao2.style.backgroundColor = "#2e2e2e";
-    botao3.style.backgroundColor = "#2e2e2e";
-  };
-
-  botao2.onclick = () => {
-    h3.textContent = textos[2];
-    botao2.style.backgroundColor = "#405d49";
-    botao1.style.backgroundColor = "#2e2e2e";
-    botao3.style.backgroundColor = "#2e2e2e";
-  };
-
-  botao3.onclick = () => {
-    h3.textContent = textos[3];
-    botao3.style.backgroundColor = "#405d49";
-    botao1.style.backgroundColor = "#2e2e2e";
-    botao2.style.backgroundColor = "#2e2e2e";
-  };
+  botoes.forEach((botao) => {
+    botao.addEventListener("click", () => {
+      const pos = botoes.indexOf(botao);
+      h3.textContent = textos[pos + 1];
+      botao.style.backgroundColor = "#405d49";
+      botoes.forEach((botaoNaoClicado) => {
+        if (botoes.indexOf(botaoNaoClicado) !== pos) {
+          botaoNaoClicado.style.backgroundColor = "#2e2e2e";
+        }
+      });
+    });
+  });
 });
