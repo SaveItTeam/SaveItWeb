@@ -1,8 +1,8 @@
 package br.com.example.saveit.saveitweb.servlet;
 import java.time.LocalDate;
 
-import br.com.example.saveit.saveitweb.model.Funcionario;
-import br.com.example.saveit.saveitweb.model.FuncionarioDAO;
+import br.com.example.saveit.saveitweb.model.funcionario.Funcionario;
+import br.com.example.saveit.saveitweb.model.funcionario.FuncionarioDAO;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

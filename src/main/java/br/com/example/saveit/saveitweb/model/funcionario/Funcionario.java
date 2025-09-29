@@ -1,4 +1,4 @@
-package br.com.example.saveit.saveitweb.model;
+package br.com.example.saveit.saveitweb.model.funcionario;
 
 import java.sql.Date;
 
