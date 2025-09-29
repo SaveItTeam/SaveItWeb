@@ -8,6 +8,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 #inicio-hero-section {
@@ -288,7 +289,7 @@ html {
       background-color: #2e2e2e;
       cursor: pointer;
       margin-bottom: -1rem;
-      transition: .3s ease;
+      transition: 0.3s ease;
 
       &:nth-child(1) {
         background-color: #405d49;
@@ -453,7 +454,8 @@ html {
       h3,
       > hr,
       > p,
-      ul, h4 {
+      ul,
+      h4 {
         margin-left: 3rem;
       }
 
@@ -681,6 +683,22 @@ html {
           border: 0.2rem solid #405d49;
         }
       }
+    }
+  }
+}
+
+@media (width: 412px) {
+  html {
+    font-size: 30%;
+  }
+
+  header {
+    display: none;
+  }
+  #inicio-hero-section {
+    #texto-hero-section {
+      width: 70rem;
+      text-align: center;
     }
   }
 }

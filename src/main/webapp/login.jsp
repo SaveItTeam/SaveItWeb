@@ -6,7 +6,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Login</title>
-        <link rel="stylesheet" href="" />
+
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
@@ -22,6 +22,15 @@
                 padding: 0;
                 background-color: #f0ece1;
                 overflow: hidden;
+            }
+
+            .voltar-inicio {
+                text-decoration: none;
+                position: absolute;
+                top: 3rem;
+                left: 5rem;
+                font-size: 6rem;
+                color: #2F2F2F;
             }
 
             div {
@@ -109,25 +118,6 @@
                         font-size: 18px;
                     }
                 }
-
-                p:nth-child(3) {
-                    margin-top: 20px;
-                    font-size: 18px;
-                    color: #7C838A;
-                }
-
-                p:last-child {
-                    margin-top: -20px;
-                    font-size: 18px;
-                    font-weight: 450;
-                    color: #7C838A;
-
-                    a {
-                        text-decoration: none;
-                        color: #405d49;
-                        font-weight: 550;
-                    }
-                }
             }
 
             #svg-topo {
@@ -156,10 +146,10 @@
     </head>
 
     <body>
-
+        <a href="index.html" class="voltar-inicio">&#8249</a>
 
         <div>
-            <img src="" alt="">
+            <img src="landingPage/assets/images/logos/essentia_logo_verde.svg" alt="">
             <h1>Entre como administrador</h1>
             <p>Acesse o painel para controlar informações da sua indústria.</p>
             <form action="input">
@@ -174,8 +164,6 @@
 
                 <input type="submit" value="Entrar" id="botaoEntrar" />
             </form>
-
-            <p>Deseja cadastrar um funcionário? <a href="#">Cadastrar</a></p>
         </div>
 
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" id="svg-topo">
@@ -191,4 +179,5 @@
         </svg>
         <script src="login.js"></script>
     </body>
+
     </html>
