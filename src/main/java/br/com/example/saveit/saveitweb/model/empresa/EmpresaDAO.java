@@ -169,14 +169,16 @@ public class EmpresaDAO {
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Plano";
+            String query = "select * from Empresa";
             ResultSet rset = stmt.executeQuery(query);
 
             if (rset != null) {
                 while (rset.next()) {
                     empresa.setId(rset.getInt(1));
                     empresa.setId_funcionario(rset.getInt(2));
-                    empresa.setId_cliente(rset.getInt(3));
+                    if (rset.getInt(3) > 0 ) {
+                        empresa.setId_cliente(rset.getInt(3));
+                    }
                     empresa.setProcura(rset.getString(4));
                     empresa.setId_plano(rset.getInt(5));
                     listaEmpresa.add(empresa);

@@ -36,6 +36,10 @@ public class Funcionario {
         this.id_admin = id_admin;
     }
 
+    public Funcionario() {
+
+    }
+
     public int getId() {
         return this.id;
     }

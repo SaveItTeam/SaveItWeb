@@ -43,11 +43,11 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "Admin{" +
-                "id=" + id +
-                ", senha='" + senha + '\'' +
-                ", nome_cliente='" + nome_cliente + '\'' +
-                ", qual_empresa='" + qual_empresa + '\'' +
-                '}';
+        return String.format("""
+                id: %d
+                senha: %s
+                nome cliente: %s
+                qual empresa: %s"""
+                , id, senha, nome_cliente, qual_empresa);
     }
 }

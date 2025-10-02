@@ -16,15 +16,29 @@ public class Main {
             System.out.println("Conexão bem-sucedida ao banco de dados.");
 
             AdminDAO adminDAO = new AdminDAO();
-            EmpresaDAO daoEmpresa = new EmpresaDAO();
+            EmpresaDAO empresaDAO = new EmpresaDAO();
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            IndustriaDAO daoIndustria = new IndustriaDAO();
-            PagamentoDAO daoPagamento = new PagamentoDAO();
-            PlanoDAO daoPlano = new PlanoDAO();
+            IndustriaDAO industriaDAO = new IndustriaDAO();
+            PagamentoDAO pagamentoDAO = new PagamentoDAO();
+            PlanoDAO planoDAO = new PlanoDAO();
 
-            Admin admin = new Admin(15, "asdas", "aaa", "seara");
-            Empresa empresa = new Empresa(10, "seara", 2);
-            Funcionario funcionario = new Funcionario("Davi", 1234567, 1234567, 'M', )
+            adminDAO.listarAdmin();
+            System.out.println("\n\n");
+
+            empresaDAO.buscar();
+            System.out.println("\n\n");
+
+
+            industriaDAO.buscar();
+            System.out.println("\n\n");
+
+            pagamentoDAO.buscar();
+            System.out.println("\n\n");
+
+            planoDAO.buscar();
+            System.out.println("\n\n");
+
+
 
 
             System.out.println();

@@ -101,9 +101,7 @@ public class AdminDAO {
                 Admin admin = new Admin(rset.getInt("id"), rset.getString("senha"), rset.getString("nome_cliente"), rset.getString("qual_empresa"));
                 listaAdmins.add(admin);
             }
-            for (Admin listaAdmin : listaAdmins) {
-                System.out.println(listaAdmin);
-            }
+
             return listaAdmins;
 
         } catch (SQLException e){
