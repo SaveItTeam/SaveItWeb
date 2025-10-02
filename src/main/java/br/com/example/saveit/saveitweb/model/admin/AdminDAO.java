@@ -62,7 +62,7 @@ public class AdminDAO {
 
     public boolean excluirAdminPorId(Admin admin) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();
+        Connection conn = Conexao.conectar();
 
         String sql = "delete from Admin where id=?";
 
@@ -90,7 +90,7 @@ public class AdminDAO {
         Connection conn = conexao.conectar();
         List<Admin> listaAdmins = new ArrayList<>();
 
-        ResultSet rset = null;
+        ResultSet rset;
 
         String sql = "select * from Admin";
 
@@ -101,14 +101,43 @@ public class AdminDAO {
                 Admin admin = new Admin(rset.getInt("id"), rset.getString("senha"), rset.getString("nome_cliente"), rset.getString("qual_empresa"));
                 listaAdmins.add(admin);
             }
-            for (int c = 0; listaAdmins.size() > c; c++) {
-                System.out.println(listaAdmins.get(c));
+            for (Admin listaAdmin : listaAdmins) {
+                System.out.println(listaAdmin);
             }
             return listaAdmins;
 
         } catch (SQLException e){
             e.printStackTrace();
             return null;
+
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
+    public void listarAdminA() {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+
+        ResultSet rset;
+
+        String sql = "select * from Admin";
+
+        try {
+            PreparedStatement pmst = conn.prepareStatement(sql);
+            rset = pmst.executeQuery();
+
+            System.out.printf("%s | %-15s | %-15s | %-15s | %-15s "," ", "id", "senha", "nome_cliente", "qual_empresa");
+            System.out.println();
+            System.out.println("------------------------------------------------");
+
+            while (rset.next()) {
+//                System.out.printf("%d | %-15s | %-15s | %-15s",cont  ,rset.getString("dname"), rset.getString("loc"), rset.getString("deptno"));
+                System.out.println((rset.getInt("id") + "\n" + rset.getString("senha") + "\n" +  rset.getString("nome_cliente") + "\n" +  rset.getString("qual_empresa")));
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+
 
         } finally {
             conexao.desconectar(conn);

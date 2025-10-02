@@ -40,4 +40,14 @@ public class Admin {
     public void setQual_empresa(String qual_empresa) {
         this.qual_empresa = qual_empresa;
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", senha='" + senha + '\'' +
+                ", nome_cliente='" + nome_cliente + '\'' +
+                ", qual_empresa='" + qual_empresa + '\'' +
+                '}';
+    }
 }

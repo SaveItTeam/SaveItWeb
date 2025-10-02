@@ -1,7 +1,11 @@
 package br.com.example.saveit.saveitweb.dao;
 
-import br.com.example.saveit.saveitweb.model.admin.Admin;
-import br.com.example.saveit.saveitweb.model.admin.AdminDAO;
+import br.com.example.saveit.saveitweb.model.admin.*;
+import br.com.example.saveit.saveitweb.model.empresa.*;
+import br.com.example.saveit.saveitweb.model.funcionario.*;
+import br.com.example.saveit.saveitweb.model.industria.*;
+import br.com.example.saveit.saveitweb.model.pagamento.*;
+import br.com.example.saveit.saveitweb.model.plano.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,12 +14,21 @@ public class Main {
             System.out.println("Falha ao conectar ao banco de dados.");
         } else {
             System.out.println("Conexão bem-sucedida ao banco de dados.");
+
             AdminDAO adminDAO = new AdminDAO();
+            EmpresaDAO daoEmpresa = new EmpresaDAO();
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+            IndustriaDAO daoIndustria = new IndustriaDAO();
+            PagamentoDAO daoPagamento = new PagamentoDAO();
+            PlanoDAO daoPlano = new PlanoDAO();
+
             Admin admin = new Admin(15, "asdas", "aaa", "seara");
-            System.out.println(adminDAO.inserirAdmin(admin));
-            System.out.println(adminDAO.alterarAdminPorId(admin));
-            System.out.println(adminDAO.listarAdmin());
-            System.out.println(adminDAO.excluirAdminPorId(admin));
+            Empresa empresa = new Empresa(10, "seara", 2);
+            Funcionario funcionario = new Funcionario("Davi", 1234567, 1234567, 'M', )
+
+
+            System.out.println();
+            System.out.println("----------------------------------------------------------------");
         }
     }
 }

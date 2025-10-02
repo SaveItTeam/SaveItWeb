@@ -19,12 +19,25 @@ public class Funcionario {
     public int id_industria;
     public int id_admin;
 
-    public int getId() {
-        return this.id;
+    public Funcionario(String nome, String cpf, String rg, char sexo, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone, String experiencia, int id_empresa, int id_industria, int id_admin) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.rg = rg;
+        this.sexo = sexo;
+        this.dt_nascimento = dt_nascimento;
+        this.email = email;
+        this.senha = senha;
+        this.cargo = cargo;
+        this.dt_contratacao = dt_contratacao;
+        this.telefone = telefone;
+        this.experiencia = experiencia;
+        this.id_empresa = id_empresa;
+        this.id_industria = id_industria;
+        this.id_admin = id_admin;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return this.id;
     }
 
     public String getNome() {
