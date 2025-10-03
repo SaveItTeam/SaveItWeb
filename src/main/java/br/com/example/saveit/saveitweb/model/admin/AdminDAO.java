@@ -1,0 +1,145 @@
+package br.com.example.saveit.saveitweb.model.admin;
+
+import br.com.example.saveit.saveitweb.dao.Conexao;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AdminDAO {
+
+    public boolean inserirAdmin(Admin admin) {
+        Conexao conexao = new Conexao();
+        Connection conn = Conexao.conectar();
+
+        String sql = "insert into Admin(senha, nome_cliente, qual_empresa) values(?, ?, ? )";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, admin.getSenha());
+            stmt.setString(2, admin.getNome_cliente());
+            stmt.setString(3, admin.getQual_empresa());
+
+            int validar = stmt.executeUpdate();
+
+            stmt.close();
+
+            return validar > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
+    public boolean alterarAdminPorId(Admin admin) {
+        Conexao conexao = new Conexao();
+        Connection conn = Conexao.conectar();
+
+        String sql = "update Admin set nome_cliente = ? where id = ?";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, admin.getNome_cliente());
+            stmt.setInt(2, admin.getId());
+
+            int validar = stmt.executeUpdate();
+            stmt.close();
+
+            return validar > 0;
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
+    public boolean excluirAdminPorId(Admin admin) {
+        Conexao conexao = new Conexao();
+        Connection conn = Conexao.conectar();
+
+        String sql = "delete from Admin where id=?";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, admin.getId());
+
+            int validar = stmt.executeUpdate();
+            stmt.close();
+
+            return validar > 0;
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
+    public List<Admin> listarAdmin() {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+        List<Admin> listaAdmins = new ArrayList<>();
+
+        ResultSet rset;
+
+        String sql = "select * from Admin";
+
+        try {
+            PreparedStatement pmst = conn.prepareStatement(sql);
+            rset = pmst.executeQuery();
+            while (rset.next()) {
+                Admin admin = new Admin(rset.getInt("id"), rset.getString("senha"), rset.getString("nome_cliente"), rset.getString("qual_empresa"));
+                listaAdmins.add(admin);
+            }
+
+            return listaAdmins;
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
+    public void listarAdminA() {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+
+        ResultSet rset;
+
+        String sql = "select * from Admin";
+
+        try {
+            PreparedStatement pmst = conn.prepareStatement(sql);
+            rset = pmst.executeQuery();
+
+            System.out.printf("%s | %-15s | %-15s | %-15s | %-15s "," ", "id", "senha", "nome_cliente", "qual_empresa");
+            System.out.println();
+            System.out.println("------------------------------------------------");
+
+            while (rset.next()) {
+//                System.out.printf("%d | %-15s | %-15s | %-15s",cont  ,rset.getString("dname"), rset.getString("loc"), rset.getString("deptno"));
+                System.out.println((rset.getInt("id") + "\n" + rset.getString("senha") + "\n" +  rset.getString("nome_cliente") + "\n" +  rset.getString("qual_empresa")));
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+
+
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
+}
