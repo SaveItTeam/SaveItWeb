@@ -657,7 +657,7 @@ body {
   width: 100%;
   height: 28rem;
   border-radius: 0 2rem 2rem 2rem;
-  background-color: #6b8e4e ;
+  background-color: #6b8e4e;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;

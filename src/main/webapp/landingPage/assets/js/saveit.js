@@ -6,6 +6,20 @@ const viDepois = document.getElementById('viDepois');
 const relDepois = document.getElementById('relDepois');
 
 estoAntes.addEventListener("click", () => {
+    if(viAntes.classList.contains("invisivel")){
+        viAntes.classList.toggle("invisivel");
+        viDepois.classList.toggle("invisivel");
+        estoAntes.classList.toggle("outrosEstoClicado");
+        relAntes.classList.toggle("outrosEstoClicado");
+        relAntes.classList.toggle("relViClicado");
+    }
+    if(relAntes.classList.contains("invisivel")){
+        relAntes.classList.toggle("invisivel");
+        relDepois.classList.toggle("invisivel");
+        estoAntes.classList.toggle("outrosEstoClicado");
+        viAntes.classList.toggle("outrosEstoClicado");
+    }
+
     estoAntes.classList.toggle("invisivel");
     estoDepois.classList.toggle("invisivel");
     viAntes.classList.toggle("outrosEstoClicado");
@@ -13,6 +27,19 @@ estoAntes.addEventListener("click", () => {
     relAntes.classList.toggle('outrosEstoClicado');
 })
 estoDepois.addEventListener("click", () =>{
+    if(viAntes.classList.contains("invisivel")){
+        viAntes.classList.toggle("invisivel");
+        viDepois.classList.toggle("invisivel");
+        estoAntes.classList.toggle("outrosEstoClicado");
+        relAntes.classList.toggle("outrosEstoClicado");
+        relAntes.classList.toggle("relViClicado");
+    }
+    if(relAntes.classList.contains("invisivel")){
+        relAntes.classList.toggle("invisivel");
+        relDepois.classList.toggle("invisivel");
+        estoAntes.classList.toggle("outrosEstoClicado");
+        viAntes.classList.toggle("outrosEstoClicado");
+    }
     estoAntes.classList.toggle("invisivel");
     estoDepois.classList.toggle("invisivel");
     viAntes.classList.toggle("outrosEstoClicado");
@@ -20,14 +47,42 @@ estoDepois.addEventListener("click", () =>{
     relAntes.classList.toggle('outrosEstoClicado');
 })
 viAntes.addEventListener("click", () =>{
+    if(estoAntes.classList.contains("invisivel")){
+        estoAntes.classList.toggle("invisivel");
+        estoDepois.classList.toggle("invisivel");
+        viAntes.classList.toggle("outrosEstoClicado");
+        viAntes.classList.toggle("viEstoClicado");
+        relAntes.classList.toggle('outrosEstoClicado');
+    }
+    if(relAntes.classList.contains("invisivel")){
+        relAntes.classList.toggle("invisivel");
+        relDepois.classList.toggle("invisivel");
+        estoAntes.classList.toggle("outrosEstoClicado");
+        viAntes.classList.toggle("outrosEstoClicado");
+    }
     viAntes.classList.toggle("invisivel");
     viDepois.classList.toggle("invisivel");
     estoAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("relViClicado");
+    
 
 })
 viDepois.addEventListener("click", () =>{
+    if(estoAntes.classList.contains("invisivel")){
+        estoAntes.classList.toggle("invisivel");
+        estoDepois.classList.toggle("invisivel");
+        viAntes.classList.toggle("outrosEstoClicado");
+        viAntes.classList.toggle("viEstoClicado");
+        relAntes.classList.toggle('outrosEstoClicado');
+    }
+    if(relAntes.classList.contains("invisivel")){
+        relAntes.classList.toggle("invisivel");
+        relDepois.classList.toggle("invisivel");
+        estoAntes.classList.toggle("outrosEstoClicado");
+        viAntes.classList.toggle("outrosEstoClicado");
+    }
+
     viAntes.classList.toggle("invisivel");
     viDepois.classList.toggle("invisivel");
     estoAntes.classList.toggle("outrosEstoClicado");
@@ -35,6 +90,20 @@ viDepois.addEventListener("click", () =>{
     relAntes.classList.toggle("relViClicado");
 })
 relAntes.addEventListener("click", () =>{
+    if(viAntes.classList.contains("invisivel")){
+        viAntes.classList.toggle("invisivel");
+        viDepois.classList.toggle("invisivel");
+        estoAntes.classList.toggle("outrosEstoClicado");
+        relAntes.classList.toggle("outrosEstoClicado");
+        relAntes.classList.toggle("relViClicado");
+    }
+    if(estoAntes.classList.contains("invisivel")){
+        estoAntes.classList.toggle("invisivel");
+        estoDepois.classList.toggle("invisivel");
+        viAntes.classList.toggle("outrosEstoClicado");
+        viAntes.classList.toggle("viEstoClicado");
+        relAntes.classList.toggle('outrosEstoClicado');
+    }
     relAntes.classList.toggle("invisivel");
     relDepois.classList.toggle("invisivel");
     estoAntes.classList.toggle("outrosEstoClicado");
@@ -42,6 +111,20 @@ relAntes.addEventListener("click", () =>{
 })
 
 relDepois.addEventListener("click", () =>{
+    if(viAntes.classList.contains("invisivel")){
+        viAntes.classList.toggle("invisivel");
+        viDepois.classList.toggle("invisivel");
+        estoAntes.classList.toggle("outrosEstoClicado");
+        relAntes.classList.toggle("outrosEstoClicado");
+        relAntes.classList.toggle("relViClicado");
+    }
+    if(estoAntes.classList.contains("invisivel")){
+        estoAntes.classList.toggle("invisivel");
+        estoDepois.classList.toggle("invisivel");
+        viAntes.classList.toggle("outrosEstoClicado");
+        viAntes.classList.toggle("viEstoClicado");
+        relAntes.classList.toggle('outrosEstoClicado');
+    }
     relAntes.classList.toggle("invisivel");
     relDepois.classList.toggle("invisivel");
     estoAntes.classList.toggle("outrosEstoClicado");
