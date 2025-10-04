@@ -4,8 +4,8 @@
 let html = window.location.pathname; // pegar o caminho do arquivo para verificacao
 html = html.substring(html.lastIndexOf("/") + 1); // selecionar com substring para apenas pegar o nome
 
-function svgBranco() {
-  const svg = document.getElementById("svg");
+const svg = document.querySelector("#svg");
+svg.addEventListener("mouseover", () => {
   svg.classList.add("transicaoSvg");
   svg.style.opacity = 0;
 
@@ -14,17 +14,16 @@ function svgBranco() {
   if (html === "index.html") {
     src = "landingPage/assets/images/logos/essentia_logo_branco.svg";
   } else {
-    src = "../assets/images/logos/essentia_logo_branco.svg"
+    src = "../assets/images/logos/essentia_logo_branco.svg";
   }
 
   setTimeout(() => {
     svg.src = src;
     svg.style.opacity = 1;
   }, 125);
-}
+});
 
-function svgVerde() {
-  let svg = document.getElementById("svg");
+svg.addEventListener("mouseout", () => {
   svg.classList.add("transicaoSvg");
   svg.style.opacity = 0;
 
@@ -33,19 +32,20 @@ function svgVerde() {
   if (html === "index.html") {
     src = "landingPage/assets/images/logos/essentia_logo_verde.svg";
   } else {
-    src = "../assets/images/logos/essentia_logo_verde.svg"
+    src = "../assets/images/logos/essentia_logo_verde.svg";
   }
 
   setTimeout(() => {
     svg.src = src;
     svg.style.opacity = 1;
   }, 125);
-}
+});
 
 // funcao para mudar a cor do header ao rolar a página
 // adiciona a classe "scrolled" quando a pagina eh scrollada
 // e remove quando a pagina esta no topo
-function mudarHeaderScroll() {
+
+window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
 
   if (window.scrollY > 190) {
@@ -53,6 +53,4 @@ function mudarHeaderScroll() {
   } else {
     header.classList.remove("scrolled");
   }
-}
-
-window.addEventListener("scroll", mudarHeaderScroll);
+})

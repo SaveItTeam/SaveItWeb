@@ -13,8 +13,6 @@ public class Conexao {
     private static final String USER = dotenv.get("DB_USER");
     private static final String PASSWORD = dotenv.get("DB_PASSWORD");
 
-    public Conexao() {}
-
     public static Connection conectar() {
         Connection conn = null;
         try {

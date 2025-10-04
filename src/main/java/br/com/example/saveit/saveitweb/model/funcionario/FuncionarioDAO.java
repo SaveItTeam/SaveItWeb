@@ -1,4 +1,4 @@
-package br.com.example.saveit.saveitweb.model;
+package br.com.example.saveit.saveitweb.model.funcionario;
 
 import br.com.example.saveit.saveitweb.dao.Conexao;
 
@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class FuncionarioDAO {
     public boolean inserirFuncionario(Funcionario funcionario) {

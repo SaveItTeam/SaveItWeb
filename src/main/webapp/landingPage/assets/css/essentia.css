@@ -643,7 +643,6 @@ body {
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
-  -ms-overflow-style: none;
   justify-self: center;
   width: 100rem;
   margin-top: 3rem;
