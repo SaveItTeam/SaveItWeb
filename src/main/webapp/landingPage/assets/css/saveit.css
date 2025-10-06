@@ -162,8 +162,8 @@ html {
 
   h2{
     margin: 0;
-    padding-top: 100px;
-    padding-left: 65px;
+    padding-top: 10rem;
+    padding-left: 6.5rem;
     font-size: 6.5rem;
     width: 60rem;
     text-align: center;
@@ -176,17 +176,17 @@ html {
   }
   #span1{
       display: flex;
-      gap: 100px;
-      margin-left: 100px;
+      gap: 10rem;
+      margin-left: 10rem;
     }
     
   .antes{
-    margin-top: 100px;
+    margin-top: 10rem;
     width: 42rem;
     height: 6.2rem;
     background-color: #6b8e4e;
     justify-items: center;
-    border-radius: 50px;
+    border-radius: 5rem;
     color: #f0ece1;
     font-size: 2.3rem;
     border: none;
@@ -195,9 +195,9 @@ html {
 
 
   .depois{
-    width: 700px;
-    height: 500px;
-    border-radius: 35px;
+    width: 70rem;
+    height: 50rem;
+    border-radius: 3.5rem;
     background-color: #f0ece1;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
 
@@ -212,48 +212,48 @@ html {
   }
 
   .clicado {
-    margin-left: 100px;
+    margin-left: 10rem;
     position: relative;
     h3{
-        padding-top: 10px;
-        padding-left: 10px;
+        padding-top: 1rem;
+        padding-left: 1rem;
         color: #405d49;
-        margin: 10px;
+        margin: 1rem;
         font-size: 4rem;
     }
     p{
-        width: 400px;
-        font-size: 20px;
-        padding-left: 20px;
+        width: 40rem;
+        font-size: 2rem;
+        padding-left: 2rem;
     }
     img{
-        width: 200px;
+        width: 20rem;
         position: absolute;
-        right: 60px;
-        top: 50px;
+        right: 6rem;
+        top: 5rem;
     }
   }  
   #estoDepois, #viDepois, #relDepois{
-    top: 280px;
+    top: 28rem;
     position: absolute;
-    width: 850px;
-    height: 600px;
+    width: 85rem;
+    height: 60rem;
 }
 #viDepois{
-    left: 450px;
+    left: 45rem;
 }
 #relDepois{
-    left: 880px;
+    left: 88rem;
 }
   .outrosEstoClicado{
-    width: 350px;
+    width: 35rem;
   }
 
   .viEstoClicado{
-    margin-left: 940px;
+    margin-left: 94rem;
   }
   .relViClicado{
-    margin-left: 930px;
+    margin-left: 93rem;
   }
 
   .invisivel{
