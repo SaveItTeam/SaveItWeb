@@ -70,10 +70,11 @@ html {
   gap: 10rem;
   justify-content: center;
   width: 100%;
-  height: 30vh;
+  height: 40vh;
   background-color: #f0ece1;
 
   div {
+    margin-top: 5rem;
     justify-content: center;
     width: 39.5rem;
     h2 {
@@ -154,9 +155,10 @@ html {
     font-size: 2rem;
   }
 }
+
 #Saveit-4 {
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   background-color: #f0ece1;
   position: relative;
 
@@ -184,12 +186,13 @@ html {
     margin-top: 10rem;
     width: 42rem;
     height: 6.2rem;
-    background-color: #6b8e4e;
+    background: linear-gradient(135deg, #405d49 0%, #6b8e4e 60%);
     justify-items: center;
     border-radius: 5rem;
     color: #f0ece1;
     font-size: 2.3rem;
     border: none;
+    transition: 0.3s ease;
     
   }
 
@@ -200,6 +203,7 @@ html {
     border-radius: 3.5rem;
     background-color: #f0ece1;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
 
 
     &::not(h3){
@@ -223,11 +227,11 @@ html {
     }
     p{
         width: 40rem;
-        font-size: 2rem;
+        font-size: 2.2rem;
         padding-left: 2rem;
     }
     img{
-        width: 20rem;
+        width: 22.5rem;
         position: absolute;
         right: 6rem;
         top: 5rem;
@@ -259,7 +263,18 @@ html {
   .invisivel{
     display: none;
   }
+  .depois:hover{
+      transform: translateY(-2rem);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+  .antes:hover{
+      transform: translateY(-0.2rem);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
   
 }
+.tamanho{
+    height: 100vh;
+  }
 
     

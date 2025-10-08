@@ -4,6 +4,7 @@ const relAntes = document.getElementById('relAntes');
 const estoDepois = document.getElementById('estoDepois');
 const viDepois = document.getElementById('viDepois');
 const relDepois = document.getElementById('relDepois');
+const tamnhoSection = document.getElementById('Saveit-4');
 
 estoAntes.addEventListener("click", () => {
     if(viAntes.classList.contains("invisivel")){
@@ -25,6 +26,8 @@ estoAntes.addEventListener("click", () => {
     viAntes.classList.toggle("outrosEstoClicado");
     viAntes.classList.toggle("viEstoClicado");
     relAntes.classList.toggle('outrosEstoClicado');
+    tamnhoSection.style.height = "100vh";
+
 })
 estoDepois.addEventListener("click", () =>{
     if(viAntes.classList.contains("invisivel")){
@@ -45,6 +48,8 @@ estoDepois.addEventListener("click", () =>{
     viAntes.classList.toggle("outrosEstoClicado");
     viAntes.classList.toggle("viEstoClicado");
     relAntes.classList.toggle('outrosEstoClicado');
+    tamnhoSection.style.height = "60vh";
+
 })
 viAntes.addEventListener("click", () =>{
     if(estoAntes.classList.contains("invisivel")){
@@ -65,7 +70,8 @@ viAntes.addEventListener("click", () =>{
     estoAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("relViClicado");
-    
+    tamnhoSection.style.height = "100vh";
+
 
 })
 viDepois.addEventListener("click", () =>{
@@ -88,6 +94,8 @@ viDepois.addEventListener("click", () =>{
     estoAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("relViClicado");
+    tamnhoSection.style.height = "60vh";
+
 })
 relAntes.addEventListener("click", () =>{
     if(viAntes.classList.contains("invisivel")){
@@ -108,6 +116,8 @@ relAntes.addEventListener("click", () =>{
     relDepois.classList.toggle("invisivel");
     estoAntes.classList.toggle("outrosEstoClicado");
     viAntes.classList.toggle("outrosEstoClicado");
+    tamnhoSection.style.height = "100vh";
+
 })
 
 relDepois.addEventListener("click", () =>{
@@ -129,4 +139,5 @@ relDepois.addEventListener("click", () =>{
     relDepois.classList.toggle("invisivel");
     estoAntes.classList.toggle("outrosEstoClicado");
     viAntes.classList.toggle("outrosEstoClicado");
+    tamnhoSection.style.height = "60vh";
 })
