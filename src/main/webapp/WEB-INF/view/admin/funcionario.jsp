@@ -129,90 +129,68 @@
                     <tbody>
                         <tr>
                             <td>Nisflei Galoni</td>
-                            <td>12/09/1972</td>
+                            <td>27/01/2021</td>
                             <td>1</td>
                             <td>Professor</td>
                             <td class="funcionario-status">Ativo</td>
                             <td class="acoes">
-                                <button><i class="ri-edit-box-line"></i></button>
-                                <button><i class="ri-delete-bin-6-line"></i></button>
+
+                                <button class="botao-deletar-funcionario"><i class="ri-delete-bin-6-line"></i></button>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nisflei Galoni</td>
-                            <td>12/09/1972</td>
-                            <td>1</td>
+                            <td>Myrna Yoshie</td>
+                            <td>21/01/2022</td>
+                            <td>2</td>
                             <td>Professor</td>
                             <td class="funcionario-status">Ativo</td>
                             <td class="acoes">
-                                <button><i class="ri-edit-box-line"></i></button>
-                                <button><i class="ri-delete-bin-6-line"></i></button>
+
+                                <button class="botao-deletar-funcionario"><i class="ri-delete-bin-6-line"></i></button>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nisflei Galoni</td>
-                            <td>12/09/1972</td>
-                            <td>1</td>
+                            <td>Carlos Santi</td>
+                            <td>14/01/2021</td>
+                            <td>3</td>
                             <td>Professor</td>
                             <td class="funcionario-status">Ativo</td>
                             <td class="acoes">
-                                <button><i class="ri-edit-box-line"></i></button>
-                                <button><i class="ri-delete-bin-6-line"></i></button>
+
+                                <button class="botao-deletar-funcionario"><i class="ri-delete-bin-6-line"></i></button>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nisflei Galoni</td>
-                            <td>12/09/1972</td>
-                            <td>1</td>
+                            <td>Bruno Baptista</td>
+                            <td>20/02/2018</td>
+                            <td>4</td>
                             <td>Professor</td>
                             <td class="funcionario-status">Ativo</td>
                             <td class="acoes">
-                                <button><i class="ri-edit-box-line"></i></button>
-                                <button><i class="ri-delete-bin-6-line"></i></button>
+
+                                <button class="botao-deletar-funcionario"><i class="ri-delete-bin-6-line"></i></button>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nisflei Galoni</td>
-                            <td>12/09/1972</td>
-                            <td>1</td>
+                            <td>Marcelo Modolo</td>
+                            <td>18/01/2019</td>
+                            <td>5</td>
                             <td>Professor</td>
                             <td class="funcionario-status">Inativo</td>
                             <td class="acoes">
-                                <button><i class="ri-edit-box-line"></i></button>
-                                <button><i class="ri-delete-bin-6-line"></i></button>
+
+                                <button class="botao-deletar-funcionario"><i class="ri-delete-bin-6-line"></i></button>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nisflei Galoni</td>
-                            <td>12/09/1972</td>
-                            <td>1</td>
+                            <td>Carlos Alberto</td>
+                            <td>28/02/2024</td>
+                            <td>6</td>
                             <td>Professor</td>
                             <td class="funcionario-status">Inativo</td>
                             <td class="acoes">
-                                <button><i class="ri-edit-box-line"></i></button>
-                                <button><i class="ri-delete-bin-6-line"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nisflei Galoni</td>
-                            <td>12/09/1972</td>
-                            <td>1</td>
-                            <td>Professor</td>
-                            <td class="funcionario-status">Ativo</td>
-                            <td class="acoes">
-                                <button><i class="ri-edit-box-line"></i></button>
-                                <button><i class="ri-delete-bin-6-line"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nisflei Galoni</td>
-                            <td>12/09/1972</td>
-                            <td>1</td>
-                            <td>Professor</td>
-                            <td class="funcionario-status">Ativo</td>
-                            <td class="acoes">
-                                <button><i class="ri-edit-box-line"></i></button>
-                                <button><i class="ri-delete-bin-6-line"></i></button>
+
+                                <button class="botao-deletar-funcionario"><i class="ri-delete-bin-6-line"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -222,20 +200,149 @@
     </main>
 
     <!-- ADICIONAR FUNCIONARIO -->
-    <form action="" method="post" class="adicionar-funcionario">
-        <div>
+    <div class="adicionar-funcionario">
+        <form action="" method="post">
             <div>
                 <h2>Adicionar Funcionário</h2>
-                <button type="button" id="fechar-adicionar-funcionario">
-                    Fechar
+                <button type="button" class="fechar-adicionar-funcionario">
+                    <i class="ri-close-line"></i>
                 </button>
             </div>
 
-            <button type="submit">Adicionar Funcionário</button>
-        </div>
-    </form>
+            <hr>
+
+            <div>
+                <img src="imagem (4).jpeg" alt="" id="preview">
+                <div>
+                    <label for="inputFile"> <i class="ri-upload-2-line"></i>Enviar Foto
+                        <input type="file" name="inputFile" id="inputFile" accept=".jpg, .png, .jpeg">
+                    </label>
+                </div>
+            </div>
+
+            <div class="inputs">
+                <label for="">Primeiro Nome
+                    <input type="text" placeholder="Digite o primeiro nome" name="inputNome" id="inputNome">
+                </label>
+                <label for="">Último Nome
+                    <input type="text" placeholder="Digite o último nome" name="inputUltimoNome" id="inputSegNome">
+                </label>
+                <!-- <label for="">ID
+                    <input type="number" placeholder="Marcelo" name="inputNome" id="inputId">
+                </label> -->
+                <label for="">Cargo
+                    <input type="text" placeholder="Digite o cargo" name="inputCargo" id="inputCargo">
+                </label>
+                <label for="inputSelect">Gênero
+                    <select name="inputSelect" id="inputSelect">
+                        <option value="masc">Masculino</option>
+                        <option value="femi">Feminino</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </label>
+                <label for="">Email
+                    <input type="text" placeholder="Digite o email" name="inputEmail" id="inputEmail">
+                </label>
+                <label for="">Telefone
+                    <input type="tel" placeholder="Digite o telefone" name="inputTel" id="inputTel">
+                </label>
+                <label for="">Status
+                    <input type="tel" placeholder="Digite o status" name="inputStatus" id="inputStatus">
+                </label>
+                <label for="">Endereço
+                    <input type="text" placeholder="Digite o endereço" name="inputEndereco" id="inputEndereco">
+                </label>
+            </div>
+
+            <hr style="margin-top: 2rem;">
+            <div class="acoesForm">
+                <button class="fechar-adicionar-funcionario" type="button">Cancelar</button>
+                <button type="submit" id="adicionarFuncionario">Adicionar Funcionário</button>
+            </div>
+
+
+            <!-- <button type="submit">Adicionar Funcionário</button> -->
+        </form>
+    </div>
+
+    <!-- EDITAR FUNCIONARIO -->
+    <div class="editar-funcionario">
+        <form action="" method="post">
+            <div>
+                <h2>Editar Funcionário</h2>
+                <button type="button" class="fechar-editar-funcionario">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+
+            <hr>
+
+            <div>
+                <img src="imagem (4).jpeg" alt="" id="preview2">
+                <div>
+                    <label for="inputFile2"> <i class="ri-upload-2-line"></i>Enviar Foto
+                        <input type="file" name="inputFile2" id="inputFile2" accept=".jpg, .png, .jpeg">
+                    </label>
+                </div>
+            </div>
+
+            <div class="inputs">
+                <label for="">Primeiro Nome
+                    <input type="text" placeholder="Digite o primeiro nome" name="inputNome2" id="inputNome2">
+                </label>
+                <label for="">Último Nome
+                    <input type="text" placeholder="Digite o último nome" name="inputUltimoNome" id="inputUltimoNome2">
+                </label>
+                <!-- <label for="">ID
+                    <input type="number" placeholder="Marcelo" name="inputNome" id="inputId">
+                </label> -->
+                <label for="">Cargo
+                    <input type="text" placeholder="Digite o cargo" name="inputCargo2" id="inputCargo2">
+                </label>
+                <label for="inputSelect">Gênero
+                    <select name="inputSelect2" id="inputSelect2">
+                        <option value="masc">Masculino</option>
+                        <option value="femi">Feminino</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </label>
+                <label for="">Email
+                    <input type="text" placeholder="Digite o email" name="inputEmail2" id="inputEmail2">
+                </label>
+                <label for="">Telefone
+                    <input type="tel" placeholder="Digite o telefone" name="inputTel2" id="inputTel2">
+                </label>
+                <label for="">Status
+                    <input type="tel" placeholder="Digite o status" name="inputStatus2" id="inputStatus2">
+                </label>
+                <label for="">Endereço
+                    <input type="text" placeholder="Digite o endereço" name="inputEndereco2" id="inputEndereco2">
+                </label>
+            </div>
+
+            <hr style="margin-top: 2rem;">
+            <div class="acoesForm">
+                <button class="fechar-editar-funcionario" type="button">Cancelar</button>
+                <button type="submit">Adicionar Funcionário</button>
+            </div>
+
+
+            <!-- <button type="submit">Adicionar Funcionário</button> -->
+        </form>
+    </div>
+
+    <div class="deletar-funcionario">
+        <form action="" method="post">
+            <h2>Excluir Funcionário?</h2>
+            <h3>Tem certeza que deseja excluir esse funcionário?</h3>
+            <div>
+                <button class="fechar-deletar-funcionario" type="button">Cancelar</button>
+                <input type="button" value="Deletar">
+            </div>
+
+        </form>
+    </div>
 
     <script src="funcionario.js"></script>
 </body>
-
 </html>
