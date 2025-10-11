@@ -1,7 +1,6 @@
 /* ! Arquivo CSS globalmente utilizado para Header e Footer */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
-
 * {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
@@ -17,33 +16,33 @@ body {
 .titulo-geist {
     font-family: 'Geist', sans-serif;
     font-weight: bold;
-    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
 }
 header {
     margin: 0 auto;
-    width: 750px;
-    height: 60px;
+    width: 75rem;
+    height: 6rem;
     background-color: #3E5543;
     display: flex;
     justify-content: center;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 100px;
+    border-radius: 10rem;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
+    box-shadow: 0 .3rem 1rem rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
     position: sticky;
-    top: 5px;
+    top: .5rem;
     z-index: 1000;
     transition: 0.3 ease;
     
     nav {
-        width: 686px;
+        width: 68.6rem;
         display: flex;
         justify-content: space-between;
-        margin-left: 74px;
-        margin-right: 74px;
-        font-size: 20px;
+        margin-left: 7.4rem;
+        margin-right: 7.4rem;
+        font-size: 2rem;
         align-items: center;
 
         a {
@@ -52,9 +51,9 @@ header {
             transition: 0.3s ease;
 
             img {
-                width: 50px;
-                height: 50px;
-                padding-top: 5px;
+                width: 5rem;
+                height: 5rem;
+                padding-top: .5rem;
             }
 
         }
@@ -78,23 +77,23 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    top: 16px;
-    right: 80px;
+    width: 15rem;
+    top: 2rem;
+    right: 8rem;
     text-align: center;
     background-color: #6B8E4E;
     color: #f0ece1;
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 27px;
+    border-radius: 2.7rem;
     cursor: pointer;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 16px;
+    font-size: 1.6rem;
     text-decoration: none;
     color: #f0ece1;
     z-index: 999;
     font-weight: 400;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 .4rem 2rem rgba(0, 0, 0, 0.1);
     transition: ease 0.3s;
 
     &:hover {
@@ -106,62 +105,62 @@ header {
 
 header.scrolled {
     transition: 0.3 ease;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(1rem);
     background-color: #3e554332;
 }
 
 footer {
   width: 100%;
   background-color: #2e2e2e;
-  height: 420px;
+  height: 42rem;
   display: flex;
   justify-content: space-evenly;
   position: relative;
   color: #f0ece1;
 
   h4 {
-    font-size: 25px;
+    font-size: 2.5rem;
   }
 
   a , p {
     text-decoration: none;
     color: #f0ece1;
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 
   > div:nth-child(n + 1), address {
-    margin-top: 50px;
+    margin-top: 5rem;
   }
 
   > div:nth-child(1) {
-    width: 250px;
+    width: 25rem;
     display: flex;
     flex-direction: column;
-    gap: 7px;
-    margin-top: 80px;
+    gap: .7rem;
+    margin-top: 8rem;
 
     img {
-        width: 50px;
+        width: 5rem;
     }
 
     p {
-      font-size: 19px;
+      font-size: 1.9rem;
       line-height: 140%;
-      margin-top: 10px;
+      margin-top: 1rem;
     }
     div {
       display: flex;
-      gap: 10px;
-      margin-top: -5px;
+      gap: 1rem;
+      margin-top: -.5rem;
 
       a {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 40px;
-        height: 40px;
+        width: 4rem;
+        height: 4rem;
         background-color: #f0ece13d;
-        border-radius: 100px;
+        border-radius: 10rem;
         transition: .3s ease;
 
         &:hover {
@@ -175,7 +174,7 @@ footer {
   div:nth-child(2) nav {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 1.5rem;
     
 
     a {
@@ -200,14 +199,14 @@ footer {
     bottom: 0;
 
     hr {
-      height: 0px;
-      width: 600px;
-      border: 0.5px solid #f0ece1;
-      border-radius: 100px;
+      height: 0;
+      width: 60rem;
+      border: .05rem solid #f0ece1;
+      border-radius: 10rem;
     }
 
     h4 {
-      font-size: 18px;
+      font-size: 1.8rem;
       font-style: normal;
       font-weight: 400;
       text-align: center;
