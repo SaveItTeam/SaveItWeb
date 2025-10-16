@@ -19,7 +19,8 @@ public class Funcionario {
     public int id_industria;
     public int id_admin;
 
-    public Funcionario(String nome, String cpf, String rg, char sexo, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone, String experiencia, int id_empresa, int id_industria, int id_admin) {
+    public Funcionario(int id, String nome, String cpf, String rg, char sexo, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone_pessoal, String telefone_trabalho, String experiencia, int id_empresa, int id_industria, int id_admin) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
@@ -39,6 +40,8 @@ public class Funcionario {
     public Funcionario() {
 
     }
+
+
 
     public int getId() {
         return this.id;
@@ -154,6 +157,28 @@ public class Funcionario {
 
     public void setId_admin(int id_admin) {
         this.id_admin = id_admin;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", rg='" + rg + '\'' +
+                ", sexo=" + sexo +
+                ", dt_nascimento=" + dt_nascimento +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", dt_contratacao=" + dt_contratacao +
+                ", telefone='" + telefone + '\'' +
+                ", experiencia='" + experiencia + '\'' +
+                ", id_empresa=" + id_empresa +
+                ", id_industria=" + id_industria +
+                ", id_admin=" + id_admin +
+                '}';
     }
 }
 

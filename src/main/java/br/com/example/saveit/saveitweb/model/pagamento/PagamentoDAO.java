@@ -168,12 +168,12 @@ public class PagamentoDAO {
 
 
     //    Select
-    public Map<Integer, Pagamento> buscar() {
+    public List<Pagamento> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Pagamento pagamento = new Pagamento();
-        Map<Integer, Pagamento> pagamentos = new HashMap<>();
+        List<Pagamento> pagamentos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -186,7 +186,7 @@ public class PagamentoDAO {
                     pagamento.setStatus(rset.getString(2));
                     pagamento.setDt_criacao(rset.getString(3));
                     pagamento.setDt_validade(rset.getString(4));
-                    pagamentos.put(pagamento.getId(), pagamento);
+                    pagamentos.add(pagamento);
                     pagamento = new Pagamento();
                 }
             }
@@ -201,12 +201,12 @@ public class PagamentoDAO {
     }
 
 
-    public Map<Integer, Pagamento> buscar(String campoOrdenar) {
+    public List<Pagamento> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Pagamento pagamento = new Pagamento();
-        Map<Integer, Pagamento> pagamentos = new HashMap<>();
+        List<Pagamento> pagamentos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -219,7 +219,7 @@ public class PagamentoDAO {
                     pagamento.setStatus(rset.getString(2));
                     pagamento.setDt_criacao(rset.getString(3));
                     pagamento.setDt_validade(rset.getString(4));
-                    pagamentos.put(pagamento.getId(), pagamento);
+                    pagamentos.add(pagamento);
                     pagamento = new Pagamento();
                 }
             }
@@ -233,12 +233,12 @@ public class PagamentoDAO {
         }
     }
 
-    public Map<Integer, Pagamento> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public List<Pagamento> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Pagamento pagamento = new Pagamento();
-        Map<Integer, Pagamento> pagamentos = new HashMap<>();
+        List<Pagamento> pagamentos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -251,7 +251,7 @@ public class PagamentoDAO {
                     pagamento.setStatus(rset.getString(2));
                     pagamento.setDt_criacao(rset.getString(3));
                     pagamento.setDt_validade(rset.getString(4));
-                    pagamentos.put(pagamento.getId(), pagamento);
+                    pagamentos.add(pagamento);
                     pagamento = new Pagamento();
                 }
             }
@@ -266,12 +266,12 @@ public class PagamentoDAO {
     }
 
 
-    public Map<Integer, Pagamento> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Pagamento> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Pagamento pagamento = new Pagamento();
-        Map<Integer, Pagamento> pagamentos = new HashMap<>();
+        List<Pagamento> pagamentos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -284,7 +284,7 @@ public class PagamentoDAO {
                     pagamento.setStatus(rset.getString(2));
                     pagamento.setDt_criacao(rset.getString(3));
                     pagamento.setDt_validade(rset.getString(4));
-                    pagamentos.put(pagamento.getId(), pagamento);
+                    pagamentos.add(pagamento);
                     pagamento = new Pagamento();
                 }
             }

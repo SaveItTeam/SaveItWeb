@@ -87,23 +87,22 @@ public class AdminDAO {
         }
     }
 
-    public Map<Integer, Admin> listarAdmin() {
+    public List<Admin> listarAdmin() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();
-        List<Admin> listaAdmins = new ArrayList<>();
 
         ResultSet rset;
 
         String sql = "select * from Admin";
 
-        Map<Integer, Admin> admins = new HashMap<>();
+        List<Admin> admins = new ArrayList<>();
 
         try {
             PreparedStatement pmst = conn.prepareStatement(sql);
             rset = pmst.executeQuery();
             while (rset.next()) {
                 Admin admin = new Admin(rset.getInt("id"), rset.getString("senha"), rset.getString("nome_cliente"), rset.getString("qual_empresa"));
-                admins.put(admin.getId(), admin);
+                admins.add(admin);
             }
 
             return admins;
@@ -118,7 +117,7 @@ public class AdminDAO {
         }
     }
 
-    public Map<Integer, Admin> listarAdminA() {
+    public List<Admin> listarAdminA() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();
 
@@ -126,7 +125,7 @@ public class AdminDAO {
 
         String sql = "select * from Admin";
 
-        Map<Integer, Admin> admins = new HashMap<>();
+        List<Admin> admins = new ArrayList<>();
         try {
             PreparedStatement pmst = conn.prepareStatement(sql);
             rset = pmst.executeQuery();
@@ -138,7 +137,7 @@ public class AdminDAO {
             while (rset.next()) {
 //                System.out.printf("%d | %-15s | %-15s | %-15s",cont  ,rset.getString("dname"), rset.getString("loc"), rset.getString("deptno"));
                 Admin admin = new Admin(rset.getInt("id"), rset.getString("senha"), rset.getString("nome_cliente"), rset.getString("qual_empresa"));
-                admins.put(admin.getId(), admin);
+                admins.add(admin);
             }
         } catch (SQLException e){
             e.printStackTrace();

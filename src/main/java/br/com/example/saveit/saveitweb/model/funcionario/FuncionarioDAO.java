@@ -2,10 +2,9 @@ package br.com.example.saveit.saveitweb.model.funcionario;
 
 import br.com.example.saveit.saveitweb.dao.Conexao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FuncionarioDAO {
     public boolean inserirFuncionario(Funcionario funcionario) {
@@ -44,6 +43,36 @@ public class FuncionarioDAO {
             conexao.desconectar(conn);
         }
     }
+
+
+    public List<Funcionario> buscar() {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
+//        Iniciando objeto Endereço e lista de objetos Endereço
+        List<Funcionario> funcionarios = new ArrayList<>();
+        try {
+//            Iniciando objeto Statment
+            Statement stmt = conn.createStatement();
+            String query = "select * from Funcionario";
+            ResultSet rset = stmt.executeQuery(query);
+
+            if (rset != null) {
+                while (rset.next()) {
+                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("sexo").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"), rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getInt("id_admin"));
+                    funcionarios.add(funcionario);
+                }
+            }
+            stmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);
+            return funcionarios;
+        }
+    }
+
+
 
     public ResultSet logarFuncionario(String email, String senha) {
         Conexao conexao = new Conexao();

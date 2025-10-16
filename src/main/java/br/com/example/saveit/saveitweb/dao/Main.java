@@ -24,23 +24,23 @@ public class Main {
             PlanoDAO planoDAO = new PlanoDAO();
             EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-            adminDAO.listarAdmin();
-            System.out.println("\n\n");
+//            adminDAO.listarAdmin();
+//            System.out.println("\n\n");
+//
+//            empresaDAO.buscar();
+//            System.out.println("\n\n");
+//
+//
+//            industriaDAO.buscar();
+//            System.out.println("\n\n");
+//
+//            pagamentoDAO.buscar();
+//            System.out.println("\n\n");
+//
+//            planoDAO.buscar();
+//            System.out.println("\n\n");
 
-            empresaDAO.buscar();
-            System.out.println("\n\n");
-
-
-            industriaDAO.buscar();
-            System.out.println("\n\n");
-
-            pagamentoDAO.buscar();
-            System.out.println("\n\n");
-
-            planoDAO.buscar();
-            System.out.println("\n\n");
-
-            enderecoDAO.buscar().forEach((key, value) -> System.out.println(value));
+            System.out.println(funcionarioDAO.buscar());
             System.out.println("\n\n");
 
 

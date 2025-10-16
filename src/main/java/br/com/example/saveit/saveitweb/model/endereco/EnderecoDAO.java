@@ -177,12 +177,12 @@ public class EnderecoDAO {
 
 
 //    Select
-    public Map<Integer, Endereco> buscar() {
+    public List<Endereco> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        Map<Integer, Endereco> enderecos = new HashMap<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -199,7 +199,7 @@ public class EnderecoDAO {
                     endereco.setEstado(rset.getString(6));
                     endereco.setPais(rset.getString(7));
                     endereco.setComplemento(rset.getString(8));
-                    enderecos.put(endereco.getId(), endereco);
+                    enderecos.add(endereco);
                     endereco = new Endereco();
                 }
             }
@@ -214,12 +214,12 @@ public class EnderecoDAO {
     }
 
 
-    public Map<Integer, Endereco> buscar(String campoOrdenar) {
+    public List<Endereco> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        Map<Integer, Endereco> enderecos = new HashMap<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -237,7 +237,7 @@ public class EnderecoDAO {
                     endereco.setEstado(rset.getString(6));
                     endereco.setPais(rset.getString(7));
                     endereco.setComplemento(rset.getString(8));
-                    enderecos.put(endereco.getId(), endereco);
+                    enderecos.add(endereco);
                     endereco = new Endereco();
                 }
             }
@@ -252,12 +252,12 @@ public class EnderecoDAO {
     }
 
 
-    public Map<Integer, Endereco> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Endereco> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        Map<Integer, Endereco> enderecos = new HashMap<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -274,7 +274,7 @@ public class EnderecoDAO {
                     endereco.setEstado(rset.getString(6));
                     endereco.setPais(rset.getString(7));
                     endereco.setComplemento(rset.getString(8));
-                    enderecos.put(endereco.getId(), endereco);
+                    enderecos.add(endereco);
                     endereco = new Endereco();
                 }
             }
@@ -289,12 +289,12 @@ public class EnderecoDAO {
     }
 
 
-    public Map<Integer, Endereco> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public List<Endereco> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        Map<Integer, Endereco> enderecos = new HashMap<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -311,7 +311,7 @@ public class EnderecoDAO {
                     endereco.setEstado(rset.getString(6));
                     endereco.setPais(rset.getString(7));
                     endereco.setComplemento(rset.getString(8));
-                    enderecos.put(endereco.getId(), endereco);
+                    enderecos.add(endereco.getId(), endereco);
                     endereco = new Endereco();
                 }
             }

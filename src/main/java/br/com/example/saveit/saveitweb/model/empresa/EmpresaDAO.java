@@ -169,12 +169,12 @@ public class EmpresaDAO {
 
 
     //    Select
-    public Map<Integer, Empresa> buscar() {
+    public List<Empresa> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Empresa empresa = new Empresa();
-        Map<Integer, Empresa> empresas = new HashMap<>();
+        List<Empresa> empresas = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -185,12 +185,8 @@ public class EmpresaDAO {
                 while (rset.next()) {
                     empresa.setId(rset.getInt(1));
                     empresa.setId_funcionario(rset.getInt(2));
-                    if (rset.getInt(3) > 0 ) {
-                        empresa.setId_cliente(rset.getInt(3));
-                    }
-                    empresa.setProcura(rset.getString(4));
-                    empresa.setId_plano(rset.getInt(5));
-                    empresas.put(empresa.getId(), empresa);
+                    empresa.setProcura(rset.getString(3));
+                    empresas.add(empresa);
                     empresa = new Empresa();
                 }
             }
@@ -205,12 +201,12 @@ public class EmpresaDAO {
     }
 
 
-    public Map<Integer, Empresa> buscar(String campoOrdenar) {
+    public List<Empresa> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Empresa empresa = new Empresa();
-        Map<Integer, Empresa> empresas = new HashMap<>();
+        List<Empresa> empresas = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -224,7 +220,7 @@ public class EmpresaDAO {
                     empresa.setId_cliente(rset.getInt(3));
                     empresa.setProcura(rset.getString(4));
                     empresa.setId_plano(rset.getInt(5));
-                    empresas.put(empresa.getId(), empresa);
+                    empresas.add( empresa);
                     empresa = new Empresa();
                 }
             }
@@ -238,12 +234,12 @@ public class EmpresaDAO {
         }
     }
 
-    public Map<Integer, Empresa> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public List<Empresa> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Empresa empresa = new Empresa();
-        Map<Integer, Empresa> empresas = new HashMap<>();
+        List<Empresa> empresas = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -257,7 +253,7 @@ public class EmpresaDAO {
                     empresa.setId_cliente(rset.getInt(3));
                     empresa.setProcura(rset.getString(4));
                     empresa.setId_plano(rset.getInt(5));
-                    empresas.put(empresa.getId(), empresa);
+                    empresas.add(empresa);
                     empresa = new Empresa();
                 }
             }
@@ -272,12 +268,12 @@ public class EmpresaDAO {
     }
 
 
-    public Map<Integer, Empresa> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Empresa> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Empresa empresa = new Empresa();
-        Map<Integer, Empresa> empresas = new HashMap<>();
+        List<Empresa> empresas = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -291,7 +287,7 @@ public class EmpresaDAO {
                     empresa.setId_cliente(rset.getInt(3));
                     empresa.setProcura(rset.getString(4));
                     empresa.setId_plano(rset.getInt(5));
-                    empresas.put(empresa.getId(), empresa);
+                    empresas.add(empresa);
                     empresa = new Empresa();
                 }
             }

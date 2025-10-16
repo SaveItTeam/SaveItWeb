@@ -44,10 +44,12 @@ public class Admin {
     @Override
     public String toString() {
         return String.format("""
+                \n
                 id: %d
                 senha: %s
                 nome cliente: %s
-                qual empresa: %s"""
+                qual empresa: %s
+                \n"""
                 , id, senha, nome_cliente, qual_empresa);
     }
 }
