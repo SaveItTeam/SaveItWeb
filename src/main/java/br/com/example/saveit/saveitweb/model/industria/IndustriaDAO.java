@@ -4,7 +4,9 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class IndustriaDAO {
 //    Insert
@@ -24,6 +26,7 @@ public class IndustriaDAO {
                 System.out.println("Inserido com sucesso!");
                 return true;
             }
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -45,6 +48,7 @@ public class IndustriaDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -65,6 +69,7 @@ public class IndustriaDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -85,6 +90,7 @@ public class IndustriaDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -105,6 +111,7 @@ public class IndustriaDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -128,6 +135,7 @@ public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
             System.out.println("Atualizado com sucesso!");
             return validar;
         }
+        statement.close();
     } catch (SQLException sqle) {
         sqle.printStackTrace();
     } finally {
@@ -148,6 +156,7 @@ public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -159,12 +168,12 @@ public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
 
 
 //    Select
-public List<Industria> buscar() {
+public Map<Integer, Industria> buscar() {
     Conexao conexao = new Conexao();
     Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
     Industria industria = new Industria();
-    List<Industria> listaIndustrias = new ArrayList<>();
+    Map<Integer, Industria> industrias = new HashMap<>();
     try {
 //            Iniciando objeto Statment
         Statement stmt = conn.createStatement();
@@ -177,27 +186,27 @@ public List<Industria> buscar() {
                 industria.setId_plano(rset.getInt(2));
                 industria.setVende(rset.getString(3));
                 industria.setId_pagamento(rset.getInt(4));
-                listaIndustrias.add(industria);
+                industrias.put(industria.getId(), industria);
                 industria = new Industria();
             }
         }
-
+        stmt.close();
     } catch (SQLException sqle) {
         sqle.printStackTrace();
         return null;
     } finally {
         conexao.desconectar(conn);
-        return listaIndustrias;
+        return industrias;
     }
 }
 
 
-    public List<Industria> buscar(String campoOrdenar) {
+    public Map<Integer, Industria> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Industria e lista de objetos Industrias
         Industria industria = new Industria();
-        List<Industria> industrias = new ArrayList<>();
+        Map<Integer, Industria> industrias = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -211,11 +220,11 @@ public List<Industria> buscar() {
                     industria.setId_plano(rset.getInt(2));
                     industria.setVende(rset.getString(3));
                     industria.setId_pagamento(rset.getInt(4));
-                    industrias.add(industria);
+                    industrias.put(industria.getId(), industria);
                     industria = new Industria();
                 }
             }
-
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
@@ -226,13 +235,13 @@ public List<Industria> buscar() {
     }
 
 
-    public List<Industria> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public Map<Integer, Industria> buscar(String campoOndePesquisar, String valorPesquisar) {
         ResultSet rset;
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Industria e lista de objetos Industrias
         Industria industria = new Industria();
-        List<Industria> industrias = new ArrayList<>();
+        Map<Integer, Industria> industrias = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -245,10 +254,11 @@ public List<Industria> buscar() {
                     industria.setId_plano(rset.getInt(2));
                     industria.setVende(rset.getString(3));
                     industria.setId_pagamento(rset.getInt(4));
-                    industrias.add(industria);
+                    industrias.put(industria.getId(), industria);
                     industria = new Industria();
                 }
             }
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
@@ -259,12 +269,12 @@ public List<Industria> buscar() {
     }
 
 
-    public List<Industria> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public Map<Integer, Industria> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Industria e lista de objetos Industrias
         Industria industria = new Industria();
-        List<Industria> industrias = new ArrayList<>();
+        Map<Integer, Industria> industrias = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -277,10 +287,11 @@ public List<Industria> buscar() {
                     industria.setId_plano(rset.getInt(2));
                     industria.setVende(rset.getString(3));
                     industria.setId_pagamento(rset.getInt(4));
-                    industrias.add(industria);
+                    industrias.put(industria.getId(), industria);
                     industria = new Industria();
                 }
             }
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;

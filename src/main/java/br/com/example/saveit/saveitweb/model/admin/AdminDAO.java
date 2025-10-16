@@ -4,7 +4,9 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdminDAO {
 
@@ -85,7 +87,7 @@ public class AdminDAO {
         }
     }
 
-    public List<Admin> listarAdmin() {
+    public Map<Integer, Admin> listarAdmin() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();
         List<Admin> listaAdmins = new ArrayList<>();
@@ -94,15 +96,17 @@ public class AdminDAO {
 
         String sql = "select * from Admin";
 
+        Map<Integer, Admin> admins = new HashMap<>();
+
         try {
             PreparedStatement pmst = conn.prepareStatement(sql);
             rset = pmst.executeQuery();
             while (rset.next()) {
                 Admin admin = new Admin(rset.getInt("id"), rset.getString("senha"), rset.getString("nome_cliente"), rset.getString("qual_empresa"));
-                listaAdmins.add(admin);
+                admins.put(admin.getId(), admin);
             }
 
-            return listaAdmins;
+            return admins;
 
         } catch (SQLException e){
             e.printStackTrace();
@@ -110,10 +114,11 @@ public class AdminDAO {
 
         } finally {
             conexao.desconectar(conn);
+            return admins;
         }
     }
 
-    public void listarAdminA() {
+    public Map<Integer, Admin> listarAdminA() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();
 
@@ -121,6 +126,7 @@ public class AdminDAO {
 
         String sql = "select * from Admin";
 
+        Map<Integer, Admin> admins = new HashMap<>();
         try {
             PreparedStatement pmst = conn.prepareStatement(sql);
             rset = pmst.executeQuery();
@@ -131,14 +137,15 @@ public class AdminDAO {
 
             while (rset.next()) {
 //                System.out.printf("%d | %-15s | %-15s | %-15s",cont  ,rset.getString("dname"), rset.getString("loc"), rset.getString("deptno"));
-                System.out.println((rset.getInt("id") + "\n" + rset.getString("senha") + "\n" +  rset.getString("nome_cliente") + "\n" +  rset.getString("qual_empresa")));
+                Admin admin = new Admin(rset.getInt("id"), rset.getString("senha"), rset.getString("nome_cliente"), rset.getString("qual_empresa"));
+                admins.put(admin.getId(), admin);
             }
         } catch (SQLException e){
             e.printStackTrace();
-
-
+            return null;
         } finally {
             conexao.desconectar(conn);
+            return admins;
         }
     }
 

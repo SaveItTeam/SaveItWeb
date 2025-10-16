@@ -5,7 +5,9 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EnderecoDAO {
 //    Insert
@@ -26,6 +28,7 @@ public class EnderecoDAO {
 //            Validação
             if (validar > 0) {
                 System.out.println("Inserido com sucesso!");
+                pstmt.close();
                 return true;
             }
         } catch (SQLException sqle) {
@@ -49,6 +52,7 @@ public class EnderecoDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -70,6 +74,7 @@ public class EnderecoDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -91,6 +96,7 @@ public class EnderecoDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -112,6 +118,7 @@ public class EnderecoDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -135,6 +142,7 @@ public class EnderecoDAO {
             boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -156,6 +164,7 @@ public class EnderecoDAO {
             boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException e) {
@@ -168,12 +177,12 @@ public class EnderecoDAO {
 
 
 //    Select
-    public List<Endereco> buscar() {
+    public Map<Integer, Endereco> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        List<Endereco> enderecos = new ArrayList<>();
+        Map<Integer, Endereco> enderecos = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -190,11 +199,11 @@ public class EnderecoDAO {
                     endereco.setEstado(rset.getString(6));
                     endereco.setPais(rset.getString(7));
                     endereco.setComplemento(rset.getString(8));
-                    enderecos.add(endereco);
+                    enderecos.put(endereco.getId(), endereco);
                     endereco = new Endereco();
                 }
             }
-
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
@@ -205,12 +214,12 @@ public class EnderecoDAO {
     }
 
 
-    public List<Endereco> buscar(String campoOrdenar) {
+    public Map<Integer, Endereco> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        List<Endereco> enderecos = new ArrayList<>();
+        Map<Integer, Endereco> enderecos = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -228,11 +237,11 @@ public class EnderecoDAO {
                     endereco.setEstado(rset.getString(6));
                     endereco.setPais(rset.getString(7));
                     endereco.setComplemento(rset.getString(8));
-                    enderecos.add(endereco);
+                    enderecos.put(endereco.getId(), endereco);
                     endereco = new Endereco();
                 }
             }
-
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
@@ -243,12 +252,12 @@ public class EnderecoDAO {
     }
 
 
-    public List<Endereco> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public Map<Integer, Endereco> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        List<Endereco> enderecos = new ArrayList<>();
+        Map<Integer, Endereco> enderecos = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -265,10 +274,11 @@ public class EnderecoDAO {
                     endereco.setEstado(rset.getString(6));
                     endereco.setPais(rset.getString(7));
                     endereco.setComplemento(rset.getString(8));
-                    enderecos.add(endereco);
+                    enderecos.put(endereco.getId(), endereco);
                     endereco = new Endereco();
                 }
             }
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
@@ -279,12 +289,12 @@ public class EnderecoDAO {
     }
 
 
-    public List<Endereco> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public Map<Integer, Endereco> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        List<Endereco> enderecos = new ArrayList<>();
+        Map<Integer, Endereco> enderecos = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -301,10 +311,11 @@ public class EnderecoDAO {
                     endereco.setEstado(rset.getString(6));
                     endereco.setPais(rset.getString(7));
                     endereco.setComplemento(rset.getString(8));
-                    enderecos.add(endereco);
+                    enderecos.put(endereco.getId(), endereco);
                     endereco = new Endereco();
                 }
             }
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;

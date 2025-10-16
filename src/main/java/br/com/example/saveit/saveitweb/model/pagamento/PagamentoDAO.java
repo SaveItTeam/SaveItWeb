@@ -4,7 +4,9 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PagamentoDAO {
 //    Insert
@@ -24,6 +26,7 @@ public class PagamentoDAO {
                 System.out.println("Inserido com sucesso!");
                 return true;
             }
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -45,6 +48,7 @@ public class PagamentoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -65,6 +69,7 @@ public class PagamentoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -85,6 +90,7 @@ public class PagamentoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -105,6 +111,7 @@ public class PagamentoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -128,6 +135,7 @@ public class PagamentoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -148,6 +156,7 @@ public class PagamentoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -159,12 +168,12 @@ public class PagamentoDAO {
 
 
     //    Select
-    public List<Pagamento> buscar() {
+    public Map<Integer, Pagamento> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Pagamento pagamento = new Pagamento();
-        List<Pagamento> listaPagamento = new ArrayList<>();
+        Map<Integer, Pagamento> pagamentos = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -177,27 +186,27 @@ public class PagamentoDAO {
                     pagamento.setStatus(rset.getString(2));
                     pagamento.setDt_criacao(rset.getString(3));
                     pagamento.setDt_validade(rset.getString(4));
-                    listaPagamento.add(pagamento);
+                    pagamentos.put(pagamento.getId(), pagamento);
                     pagamento = new Pagamento();
                 }
             }
-
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaPagamento;
+            return pagamentos;
         }
     }
 
 
-    public List<Pagamento> buscar(String campoOrdenar) {
+    public Map<Integer, Pagamento> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Pagamento pagamento = new Pagamento();
-        List<Pagamento> listaPagamento = new ArrayList<>();
+        Map<Integer, Pagamento> pagamentos = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -210,26 +219,26 @@ public class PagamentoDAO {
                     pagamento.setStatus(rset.getString(2));
                     pagamento.setDt_criacao(rset.getString(3));
                     pagamento.setDt_validade(rset.getString(4));
-                    listaPagamento.add(pagamento);
+                    pagamentos.put(pagamento.getId(), pagamento);
                     pagamento = new Pagamento();
                 }
             }
-
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaPagamento;
+            return pagamentos;
         }
     }
 
-    public List<Pagamento> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public Map<Integer, Pagamento> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Pagamento pagamento = new Pagamento();
-        List<Pagamento> listaPagamento = new ArrayList<>();
+        Map<Integer, Pagamento> pagamentos = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -242,27 +251,27 @@ public class PagamentoDAO {
                     pagamento.setStatus(rset.getString(2));
                     pagamento.setDt_criacao(rset.getString(3));
                     pagamento.setDt_validade(rset.getString(4));
-                    listaPagamento.add(pagamento);
+                    pagamentos.put(pagamento.getId(), pagamento);
                     pagamento = new Pagamento();
                 }
             }
-
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaPagamento;
+            return pagamentos;
         }
     }
 
 
-    public List<Pagamento> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public Map<Integer, Pagamento> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Pagamento pagamento = new Pagamento();
-        List<Pagamento> listaPagamento = new ArrayList<>();
+        Map<Integer, Pagamento> pagamentos = new HashMap<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -275,18 +284,17 @@ public class PagamentoDAO {
                     pagamento.setStatus(rset.getString(2));
                     pagamento.setDt_criacao(rset.getString(3));
                     pagamento.setDt_validade(rset.getString(4));
-                    listaPagamento.add(pagamento);
+                    pagamentos.put(pagamento.getId(), pagamento);
                     pagamento = new Pagamento();
                 }
             }
-
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaPagamento;
+            return pagamentos;
         }
     }
-
 }
