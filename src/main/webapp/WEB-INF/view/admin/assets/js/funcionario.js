@@ -1,16 +1,3 @@
-const nav = document.querySelector("nav");
-
-nav.addEventListener("mouseover", () => {
-  nav.classList.add("open");
-  setTimeout(() => {
-    paragrafo.style.display = "inline-block";
-  }, 3000);
-});
-
-nav.addEventListener("mouseleave", () => {
-  nav.classList.remove("open");
-});
-
 const documentStyle = document.documentElement.style;
 
 const statusFuncionarios = document.querySelectorAll(".funcionario-status");
@@ -21,22 +8,6 @@ statusFuncionarios.forEach((status) => {
   } else {
     status.style.color = "red";
   }
-});
-
-const darkMode = document.querySelector(".dark-mode");
-const lightMode = document.querySelector(".light-mode");
-darkMode.addEventListener("click", () => {
-  document.documentElement.classList.add("dark-mode");
-  darkMode.style.background = "rgba(176, 186, 195, 0.25)";
-  lightMode.style.background = "none";
-  document.querySelector(".topo").classList.add("dark");
-});
-
-lightMode.addEventListener("click", () => {
-  document.documentElement.classList.remove("dark-mode");
-  lightMode.style.background = "rgba(176, 186, 195, 0.25)";
-  darkMode.style.background = "none";
-  document.querySelector(".topo").classList.remove("dark");
 });
 
 let funcionariosAtivos = 0;
