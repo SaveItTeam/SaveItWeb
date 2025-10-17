@@ -2,27 +2,29 @@ package br.com.example.saveit.saveitweb.model.admin;
 
 public class Admin {
     public int id;
-    public String senha;
     public String nome_cliente;
     public String qual_empresa;
+    public String senha_entrada;
+    public String cargo;
 
-    public Admin(int id, String senha, String nome_cliente, String qual_empresa) {
+    public Admin(int id,String nome_cliente, String qual_empresa, String  senha_entrada, String cargo) {
         this.id = id;
-        this.senha = senha;
         this.nome_cliente = nome_cliente;
         this.qual_empresa = qual_empresa;
+        this.senha_entrada = senha_entrada;
+        this.cargo = cargo;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getSenha_entrada() {
+        return senha_entrada;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSenha_entrada(String senha) {
+        this.senha_entrada = senha;
     }
 
     public String getNome_cliente() {
@@ -41,15 +43,24 @@ public class Admin {
         this.qual_empresa = qual_empresa;
     }
 
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
     @Override
     public String toString() {
         return String.format("""
                 \n
                 id: %d
-                senha: %s
                 nome cliente: %s
                 qual empresa: %s
+                senha entrada: %s
+                cargo: %s
                 \n"""
-                , id, senha, nome_cliente, qual_empresa);
+                , id, nome_cliente, qual_empresa, senha_entrada, cargo);
     }
 }

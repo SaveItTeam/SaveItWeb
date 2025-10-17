@@ -3,21 +3,22 @@ package br.com.example.saveit.saveitweb.model.funcionario;
 import java.sql.Date;
 
 public class Funcionario {
-    public int id;
-    public String nome;
-    public String cpf;
-    public String rg;
-    public char sexo;
-    public Date dt_nascimento;
-    public String email;
-    public String senha;
-    public String cargo;
-    public Date dt_contratacao;
-    public String telefone;
-    public String experiencia;
-    public int id_empresa;
-    public int id_industria;
-    public int id_admin;
+    private int id;
+    private String nome;
+    private String cpf;
+    private String rg;
+    private char sexo;
+    private Date dt_nascimento;
+    private String email;
+    private String senha;
+    private String cargo;
+    private Date dt_contratacao;
+    private String telefone_pessoal;
+    private String telefone_trabalho;
+    private String experiencia;
+    private int id_empresa;
+    private int id_industria;
+    private int id_admin;
 
     public Funcionario(int id, String nome, String cpf, String rg, char sexo, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone_pessoal, String telefone_trabalho, String experiencia, int id_empresa, int id_industria, int id_admin) {
         this.id = id;
@@ -30,7 +31,8 @@ public class Funcionario {
         this.senha = senha;
         this.cargo = cargo;
         this.dt_contratacao = dt_contratacao;
-        this.telefone = telefone;
+        this.telefone_pessoal = telefone_pessoal;
+        this.telefone_trabalho = telefone_trabalho;
         this.experiencia = experiencia;
         this.id_empresa = id_empresa;
         this.id_industria = id_industria;
@@ -119,12 +121,20 @@ public class Funcionario {
         this.dt_contratacao = dt_contratacao;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelefone_pessoal() {
+        return telefone_pessoal;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelefone_pessoal(String telefone_pessoal) {
+        this.telefone_pessoal = telefone_pessoal;
+    }
+
+    public String getTelefone_trabalho() {
+        return telefone_trabalho;
+    }
+
+    public void setTelefone_trabalho(String telefone_trabalho) {
+        this.telefone_trabalho = telefone_trabalho;
     }
 
     public String getExperiencia() {
@@ -173,7 +183,7 @@ public class Funcionario {
                 ", senha='" + senha + '\'' +
                 ", cargo='" + cargo + '\'' +
                 ", dt_contratacao=" + dt_contratacao +
-                ", telefone='" + telefone + '\'' +
+                ", telefone_pessoal='" + telefone_pessoal + '\'' +
                 ", experiencia='" + experiencia + '\'' +
                 ", id_empresa=" + id_empresa +
                 ", id_industria=" + id_industria +

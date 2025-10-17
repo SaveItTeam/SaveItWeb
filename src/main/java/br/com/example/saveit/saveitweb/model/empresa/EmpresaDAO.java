@@ -14,13 +14,11 @@ public class EmpresaDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = "Insert into Empresa (id_funcionario, id_cliente, procura, id_plano) Values(?,?,?,?)";//Comando SQL
+            String query = "Insert into Empresa (id_cliente, procura) Values(?,?)";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);
 //          Setando o valor dos parâmetros
-            pstmt.setInt(1, empresa.getId_funcionario());
-            pstmt.setInt(2, empresa.getId_cliente());
-            pstmt.setString(3, empresa.getProcura());
-            pstmt.setInt(4, empresa.getId_plano());
+            pstmt.setInt(1, empresa.getId_cliente());
+            pstmt.setString(2, empresa.getProcura());
             int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
 //              Validação
             if (validar > 0) {
@@ -183,9 +181,9 @@ public class EmpresaDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt(1));
-                    empresa.setId_funcionario(rset.getInt(2));
-                    empresa.setProcura(rset.getString(3));
+                    empresa.setId(rset.getInt("id"));
+                    empresa.setId_cliente(rset.getInt("id_cliente"));
+                    empresa.setProcura(rset.getString("procura"));
                     empresas.add(empresa);
                     empresa = new Empresa();
                 }
@@ -215,12 +213,10 @@ public class EmpresaDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt(1));
-                    empresa.setId_funcionario(rset.getInt(2));
-                    empresa.setId_cliente(rset.getInt(3));
-                    empresa.setProcura(rset.getString(4));
-                    empresa.setId_plano(rset.getInt(5));
-                    empresas.add( empresa);
+                    empresa.setId(rset.getInt("id"));
+                    empresa.setId_cliente(rset.getInt("id_cliente"));
+                    empresa.setProcura(rset.getString("procura"));
+                    empresas.add(empresa);
                     empresa = new Empresa();
                 }
             }
@@ -248,11 +244,9 @@ public class EmpresaDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt(1));
-                    empresa.setId_funcionario(rset.getInt(2));
-                    empresa.setId_cliente(rset.getInt(3));
-                    empresa.setProcura(rset.getString(4));
-                    empresa.setId_plano(rset.getInt(5));
+                    empresa.setId(rset.getInt("id"));
+                    empresa.setId_cliente(rset.getInt("id_cliente"));
+                    empresa.setProcura(rset.getString("procura"));
                     empresas.add(empresa);
                     empresa = new Empresa();
                 }
@@ -282,11 +276,9 @@ public class EmpresaDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt(1));
-                    empresa.setId_funcionario(rset.getInt(2));
-                    empresa.setId_cliente(rset.getInt(3));
-                    empresa.setProcura(rset.getString(4));
-                    empresa.setId_plano(rset.getInt(5));
+                    empresa.setId(rset.getInt("id"));
+                    empresa.setId_cliente(rset.getInt("id_cliente"));
+                    empresa.setProcura(rset.getString("procura"));
                     empresas.add(empresa);
                     empresa = new Empresa();
                 }
