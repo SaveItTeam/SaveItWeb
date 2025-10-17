@@ -5,9 +5,7 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class EnderecoDAO {
 //    Insert
@@ -18,12 +16,12 @@ public class EnderecoDAO {
             PreparedStatement pstmt = conn.prepareStatement("Insert into Endereco (cep, rua, bairro, cidade, estado, pais, complemento) Values(?,?,?,?,?,?,?)");
 //        Setando o valor dos parâmetros
             pstmt.setString(1, endereco.getCep());
-            pstmt.setString(2, endereco.getRua());
-            pstmt.setString(3, endereco.getBairro());
-            pstmt.setString(4, endereco.getCidade());
-            pstmt.setString(5, endereco.getEstado());
-            pstmt.setString(6, endereco.getPais());
-            pstmt.setString(7, endereco.getComplemento());
+            pstmt.setString(2, endereco.getCep_rua());
+            pstmt.setString(3, endereco.getCep_bairro());
+            pstmt.setString(4, endereco.getCep_cidade());
+            pstmt.setString(5, endereco.getCep_estado());
+            pstmt.setString(6, endereco.getCep_pais());
+            pstmt.setString(7, endereco.getCep_complemento());
             int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
 //            Validação
             if (validar > 0) {
@@ -177,12 +175,12 @@ public class EnderecoDAO {
 
 
 //    Select
-    public Map<Integer, Endereco> buscar() {
+    public List<Endereco> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        Map<Integer, Endereco> enderecos = new HashMap<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -193,13 +191,13 @@ public class EnderecoDAO {
                 while (rset.next()) {
                     endereco.setId(rset.getInt(1));
                     endereco.setCep(rset.getString(2));
-                    endereco.setRua(rset.getString(3));
-                    endereco.setBairro(rset.getString(4));
-                    endereco.setCidade(rset.getString(5));
-                    endereco.setEstado(rset.getString(6));
-                    endereco.setPais(rset.getString(7));
-                    endereco.setComplemento(rset.getString(8));
-                    enderecos.put(endereco.getId(), endereco);
+                    endereco.setCep_rua(rset.getString(3));
+                    endereco.setCep_bairro(rset.getString(4));
+                    endereco.setCep_cidade(rset.getString(5));
+                    endereco.setCep_estado(rset.getString(6));
+                    endereco.setCep_pais(rset.getString(7));
+                    endereco.setCep_complemento(rset.getString(8));
+                    enderecos.add(endereco);
                     endereco = new Endereco();
                 }
             }
@@ -214,12 +212,12 @@ public class EnderecoDAO {
     }
 
 
-    public Map<Integer, Endereco> buscar(String campoOrdenar) {
+    public List<Endereco> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        Map<Integer, Endereco> enderecos = new HashMap<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -231,13 +229,13 @@ public class EnderecoDAO {
 //                    Inserssão de dados
                     endereco.setId(rset.getInt(1));
                     endereco.setCep(rset.getString(2));
-                    endereco.setRua(rset.getString(3));
-                    endereco.setBairro(rset.getString(4));
-                    endereco.setCidade(rset.getString(5));
-                    endereco.setEstado(rset.getString(6));
-                    endereco.setPais(rset.getString(7));
-                    endereco.setComplemento(rset.getString(8));
-                    enderecos.put(endereco.getId(), endereco);
+                    endereco.setCep_rua(rset.getString(3));
+                    endereco.setCep_bairro(rset.getString(4));
+                    endereco.setCep_cidade(rset.getString(5));
+                    endereco.setCep_estado(rset.getString(6));
+                    endereco.setCep_pais(rset.getString(7));
+                    endereco.setCep_complemento(rset.getString(8));
+                    enderecos.add(endereco);
                     endereco = new Endereco();
                 }
             }
@@ -252,29 +250,29 @@ public class EnderecoDAO {
     }
 
 
-    public Map<Integer, Endereco> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Endereco> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        Map<Integer, Endereco> enderecos = new HashMap<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM Endereco WHERE %s = %d", campoOndePesquisar, valorPesquisar);
+            String query = String.format("SELECT * FROM Endereco WHERE %s = '%s'", campoOndePesquisar, valorPesquisar);
             ResultSet rset = stmt.executeQuery(query);
             if (rset != null) {
                 while (rset.next()) {
 //                    Inserssão de dados
                     endereco.setId(rset.getInt(1));
                     endereco.setCep(rset.getString(2));
-                    endereco.setRua(rset.getString(3));
-                    endereco.setBairro(rset.getString(4));
-                    endereco.setCidade(rset.getString(5));
-                    endereco.setEstado(rset.getString(6));
-                    endereco.setPais(rset.getString(7));
-                    endereco.setComplemento(rset.getString(8));
-                    enderecos.put(endereco.getId(), endereco);
+                    endereco.setCep_rua(rset.getString(3));
+                    endereco.setCep_bairro(rset.getString(4));
+                    endereco.setCep_cidade(rset.getString(5));
+                    endereco.setCep_estado(rset.getString(6));
+                    endereco.setCep_pais(rset.getString(7));
+                    endereco.setCep_complemento(rset.getString(8));
+                    enderecos.add(endereco);
                     endereco = new Endereco();
                 }
             }
@@ -289,12 +287,12 @@ public class EnderecoDAO {
     }
 
 
-    public Map<Integer, Endereco> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public List<Endereco> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         Endereco endereco = new Endereco();
-        Map<Integer, Endereco> enderecos = new HashMap<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -305,13 +303,13 @@ public class EnderecoDAO {
 //                    Inserssão de dados
                     endereco.setId(rset.getInt(1));
                     endereco.setCep(rset.getString(2));
-                    endereco.setRua(rset.getString(3));
-                    endereco.setBairro(rset.getString(4));
-                    endereco.setCidade(rset.getString(5));
-                    endereco.setEstado(rset.getString(6));
-                    endereco.setPais(rset.getString(7));
-                    endereco.setComplemento(rset.getString(8));
-                    enderecos.put(endereco.getId(), endereco);
+                    endereco.setCep_rua(rset.getString(3));
+                    endereco.setCep_bairro(rset.getString(4));
+                    endereco.setCep_cidade(rset.getString(5));
+                    endereco.setCep_estado(rset.getString(6));
+                    endereco.setCep_pais(rset.getString(7));
+                    endereco.setCep_complemento(rset.getString(8));
+                    enderecos.add(endereco.getId(), endereco);
                     endereco = new Endereco();
                 }
             }

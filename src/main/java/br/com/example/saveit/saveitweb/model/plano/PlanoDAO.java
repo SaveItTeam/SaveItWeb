@@ -168,12 +168,12 @@ public class PlanoDAO {
 
 
     //    Select
-    public Map<Integer, Plano> buscar() {
+    public List<Plano> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Plano plano = new Plano();
-        Map<Integer, Plano> planos = new HashMap<>();
+        List<Plano> planos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -186,7 +186,7 @@ public class PlanoDAO {
                     plano.setPreco(rset.getDouble(2));
                     plano.setDescricao(rset.getString(3));
                     plano.setId_pagamento(rset.getInt(4));
-                    planos.put(plano.getId(), plano);
+                    planos.add(plano);
                     plano = new Plano();
                 }
             }
@@ -201,12 +201,12 @@ public class PlanoDAO {
     }
 
 
-    public Map<Integer, Plano> buscar(String campoOrdenar) {
+    public List<Plano> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Plano plano = new Plano();
-        Map<Integer, Plano> planos = new HashMap<>();
+        List<Plano> planos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -219,7 +219,7 @@ public class PlanoDAO {
                     plano.setPreco(rset.getDouble(2));
                     plano.setDescricao(rset.getString(3));
                     plano.setId_pagamento(rset.getInt(4));
-                    planos.put(plano.getId(), plano);
+                    planos.add(plano);
                     plano = new Plano();
                 }
             }
@@ -233,12 +233,12 @@ public class PlanoDAO {
         }
     }
 
-    public Map<Integer, Plano> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public List<Plano> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Plano plano = new Plano();
-        Map<Integer, Plano> planos = new HashMap<>();
+        List<Plano> planos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -251,7 +251,7 @@ public class PlanoDAO {
                     plano.setPreco(rset.getDouble(2));
                     plano.setDescricao(rset.getString(3));
                     plano.setId_pagamento(rset.getInt(4));
-                    planos.put(plano.getId(), plano);
+                    planos.add(plano);
                     plano = new Plano();
                 }
             }
@@ -266,12 +266,12 @@ public class PlanoDAO {
     }
 
 
-    public Map<Integer, Plano> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Plano> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Plano plano = new Plano();
-        Map<Integer, Plano> planos = new HashMap<>();
+        List<Plano> planos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -284,7 +284,7 @@ public class PlanoDAO {
                     plano.setPreco(rset.getDouble(2));
                     plano.setDescricao(rset.getString(3));
                     plano.setId_pagamento(rset.getInt(4));
-                    planos.put(plano.getId(), plano);
+                    planos.add(plano);
                     plano = new Plano();
                 }
             }

@@ -168,12 +168,12 @@ public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
 
 
 //    Select
-public Map<Integer, Industria> buscar() {
+public List<Industria> buscar() {
     Conexao conexao = new Conexao();
     Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
     Industria industria = new Industria();
-    Map<Integer, Industria> industrias = new HashMap<>();
+    List<Industria> industrias = new ArrayList<>();
     try {
 //            Iniciando objeto Statment
         Statement stmt = conn.createStatement();
@@ -186,7 +186,7 @@ public Map<Integer, Industria> buscar() {
                 industria.setId_plano(rset.getInt(2));
                 industria.setVende(rset.getString(3));
                 industria.setId_pagamento(rset.getInt(4));
-                industrias.put(industria.getId(), industria);
+                industrias.add(industria);
                 industria = new Industria();
             }
         }
@@ -201,12 +201,12 @@ public Map<Integer, Industria> buscar() {
 }
 
 
-    public Map<Integer, Industria> buscar(String campoOrdenar) {
+    public List<Industria> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Industria e lista de objetos Industrias
         Industria industria = new Industria();
-        Map<Integer, Industria> industrias = new HashMap<>();
+        List<Industria> industrias = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -220,7 +220,7 @@ public Map<Integer, Industria> buscar() {
                     industria.setId_plano(rset.getInt(2));
                     industria.setVende(rset.getString(3));
                     industria.setId_pagamento(rset.getInt(4));
-                    industrias.put(industria.getId(), industria);
+                    industrias.add(industria);
                     industria = new Industria();
                 }
             }
@@ -235,13 +235,13 @@ public Map<Integer, Industria> buscar() {
     }
 
 
-    public Map<Integer, Industria> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Industria> buscar(String campoOndePesquisar, String valorPesquisar) {
         ResultSet rset;
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Industria e lista de objetos Industrias
         Industria industria = new Industria();
-        Map<Integer, Industria> industrias = new HashMap<>();
+        List<Industria> industrias = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -254,7 +254,7 @@ public Map<Integer, Industria> buscar() {
                     industria.setId_plano(rset.getInt(2));
                     industria.setVende(rset.getString(3));
                     industria.setId_pagamento(rset.getInt(4));
-                    industrias.put(industria.getId(), industria);
+                    industrias.add(industria);
                     industria = new Industria();
                 }
             }
@@ -269,12 +269,12 @@ public Map<Integer, Industria> buscar() {
     }
 
 
-    public Map<Integer, Industria> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public List<Industria> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Industria e lista de objetos Industrias
         Industria industria = new Industria();
-        Map<Integer, Industria> industrias = new HashMap<>();
+        List<Industria> industrias = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -287,7 +287,7 @@ public Map<Integer, Industria> buscar() {
                     industria.setId_plano(rset.getInt(2));
                     industria.setVende(rset.getString(3));
                     industria.setId_pagamento(rset.getInt(4));
-                    industrias.put(industria.getId(), industria);
+                    industrias.add(industria);
                     industria = new Industria();
                 }
             }

@@ -5,21 +5,21 @@ public class Endereco {
 //    Atributos
     private int id;
     private String cep;
-    private String rua;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private String pais;
-    private String complemento;
+    private String cep_rua;
+    private String cep_bairro;
+    private String cep_cidade;
+    private String cep_estado;
+    private String cep_pais;
+    private String cep_complemento;
 
     public Endereco(String cep, String rua, String bairro, String cidade, String estado, String pais, String complemento) {
         this.cep = cep;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.pais = pais;
-        this.complemento = complemento;
+        this.cep_rua = rua;
+        this.cep_bairro = bairro;
+        this.cep_cidade = cidade;
+        this.cep_estado = estado;
+        this.cep_pais = pais;
+        this.cep_complemento = complemento;
     }
 
     public Endereco() {
@@ -36,28 +36,28 @@ public class Endereco {
         return cep;
     }
 
-    public String getRua() {
-        return rua;
+    public String getCep_rua() {
+        return cep_rua;
     }
 
-    public String getBairro() {
-        return bairro;
+    public String getCep_bairro() {
+        return cep_bairro;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCep_cidade() {
+        return cep_cidade;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getCep_estado() {
+        return cep_estado;
     }
 
-    public String getPais() {
-        return pais;
+    public String getCep_pais() {
+        return cep_pais;
     }
 
-    public String getComplemento() {
-        return complemento;
+    public String getCep_complemento() {
+        return cep_complemento;
     }
 
 
@@ -70,32 +70,32 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    public void setCep_rua(String cep_rua) {
+        this.cep_rua = cep_rua;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setCep_bairro(String cep_bairro) {
+        this.cep_bairro = cep_bairro;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCep_cidade(String cep_cidade) {
+        this.cep_cidade = cep_cidade;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setCep_estado(String estado) {
+        this.cep_estado = estado;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setCep_pais(String cep_pais) {
+        this.cep_pais = cep_pais;
     }
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    public void setCep_complemento(String cep_complemento) {
+        this.cep_complemento = cep_complemento;
     }
 
     public String toString(){
-        String retorno = String.format("|ID: %-5s  |CEP: %-8s  |Rua: %-30s  |Bairro: %-30s  |Cidade: %-30s  |Estado: %-3s  |País: %-15s  |Complemento: %-30s", this.id, this.cep, this.rua, this.bairro, this.cidade, this.estado, this.pais, this.complemento);
+        String retorno = String.format("|ID: %-5s  |CEP: %-8s  |Rua: %-30s  |Bairro: %-30s  |Cidade: %-30s  |Estado: %-3s  |País: %-15s  |Complemento: %-30s", this.id, this.cep, this.cep_rua, this.cep_bairro, this.cep_cidade, this.cep_estado, this.cep_pais, this.cep_complemento);
         return retorno;
     }
 }
