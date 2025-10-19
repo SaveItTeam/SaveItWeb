@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Essentia</title>
     <link rel="stylesheet" href="landingPage/assets/css/login.css" />
+      <link
+              rel="shortcut icon"
+              href="landingPage/assets/images/logos/favicon_essentia.png"
+              type="image/x-icon"
+      />
   </head>
   <body>
     
