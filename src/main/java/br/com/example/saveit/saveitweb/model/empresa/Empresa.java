@@ -44,6 +44,6 @@ public class Empresa {
 
 //    toString
     public String toString(){
-        return String.format("|ID: %-5s  |ID_Funcionário: %-5s  |ID_Cliente: %-5s  |Procura: %-15s  |ID_Plano: %-5s", this.id, this.id_funcionario, this.id_cliente, this.procura, this.id_plano);
+        return String.format("|ID: %-5s  |ID_Cliente: %-5s  |Procura: %-15s  ", this.id, this.id_cliente, this.procura);
     }
 }
