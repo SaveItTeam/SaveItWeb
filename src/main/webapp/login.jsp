@@ -4,11 +4,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Essentia</title>
-    <link rel="stylesheet" href="landingPage/assets/css/login.css" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
   </head>
   <body>
-    
+
 
     <div>
       <img src="essentia_logo_verde.svg" alt="">
@@ -20,6 +20,9 @@
 
         <label for="senha">Senha</label>
         <input type="password" placeholder="Digite sua senha" id="inputSenha"/>
+
+        <label for="senha">Código</label>
+        <input type="text" placeholder="Digite o código" id="inputCodigo" minlength="9" maxlength="9"/>
 
         <input type="submit" value="Entrar" id="botaoEntrar"/>
       </form>
