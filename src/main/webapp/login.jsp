@@ -19,7 +19,8 @@
       <img src="landingPage/assets/images/logos/essentia_logo_verde.svg" alt="">
       <h1>Entre como administrador</h1>
       <p>Acesse o painel para controlar informações da sua indústria.</p>
-      <form action="LogarFuncionario" method="post">
+
+      <form action="logarAdmin" method="post">
         <label for="email">Email ou CPF</label>
         <input type="text" placeholder="Digite seu Email ou CPF" id="inputEmail" name="email" />
 
