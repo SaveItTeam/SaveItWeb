@@ -17,6 +17,7 @@ public class Conexao {
         Connection conn = null;
         try {
             Class.forName("org.postgresql.Driver");
+            assert URL != null;
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
             return conn;
 

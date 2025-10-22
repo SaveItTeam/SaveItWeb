@@ -299,13 +299,14 @@ public class FuncionarioDAO {
 
 
 //    Logar Funcionário
-    public ResultSet logarFuncionario(String email, String senha) {
+    public ResultSet logarAdmin(String email, String senha) {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();
         ResultSet rs = null;
 
-        String sql = "SELECT email, senha FROM funcionario WHERE email = ? AND senha = ?";
-        String sql2 = "SELECT cpf, senha FROM funcionario WHERE cpf = ? AND senha = ?";
+        String sql = "SELECT email, senha FROM funcionario WHERE email = ? AND senha = ? --AND isAdmin = true";
+        String sql2 = "SELECT cpf, senha FROM funcionario WHERE cpf = ? AND senha = ? --AND isAdmin = true";
+        String sql3 = "SELECT email, senha FROM admin WHERE email = ? AND senha = ?";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -326,7 +327,17 @@ public class FuncionarioDAO {
                 if (rs.next()) {
                     return rs;
                 } else {
-                    return null;
+                    PreparedStatement stmt3 = conn.prepareStatement(sql3);
+                    stmt3.setString(1, email);
+                    stmt3.setString(2, senha);
+
+                    rs = stmt3.executeQuery();
+
+                    if (rs.next()) {
+                        return rs;
+                    } else {
+                        return null;
+                    }
                 }
             }
 

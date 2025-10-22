@@ -1,8 +1,8 @@
 // funcoes para mudar o SVG do header
 // ao passar o mouse por cima e voltar ao normal ao tirar o mouse
 
-let html = window.location.pathname; // pegar o caminho do arquivo para verificacao
-html = html.substring(html.lastIndexOf("/") + 1); // selecionar com substring para apenas pegar o nome
+    let html = window.location.pathname; // pegar o caminho do arquivo para verificacao
+    html = html.substring(html.lastIndexOf("/") + 1); // selecionar com substring para apenas pegar o nome
 
 const svg = document.querySelector("#svg");
 svg.addEventListener("mouseover", () => {
@@ -47,10 +47,25 @@ svg.addEventListener("mouseout", () => {
 
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
+  const inicio = document.getElementById("inicio");
+  const essentia = document.getElementById("Essentia");
+  const saveit = document.getElementById("SaveIt");
+  const contato = document.getElementById("Contato");
 
   if (window.scrollY > 190) {
     header.classList.add("scrolled");
+    inicio.classList.add("mudarCor");
+    essentia.classList.add("mudarCor");
+    saveit.classList.add("mudarCor");
+    contato.classList.add("mudarCor");
+
+
+
   } else {
     header.classList.remove("scrolled");
+    inicio.classList.remove("mudarCor");
+    essentia.classList.remove("mudarCor");
+    saveit.classList.remove("mudarCor");
+    contato.classList.remove("mudarCor");
   }
 })

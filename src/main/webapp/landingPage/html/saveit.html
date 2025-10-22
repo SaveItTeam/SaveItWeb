@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
     <link rel="stylesheet" href="../assets/css/saveit.css" />
+    <link rel="stylesheet" href="../assets/css/index.css">
     <link
       rel="shortcut icon"
       href="../assets/images/logos/favicon_essentia.png"
@@ -31,10 +32,10 @@
             width="50px"
             height="50px"
         /></a>
-        <a href="../../index.html">Início</a>
-        <a href="essentia.html">Essentia</a>
-        <a href="saveit.html">SaveIt</a>
-        <a href="contato.html">Contato</a>
+        <a id="inicio" href="../../index.html">Início</a>
+        <a id="Essentia" href="essentia.html">Essentia</a>
+        <a id="SaveIt" href="saveit.html">SaveIt</a>
+        <a id="Contato" href="#footer">Contato</a>
       </nav>
     </header>
     <!-- * BOTÃO ENTRAR COMO ADMIN -->
@@ -120,32 +121,33 @@
           </div>
         </div>
       </section>
-      <!-- * --------------- SECTION 2 ---------------------------->
+      <!-- * --------------- SECTION 4 ---------------------------->
       <section id="Saveit-4">
         <h2>Funcionalidades</h2>
         <span id="span1">
-        <div class="antes">
-            <h3>Estoque</h3>
-        </div>
-        <div class="antes">
-            <h3>Vitrine Virtual</h3>
-        </div>
-        <div class="antes">
-            <h3>Relatórios</h3>
-        </div>
+        <button class="antes" id="estoAntes" style="cursor: pointer;">
+            Estoque
+        </button>
+        
+        <button class="antes " id="viAntes" style="cursor: pointer;">
+            Vitrine Virtual
+        </button>
+        <button class="antes " id="relAntes" style="cursor: pointer;">
+            Relatórios
+        </button>
         </span>
         <span id="span2">
-            <div class="depois clicado" id="esto" >
+            <div class="depois clicado invisivel" id="estoDepois" style="cursor: pointer;">
             <h3>Estoque</h3>
             <p>Lorem ipsum dolor sit amet consectetur. Convallis amet id sit felis volutpat ac tellus cras enim. Sed feugiat volutpat tempus ultrices diam. Pretium id elit netus orci ultricies in rutrum. <br><br>Lorem ipsum dolor sit amet consectetur. Convallis amet id sit felis volutpat ac tellus cras enim. Sed feugiat volutpat tempus ultrices diam. Pretium id elit netus orci ultricies in rutrum. </p>
             <img src="/src/main/webapp/landingPage/assets/images/Mockup4 1.png" alt="">
         </div>
-        <div class="depois clicado" id="vi">
+        <div class="depois clicado invisivel" id="viDepois">
             <h3>Vitrine Virtual</h3>
             <p>Lorem ipsum dolor sit amet consectetur. Convallis amet id sit felis volutpat ac tellus cras enim. Sed feugiat volutpat tempus ultrices diam. Pretium id elit netus orci ultricies in rutrum. <br>Lorem ipsum dolor sit amet consectetur. Convallis amet id sit felis volutpat ac tellus cras enim. Sed feugiat volutpat tempus ultrices diam. Pretium id elit netus orci ultricies in rutrum. </p>
             <img src="/src/main/webapp/landingPage/assets/images/Mockup4 1.png" alt="">        
         </div>
-        <div class="depois clicado" id="rel">
+        <div class="depois clicado invisivel" id="relDepois">
             <h3>Relatórios</h3>
             <p>Lorem ipsum dolor sit amet consectetur. Convallis amet id sit felis volutpat ac tellus cras enim. Sed feugiat volutpat tempus ultrices diam. Pretium id elit netus orci ultricies in rutrum. <br>Lorem ipsum dolor sit amet consectetur. Convallis amet id sit felis volutpat ac tellus cras enim. Sed feugiat volutpat tempus ultrices diam. Pretium id elit netus orci ultricies in rutrum. </p>       
             <img src="/src/main/webapp/landingPage/assets/images/Mockup4 1.png" alt="">
@@ -155,8 +157,71 @@
         
       </section>
 
+      <!-- * --------------- SECTION 5 ---------------------------->
+
+            <section id="inicio-planos" data-aos="fade-right">
+        <h2 class="titulo-geist">Planos do SaveIt</h2>
+        <hr />
+        <p>Lorem ipsum dolor siamet.</p>
+
+        <div>
+          <div>
+            <h3>SaveIt Básico</h3>
+            <hr />
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+
+            <ul>
+              <li>
+                <p><i class="ri-check-fill"></i>Funcionalidade 1</p>
+              </li>
+              <li>
+                <p><i class="ri-close-fill"></i>Funcionalidade 2</p>
+              </li>
+              <li>
+                <p><i class="ri-close-fill"></i>Funcionalidade 3</p>
+              </li>
+              <li>
+                <p><i class="ri-close-fill"></i>Funcionalidade 4</p>
+              </li>
+              <li>
+                <p><i class="ri-close-fill"></i>Funcionalidade 5</p>
+              </li>
+            </ul>
+            <h4>Gratuito</h4>
+            <a href="#">Acessar agora</a>
+          </div>
+
+          <div>
+            <h3>SaveIt Pro</h3>
+            <hr />
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+
+            <ul>
+              <li>
+                <p><i class="ri-check-fill"></i>Funcionalidade 1</p>
+              </li>
+              <li>
+                <p><i class="ri-check-fill"></i>Funcionalidade 2</p>
+              </li>
+              <li>
+                <p><i class="ri-check-fill"></i>Funcionalidade 3</p>
+              </li>
+              <li>
+                <p><i class="ri-check-fill"></i>Funcionalidade 4</p>
+              </li>
+              <li>
+                <p><i class="ri-check-fill"></i>Funcionalidade 5</p>
+              </li>
+            </ul>
+
+            <h4>R$ 949,99 <span>/mês</span></h4>
+            <a href="#">Assinar agora</a>
+          </div>
+        </div>
+      </section>
+
       <!-- * --------------- FOOTER ---------------------------->
-      <footer>
+      <footer id="footer">
         <div>
           <img src="../assets/images/logos/essentia_logo_verde.svg" alt="" />
           <p>Pela essência de um mundo melhor.</p>
@@ -193,5 +258,7 @@
     </main>
 
     <script src="../assets/js/global.js"></script>
+    <script src="../assets/js/saveit.js"></script>
+
   </body>
 </html>

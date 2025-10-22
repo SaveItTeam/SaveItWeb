@@ -7,9 +7,9 @@ html {
 
 #Saveit-1 {
   width: 100%;
-  height: 100vh;
+  height: 101vh;
   background: linear-gradient(155deg, #f0ece1 63%, #504f4f 100%);
-  margin-top: -7rem;
+  margin-top: -8rem;
 
   h1 {
     margin: 0;
@@ -70,10 +70,11 @@ html {
   gap: 10rem;
   justify-content: center;
   width: 100%;
-  height: 30vh;
+  height: 40vh;
   background-color: #f0ece1;
 
   div {
+    margin-top: 5rem;
     justify-content: center;
     width: 39.5rem;
     h2 {
@@ -154,15 +155,17 @@ html {
     font-size: 2rem;
   }
 }
+
 #Saveit-4 {
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   background-color: #f0ece1;
+  position: relative;
 
   h2{
     margin: 0;
-    padding-top: 100px;
-    padding-left: 65px;
+    padding-top: 10rem;
+    padding-left: 6.5rem;
     font-size: 6.5rem;
     width: 60rem;
     text-align: center;
@@ -175,69 +178,103 @@ html {
   }
   #span1{
       display: flex;
-      gap: 100px;
-      margin-left: 100px;
+      gap: 10rem;
+      margin-left: 10rem;
     }
     
   .antes{
-    margin-top: 100px;
-    width: 420px;
-    background-color: #f0ece1;
+    margin-top: 10rem;
+    width: 42rem;
+    height: 6.2rem;
+    background: linear-gradient(135deg, #405d49 0%, #6b8e4e 60%);
     justify-items: center;
-    border-radius: 50px;
-
-    h3{
-        color: #f0ece1;
-        margin: 10px;
-        font-size: 3rem;
-    }
+    border-radius: 5rem;
+    color: #f0ece1;
+    font-size: 2.3rem;
+    border: none;
+    transition: 0.3s ease;
     
   }
-  .antes{
-    display: none;
-  }
+
+
   .depois{
-    width: 700px;
-    height: 500px;
-    border-radius: 35px;
+    width: 70rem;
+    height: 50rem;
+    border-radius: 3.5rem;
     background-color: #f0ece1;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
 
 
     &::not(h3){
         display: flex;
     }
   }
+
   #span2{
     display: flex;
   }
 
   .clicado {
-    margin-left: 100px;
-    margin-top: 100px;
+    margin-left: 10rem;
     position: relative;
-    
     h3{
-        padding-top: 10px;
-        padding-left: 10px;
+        padding-top: 1rem;
+        padding-left: 1rem;
         color: #405d49;
-        margin: 10px;
+        margin: 1rem;
         font-size: 4rem;
     }
     p{
-        width: 400px;
-        font-size: 20px;
-        padding-left: 20px;
+        width: 40rem;
+        font-size: 2.2rem;
+        padding-left: 2rem;
     }
     img{
-        width: 200px;
+        width: 22.5rem;
         position: absolute;
-        right: 60px;
-        top: 50px;
+        right: 6rem;
+        top: 5rem;
     }
+  }  
+  #estoDepois, #viDepois, #relDepois{
+    top: 28rem;
+    position: absolute;
+    width: 85rem;
+    height: 60rem;
+}
+#viDepois{
+    left: 45rem;
+}
+#relDepois{
+    left: 88rem;
+}
+  .outrosEstoClicado{
+    width: 35rem;
   }
-  #rel, #vi{
+
+  .viEstoClicado{
+    margin-left: 94rem;
+  }
+  .relViClicado{
+    margin-left: 93rem;
+  }
+
+  .invisivel{
     display: none;
   }
+  .depois:hover{
+      transform: translateY(-2rem);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+  .antes:hover{
+      transform: translateY(-0.2rem);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+  
 }
+.tamanho{
+    height: 100vh;
+  }
+
     
