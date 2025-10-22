@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="pagamentos.css" />
-    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/pagamentos.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/global.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -192,7 +192,7 @@
       </section>
     </main>
 
-    <script src="pagamentos.js"></script>
-    <script src="global.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/pagamentos.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/global.js"></script>
   </body>
 </html>
