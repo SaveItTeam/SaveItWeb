@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/configuracoes.css" />
-    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/configuracoes.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/global.css">
     <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -483,7 +483,7 @@
     </form>
 </div>
 
-<script src="assets/js/configuracoes.js"></script>
-<script src="assets/js/global.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/configuracoes.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/global.js"></script>
 </body>
 </html>
