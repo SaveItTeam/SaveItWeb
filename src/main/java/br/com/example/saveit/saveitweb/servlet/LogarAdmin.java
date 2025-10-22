@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet("/logarAdmin")
 public class LogarAdmin extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         String emailOUcpf = request.getParameter("email");
         String senha = request.getParameter("senha");
