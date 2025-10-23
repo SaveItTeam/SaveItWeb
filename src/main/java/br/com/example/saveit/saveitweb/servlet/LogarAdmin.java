@@ -17,21 +17,24 @@ public class LogarAdmin extends HttpServlet {
         String senha = request.getParameter("senha");
 
         Object admin = funcionarioDAO.logarAdmin(emailOUcpf, senha);
+
         if (admin != null) {
-            request.getSession().setAttribute("admin", admin);
             try {
+                request.getSession().setAttribute("admin", admin);
+//                response.sendRedirect("/WEB-INF/view/admin/inicio.jsp");
                 request.getRequestDispatcher("/WEB-INF/view/admin/inicio.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            request.setAttribute("error", "Credenciais inválidas");
             try {
+                request.setAttribute("error", "Credenciais inválidas");
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
 
     }
 }
