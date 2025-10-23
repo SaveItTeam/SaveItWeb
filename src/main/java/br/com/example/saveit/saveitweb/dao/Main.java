@@ -75,7 +75,7 @@ public class Main {
                     "nome": "Mari",
                     "cpf": "123.456.789-00",
                     "rg": "12.345.678-9",
-                    "sexo": "F",
+                    "genero": "F",
                     "dt_nascimento": "2009-07-18",
                     "email": "mariana.boba@example.com",
                     "senha": "senha456",

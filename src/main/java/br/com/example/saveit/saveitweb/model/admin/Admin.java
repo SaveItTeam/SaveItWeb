@@ -2,53 +2,47 @@ package br.com.example.saveit.saveitweb.model.admin;
 
 public class Admin {
     public int id;
-    public String nome_cliente;
-    public String qual_empresa;
-    public String senha_entrada;
-    public String cargo;
+    public String nome_admin;
+    public String email;
+    public String senha;
 
-    public Admin(int id,String nome_cliente, String qual_empresa, String  senha_entrada, String cargo) {
+    public Admin(int id, String nome_admin, String emial, String senha) {
         this.id = id;
-        this.nome_cliente = nome_cliente;
-        this.qual_empresa = qual_empresa;
-        this.senha_entrada = senha_entrada;
-        this.cargo = cargo;
+        this.nome_admin = nome_admin;
+        this.email = emial;
+        this.senha = senha;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getSenha_entrada() {
-        return senha_entrada;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setSenha_entrada(String senha) {
-        this.senha_entrada = senha;
+    public String getNome_admin() {
+        return nome_admin;
     }
 
-    public String getNome_cliente() {
-        return nome_cliente;
+    public void setNome_admin(String nome_admin) {
+        this.nome_admin = nome_admin;
     }
 
-    public void setNome_cliente(String nome_cliente) {
-        this.nome_cliente = nome_cliente;
+    public String getEmail() {
+        return email;
     }
 
-    public String getQual_empresa() {
-        return qual_empresa;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setQual_empresa(String qual_empresa) {
-        this.qual_empresa = qual_empresa;
+    public String getSenha() {
+        return senha;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @Override
@@ -56,11 +50,10 @@ public class Admin {
         return String.format("""
                 \n
                 id: %d
-                nome cliente: %s
-                qual empresa: %s
-                senha entrada: %s
-                cargo: %s
+                Nome Admin: %s
+                Email: %s
+                Senha: %s
                 \n"""
-                , id, nome_cliente, qual_empresa, senha_entrada, cargo);
+                , id, nome_admin, email, senha);
     }
 }

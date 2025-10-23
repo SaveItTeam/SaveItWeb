@@ -17,7 +17,7 @@ public class RegistrarFuncionario extends HttpServlet {
         funcionario.nome = request.getParameter("nome");
         funcionario.cpf = request.getParameter("cpf");
         funcionario.rg = request.getParameter("rg");
-        funcionario.sexo = request.getParameter("sexo").charAt(0);
+        funcionario.genero = request.getParameter("genero").charAt(0);
         funcionario.dt_nascimento = java.sql.Date.valueOf(request.getParameter("dt_nascimento"));
         funcionario.email = request.getParameter("email");
         funcionario.senha = request.getParameter("senha");

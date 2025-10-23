@@ -1,27 +1,28 @@
-package br.com.example.saveit.saveitweb.model.empresa;
+package br.com.example.saveit.saveitweb.model.cliente;
 
 import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class EmpresaDAO {
+public class ClienteDAO {
     //    Insert
-    public boolean inserir(Empresa empresa) {
+    public boolean inserir(Cliente cliente) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = "Insert into Empresa (procura, cod_empresa, id_cliente) Values(?,?,?)";//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);
-//          Setando o valor dos parâmetros
-            pstmt.setString(1, empresa.getProcura());
-            pstmt.setInt(2, empresa.getCod_empresa());
-            pstmt.setInt(3, empresa.getId_cliente());
+            PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente (nome, email, senha, tipo, tipo_venda, id_endereco, cnpj) Values(?,?,?,?,?,?,?)");
+//        Setando o valor dos parâmetros
+            pstmt.setString(1, cliente.getNome());
+            pstmt.setString(2, cliente.getEmail());
+            pstmt.setString(3, cliente.getSenha());
+            pstmt.setString(4, cliente.getTipo());
+            pstmt.setString(5, cliente.getTipo_venda());
+            pstmt.setInt(6, cliente.getId_endereco());
+            pstmt.setString(7, cliente.getCnpj());
             int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
-//              Validação
+//            Validação
             if (validar > 0) {
                 System.out.println("Inserido com sucesso!");
                 pstmt.close();
@@ -36,13 +37,15 @@ public class EmpresaDAO {
     }
 
 
-    //    Update
+//    Update
+
     public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
+        Statement statement;
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Empresa set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
+            String query = String.format("Update Cliente set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
+            statement = conn.createStatement();
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
@@ -59,11 +62,12 @@ public class EmpresaDAO {
 
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
+        Statement statement;
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Empresa set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
+            String query = String.format("Update Cliente set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
+            statement = conn.createStatement();
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
@@ -80,11 +84,12 @@ public class EmpresaDAO {
 
 
     public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
+        Statement statement;
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Empresa set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
+            String query = String.format("Update Cliente set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
+            statement = conn.createStatement();
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
@@ -101,11 +106,12 @@ public class EmpresaDAO {
 
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
+        Statement statement;
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Empresa set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
+            String query = String.format("Update Cliente set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
+            statement = conn.createStatement();
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
@@ -121,16 +127,16 @@ public class EmpresaDAO {
     }
 
 
+//    Delete
 
-
-    //    Delete
     public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
+        Statement statement;
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("delete from Empresa where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
+            String excluir = String.format("delete from Cliente where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
+            statement = conn.createStatement();
+            boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
                 statement.close();
@@ -146,12 +152,13 @@ public class EmpresaDAO {
 
 
     public boolean excluir(String campoOndeExcluir, int valorOndeExcluir) {
+        Statement statement;
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("delete from Empresa where %s = %d", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
+            String excluir = String.format("delete from Cliente where %s = %d", campoOndeExcluir, valorOndeExcluir);
+            statement = conn.createStatement();
+            boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
                 statement.close();
@@ -166,28 +173,31 @@ public class EmpresaDAO {
     }
 
 
-
     //    Select
-    public List<Empresa> buscar() {
+    public List<Cliente> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//    Iniciando objeto Industria e lista de objetos Industrias
-        Empresa empresa = new Empresa();
-        List<Empresa> empresas = new ArrayList<>();
+//        Iniciando objeto Endereço e lista de objetos Endereço
+        Cliente cliente = new Cliente();
+        List<Cliente> clientes = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Empresa";
+            String query = "select * from Endereco";
             ResultSet rset = stmt.executeQuery(query);
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt("id"));
-                    empresa.setProcura(rset.getString("procura"));
-                    empresa.setCod_empresa(rset.getInt("cod_empresa"));
-                    empresa.setId_cliente(rset.getInt("id_cliente"));
-                    empresas.add(empresa);
-                    empresa = new Empresa();
+                    cliente.setId(rset.getInt(1));
+                    cliente.setNome(rset.getString(2));
+                    cliente.setEmail(rset.getString(3));
+                    cliente.setSenha(rset.getString(4));
+                    cliente.setTipo(rset.getString(5));
+                    cliente.setTipo_venda(rset.getString(6));
+                    cliente.setId_endereco(rset.getInt(7));
+                    cliente.setCnpj(rset.getString(8));
+                    clientes.add(cliente);
+                    cliente = new Cliente();
                 }
             }
             stmt.close();
@@ -196,31 +206,36 @@ public class EmpresaDAO {
             return null;
         } finally {
             conexao.desconectar(conn);
-            return empresas;
+            return clientes;
         }
     }
 
 
-    public List<Empresa> buscar(String campoOrdenar) {
+    public List<Cliente> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//    Iniciando objeto Industria e lista de objetos Industrias
-        Empresa empresa = new Empresa();
-        List<Empresa> empresas = new ArrayList<>();
+//        Iniciando objeto Endereço e lista de objetos Endereço
+        Cliente cliente = new Cliente();
+        List<Cliente> clientes = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from plano order by " + campoOrdenar;
+            String query = "select * from Endereco order by " + campoOrdenar;
             ResultSet rset = stmt.executeQuery(query);
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt("id"));
-                    empresa.setProcura(rset.getString("procura"));
-                    empresa.setCod_empresa(rset.getInt("cod_empresa"));
-                    empresa.setId_cliente(rset.getInt("id_cliente"));
-                    empresas.add(empresa);
-                    empresa = new Empresa();
+//                    Inserssão de dados
+                    cliente.setId(rset.getInt(1));
+                    cliente.setNome(rset.getString(2));
+                    cliente.setEmail(rset.getString(3));
+                    cliente.setSenha(rset.getString(4));
+                    cliente.setTipo(rset.getString(5));
+                    cliente.setTipo_venda(rset.getString(6));
+                    cliente.setId_endereco(rset.getInt(7));
+                    cliente.setCnpj(rset.getString(8));
+                    clientes.add(cliente);
+                    cliente = new Cliente();
                 }
             }
             stmt.close();
@@ -228,64 +243,36 @@ public class EmpresaDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return empresas;
-        }
-    }
-
-    public List<Empresa> buscar(String campoOndePesquisar, int valorPesquisar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//    Iniciando objeto Industria e lista de objetos Industrias
-        Empresa empresa = new Empresa();
-        List<Empresa> empresas = new ArrayList<>();
-        try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from plano where %s = %d", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
-
-            if (rset != null) {
-                while (rset.next()) {
-                    empresa.setId(rset.getInt("id"));
-                    empresa.setProcura(rset.getString("procura"));
-                    empresa.setCod_empresa(rset.getInt("cod_empresa"));
-                    empresa.setId_cliente(rset.getInt("id_cliente"));
-                    empresas.add(empresa);
-                    empresa = new Empresa();
-                }
-            }
-            stmt.close();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            return null;
-        } finally {
-            conexao.desconectar(conn);
-            return empresas;
+            conexao.desconectar(conn);//Fechando conexão com o banco
+            return clientes;
         }
     }
 
 
-    public List<Empresa> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Cliente> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//    Iniciando objeto Industria e lista de objetos Industrias
-        Empresa empresa = new Empresa();
-        List<Empresa> empresas = new ArrayList<>();
+//        Iniciando objeto Endereço e lista de objetos Endereço
+        Cliente cliente = new Cliente();
+        List<Cliente> clientes = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = String.format("select * from plano where %s = %s", campoOndePesquisar, valorPesquisar);
+            String query = String.format("SELECT * FROM Endereco WHERE %s = '%s'", campoOndePesquisar, valorPesquisar);
             ResultSet rset = stmt.executeQuery(query);
-
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt("id"));
-                    empresa.setProcura(rset.getString("procura"));
-                    empresa.setCod_empresa(rset.getInt("cod_empresa"));
-                    empresa.setId_cliente(rset.getInt("id_cliente"));
-                    empresas.add(empresa);
-                    empresa = new Empresa();
+//                    Inserssão de dados
+                    cliente.setId(rset.getInt(1));
+                    cliente.setNome(rset.getString(2));
+                    cliente.setEmail(rset.getString(3));
+                    cliente.setSenha(rset.getString(4));
+                    cliente.setTipo(rset.getString(5));
+                    cliente.setTipo_venda(rset.getString(6));
+                    cliente.setId_endereco(rset.getInt(7));
+                    cliente.setCnpj(rset.getString(8));
+                    clientes.add(cliente);
+                    cliente = new Cliente();
                 }
             }
             stmt.close();
@@ -293,8 +280,45 @@ public class EmpresaDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return empresas;
+            conexao.desconectar(conn);//Fechando conexão com o banco
+            return clientes;
+        }
+    }
+
+
+    public List<Cliente> buscar(String campoOndePesquisar, int valorPesquisar) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
+//        Iniciando objeto Endereço e lista de objetos Endereço
+        Cliente cliente = new Cliente();
+        List<Cliente> clientes = new ArrayList<>();
+        try {
+//            Iniciando objeto Statment
+            Statement stmt = conn.createStatement();
+            String query = String.format("SELECT * FROM Endereco WHERE %s = %d", campoOndePesquisar, valorPesquisar);
+            ResultSet rset = stmt.executeQuery(query);
+            if (rset != null) {
+                while (rset.next()) {
+//                    Inserssão de dados
+                    cliente.setId(rset.getInt(1));
+                    cliente.setNome(rset.getString(2));
+                    cliente.setEmail(rset.getString(3));
+                    cliente.setSenha(rset.getString(4));
+                    cliente.setTipo(rset.getString(5));
+                    cliente.setTipo_venda(rset.getString(6));
+                    cliente.setId_endereco(rset.getInt(7));
+                    cliente.setCnpj(rset.getString(8));
+                    clientes.add(cliente);
+                    cliente = new Cliente();
+                }
+            }
+            stmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Fechando conexão com o banco
+            return clientes;
         }
     }
 }

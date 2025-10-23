@@ -14,14 +14,13 @@ public class AdminDAO {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();
 
-        String sql = "insert into Admin(senha_entrada, nome_cliente, qual_empresa, cargo) values(?, ?, ?, ?)";
+        String sql = "insert into Admin(nome_admin, email, senha) values(?, ?, ?)";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, admin.getSenha_entrada());
-            stmt.setString(2, admin.getNome_cliente());
-            stmt.setString(3, admin.getQual_empresa());
-            stmt.setString(4, admin.getCargo());
+            stmt.setString(1, admin.getNome_admin());
+            stmt.setString(2, admin.getEmail());
+            stmt.setString(3, admin.getSenha());
 
             int validar = stmt.executeUpdate();
 
@@ -47,7 +46,7 @@ public class AdminDAO {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setString(1, admin.getNome_cliente());
+            stmt.setString(1, admin.getNome_admin());
             stmt.setInt(2, admin.getId());
 
             int validar = stmt.executeUpdate();
@@ -102,7 +101,7 @@ public class AdminDAO {
             PreparedStatement pmst = conn.prepareStatement(sql);
             rset = pmst.executeQuery();
             while (rset.next()) {
-                Admin admin = new Admin(rset.getInt("id"), rset.getString("nome_cliente"), rset.getString("qual_empresa"),  rset.getString("senha_entrada"), rset.getString("cargo"));
+                Admin admin = new Admin(rset.getInt("id"), rset.getString("nome_admin"), rset.getString("email"),  rset.getString("senha"));
                 admins.add(admin);
             }
 
@@ -132,7 +131,7 @@ public class AdminDAO {
             rset = pmst.executeQuery();
 
             while (rset.next()) {
-                Admin admin = new Admin(rset.getInt("id"), rset.getString("nome_cliente"), rset.getString("qual_empresa"),  rset.getString("senha_entrada"), rset.getString("cargo"));
+                Admin admin = new Admin(rset.getInt("id"), rset.getString("nome_admin"), rset.getString("email"),  rset.getString("senha"));
                 admins.add(admin);
             }
         } catch (SQLException e){

@@ -14,12 +14,14 @@ public class IndustriaDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = "Insert into Industria (id_plano, vende, id_pagamento) Values(?,?,?)";//Comando SQL
+            String query = "Insert into Industria(vende, id_plano, cod_industria, id_pagamento, id_cliente) Values(?,?,?,?,?)";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);
 //          Setando o valor dos parâmetros
-            pstmt.setInt(1, industria.getId_plano());
-            pstmt.setString(2, industria.getVende());
-            pstmt.setInt(3, industria.getId_pagamento());
+            pstmt.setString(1, industria.getVende());
+            pstmt.setInt(2, industria.getId_plano());
+            pstmt.setString(3, industria.getCod_industria());
+            pstmt.setInt(4, industria.getId_pagamento());
+            pstmt.setInt(5, industria.getId_cliente());
             int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
 //              Validação
             if (validar > 0) {
@@ -183,9 +185,10 @@ public List<Industria> buscar() {
         if (rset != null) {
             while (rset.next()) {
                 industria.setId(rset.getInt(1));
-                industria.setId_plano(rset.getInt(2));
-                industria.setVende(rset.getString(3));
+                industria.setVende(rset.getString(2));
+                industria.setId_plano(rset.getInt(3));
                 industria.setId_pagamento(rset.getInt(4));
+                industria.setId_cliente(rset.getInt(5));
                 industrias.add(industria);
                 industria = new Industria();
             }
@@ -217,9 +220,10 @@ public List<Industria> buscar() {
                 while (rset.next()) {
 //                    Inserssão de dados
                     industria.setId(rset.getInt(1));
-                    industria.setId_plano(rset.getInt(2));
-                    industria.setVende(rset.getString(3));
+                    industria.setVende(rset.getString(2));
+                    industria.setId_plano(rset.getInt(3));
                     industria.setId_pagamento(rset.getInt(4));
+                    industria.setId_cliente(rset.getInt(5));
                     industrias.add(industria);
                     industria = new Industria();
                 }
@@ -251,9 +255,10 @@ public List<Industria> buscar() {
                 while (rset.next()) {
 //                    Inserssão de dados
                     industria.setId(rset.getInt(1));
-                    industria.setId_plano(rset.getInt(2));
-                    industria.setVende(rset.getString(3));
+                    industria.setVende(rset.getString(2));
+                    industria.setId_plano(rset.getInt(3));
                     industria.setId_pagamento(rset.getInt(4));
+                    industria.setId_cliente(rset.getInt(5));
                     industrias.add(industria);
                     industria = new Industria();
                 }
@@ -284,9 +289,10 @@ public List<Industria> buscar() {
                 while (rset.next()) {
 //                    Inserssão de dados
                     industria.setId(rset.getInt(1));
-                    industria.setId_plano(rset.getInt(2));
-                    industria.setVende(rset.getString(3));
+                    industria.setVende(rset.getString(2));
+                    industria.setId_plano(rset.getInt(3));
                     industria.setId_pagamento(rset.getInt(4));
+                    industria.setId_cliente(rset.getInt(5));
                     industrias.add(industria);
                     industria = new Industria();
                 }
