@@ -1,11 +1,13 @@
 package br.com.example.saveit.saveitweb.model.admin;
 
 public class Admin {
+//    Atributos
     public int id;
     public String nome_admin;
     public String email;
     public String senha;
 
+//    Construtor
     public Admin(int id, String nome_admin, String emial, String senha) {
         this.id = id;
         this.nome_admin = nome_admin;
@@ -13,6 +15,7 @@ public class Admin {
         this.senha = senha;
     }
 
+//    Getters e Setters
     public int getId() {
         return id;
     }
@@ -45,7 +48,7 @@ public class Admin {
         this.senha = senha;
     }
 
-    @Override
+//    toString
     public String toString() {
         return String.format("""
                 \n

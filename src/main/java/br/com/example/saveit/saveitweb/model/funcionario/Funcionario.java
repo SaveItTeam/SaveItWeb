@@ -3,6 +3,7 @@ package br.com.example.saveit.saveitweb.model.funcionario;
 import java.sql.Date;
 
 public class Funcionario {
+//    Atributos
     public int id;
     public String nome;
     public String cpf;
@@ -20,6 +21,8 @@ public class Funcionario {
     public int id_industria;
     public boolean is_admin;
 
+
+//    Construtor
     public Funcionario(int id, String nome, String cpf, String rg, char genero, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone_pessoal, String telefone_trabalho, String experiencia, int id_empresa, int id_industria, boolean is_admin) {
         this.id = id;
         this.nome = nome;
@@ -44,10 +47,8 @@ public class Funcionario {
     }
 
 
-
-    public int getId() {
-        return this.id;
-    }
+//    Getters e Setters
+    public int getId() {return this.id;}
 
     public String getNome() {
         return nome;
@@ -170,6 +171,7 @@ public class Funcionario {
     }
 
 
+//    toString
     @Override
     public String toString() {
         return "Funcionario{" +

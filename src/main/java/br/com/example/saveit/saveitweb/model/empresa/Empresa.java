@@ -7,6 +7,7 @@ public class Empresa {
     private int cod_empresa;
     private int id_cliente;
 
+//    Construtor
     public Empresa(String procura, int cod_empresa, int id_cliente) {
         this.procura = procura;
         this.cod_empresa = cod_empresa;
@@ -53,7 +54,6 @@ public class Empresa {
 
 
 //    toString
-
     @Override
     public String toString() {
         return "id=" + id +

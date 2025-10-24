@@ -12,16 +12,15 @@ public class Imagem_FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente(url, id_funcionario) Values(?,?)");
+            PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente(url, id_funcionario) Values(?,?)");//Comando SQL
 //        Setando o valor dos parâmetros
             pstmt.setString(1, imagem_Funcionario.getUrl());
             pstmt.setInt(2, imagem_Funcionario.getId_funcionario());
-            int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
+            boolean validar = pstmt.executeUpdate() > 0;//Executando o comando sql
 //            Validação
-            if (validar > 0) {
-                System.out.println("Inserido com sucesso!");
+            if (validar) {
                 pstmt.close();
-                return true;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -39,18 +38,17 @@ public class Imagem_FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Imagem_Funcionario set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            statement = conn.createStatement();
+            String query = String.format("Update Imagem_Funcionario set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
+            statement = conn.createStatement();//Criando statement
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -61,18 +59,17 @@ public class Imagem_FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Imagem_Funcionario set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            statement = conn.createStatement();
+            String query = String.format("Update Imagem_Funcionario set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
+            statement = conn.createStatement();//Criando statement
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -83,18 +80,17 @@ public class Imagem_FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Imagem_Funcionario set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            statement = conn.createStatement();
+            String query = String.format("Update Imagem_Funcionario set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
+            statement = conn.createStatement();//Criando statement
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -105,18 +101,17 @@ public class Imagem_FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Imagem_Funcionario set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            statement = conn.createStatement();
+            String query = String.format("Update Imagem_Funcionario set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
+            statement = conn.createStatement();//Criando statement
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -129,18 +124,17 @@ public class Imagem_FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String excluir = String.format("delete from Imagem_Funcionario where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
-            statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
+            String query = String.format("delete from Imagem_Funcionario where %s = '%s'", campoOndeExcluir, valorOndeExcluir);//Comando SQL
+            statement = conn.createStatement();//Criando statement
+            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -151,18 +145,17 @@ public class Imagem_FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String excluir = String.format("delete from Imagem_Funcionario where %s = %d", campoOndeExcluir, valorOndeExcluir);
-            statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
+            String query = String.format("delete from Imagem_Funcionario where %s = %d", campoOndeExcluir, valorOndeExcluir);//Comando SQL
+            statement = conn.createStatement();//Criando statement
+            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -172,22 +165,19 @@ public class Imagem_FuncionarioDAO {
     public List<Imagem_Funcionario> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario();
+//        Iniciando a lista de objetos Imagem_Funcionario
         List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Endereco";
-            ResultSet rset = stmt.executeQuery(query);
+            String query = "select * from Imagem_Funcionario";//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    imagem_funcionario.setId(rset.getInt(1));
-                    imagem_funcionario.setUrl(rset.getString(2));
-                    imagem_funcionario.setId_funcionario(rset.getInt(3));
+                    Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario(rset.getInt(1), rset.getString(2), rset.getInt(3));
                     imagens_funcionarios.add(imagem_funcionario);
-                    imagem_funcionario = new Imagem_Funcionario();
                 }
             }
             stmt.close();
@@ -195,8 +185,8 @@ public class Imagem_FuncionarioDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return imagens_funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return imagens_funcionarios;//Retornando a lista de imagem_funcionario
         }
     }
 
@@ -204,22 +194,19 @@ public class Imagem_FuncionarioDAO {
     public List<Imagem_Funcionario> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario();
+//        Iniciando a lista de objetos Imagem_Funcionario
         List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Endereco order by " + campoOrdenar;
-            ResultSet rset = stmt.executeQuery(query);
+            String query = "select * from Imagem_Funcionario order by " + campoOrdenar;//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    imagem_funcionario.setId(rset.getInt(1));
-                    imagem_funcionario.setUrl(rset.getString(2));
-                    imagem_funcionario.setId_funcionario(rset.getInt(3));
+                    Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario(rset.getInt(1), rset.getString(2), rset.getInt(3));
                     imagens_funcionarios.add(imagem_funcionario);
-                    imagem_funcionario = new Imagem_Funcionario();
                 }
             }
             stmt.close();
@@ -227,8 +214,8 @@ public class Imagem_FuncionarioDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return imagens_funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return imagens_funcionarios;//Retornando a lista de imagem_funcionario
         }
     }
 
@@ -236,21 +223,19 @@ public class Imagem_FuncionarioDAO {
     public List<Imagem_Funcionario> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario();
+//        Iniciando a lista de objetos Imagem_Funcionario
         List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM Endereco WHERE %s = '%s'", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            String query = String.format("SELECT * FROM Imagem_Funcionario WHERE %s = '%s'", campoOndePesquisar, valorPesquisar);//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    imagem_funcionario.setId(rset.getInt(1));
-                    imagem_funcionario.setUrl(rset.getString(2));
-                    imagem_funcionario.setId_funcionario(rset.getInt(3));
+                    Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario(rset.getInt(1), rset.getString(2), rset.getInt(3));
                     imagens_funcionarios.add(imagem_funcionario);
-                    imagem_funcionario = new Imagem_Funcionario();
                 }
             }
             stmt.close();
@@ -258,8 +243,8 @@ public class Imagem_FuncionarioDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return imagens_funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return imagens_funcionarios;//Retornando a lista de imagem_funcionario
         }
     }
 
@@ -267,21 +252,19 @@ public class Imagem_FuncionarioDAO {
     public List<Imagem_Funcionario> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario();
+//        Iniciando a lista de objetos Imagem_Funcionario
         List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM Endereco WHERE %s = %d", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            String query = String.format("SELECT * FROM Imagem_Funcionario WHERE %s = %d", campoOndePesquisar, valorPesquisar);//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    imagem_funcionario.setId(rset.getInt(1));
-                    imagem_funcionario.setUrl(rset.getString(2));
-                    imagem_funcionario.setId_funcionario(rset.getInt(3));
+                    Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario(rset.getInt(1), rset.getString(2), rset.getInt(3));
                     imagens_funcionarios.add(imagem_funcionario);
-                    imagem_funcionario = new Imagem_Funcionario();
                 }
             }
             stmt.close();
@@ -289,8 +272,8 @@ public class Imagem_FuncionarioDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return imagens_funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return imagens_funcionarios;//Retornando a lista de imagem_funcionario
         }
     }
 }

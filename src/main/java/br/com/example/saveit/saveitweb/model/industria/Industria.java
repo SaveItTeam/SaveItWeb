@@ -10,6 +10,7 @@ public class Industria {
     private int id_pagamento;
     private int id_cliente;
 
+//    Construtor
     public Industria(int id, String vende, int id_plano, String cod_industria, int id_pagamento, int id_cliente) {
         this.id = id;
         this.vende = vende;
@@ -75,8 +76,6 @@ public class Industria {
 
 
     //    toString
-
-    @Override
     public String toString() {
         return "id=" + id +
                 "\nvende='" + vende +
