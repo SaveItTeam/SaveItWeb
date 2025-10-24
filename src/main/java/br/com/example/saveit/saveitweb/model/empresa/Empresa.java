@@ -4,10 +4,11 @@ public class Empresa {
 //    Atributos
     private int id;
     private String procura;
-    private int cod_empresa;
+    private String cod_empresa;
     private int id_cliente;
 
-    public Empresa(String procura, int cod_empresa, int id_cliente) {
+    public Empresa(int id, String procura, String cod_empresa, int id_cliente) {
+        this.id = id;
         this.procura = procura;
         this.cod_empresa = cod_empresa;
         this.id_cliente = id_cliente;
@@ -26,7 +27,7 @@ public class Empresa {
         return procura;
     }
 
-    public int getCod_empresa() {
+    public String getCod_empresa() {
         return cod_empresa;
     }
 
@@ -43,7 +44,7 @@ public class Empresa {
         this.procura = procura;
     }
 
-    public void setCod_empresa(int cod_empresa) {
+    public void setCod_empresa(String cod_empresa) {
         this.cod_empresa = cod_empresa;
     }
 

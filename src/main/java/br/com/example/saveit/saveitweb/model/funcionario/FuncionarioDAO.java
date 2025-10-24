@@ -299,46 +299,41 @@ public class FuncionarioDAO {
 
 
 //    Logar Funcionário
-    public ResultSet logarAdmin(String email, String senha) {
+    public List<String> logarAdmin(String email, String senha) {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();
         ResultSet rs = null;
+        List<String> funcionarios = new ArrayList<>();
 
-        String sql = "SELECT email, senha FROM funcionario WHERE email = ? AND senha = ? --AND isAdmin = true";
-        String sql2 = "SELECT cpf, senha FROM funcionario WHERE cpf = ? AND senha = ? --AND isAdmin = true";
-        String sql3 = "SELECT email, senha FROM admin WHERE email = ? AND senha = ?";
+
+
+        String sql = """
+            SELECT
+            CASE
+            WHEN id_empresa IS NULL THEN 'industria'
+            WHEN id_industria IS NULL THEN 'empresa'
+            END AS tipo,
+            coalesce(id_empresa, id_industria) AS id_estabelecimento
+            FROM FUNCIONARIO
+            WHERE (cpf = ? OR email = ?)
+            AND senha = ?
+            AND is_admin = TRUE;
+            """;
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, email);
-            stmt.setString(2, senha);
+            stmt.setString(2, email);
+            stmt.setString(3, senha);
 
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                return rs;
+                funcionarios.add(rs.getString("tipo"));
+                funcionarios.add(rs.getString("id_estabelecimento"));
+                return funcionarios;
             } else {
-                PreparedStatement stmt2 = conn.prepareStatement(sql2);
-                stmt2.setString(1, email);
-                stmt2.setString(2, senha);
-
-                rs = stmt2.executeQuery();
-
-                if (rs.next()) {
-                    return rs;
-                } else {
-                    PreparedStatement stmt3 = conn.prepareStatement(sql3);
-                    stmt3.setString(1, email);
-                    stmt3.setString(2, senha);
-
-                    rs = stmt3.executeQuery();
-
-                    if (rs.next()) {
-                        return rs;
-                    } else {
-                        return null;
-                    }
-                }
+                return null;
             }
 
         } catch (SQLException e) {

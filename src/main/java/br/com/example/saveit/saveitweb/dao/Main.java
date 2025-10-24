@@ -26,6 +26,15 @@ public class Main {
             PlanoDAO planoDAO = new PlanoDAO();
             EnderecoDAO enderecoDAO = new EnderecoDAO();
 
+//            System.out.println(funcionarioDAO.buscar("email", "mariana@empresa1.com"));
+            String id = funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(1);
+            System.out.println(id);
+            System.out.println(funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));
+
+            System.out.println(
+                    empresaDAO.buscar("id", id)
+            );
+
 //            adminDAO.listarAdmin();
 //            System.out.println("\n\n");
 //
@@ -42,89 +51,100 @@ public class Main {
 //            planoDAO.buscar();
 //            System.out.println("\n\n");
 
-            System.out.println(funcionarioDAO.buscar());
-            System.out.println("\n\n");
+//            System.out.println(funcionarioDAO.buscar());
+//            System.out.println("\n\n");
 
             System.out.println();
             System.out.println("----------------------------------------------------------------");
         }
-        Api api = new Api();
-        try {
-//            System.out.println(api.enviarDados("admin", """
-//                    {
-//                    "id": 1,
-//                    "cargo":"Administrador Geral",
-//                    "nome_empresa":"picpay",
-//                    "nome_admin":"marii",
-//                    "senha":"senha123"
-//                    }"""));
-//            System.out.println(api.enviarDados("endereco", """
-//                    {
-//                    "id": 1,
-//                    "cep":"01001-000",
-//                    "rua":"Av. Paulista",
-//                    "bairro":"Bela Vista",
-//                    "cidade":"Sao Paulo",
-//                    "estado":"SP",
-//                    "pais":"Brasil",
-//                    "complemento":"Edificio Central"
-//                    }"""));
-                System.out.println(api.enviarDados("funcionario", """
-                    {
-                    "id": 1,
-                    "nome": "Mari",
-                    "cpf": "123.456.789-00",
-                    "rg": "12.345.678-9",
-                    "genero": "F",
-                    "dt_nascimento": "2009-07-18",
-                    "email": "mariana.boba@example.com",
-                    "senha": "senha456",
-                    "cargo": "Figma girl",
-                    "dt_contratacao": "2025-10-08",
-                    "telefone_pessoal": "(11) 98765-4321",
-                    "telefone_trabalho":"(11) 4002-8922",
-                    "experiencia": "Pagina Essentia da landing page.",
-                    "id_empresa": 2,
-                    "id_industria": 4,
-                    "id_admin": 1
-                    }"""));
-//            System.out.println(api.enviarDados("cliente", """
-//                    {
-//                    "id": 1,
-//                    "cnpj": "12.345.678/0001-99",
-//                    "nome": "marii SA",
-//                    "email": "mariisa@empresa.com",
-//                    "senha": "senha789",
-//                    "telefone": "(11) 99977-5544",
-//                    "tipo": 1,
-//                    "tipo_venda": "varejo",
-//                    "id_empresa": 2,
-//                    "id_endereco": 1,
-//                    "id_industria": null
-//                    }"""));
-//            System.out.println(api.enviarDados("industria", """
-//                    {
-//                    "id": 1,
-//                    "vende": "grãos",
-//                    "id_plano": 2,
-//                    "id_pagamento": 3
-//                    }"""));
-//            System.out.println(api.enviarDados("pagamento", """
-//                    {
-//                    "id": 1,
-//                    "status": "atrasado",
-//                    "dt_criacao": "2025-09-27",
-//                    "dt_validade": "2025-10-14"
-//                    }"""));
-//            System.out.println(api.enviarDados("plano", """
-//                    {
-//                    "id": 2,
-//                    "preco": 1000.00,
-//                    "descricao": "acesso a vitrine virtual, gerenciador de estoque e relatórios semanais",
-//                    "id_pagamento": 1
-//                    }"""));
-            } catch (InterruptedException | IOException e) {
-                throw new RuntimeException(e);
+
+
+//        Api api = new Api();
+//        try {
+////            System.out.println(api.enviarDados("admin", """
+////                    {
+////                    "id": 1,
+////                    "cargo":"Administrador Geral",
+////                    "nome_empresa":"picpay",
+////                    "nome_admin":"marii",
+////                    "senha":"senha123"
+////                    }"""));
+////            System.out.println(api.enviarDados("endereco", """
+////                    {
+////                    "id": 1,
+////                    "cep":"01001-000",
+////                    "rua":"Av. Paulista",
+////                    "bairro":"Bela Vista",
+////                    "cidade":"Sao Paulo",
+////                    "estado":"SP",
+////                    "pais":"Brasil",
+////                    "complemento":"Edificio Central"
+////                    }"""));
+//
+//
+//
+//
+////                System.out.println(api.enviarDados("funcionario", """
+////                    {
+////                    "id": 1,
+////                    "nome": "Mari",
+////                    "cpf": "123.456.789-00",
+////                    "rg": "12.345.678-9",
+////                    "genero": "F",
+////                    "dt_nascimento": "2009-07-18",
+////                    "email": "mariana.boba@example.com",
+////                    "senha": "senha456",
+////                    "cargo": "Figma girl",
+////                    "dt_contratacao": "2025-10-08",
+////                    "telefone_pessoal": "(11) 98765-4321",
+////                    "telefone_trabalho":"(11) 4002-8922",
+////                    "experiencia": "Pagina Essentia da landing page.",
+////                    "id_empresa": 2,
+////                    "id_industria": 4,
+////                    "id_admin": 1
+////                    }"""));
+//
+//
+//
+//
+////            System.out.println(api.enviarDados("cliente", """
+////                    {
+////                    "id": 1,
+////                    "cnpj": "12.345.678/0001-99",
+////                    "nome": "marii SA",
+////                    "email": "mariisa@empresa.com",
+////                    "senha": "senha789",
+////                    "telefone": "(11) 99977-5544",
+////                    "tipo": 1,
+////                    "tipo_venda": "varejo",
+////                    "id_empresa": 2,
+////                    "id_endereco": 1,
+////                    "id_industria": null
+////                    }"""));
+////            System.out.println(api.enviarDados("industria", """
+////                    {
+////                    "id": 1,
+////                    "vende": "grãos",
+////                    "id_plano": 2,
+////                    "id_pagamento": 3
+////                    }"""));
+////            System.out.println(api.enviarDados("pagamento", """
+////                    {
+////                    "id": 1,
+////                    "status": "atrasado",
+////                    "dt_criacao": "2025-09-27",
+////                    "dt_validade": "2025-10-14"
+////                    }"""));
+////            System.out.println(api.enviarDados("plano", """
+////                    {
+////                    "id": 2,
+////                    "preco": 1000.00,
+////                    "descricao": "acesso a vitrine virtual, gerenciador de estoque e relatórios semanais",
+////                    "id_pagamento": 1
+////                    }"""));
+//            } catch (InterruptedException | IOException e) {
+//                throw new RuntimeException(e);
             }
-    }
-}
+//
+ }
+//}
