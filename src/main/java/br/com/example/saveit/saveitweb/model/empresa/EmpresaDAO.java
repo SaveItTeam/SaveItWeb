@@ -4,7 +4,9 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmpresaDAO {
     //    Insert
@@ -12,17 +14,16 @@ public class EmpresaDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = "Insert into Empresa (id_funcionario, id_cliente, procura, id_plano) Values(?,?,?,?)";//Comando SQL
+            String query = "Insert into Empresa (id_cliente, procura) Values(?,?)";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);
 //          Setando o valor dos parâmetros
-            pstmt.setInt(1, empresa.getId_funcionario());
-            pstmt.setInt(2, empresa.getId_cliente());
-            pstmt.setString(3, empresa.getProcura());
-            pstmt.setInt(4, empresa.getId_plano());
+            pstmt.setInt(1, empresa.getId_cliente());
+            pstmt.setString(2, empresa.getProcura());
             int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
 //              Validação
             if (validar > 0) {
                 System.out.println("Inserido com sucesso!");
+                pstmt.close();
                 return true;
             }
         } catch (SQLException sqle) {
@@ -44,6 +45,7 @@ public class EmpresaDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -64,6 +66,7 @@ public class EmpresaDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -84,6 +87,7 @@ public class EmpresaDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -104,6 +108,7 @@ public class EmpresaDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -127,6 +132,7 @@ public class EmpresaDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException sqle) {
@@ -147,6 +153,7 @@ public class EmpresaDAO {
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando
             if (validar) {
                 System.out.println("Atualizado com sucesso!");
+                statement.close();
                 return validar;
             }
         } catch (SQLException e) {
@@ -165,7 +172,7 @@ public class EmpresaDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Empresa empresa = new Empresa();
-        List<Empresa> listaEmpresa = new ArrayList<>();
+        List<Empresa> empresas = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -174,24 +181,20 @@ public class EmpresaDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt(1));
-                    empresa.setId_funcionario(rset.getInt(2));
-                    if (rset.getInt(3) > 0 ) {
-                        empresa.setId_cliente(rset.getInt(3));
-                    }
-                    empresa.setProcura(rset.getString(4));
-                    empresa.setId_plano(rset.getInt(5));
-                    listaEmpresa.add(empresa);
+                    empresa.setId(rset.getInt("id"));
+                    empresa.setId_cliente(rset.getInt("id_cliente"));
+                    empresa.setProcura(rset.getString("procura"));
+                    empresas.add(empresa);
                     empresa = new Empresa();
                 }
             }
-
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaEmpresa;
+            return empresas;
         }
     }
 
@@ -201,7 +204,7 @@ public class EmpresaDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Empresa empresa = new Empresa();
-        List<Empresa> listaEmpresa = new ArrayList<>();
+        List<Empresa> empresas = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -210,21 +213,20 @@ public class EmpresaDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt(1));
-                    empresa.setId_funcionario(rset.getInt(2));
-                    empresa.setId_cliente(rset.getInt(3));
-                    empresa.setProcura(rset.getString(4));
-                    empresa.setId_plano(rset.getInt(5));
-                    listaEmpresa.add(empresa);
+                    empresa.setId(rset.getInt("id"));
+                    empresa.setId_cliente(rset.getInt("id_cliente"));
+                    empresa.setProcura(rset.getString("procura"));
+                    empresas.add(empresa);
                     empresa = new Empresa();
                 }
             }
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaEmpresa;
+            return empresas;
         }
     }
 
@@ -233,7 +235,7 @@ public class EmpresaDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Empresa empresa = new Empresa();
-        List<Empresa> listaEmpresa = new ArrayList<>();
+        List<Empresa> empresas = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -242,21 +244,20 @@ public class EmpresaDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt(1));
-                    empresa.setId_funcionario(rset.getInt(2));
-                    empresa.setId_cliente(rset.getInt(3));
-                    empresa.setProcura(rset.getString(4));
-                    empresa.setId_plano(rset.getInt(5));
-                    listaEmpresa.add(empresa);
+                    empresa.setId(rset.getInt("id"));
+                    empresa.setId_cliente(rset.getInt("id_cliente"));
+                    empresa.setProcura(rset.getString("procura"));
+                    empresas.add(empresa);
                     empresa = new Empresa();
                 }
             }
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaEmpresa;
+            return empresas;
         }
     }
 
@@ -266,7 +267,7 @@ public class EmpresaDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Empresa empresa = new Empresa();
-        List<Empresa> listaEmpresa = new ArrayList<>();
+        List<Empresa> empresas = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -275,21 +276,20 @@ public class EmpresaDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    empresa.setId(rset.getInt(1));
-                    empresa.setId_funcionario(rset.getInt(2));
-                    empresa.setId_cliente(rset.getInt(3));
-                    empresa.setProcura(rset.getString(4));
-                    empresa.setId_plano(rset.getInt(5));
-                    listaEmpresa.add(empresa);
+                    empresa.setId(rset.getInt("id"));
+                    empresa.setId_cliente(rset.getInt("id_cliente"));
+                    empresa.setProcura(rset.getString("procura"));
+                    empresas.add(empresa);
                     empresa = new Empresa();
                 }
             }
+            stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaEmpresa;
+            return empresas;
         }
     }
 }

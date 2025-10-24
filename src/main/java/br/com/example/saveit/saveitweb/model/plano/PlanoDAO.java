@@ -4,7 +4,9 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PlanoDAO {
     //    Insert
@@ -24,6 +26,7 @@ public class PlanoDAO {
                 System.out.println("Inserido com sucesso!");
                 return true;
             }
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -45,6 +48,7 @@ public class PlanoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -65,6 +69,7 @@ public class PlanoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -85,6 +90,7 @@ public class PlanoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -105,6 +111,7 @@ public class PlanoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -128,6 +135,7 @@ public class PlanoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -148,6 +156,7 @@ public class PlanoDAO {
                 System.out.println("Atualizado com sucesso!");
                 return validar;
             }
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -164,7 +173,7 @@ public class PlanoDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Plano plano = new Plano();
-        List<Plano> listaPlano = new ArrayList<>();
+        List<Plano> planos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -177,7 +186,7 @@ public class PlanoDAO {
                     plano.setPreco(rset.getDouble(2));
                     plano.setDescricao(rset.getString(3));
                     plano.setId_pagamento(rset.getInt(4));
-                    listaPlano.add(plano);
+                    planos.add(plano);
                     plano = new Plano();
                 }
             }
@@ -187,7 +196,7 @@ public class PlanoDAO {
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaPlano;
+            return planos;
         }
     }
 
@@ -197,7 +206,7 @@ public class PlanoDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Plano plano = new Plano();
-        List<Plano> listaPlano = new ArrayList<>();
+        List<Plano> planos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -210,7 +219,7 @@ public class PlanoDAO {
                     plano.setPreco(rset.getDouble(2));
                     plano.setDescricao(rset.getString(3));
                     plano.setId_pagamento(rset.getInt(4));
-                    listaPlano.add(plano);
+                    planos.add(plano);
                     plano = new Plano();
                 }
             }
@@ -220,7 +229,7 @@ public class PlanoDAO {
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaPlano;
+            return planos;
         }
     }
 
@@ -229,7 +238,7 @@ public class PlanoDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Plano plano = new Plano();
-        List<Plano> listaPlano = new ArrayList<>();
+        List<Plano> planos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -242,7 +251,7 @@ public class PlanoDAO {
                     plano.setPreco(rset.getDouble(2));
                     plano.setDescricao(rset.getString(3));
                     plano.setId_pagamento(rset.getInt(4));
-                    listaPlano.add(plano);
+                    planos.add(plano);
                     plano = new Plano();
                 }
             }
@@ -252,7 +261,7 @@ public class PlanoDAO {
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaPlano;
+            return planos;
         }
     }
 
@@ -262,7 +271,7 @@ public class PlanoDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
         Plano plano = new Plano();
-        List<Plano> listaPlano = new ArrayList<>();
+        List<Plano> planos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -275,7 +284,7 @@ public class PlanoDAO {
                     plano.setPreco(rset.getDouble(2));
                     plano.setDescricao(rset.getString(3));
                     plano.setId_pagamento(rset.getInt(4));
-                    listaPlano.add(plano);
+                    planos.add(plano);
                     plano = new Plano();
                 }
             }
@@ -285,8 +294,7 @@ public class PlanoDAO {
             return null;
         } finally {
             conexao.desconectar(conn);
-            return listaPlano;
+            return planos;
         }
     }
-
 }

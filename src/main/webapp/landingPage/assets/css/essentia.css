@@ -19,10 +19,10 @@ body {
 
 #inicio-hero-section {
   width: 100%;
-  height: 100vh;
+  height: 101vh;
   background: linear-gradient(#405d49 0%, #56764c 50%, #6b8e4e 100%);
   display: flex;
-  margin-top: -7rem;
+  margin-top: -8rem;
 }
 
 #texto-hero-section {

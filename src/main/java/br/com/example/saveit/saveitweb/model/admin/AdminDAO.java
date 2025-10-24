@@ -4,7 +4,9 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdminDAO {
 
@@ -12,13 +14,14 @@ public class AdminDAO {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();
 
-        String sql = "insert into Admin(senha, nome_cliente, qual_empresa) values(?, ?, ? )";
+        String sql = "insert into Admin(senha_entrada, nome_cliente, qual_empresa, cargo) values(?, ?, ?, ?)";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, admin.getSenha());
+            stmt.setString(1, admin.getSenha_entrada());
             stmt.setString(2, admin.getNome_cliente());
             stmt.setString(3, admin.getQual_empresa());
+            stmt.setString(4, admin.getCargo());
 
             int validar = stmt.executeUpdate();
 
@@ -88,21 +91,22 @@ public class AdminDAO {
     public List<Admin> listarAdmin() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();
-        List<Admin> listaAdmins = new ArrayList<>();
 
         ResultSet rset;
 
         String sql = "select * from Admin";
 
+        List<Admin> admins = new ArrayList<>();
+
         try {
             PreparedStatement pmst = conn.prepareStatement(sql);
             rset = pmst.executeQuery();
             while (rset.next()) {
-                Admin admin = new Admin(rset.getInt("id"), rset.getString("senha"), rset.getString("nome_cliente"), rset.getString("qual_empresa"));
-                listaAdmins.add(admin);
+                Admin admin = new Admin(rset.getInt("id"), rset.getString("nome_cliente"), rset.getString("qual_empresa"),  rset.getString("senha_entrada"), rset.getString("cargo"));
+                admins.add(admin);
             }
 
-            return listaAdmins;
+            return admins;
 
         } catch (SQLException e){
             e.printStackTrace();
@@ -110,10 +114,11 @@ public class AdminDAO {
 
         } finally {
             conexao.desconectar(conn);
+            return admins;
         }
     }
 
-    public void listarAdminA() {
+    public List<Admin> listarAdminA() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();
 
@@ -121,24 +126,21 @@ public class AdminDAO {
 
         String sql = "select * from Admin";
 
+        List<Admin> admins = new ArrayList<>();
         try {
             PreparedStatement pmst = conn.prepareStatement(sql);
             rset = pmst.executeQuery();
 
-            System.out.printf("%s | %-15s | %-15s | %-15s | %-15s "," ", "id", "senha", "nome_cliente", "qual_empresa");
-            System.out.println();
-            System.out.println("------------------------------------------------");
-
             while (rset.next()) {
-//                System.out.printf("%d | %-15s | %-15s | %-15s",cont  ,rset.getString("dname"), rset.getString("loc"), rset.getString("deptno"));
-                System.out.println((rset.getInt("id") + "\n" + rset.getString("senha") + "\n" +  rset.getString("nome_cliente") + "\n" +  rset.getString("qual_empresa")));
+                Admin admin = new Admin(rset.getInt("id"), rset.getString("nome_cliente"), rset.getString("qual_empresa"),  rset.getString("senha_entrada"), rset.getString("cargo"));
+                admins.add(admin);
             }
         } catch (SQLException e){
             e.printStackTrace();
-
-
+            return null;
         } finally {
             conexao.desconectar(conn);
+            return admins;
         }
     }
 
