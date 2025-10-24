@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -53,67 +53,7 @@
             </div>
         </div>
     </div>
-
-    <nav>
-        <ul>
-            <li id="essentia">
-                <a href="#">
-                    <img src="essentia_logo_verde.svg" alt="" />
-                </a>
-            </li>
-
-            <div>
-                <li>
-                    <a href="#"><i class="ri-function-fill"></i></a>
-                    <p class="sidenav-p">Início</p>
-                </li>
-
-                <li id="funcionario">
-                    <a href="#"
-                    ><svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                    >
-                        <path
-                                fill="currentColor"
-                                d="M1 20v-2.8q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2V20zm18 0v-3q0-1.1-.612-2.113T16.65 13.15q1.275.15 2.4.513t2.1.887q.9.5 1.375 1.112T23 17v3zM9 12q-1.65 0-2.825-1.175T5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12m10-4q0 1.65-1.175 2.825T15 12q-.275 0-.7-.062t-.7-.138q.675-.8 1.038-1.775T15 8t-.362-2.025T13.6 4.2q.35-.125.7-.163T15 4q1.65 0 2.825 1.175T19 8"
-                        />
-                    </svg>
-                    </a>
-                    <p class="sidenav-p">Funcionários</p>
-                </li>
-
-                <li id="empresa">
-                    <a href="#"
-                    ><svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                    >
-                        <path
-                                fill="currentColor"
-                                d="M18 15h-2v2h2m0-6h-2v2h2m2 6h-8v-2h2v-2h-2v-2h2v-2h-2V9h8M10 7H8V5h2m0 6H8V9h2m0 6H8v-2h2m0 6H8v-2h2M6 7H4V5h2m0 6H4V9h2m0 6H4v-2h2m0 6H4v-2h2m6-10V3H2v18h20V7z"
-                        />
-                    </svg>
-                    </a>
-                    <p class="sidenav-p">Indústria</p>
-                </li>
-
-                <li id="pagamento">
-                    <a href="#"><i class="ri-bank-card-fill"></i> </a>
-                    <p class="sidenav-p">Pagamento</p>
-                </li>
-            </div>
-
-            <li id="settings">
-                <a href="#"><i class="ri-settings-3-fill"></i></a>
-            </li>
-        </ul>
-    </nav>
-
+    <%@ include file="../../../assets/sidebar.jsp"%>
     <section id="inicio">
         <div>
             <div id="texto-principal">
