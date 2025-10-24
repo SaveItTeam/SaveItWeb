@@ -286,7 +286,13 @@ public class EmpresaDAO {
         try {
 //            Iniciando objeto Statment
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, String.valueOf(valorPesquisar));
+            try {
+                int intVal = Integer.parseInt(valorPesquisar);
+                stmt.setInt(1, intVal);
+            } catch (NumberFormatException e) {
+                stmt.setString(1, valorPesquisar);
+            }
+
             ResultSet rset = stmt.executeQuery();
 
             if (rset != null) {
@@ -301,7 +307,6 @@ public class EmpresaDAO {
                 }
             }
             stmt.close();
-            return empresas;
 
         } catch (SQLException sqle){
             sqle.printStackTrace();
