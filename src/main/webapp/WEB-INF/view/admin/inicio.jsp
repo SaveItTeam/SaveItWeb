@@ -118,7 +118,7 @@
         <div>
             <div id="texto-principal">
                 <div>
-                    <h1>Bem vindo, Marcelo!</h1>
+                    <h1>Bem vindo, <%= request.getAttribute("nome") %></h1>
                     <hr />
                     <p>
                         Lorem ipsum dolor sit amet consectetur. Tellus sit risus

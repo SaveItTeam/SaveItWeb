@@ -8,7 +8,7 @@ import br.com.example.saveit.saveitweb.model.industria.*;
 import br.com.example.saveit.saveitweb.model.pagamento.*;
 import br.com.example.saveit.saveitweb.model.plano.*;
 
-import java.io.IOException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,13 +27,17 @@ public class Main {
             EnderecoDAO enderecoDAO = new EnderecoDAO();
 
 //            System.out.println(funcionarioDAO.buscar("email", "mariana@empresa1.com"));
-            String id = funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(1);
-            System.out.println(id);
-            System.out.println(funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));
+            java.util.List<String> a = funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251");
+            System.out.println(a.get(2));
+            int id = Integer.parseInt(a.get(2));
+//            System.out.println(funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));
 
-            System.out.println(
-                    empresaDAO.buscar("id", id)
-            );
+//            Empresa empresa = new Empresa();
+//            empresa = empresaDAO.buscar("id", id).get(0);
+//            System.out.println(empresa.getCod_empresa());
+
+            Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
+            System.out.println(funcionario.getNome());
 
 //            adminDAO.listarAdmin();
 //            System.out.println("\n\n");

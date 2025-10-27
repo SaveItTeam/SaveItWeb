@@ -245,17 +245,35 @@ public class FuncionarioDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
+
+        String query = "SELECT * FROM Funcionario WHERE " + campoOndePesquisar + " = ?";
+
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from Funcionario where %s = '%s'", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, valorPesquisar);
+
+            ResultSet rset = stmt.executeQuery();
 
             if (rset != null) {
                 while (rset.next()) {
-                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
-                            rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
-                    funcionarios.add(funcionario);
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
                 }
             }
             stmt.close();
@@ -274,17 +292,34 @@ public class FuncionarioDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
+        String query = "SELECT * FROM Funcionario WHERE " + campoOndePesquisar + " = ?";
+
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from Funcionario where %s = %d", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, valorPesquisar);
+
+            ResultSet rset = stmt.executeQuery();
 
             if (rset != null) {
                 while (rset.next()) {
-                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
-                            rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
-                    funcionarios.add(funcionario);
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
                 }
             }
             stmt.close();
@@ -309,6 +344,7 @@ public class FuncionarioDAO {
 
         String sql = """
             SELECT
+            ID AS id_funcionario,
             CASE
             WHEN id_empresa IS NULL THEN 'industria'
             WHEN id_industria IS NULL THEN 'empresa'
@@ -331,6 +367,7 @@ public class FuncionarioDAO {
             if (rs.next()) {
                 funcionarios.add(rs.getString("tipo"));
                 funcionarios.add(rs.getString("id_estabelecimento"));
+                funcionarios.add(rs.getString("id_funcionario"));
                 return funcionarios;
             } else {
                 return null;
