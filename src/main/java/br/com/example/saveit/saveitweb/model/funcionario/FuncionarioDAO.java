@@ -340,21 +340,60 @@ public class FuncionarioDAO {
         ResultSet rs = null;
         List<String> funcionarios = new ArrayList<>();
 
-
-
         String sql = """
-            SELECT
-            ID AS id_funcionario,
-            CASE
-            WHEN id_empresa IS NULL THEN 'industria'
-            WHEN id_industria IS NULL THEN 'empresa'
-            END AS tipo,
-            coalesce(id_empresa, id_industria) AS id_estabelecimento
-            FROM FUNCIONARIO
-            WHERE (cpf = ? OR email = ?)
-            AND senha = ?
-            AND is_admin = TRUE;
-            """;
+        
+                with info_func as (
+            select
+                f.id as id_func
+                , f.nome as nome_func
+                , f.telefone_trabalho
+                , coalesce(id_empresa, id_industria) AS id_estabelecimento
+                , case
+                    when id_empresa is null then 'Saveit Pro'
+                    when id_industria is null then 'Saveit Basico'
+            end as plano
+            , case
+                when id_empresa is not null then 'Empresa'
+                when id_industria is not null then 'Industria'
+            end as tipo
+            , i.url as img
+            , f.genero
+            from funcionario f
+            left join imagem_funcionario i on f.id = i.id_funcionario
+            where (cpf = ? or email = ?)
+            and senha = ?
+            and is_admin = true
+        )
+        , info_estab as (
+            select
+                c.nome as nome_empresa
+                , c.cnpj
+                , c.tipo_venda
+                , t.num_telefone
+                , concat(e.cep_rua, ', ', cep_rua_num, ' - ', e.cep_bairro, ' ', e.cep_estado) as endereco
+            from cliente c
+                join telefone t on c.id = t.id_cliente
+                join endereco e on e.id = c.id_endereco
+        )
+        , cont_func as (
+            select
+                case
+                    when id_empresa is not null then 'Empresa'
+                    when id_industria is not null then 'Industria'
+                end as tipo
+                , coalesce(id_empresa, id_industria) AS id_estabelecimento
+                , count(f.id) as cont_func
+            from funcionario f
+            group by 1, 2
+        )
+        select
+            f.*
+            , e.*
+            , c.cont_func
+        from info_func f
+        left join info_estab e on f.telefone_trabalho = e.num_telefone
+        left join cont_func c on c.tipo = f.tipo and c.id_estabelecimento = f.id_estabelecimento
+        """;
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -364,11 +403,26 @@ public class FuncionarioDAO {
 
             rs = stmt.executeQuery();
 
-            if (rs.next()) {
-                funcionarios.add(rs.getString("tipo"));
-                funcionarios.add(rs.getString("id_estabelecimento"));
-                funcionarios.add(rs.getString("id_funcionario"));
-                return funcionarios;
+            if (rs != null){
+                if (rs.next()) {
+                    funcionarios.add(rs.getString("id_func"));
+                    funcionarios.add(rs.getString("nome_func"));
+                    funcionarios.add(rs.getString("telefone_trabalho"));
+                    funcionarios.add(rs.getString("id_estabelecimento"));
+                    funcionarios.add(rs.getString("plano"));
+                    funcionarios.add(rs.getString("tipo"));
+                    funcionarios.add(rs.getString("img"));
+                    funcionarios.add(rs.getString("genero"));
+                    funcionarios.add(rs.getString("nome_empresa"));
+                    funcionarios.add(rs.getString("cnpj"));
+                    funcionarios.add(rs.getString("tipo_venda"));
+                    funcionarios.add(rs.getString("num_telefone"));
+                    funcionarios.add(rs.getString("endereco"));
+                    funcionarios.add(rs.getString("cont_func"));
+                    return funcionarios;
+                } else {
+                    return null;
+                }
             } else {
                 return null;
             }

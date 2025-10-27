@@ -23,10 +23,24 @@ public class LogarAdmin extends HttpServlet {
         String senhaHash = hash.hashar(senha);
 
         java.util.List<String> a = funcionarioDAO.logarAdmin(emailOUcpf, senhaHash);
-        int id = Integer.parseInt(a.get(2));
+        int id = Integer.parseInt(a.get(0));
 
         Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
+
+
         String nome = funcionario.getNome();
+        String telefone_trabalho = funcionario.getTelefone_trabalho();
+        int id_industria = funcionario.getId_industria();
+        String plano = a.get(4);
+        String tipo_industria = a.get(5);
+        String img = a.get(6);
+        char genero = funcionario.getGenero();
+        String nome_empresa = a.get(8);
+        String cnpj = a.get(9);
+        String tipo_servico = a.get(10);
+        String endereco = a.get(12);
+        String count = a.get(13);
+
 
         Object admin = funcionarioDAO.buscar(emailOUcpf, senha);
 
@@ -35,6 +49,17 @@ public class LogarAdmin extends HttpServlet {
             try {
                 request.getSession().setAttribute("admin", admin);
                 request.setAttribute("nome", nome);
+                request.setAttribute("telefone_trabalho", telefone_trabalho);
+                request.setAttribute("id_industria", id_industria);
+                request.setAttribute("plano", plano);
+                request.setAttribute("tipo_industria", tipo_industria);
+                request.setAttribute("img", img);
+                request.setAttribute("genero", genero);
+                request.setAttribute("nome_empresa", nome_empresa);
+                request.setAttribute("cnpj", cnpj);
+                request.setAttribute("tipo_servico", tipo_servico);
+                request.setAttribute("endereco", endereco);
+                request.setAttribute("count", count);
                 request.getRequestDispatcher("/WEB-INF/view/admin/inicio.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
