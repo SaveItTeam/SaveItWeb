@@ -15,7 +15,7 @@
         <ul>
             <li id="essentia">
                 <a href="#">
-                    <img src="essentia_logo_verde.svg" alt="" />
+                    <img src="${pageContext.request.contextPath}/assets/images/essentia_logo_verde.svg" alt="" />
                 </a>
             </li>
 

@@ -3,12 +3,15 @@ package br.com.example.saveit.saveitweb.model.empresa;
 public class Empresa {
 //    Atributos
     private int id;
-    private int id_cliente;
     private String procura;
+    private String cod_empresa;
+    private int id_cliente;
 
-    public Empresa(int id_cliente, String procura) {
-        this.id_cliente = id_cliente;
+    public Empresa(int id, String procura, String cod_empresa, int id_cliente) {
+        this.id = id;
         this.procura = procura;
+        this.cod_empresa = cod_empresa;
+        this.id_cliente = id_cliente;
     }
 
     public Empresa() {
@@ -20,30 +23,43 @@ public class Empresa {
         return id;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
-    }
-
     public String getProcura() {
         return procura;
     }
 
-
-//    Setters
-    public void setId(int id) {
-        this.id = id;
+    public String getCod_empresa() {
+        return cod_empresa;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    //    Setters
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setProcura(String procura) {
         this.procura = procura;
     }
 
+    public void setCod_empresa(String cod_empresa) {
+        this.cod_empresa = cod_empresa;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
+
 //    toString
-    public String toString(){
-        return String.format("|ID: %-5s  |ID_Cliente: %-5s  |Procura: %-15s", this.id, this.id_cliente, this.procura);
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                "\nprocura='" + procura +
+                "\ncod_empresa=" + cod_empresa +
+                "\nid_cliente=" + id_cliente;
     }
 }

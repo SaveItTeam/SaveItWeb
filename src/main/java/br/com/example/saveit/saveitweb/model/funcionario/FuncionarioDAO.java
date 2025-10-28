@@ -12,14 +12,14 @@ public class FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();
 
-        String sql = "Insert into funcionario (nome, cpf, rg, sexo, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal, telefone_trabalho, experiencia, id_empresa, id_industria, id_admin) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "Insert into funcionario (nome, cpf, rg, genero, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal, telefone_trabalho, experiencia, id_empresa, id_industria, is_admin) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, funcionario.getNome());
             stmt.setString(2, funcionario.getCpf());
             stmt.setString(3, funcionario.getRg());
-            stmt.setString(4, String.valueOf(funcionario.getSexo()));
+            stmt.setString(4, String.valueOf(funcionario.getGenero()));
             stmt.setDate(5, funcionario.getDt_nascimento());
             stmt.setString(6, funcionario.getEmail());
             stmt.setString(7, funcionario.getSenha());
@@ -30,7 +30,7 @@ public class FuncionarioDAO {
             stmt.setString(12, funcionario.getExperiencia());
             stmt.setInt(13, funcionario.getId_empresa());
             stmt.setInt(14, funcionario.getId_industria());
-            stmt.setInt(15, funcionario.getId_admin());
+            stmt.setBoolean(15, funcionario.getIs_admin());
 
             int validar = stmt.executeUpdate();
 
@@ -195,8 +195,8 @@ public class FuncionarioDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("sexo").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
-                            rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getInt("id_admin"));
+                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
                     funcionarios.add(funcionario);
                 }
             }
@@ -224,8 +224,8 @@ public class FuncionarioDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("sexo").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
-                            rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getInt("id_admin"));
+                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
                     funcionarios.add(funcionario);
                 }
             }
@@ -245,17 +245,35 @@ public class FuncionarioDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
+
+        String query = "SELECT * FROM Funcionario WHERE " + campoOndePesquisar + " = ?";
+
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from Funcionario where %s = '%s'", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, valorPesquisar);
+
+            ResultSet rset = stmt.executeQuery();
 
             if (rset != null) {
                 while (rset.next()) {
-                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("sexo").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
-                            rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getInt("id_admin"));
-                    funcionarios.add(funcionario);
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
                 }
             }
             stmt.close();
@@ -274,17 +292,34 @@ public class FuncionarioDAO {
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
 //        Iniciando objeto Endereço e lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
+        String query = "SELECT * FROM Funcionario WHERE " + campoOndePesquisar + " = ?";
+
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from Funcionario where %s = %d", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, valorPesquisar);
+
+            ResultSet rset = stmt.executeQuery();
 
             if (rset != null) {
                 while (rset.next()) {
-                    Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("sexo").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
-                            rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getInt("id_admin"));
-                    funcionarios.add(funcionario);
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
                 }
             }
             stmt.close();
@@ -299,46 +334,104 @@ public class FuncionarioDAO {
 
 
 //    Logar Funcionário
-    public ResultSet logarAdmin(String email, String senha) {
+    public List<String> logarAdmin(String email, String senha) {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();
         ResultSet rs = null;
+        List<String> funcionarios = new ArrayList<>();
 
-        String sql = "SELECT email, senha FROM funcionario WHERE email = ? AND senha = ? --AND isAdmin = true";
-        String sql2 = "SELECT cpf, senha FROM funcionario WHERE cpf = ? AND senha = ? --AND isAdmin = true";
-        String sql3 = "SELECT email, senha FROM admin WHERE email = ? AND senha = ?";
+        String sql = """
+            with info_func as (
+            select
+                f.id as id_func
+                , f.nome as nome_func
+                , f.telefone_trabalho
+                , coalesce(id_empresa, id_industria) AS id_estabelecimento
+                , case
+                    when id_empresa is null then 'Saveit Pro'
+                    when id_industria is null then 'Saveit Basico'
+            end as plano
+            , case
+                when id_empresa is not null then 'Empresa'
+                when id_industria is not null then 'Industria'
+            end as tipo
+            , i.url as img
+            , f.genero
+            from funcionario f
+            left join imagem_funcionario i on f.id = i.id_funcionario
+            where (cpf = ? or email = ?)
+            and senha = ?
+            and is_admin = true
+        )
+        , info_estab as (
+            select
+                c.nome as nome_empresa
+                , c.cnpj
+                , c.tipo_venda
+                , t.num_telefone
+                , concat(e.cep_rua, ', ', cep_rua_num, ' - ', e.cep_bairro, ' ', e.cep_estado) as endereco
+            from cliente c
+                join telefone t on c.id = t.id_cliente
+                join endereco e on e.id = c.id_endereco
+        )
+        , cont_func as (
+            select
+                case
+                    when id_empresa is not null then 'Empresa'
+                    when id_industria is not null then 'Industria'
+                end as tipo
+                , coalesce(id_empresa, id_industria) AS id_estabelecimento
+                , case
+                    when id_empresa is not null then e.procura
+                    when id_industria is not null then i.vende
+                end as atividade_comercial
+                , count(f.id) as cont_func
+            from funcionario f
+            left join empresa e on f.id_empresa = e.id
+            left join industria i on f.id_industria = i.id
+            group by 1, 2, 3
+        )
+        select
+            f.*
+            , e.*
+            , c.cont_func
+            , c.atividade_comercial
+        from info_func f
+        left join info_estab e on f.telefone_trabalho = e.num_telefone
+        left join cont_func c on c.tipo = f.tipo and c.id_estabelecimento = f.id_estabelecimento;
+        """;
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, email);
-            stmt.setString(2, senha);
+            stmt.setString(2, email);
+            stmt.setString(3, senha);
 
             rs = stmt.executeQuery();
 
-            if (rs.next()) {
-                return rs;
-            } else {
-                PreparedStatement stmt2 = conn.prepareStatement(sql2);
-                stmt2.setString(1, email);
-                stmt2.setString(2, senha);
-
-                rs = stmt2.executeQuery();
-
+            if (rs != null){
                 if (rs.next()) {
-                    return rs;
+                    funcionarios.add(rs.getString("id_func"));
+                    funcionarios.add(rs.getString("nome_func"));
+                    funcionarios.add(rs.getString("telefone_trabalho"));
+                    funcionarios.add(rs.getString("id_estabelecimento"));
+                    funcionarios.add(rs.getString("plano"));
+                    funcionarios.add(rs.getString("tipo"));
+                    funcionarios.add(rs.getString("img"));
+                    funcionarios.add(rs.getString("genero"));
+                    funcionarios.add(rs.getString("nome_empresa"));
+                    funcionarios.add(rs.getString("cnpj"));
+                    funcionarios.add(rs.getString("tipo_venda"));
+                    funcionarios.add(rs.getString("num_telefone"));
+                    funcionarios.add(rs.getString("endereco"));
+                    funcionarios.add(rs.getString("cont_func"));
+                    funcionarios.add(rs.getString("atividade_comercial"));
+                    return funcionarios;
                 } else {
-                    PreparedStatement stmt3 = conn.prepareStatement(sql3);
-                    stmt3.setString(1, email);
-                    stmt3.setString(2, senha);
-
-                    rs = stmt3.executeQuery();
-
-                    if (rs.next()) {
-                        return rs;
-                    } else {
-                        return null;
-                    }
+                    return null;
                 }
+            } else {
+                return null;
             }
 
         } catch (SQLException e) {

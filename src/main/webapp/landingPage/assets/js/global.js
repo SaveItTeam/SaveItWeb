@@ -1,8 +1,16 @@
 // funcoes para mudar o SVG do header
 // ao passar o mouse por cima e voltar ao normal ao tirar o mouse
 
-    let html = window.location.pathname; // pegar o caminho do arquivo para verificacao
-    html = html.substring(html.lastIndexOf("/") + 1); // selecionar com substring para apenas pegar o nome
+window.addEventListener("load", () => {
+  document.documentElement.style.overflow = "hidden hidden";
+  setTimeout(() => {
+    document.querySelector("iframe").remove();
+    document.documentElement.style.overflow = "hidden scroll"
+  }, 2000)
+})
+
+let html = window.location.pathname; // pegar o caminho do arquivo para verificacao
+html = html.substring(html.lastIndexOf("/") + 1); // selecionar com substring para apenas pegar o nome
 
 const svg = document.querySelector("#svg");
 svg.addEventListener("mouseover", () => {
@@ -58,9 +66,6 @@ window.addEventListener("scroll", () => {
     essentia.classList.add("mudarCor");
     saveit.classList.add("mudarCor");
     contato.classList.add("mudarCor");
-
-
-
   } else {
     header.classList.remove("scrolled");
     inicio.classList.remove("mudarCor");
@@ -88,4 +93,5 @@ closel.addEventListener("click", () => {
   lateral.classList.toggle("lateral");
   closel.classList.toggle("invisivel");
   navLateral.classList.toggle("invisivel");
+});
 });
