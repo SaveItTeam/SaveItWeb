@@ -190,6 +190,7 @@ public List<Industria> buscar() {
         stmt.close();
     } catch (SQLException sqle) {
         sqle.printStackTrace();
+        return null;
     } finally {
         conexao.desconectar(conn);//Desconectando do banco de dados
         return industrias;//Retornando a lista de industrias
@@ -218,6 +219,7 @@ public List<Industria> buscar() {
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return industrias;//Retornando a lista de industrias
@@ -245,6 +247,7 @@ public List<Industria> buscar() {
             pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return industrias;//Retornando a lista de industrias
@@ -272,6 +275,7 @@ public List<Industria> buscar() {
             pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return industrias;//Retornando a lista de industrias

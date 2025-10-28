@@ -199,6 +199,7 @@ public class EnderecoDAO {
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return enderecos;//Retornando a lista de Endereços
@@ -225,6 +226,7 @@ public class EnderecoDAO {
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Fechando conexão com o banco de dados
             return enderecos;//Retornando a lista de Endereços
@@ -251,6 +253,7 @@ public class EnderecoDAO {
             pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Fechando conexão com o banco de dados
             return enderecos;//Retornando a lista de Endereços
@@ -277,6 +280,7 @@ public class EnderecoDAO {
             pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Fechando conexão com o banco de dados
             return enderecos;//Retornando a lista de Endereços

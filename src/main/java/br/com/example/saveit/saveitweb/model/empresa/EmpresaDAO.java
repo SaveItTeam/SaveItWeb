@@ -294,6 +294,7 @@ public class EmpresaDAO {
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return empresas;//Retornando a lista de empresas

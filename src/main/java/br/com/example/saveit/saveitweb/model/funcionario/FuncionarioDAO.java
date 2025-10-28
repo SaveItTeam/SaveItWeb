@@ -221,6 +221,7 @@ public class FuncionarioDAO {
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return funcionarios;//Retornando a lista de funcionários
@@ -250,6 +251,7 @@ public class FuncionarioDAO {
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return funcionarios;//Retornando a lista de funcionários
@@ -279,6 +281,7 @@ public class FuncionarioDAO {
             pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return funcionarios;//Retornando a lista de funcionários
@@ -308,6 +311,7 @@ public class FuncionarioDAO {
             pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return funcionarios;//Retornando a lista de funcionários
