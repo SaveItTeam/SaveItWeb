@@ -47,36 +47,49 @@
             </button>
         </div>
         <div class="administrador">
-            <img src="imagem (4).jpeg" alt="" />
+            <img src="<%=request.getAttribute("img")%>" alt="" />
             <div>
-                <p>Marcelo Grilo</p>
+                <p><%=request.getAttribute("nome")%></p>
                 <p>Admin</p>
             </div>
         </div>
     </div>
+
     <%@ include file="../../../assets/sidebar.jsp"%>
+
     <section id="inicio">
         <div>
             <div id="texto-principal">
                 <div>
-                    <h1>Bem vindo, Marcelo!</h1>
+                    <%
+                        char genero = (char) request.getAttribute("genero");
+                        String nome = (String) request.getAttribute("nome");
+                        String saudacao = "Bem-Vindo(a)";
+
+                        if (genero == 'F') {
+                            saudacao = String.format("Bem-Vinda, %s", nome);
+                        } else {
+                            saudacao = String.format("Bem-Vindo, %s", nome);
+                        }
+
+                        request.setAttribute("saudacao", saudacao);
+
+                    %>
+
+                    <h1><%=request.getAttribute("saudacao")%></h1>
                     <hr />
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur. Tellus sit risus
-                        venenatis commodo id sollicitudin fringilla nunc. Dui sed quis
-                        id nunc condimentum arcu.
-                    </p>
+                    <br>
                 </div>
             </div>
 
             <div id="cards-infos-gerais">
                 <div>
                     <h3>Plano Atual</h3>
-                    <h2>Saveit Pro</h2>
+                    <h2><%=request.getAttribute("plano")%></h2>
                 </div>
                 <div>
                     <h3>Total de funcionários</h3>
-                    <h2>400</h2>
+                    <h2><%=request.getAttribute("count")%></h2>
                 </div>
             </div>
 
@@ -96,28 +109,28 @@
 
         <div id="card-industria">
             <div>
-                <img src="imagem (4).jpeg" alt="" />
+                <img src="<%=request.getAttribute("img")%>" alt="" />
                 <div>
-                    <h4>JBS</h4>
-                    <p>(11) 4002-8922</p>
+                    <h4><%=request.getAttribute("nome_empresa")%></h4>
+                    <p><%=request.getAttribute("telefone_trabalho")%></p>
                 </div>
             </div>
 
             <div>
                 <h4>CPF/CNPJ</h4>
-                <p>222.333.444-55</p>
+                <p><%=request.getAttribute("cnpj")%></p>
             </div>
             <div>
                 <h4>Endereço</h4>
-                <p>Rua Irineu José Bordon, 230 - Jaguaré, SP</p>
+                <p><%=request.getAttribute("endereco")%></p>
             </div>
             <div>
                 <h4>Tipo de operação</h4>
-                <p>Atacado</p>
+                <p><%=request.getAttribute("tipo_servico")%></p>
             </div>
             <div>
-                <h4>Categoria de produtos</h4>
-                <p>Varinhas, bolhas, rosa pink</p>
+                <h4>Atividade Comercial</h4>
+                <p><%=request.getAttribute("atividade_comercial")%></p>
             </div>
         </div>
     </section>

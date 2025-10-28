@@ -3,11 +3,12 @@ package br.com.example.saveit.saveitweb.model.funcionario;
 import java.sql.Date;
 
 public class Funcionario {
+//    Atributos
     public int id;
     public String nome;
     public String cpf;
     public String rg;
-    public char sexo;
+    public char genero;
     public Date dt_nascimento;
     public String email;
     public String senha;
@@ -18,14 +19,16 @@ public class Funcionario {
     public String experiencia;
     public int id_empresa;
     public int id_industria;
-    public int id_admin;
+    public boolean is_admin;
 
-    public Funcionario(int id, String nome, String cpf, String rg, char sexo, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone_pessoal, String telefone_trabalho, String experiencia, int id_empresa, int id_industria, int id_admin) {
+
+//    Construtor
+    public Funcionario(int id, String nome, String cpf, String rg, char genero, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone_pessoal, String telefone_trabalho, String experiencia, int id_empresa, int id_industria, boolean is_admin) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
-        this.sexo = sexo;
+        this.genero = genero;
         this.dt_nascimento = dt_nascimento;
         this.email = email;
         this.senha = senha;
@@ -36,7 +39,7 @@ public class Funcionario {
         this.experiencia = experiencia;
         this.id_empresa = id_empresa;
         this.id_industria = id_industria;
-        this.id_admin = id_admin;
+        this.is_admin = is_admin;
     }
 
     public Funcionario() {
@@ -44,10 +47,8 @@ public class Funcionario {
     }
 
 
-
-    public int getId() {
-        return this.id;
-    }
+//    Getters e Setters
+    public int getId() {return this.id;}
 
     public String getNome() {
         return nome;
@@ -65,12 +66,12 @@ public class Funcionario {
         this.cpf = cpf;
     }
 
-    public char getSexo() {
-        return sexo;
+    public char getGenero() {
+        return genero;
     }
 
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
+    public void setGenero(char genero) {
+        this.genero = genero;
     }
 
     public String getRg() {
@@ -161,15 +162,16 @@ public class Funcionario {
         this.id_industria = id_industria;
     }
 
-    public int getId_admin() {
-        return id_admin;
+    public boolean getIs_admin() {
+        return is_admin;
     }
 
-    public void setId_admin(int id_admin) {
-        this.id_admin = id_admin;
+    public void setIs_admin(boolean is_admin) {
+        this.is_admin = is_admin;
     }
 
 
+//    toString
     @Override
     public String toString() {
         return "Funcionario{" +
@@ -177,7 +179,7 @@ public class Funcionario {
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", rg='" + rg + '\'' +
-                ", sexo=" + sexo +
+                ", genero=" + genero +
                 ", dt_nascimento=" + dt_nascimento +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
@@ -187,7 +189,7 @@ public class Funcionario {
                 ", experiencia='" + experiencia + '\'' +
                 ", id_empresa=" + id_empresa +
                 ", id_industria=" + id_industria +
-                ", id_admin=" + id_admin +
+                ", id_admin=" + is_admin +
                 '}';
     }
 }
