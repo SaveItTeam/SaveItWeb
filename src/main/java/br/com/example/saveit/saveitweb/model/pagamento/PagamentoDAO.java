@@ -20,13 +20,9 @@ public class PagamentoDAO {
             pstmt.setString(1, pagamento.getStatus());
             pstmt.setString(2, pagamento.getDt_criacao());
             pstmt.setString(3, pagamento.getDt_validade());
-            int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
-//              Validação
-            if (validar > 0) {
-                System.out.println("Inserido com sucesso!");
-                return true;
-            }
+            boolean validar = pstmt.executeUpdate() > 0;//Executando o comando SQL
             pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -39,20 +35,19 @@ public class PagamentoDAO {
     //    Update
     public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = String.format("Update Pagamento set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                return validar;
-            }
-            statement.close();
+            String query = String.format("Update Pagamento set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -60,20 +55,19 @@ public class PagamentoDAO {
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = String.format("Update Pagamento set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                return validar;
-            }
-            statement.close();
+            String query = String.format("Update Pagamento set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -81,20 +75,19 @@ public class PagamentoDAO {
 
     public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = String.format("Update Pagamento set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                return validar;
-            }
-            statement.close();
+            String query = String.format("Update Pagamento set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -102,20 +95,19 @@ public class PagamentoDAO {
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = String.format("Update Pagamento set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                return validar;
-            }
-            statement.close();
+            String query = String.format("Update Pagamento set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -128,18 +120,16 @@ public class PagamentoDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("delete from Pagamento where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                return validar;
-            }
-            statement.close();
+            String query = String.format("delete from Pagamento where %s = ?", campoOndeExcluir);
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorOndeExcluir);//Setando valor
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -149,18 +139,16 @@ public class PagamentoDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("delete from Pagamento where %s = %d", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                return validar;
-            }
-            statement.close();
+            String query = String.format("delete from Pagamento where %s = ?", campoOndeExcluir);
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorOndeExcluir);//Setando valor
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando
+            pstmt.close();
+            return validar;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            conexao.desconectar(conn);
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -170,24 +158,20 @@ public class PagamentoDAO {
     //    Select
     public List<Pagamento> buscar() {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//    Iniciando objeto Industria e lista de objetos Industrias
-        Pagamento pagamento = new Pagamento();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco
+//    Iniciando a lista de objetos Industrias
         List<Pagamento> pagamentos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from pagamento";
-            ResultSet rset = stmt.executeQuery(query);
+            String query = "select * from pagamento";//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    pagamento.setId(rset.getInt(1));
-                    pagamento.setStatus(rset.getString(2));
-                    pagamento.setDt_criacao(rset.getString(3));
-                    pagamento.setDt_validade(rset.getString(4));
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
                     pagamentos.add(pagamento);
-                    pagamento = new Pagamento();
                 }
             }
             stmt.close();
@@ -195,32 +179,28 @@ public class PagamentoDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return pagamentos;
+            conexao.desconectar(conn);//Desconectando comando SQL
+            return pagamentos;//Retornando lista de pagamentos
         }
     }
 
 
     public List<Pagamento> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//    Iniciando objeto Industria e lista de objetos Industrias
-        Pagamento pagamento = new Pagamento();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco
+//    Iniciando a lista de objetos Industrias
         List<Pagamento> pagamentos = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from pagamento order by " + campoOrdenar;
-            ResultSet rset = stmt.executeQuery(query);
+            String query = "select * from pagamento order by " + campoOrdenar;//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    pagamento.setId(rset.getInt(1));
-                    pagamento.setStatus(rset.getString(2));
-                    pagamento.setDt_criacao(rset.getString(3));
-                    pagamento.setDt_validade(rset.getString(4));
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
                     pagamentos.add(pagamento);
-                    pagamento = new Pagamento();
                 }
             }
             stmt.close();
@@ -228,73 +208,65 @@ public class PagamentoDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return pagamentos;
+            conexao.desconectar(conn);//Desconectando comando SQL
+            return pagamentos;//Retornando lista de pagamentos
         }
     }
 
     public List<Pagamento> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//    Iniciando objeto Industria e lista de objetos Industrias
-        Pagamento pagamento = new Pagamento();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco
+//    Iniciando a lista de objetos Industrias
         List<Pagamento> pagamentos = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from industria where %s = %d", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            String query = String.format("select * from industria where %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);//Setando valor
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    pagamento.setId(rset.getInt(1));
-                    pagamento.setStatus(rset.getString(2));
-                    pagamento.setDt_criacao(rset.getString(3));
-                    pagamento.setDt_validade(rset.getString(4));
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
                     pagamentos.add(pagamento);
-                    pagamento = new Pagamento();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return pagamentos;
+            conexao.desconectar(conn);//Desconectando comando SQL
+            return pagamentos;//Retornando lista de pagamentos
         }
     }
 
 
     public List<Pagamento> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco
 //    Iniciando objeto Industria e lista de objetos Industrias
-        Pagamento pagamento = new Pagamento();
         List<Pagamento> pagamentos = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from industria where %s = %s", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            String query = String.format("select * from industria where %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorPesquisar);//Setando valor
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    pagamento.setId(rset.getInt(1));
-                    pagamento.setStatus(rset.getString(2));
-                    pagamento.setDt_criacao(rset.getString(3));
-                    pagamento.setDt_validade(rset.getString(4));
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
                     pagamentos.add(pagamento);
-                    pagamento = new Pagamento();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return pagamentos;
+            conexao.desconectar(conn);//Desconectando comando SQL
+            return pagamentos;//Retornando lista de pagamentos
         }
     }
 }

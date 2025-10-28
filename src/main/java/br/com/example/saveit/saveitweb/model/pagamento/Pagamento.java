@@ -7,15 +7,13 @@ public class Pagamento {
     private String dt_criacao;
     private String dt_validade;
 
-    public Pagamento(String status, String dt_criacao, String dt_validade) {
+    public Pagamento(int id, String status, String dt_criacao, String dt_validade) {
+        this.id = id;
         this.status = status;
         this.dt_criacao = dt_criacao;
         this.dt_validade = dt_validade;
     }
 
-    public Pagamento() {
-
-    }
 
     //    Getters
     public int getId() {

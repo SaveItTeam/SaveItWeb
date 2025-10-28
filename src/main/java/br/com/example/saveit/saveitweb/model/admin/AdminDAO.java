@@ -43,7 +43,7 @@ public class AdminDAO {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();//Abrindo conexão com o banco
 
-        String sql = "update Admin set nome_cliente = ? where id = ?";//COmando SQL
+        String sql = "update Admin set nome_cliente = ? where id = ?";//Comando SQL
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);

@@ -172,8 +172,7 @@ public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
 public List<Industria> buscar() {
     Conexao conexao = new Conexao();
     Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//    Iniciando objeto Industria e lista de objetos Industrias
-    Industria industria = new Industria();
+//        Iniciando a lista de objetos Industria
     List<Industria> industrias = new ArrayList<>();
     try {
 //            Iniciando objeto Statment
@@ -182,15 +181,10 @@ public List<Industria> buscar() {
         ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
         if (rset != null) {
-//            Inserção de dados
+//                Inserção de dados
             while (rset.next()) {
-                industria.setId(rset.getInt(1));
-                industria.setVende(rset.getString(2));
-                industria.setId_plano(rset.getInt(3));
-                industria.setId_pagamento(rset.getInt(4));
-                industria.setId_cliente(rset.getInt(5));
+                Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
                 industrias.add(industria);
-                industria = new Industria();
             }
         }
         stmt.close();
@@ -206,25 +200,19 @@ public List<Industria> buscar() {
     public List<Industria> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Industria e lista de objetos Industrias
-        Industria industria = new Industria();
+//        Iniciando a lista de objetos Industria
         List<Industria> industrias = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from industria order by " + campoOrdenar;//COmando SQL
+            String query = "select * from industria order by " + campoOrdenar;//Comando SQL
             ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-//                    Inserssão de dados
-                    industria.setId(rset.getInt(1));
-                    industria.setVende(rset.getString(2));
-                    industria.setId_plano(rset.getInt(3));
-                    industria.setId_pagamento(rset.getInt(4));
-                    industria.setId_cliente(rset.getInt(5));
+                    Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
                     industrias.add(industria);
-                    industria = new Industria();
                 }
             }
             stmt.close();
@@ -240,27 +228,21 @@ public List<Industria> buscar() {
     public List<Industria> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Industria e lista de objetos Industrias
-        Industria industria = new Industria();
+//        Iniciando a lista de objetos Industria
         List<Industria> industrias = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from industria where %s = %d", campoOndePesquisar, valorPesquisar);//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+            String query = String.format("SELECT * FROM industria WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-//                    Inserssão de dados
-                    industria.setId(rset.getInt(1));
-                    industria.setVende(rset.getString(2));
-                    industria.setId_plano(rset.getInt(3));
-                    industria.setId_pagamento(rset.getInt(4));
-                    industria.setId_cliente(rset.getInt(5));
+                    Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
                     industrias.add(industria);
-                    industria = new Industria();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -273,27 +255,21 @@ public List<Industria> buscar() {
     public List<Industria> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Industria e lista de objetos Industrias
-        Industria industria = new Industria();
+//        Iniciando a lista de objetos Industria
         List<Industria> industrias = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM industria WHERE %s = %d", campoOndePesquisar, valorPesquisar);//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+            String query = String.format("SELECT * FROM industria WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    industria.setId(rset.getInt(1));
-                    industria.setVende(rset.getString(2));
-                    industria.setId_plano(rset.getInt(3));
-                    industria.setId_pagamento(rset.getInt(4));
-                    industria.setId_cliente(rset.getInt(5));
+                    Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
                     industrias.add(industria);
-                    industria = new Industria();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {

@@ -8,8 +8,6 @@ import br.com.example.saveit.saveitweb.model.industria.*;
 import br.com.example.saveit.saveitweb.model.pagamento.*;
 import br.com.example.saveit.saveitweb.model.plano.*;
 
-import java.io.IOException;
-
 public class Main {
     public static void main(String[] args) {
         Conexao conexao = new Conexao();
@@ -27,9 +25,9 @@ public class Main {
             EnderecoDAO enderecoDAO = new EnderecoDAO();
 
 //            System.out.println(funcionarioDAO.buscar("email", "mariana@empresa1.com"));
-            String id = funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(1);
+            String id = funcionarioDAO.logarFuncionarioAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(1);
             System.out.println(id);
-            System.out.println(funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));
+            System.out.println(funcionarioDAO.logarFuncionarioAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));
 
             System.out.println(
                     empresaDAO.buscar("id", id)

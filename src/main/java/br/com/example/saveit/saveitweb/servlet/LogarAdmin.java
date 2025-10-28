@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/logarAdmin")
+@WebServlet("/logarFuncionarioAdmin")
 public class LogarAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -16,7 +16,7 @@ public class LogarAdmin extends HttpServlet {
         String emailOUcpf = request.getParameter("email");
         String senha = request.getParameter("senha");
 
-        Object admin = funcionarioDAO.logarAdmin(emailOUcpf, senha);
+        Object admin = funcionarioDAO.logarFuncionarioAdmin(emailOUcpf, senha);
 
         if (admin != null) {
             try {

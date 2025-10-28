@@ -42,9 +42,6 @@ public class Funcionario {
         this.is_admin = is_admin;
     }
 
-    public Funcionario() {
-
-    }
 
 
 //    Getters e Setters

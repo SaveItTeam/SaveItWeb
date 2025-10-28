@@ -10,7 +10,7 @@ public class Imagem_FuncionarioDAO {
     //    Insert
     public boolean inserir(Imagem_Funcionario imagem_Funcionario) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
             PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente(url, id_funcionario) Values(?,?)");//Comando SQL
 //        Setando o valor dos parâmetros
@@ -19,9 +19,9 @@ public class Imagem_FuncionarioDAO {
             boolean validar = pstmt.executeUpdate() > 0;//Executando o comando sql
 //            Validação
             if (validar) {
-                pstmt.close();
                 return validar;//True
             }
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -34,15 +34,17 @@ public class Imagem_FuncionarioDAO {
 //    Update
 
     public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Imagem_Funcionario set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("Update Imagem_Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//True
             }
         } catch (SQLException sqle) {
@@ -55,15 +57,17 @@ public class Imagem_FuncionarioDAO {
 
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Imagem_Funcionario set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("Update Imagem_Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//True
             }
         } catch (SQLException sqle) {
@@ -76,15 +80,17 @@ public class Imagem_FuncionarioDAO {
 
 
     public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Imagem_Funcionario set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("Update Imagem_Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//True
             }
         } catch (SQLException sqle) {
@@ -97,15 +103,17 @@ public class Imagem_FuncionarioDAO {
 
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Imagem_Funcionario set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("Update Imagem_Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//True
             }
         } catch (SQLException sqle) {
@@ -120,15 +128,16 @@ public class Imagem_FuncionarioDAO {
 //    Delete
 
     public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("delete from Imagem_Funcionario where %s = '%s'", campoOndeExcluir, valorOndeExcluir);//Comando SQL
-            statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("delete from Imagem_Funcionario where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorOndeExcluir);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//True
             }
         } catch (SQLException sqle) {
@@ -141,15 +150,16 @@ public class Imagem_FuncionarioDAO {
 
 
     public boolean excluir(String campoOndeExcluir, int valorOndeExcluir) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("delete from Imagem_Funcionario where %s = %d", campoOndeExcluir, valorOndeExcluir);//Comando SQL
-            statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("delete from Imagem_Funcionario where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorOndeExcluir);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//True
             }
         } catch (SQLException sqle) {
@@ -164,7 +174,7 @@ public class Imagem_FuncionarioDAO {
     //    Select
     public List<Imagem_Funcionario> buscar() {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de objetos Imagem_Funcionario
         List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
         try {
@@ -193,7 +203,7 @@ public class Imagem_FuncionarioDAO {
 
     public List<Imagem_Funcionario> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de objetos Imagem_Funcionario
         List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
         try {
@@ -222,14 +232,14 @@ public class Imagem_FuncionarioDAO {
 
     public List<Imagem_Funcionario> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de objetos Imagem_Funcionario
         List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM Imagem_Funcionario WHERE %s = '%s'", campoOndePesquisar, valorPesquisar);//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+            String query = String.format("SELECT * FROM Imagem_Funcionario WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
 
             if (rset != null) {
 //                Inserção de dados
@@ -238,7 +248,7 @@ public class Imagem_FuncionarioDAO {
                     imagens_funcionarios.add(imagem_funcionario);
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
@@ -251,14 +261,14 @@ public class Imagem_FuncionarioDAO {
 
     public List<Imagem_Funcionario> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de objetos Imagem_Funcionario
         List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM Imagem_Funcionario WHERE %s = %d", campoOndePesquisar, valorPesquisar);//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+            String query = String.format("SELECT * FROM Imagem_Funcionario WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
 
             if (rset != null) {
 //                Inserção de dados
@@ -267,7 +277,7 @@ public class Imagem_FuncionarioDAO {
                     imagens_funcionarios.add(imagem_funcionario);
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;

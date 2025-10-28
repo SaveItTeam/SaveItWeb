@@ -10,12 +10,13 @@ public class FuncionarioDAO {
 //    Insert
     public boolean inserirFuncionario(Funcionario funcionario) {
         Conexao conexao = new Conexao();
-        Connection conn = Conexao.conectar();
-
-        String sql = "Insert into funcionario (nome, cpf, rg, genero, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal, telefone_trabalho, experiencia, id_empresa, id_industria, is_admin) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Connection conn = Conexao.conectar();//Abrindo conexão com o banco de dados
+//        Comando SQL
+        String query = "Insert into funcionario (nome, cpf, rg, genero, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal, telefone_trabalho, experiencia, id_empresa, id_industria, is_admin) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
             stmt.setString(1, funcionario.getNome());
             stmt.setString(2, funcionario.getCpf());
             stmt.setString(3, funcionario.getRg());
@@ -32,104 +33,116 @@ public class FuncionarioDAO {
             stmt.setInt(14, funcionario.getId_industria());
             stmt.setBoolean(15, funcionario.getIs_admin());
 
-            int validar = stmt.executeUpdate();
+            boolean validar = stmt.executeUpdate() > 0;//Executando comando SQL
 
             stmt.close();
 
-            return validar > 0;
+            return validar;
 
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         } finally {
-            conexao.desconectar(conn);
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
     }
 
 
 
 //    Updates
-    public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
+    public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, String valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
+            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement statement = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            statement.setString(1, valorAlterar);
+            statement.setString(2, valorOndeAlterar);
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-            return false;
+            conexao.desconectar(conn);// Desconectando do banco de dados
         }
+        return false;
     }
 
 
-    public boolean alterar(String valorAlterar, int campoAlterar, String ondeAlterar, String valorOndeAlterar) {
+    public boolean alterar(String campoAlterar, int valorAlterar,  String ondeAlterar, String valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
+            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement statement = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            statement.setInt(1, valorAlterar);
+            statement.setString(2, valorOndeAlterar);
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-            return false;
+            conexao.desconectar(conn);// Desconectando do banco de dados
         }
+        return false;
     }
 
 
-    public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, int valorOndeAlterar) {
+    public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
+            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement statement = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            statement.setString(1, valorAlterar);
+            statement.setInt(2, valorOndeAlterar);
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-            return false;
+            conexao.desconectar(conn);// Desconectando do banco de dados
         }
+        return false;
     }
 
 
-    public boolean alterar(String valorAlterar, int campoAlterar, String ondeAlterar, int valorOndeAlterar) {
+    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
+            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement statement = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            statement.setInt(1, valorAlterar);
+            statement.setInt(2, valorOndeAlterar);
             boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-            return false;
+            conexao.desconectar(conn);// Desconectando do banco de dados
         }
+        return false;
     }
 
 
@@ -138,20 +151,22 @@ public class FuncionarioDAO {
 //    Deletes
     public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("delete from Funcionario where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
+            String query = String.format("delete from Funcionario where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement statement = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            statement.setString(1, valorOndeExcluir);
+            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Desconectando do banco
+            conexao.desconectar(conn);// Desconectando do banco de dados
         }
         return false;
     }
@@ -159,20 +174,22 @@ public class FuncionarioDAO {
 
     public boolean excluir(String campoOndeExcluir, int valorOndeExcluir) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("delete from Funcionario where %s = %d", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
+            String query = String.format("delete from Funcionario where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement statement = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            statement.setInt(1, valorOndeExcluir);
+            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+//            Validação
             if (validar) {
-                System.out.println("Atualizado com sucesso!");
                 statement.close();
-                return validar;
+                return validar;//True
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Desconectando do banco
+            conexao.desconectar(conn);// Desconectando do banco de dados
         }
         return false;
     }
@@ -184,16 +201,17 @@ public class FuncionarioDAO {
 //    Selects
     public List<Funcionario> buscar() {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
+//        Iniciando a lista de objetos Funcionário
         List<Funcionario> funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Funcionario";
-            ResultSet rset = stmt.executeQuery(query);
+            String query = "select * from Funcionario";//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Setando valores
                 while (rset.next()) {
                     Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
                             rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
@@ -203,10 +221,9 @@ public class FuncionarioDAO {
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            return null;
         } finally {
-            conexao.desconectar(conn);
-            return funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionários
         }
     }
 
@@ -219,10 +236,11 @@ public class FuncionarioDAO {
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Funcionario order by " + campoOrdenar;
-            ResultSet rset = stmt.executeQuery(query);
+            String query = "select * from Funcionario order by " + campoOrdenar;//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Setando valores
                 while (rset.next()) {
                     Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
                             rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
@@ -232,10 +250,9 @@ public class FuncionarioDAO {
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            return null;
         } finally {
-            conexao.desconectar(conn);
-            return funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionários
         }
     }
 
@@ -243,28 +260,28 @@ public class FuncionarioDAO {
     public List<Funcionario> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
+//        Iniciando a lista de objetos Funcionario
         List<Funcionario> funcionarios = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from Funcionario where %s = '%s'", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            String query = String.format("select * from Funcionario where %s = ?", campoOndePesquisar, valorPesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Setando valores
                 while (rset.next()) {
                     Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
                             rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
                     funcionarios.add(funcionario);
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            return null;
         } finally {
-            conexao.desconectar(conn);
-            return funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionários
         }
     }
 
@@ -275,34 +292,34 @@ public class FuncionarioDAO {
 //        Iniciando objeto Endereço e lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from Funcionario where %s = %d", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            String query = String.format("select * from Funcionario where %s = ?", campoOndePesquisar, valorPesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Setando valores
                 while (rset.next()) {
                     Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
                             rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
                     funcionarios.add(funcionario);
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            return null;
         } finally {
-            conexao.desconectar(conn);
-            return funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionários
         }
     }
 
 
 //    Logar Funcionário
-    public List<String> logarAdmin(String email, String senha) {
+    public List<String> logarFuncionarioAdmin(String email, String senha) {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();
-        ResultSet rs = null;
+        ResultSet rs;
         List<String> funcionarios = new ArrayList<>();
 
 

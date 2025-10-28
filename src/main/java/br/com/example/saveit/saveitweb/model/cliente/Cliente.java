@@ -13,7 +13,8 @@ public class Cliente {
 
 
     //    Construtor
-    public Cliente(String nome, String email, String senha, String tipo, String tipo_venda, int id_endereco, String cnpj) {
+    public Cliente(int id, String nome, String email, String senha, String tipo, String tipo_venda, int id_endereco, String cnpj) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
