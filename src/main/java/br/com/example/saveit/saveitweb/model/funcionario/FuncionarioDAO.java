@@ -341,8 +341,7 @@ public class FuncionarioDAO {
         List<String> funcionarios = new ArrayList<>();
 
         String sql = """
-        
-                with info_func as (
+            with info_func as (
             select
                 f.id as id_func
                 , f.nome as nome_func
@@ -382,17 +381,24 @@ public class FuncionarioDAO {
                     when id_industria is not null then 'Industria'
                 end as tipo
                 , coalesce(id_empresa, id_industria) AS id_estabelecimento
+                , case
+                    when id_empresa is not null then e.procura
+                    when id_industria is not null then i.vende
+                end as atividade_comercial
                 , count(f.id) as cont_func
             from funcionario f
-            group by 1, 2
+            left join empresa e on f.id_empresa = e.id
+            left join industria i on f.id_industria = i.id
+            group by 1, 2, 3
         )
         select
             f.*
             , e.*
             , c.cont_func
+            , c.atividade_comercial
         from info_func f
         left join info_estab e on f.telefone_trabalho = e.num_telefone
-        left join cont_func c on c.tipo = f.tipo and c.id_estabelecimento = f.id_estabelecimento
+        left join cont_func c on c.tipo = f.tipo and c.id_estabelecimento = f.id_estabelecimento;
         """;
 
         try {
@@ -419,6 +425,7 @@ public class FuncionarioDAO {
                     funcionarios.add(rs.getString("num_telefone"));
                     funcionarios.add(rs.getString("endereco"));
                     funcionarios.add(rs.getString("cont_func"));
+                    funcionarios.add(rs.getString("atividade_comercial"));
                     return funcionarios;
                 } else {
                     return null;

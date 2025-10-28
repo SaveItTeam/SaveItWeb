@@ -40,6 +40,7 @@ public class LogarAdmin extends HttpServlet {
         String tipo_servico = a.get(10);
         String endereco = a.get(12);
         String count = a.get(13);
+        String atividade_comercial = a.get(14);
 
 
         Object admin = funcionarioDAO.buscar(emailOUcpf, senha);
@@ -60,6 +61,8 @@ public class LogarAdmin extends HttpServlet {
                 request.setAttribute("tipo_servico", tipo_servico);
                 request.setAttribute("endereco", endereco);
                 request.setAttribute("count", count);
+                request.setAttribute("atividade_comercial", atividade_comercial);
+
                 request.getRequestDispatcher("/WEB-INF/view/admin/inicio.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
