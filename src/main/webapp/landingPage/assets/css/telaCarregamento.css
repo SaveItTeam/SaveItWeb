@@ -20,6 +20,7 @@ html {
 img {
     width: 20rem;
     aspect-ratio: 1/1;
+    animation: opacidade 1s linear infinite;
 }
 
 @keyframes opacidade {
@@ -28,6 +29,6 @@ img {
     }
 
     50% {
-        
+        opacity: 0.3;
     }
 }
