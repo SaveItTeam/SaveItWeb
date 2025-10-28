@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Inicio - Essentia</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/global.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/inicio.css" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon_essentia.png" type="image/x-icon">
     <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
             rel="stylesheet"

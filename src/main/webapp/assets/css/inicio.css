@@ -34,13 +34,17 @@ html {
 main {
   min-height: 100vh;
   height: auto;
-    background: var(--cor-fundo);
 }
+
 #inicio {
   width: calc(100% - 8rem);
   margin-left: 8rem;
   display: flex;
   gap: 6rem;
+}
+
+#cards-infos-gerais {
+  padding-top: 2rem;
 }
 
 #cards-infos-gerais {
