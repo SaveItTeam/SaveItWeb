@@ -16,7 +16,6 @@ body {
 }
 
 @media(min-width: 801px) {
-
   #lateral,
   #abrir-lateral {
     display: none;
