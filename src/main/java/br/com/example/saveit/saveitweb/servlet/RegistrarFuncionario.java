@@ -14,20 +14,20 @@ public class RegistrarFuncionario extends HttpServlet {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         Funcionario funcionario = new Funcionario();
 
-        funcionario.nome = request.getParameter("nome");
-        funcionario.cpf = request.getParameter("cpf");
-        funcionario.rg = request.getParameter("rg");
-        funcionario.sexo = request.getParameter("sexo").charAt(0);
-        funcionario.dt_nascimento = java.sql.Date.valueOf(request.getParameter("dt_nascimento"));
-        funcionario.email = request.getParameter("email");
-        funcionario.senha = request.getParameter("senha");
-        funcionario.cargo = request.getParameter("cargo");
-        funcionario.dt_contratacao = java.sql.Date.valueOf(LocalDate.now());
-        funcionario.telefone = request.getParameter("telefone");
-        funcionario.experiencia = request.getParameter("experiencia");
-        funcionario.id_empresa = Integer.parseInt(request.getParameter("id_empresa"));
-        funcionario.id_industria = Integer.parseInt(request.getParameter("id_industria"));
-        funcionario.id_admin = Integer.parseInt(request.getParameter("id_admin"));
+        funcionario.setNome(request.getParameter("nome"));
+        funcionario.setCpf(request.getParameter("cpf"));
+        funcionario.setRg(request.getParameter("rg"));
+        funcionario.setGenero(request.getParameter("genero").charAt(0));
+        funcionario.setDt_nascimento(java.sql.Date.valueOf(request.getParameter("dt_nascimento")));
+        funcionario.setEmail(request.getParameter("email"));
+        funcionario.setSenha(request.getParameter("senha"));
+        funcionario.setCargo(request.getParameter("cargo"));
+        funcionario.setDt_contratacao(java.sql.Date.valueOf(LocalDate.now()));
+        funcionario.setTelefone_pessoal(request.getParameter("telefone_pessoal"));
+        funcionario.setExperiencia(request.getParameter("experiencia"));
+        funcionario.setId_empresa(Integer.parseInt(request.getParameter("id_empresa")));
+        funcionario.setId_industria(Integer.parseInt(request.getParameter("id_industria")));
+        funcionario.setIs_admin(Boolean.parseBoolean(request.getParameter("is_admin")));
 
         if (funcionarioDAO.inserirFuncionario(funcionario)){
             System.out.println("Funcionário registrado com sucesso!");

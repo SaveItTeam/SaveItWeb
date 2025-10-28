@@ -1,0 +1,108 @@
+package br.com.example.saveit.saveitweb.model.cliente;
+
+public class Cliente {
+    //    Atributos
+    private int id;
+    private String nome;
+    private String email;
+    private String senha;
+    private String tipo;
+    private String tipo_venda;
+    private int id_endereco;
+    private String cnpj;
+
+
+    //    Construtor
+    public Cliente(String nome, String email, String senha, String tipo, String tipo_venda, int id_endereco, String cnpj) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.tipo = tipo;
+        this.tipo_venda = tipo_venda;
+        this.id_endereco = id_endereco;
+        this.cnpj = cnpj;
+    }
+
+    public Cliente() {}
+
+    //    Getters
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getTipo_venda() {
+        return tipo_venda;
+    }
+
+    public int getId_endereco() {
+        return id_endereco;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    //    Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setTipo_venda(String tipo_venda) {
+        this.tipo_venda = tipo_venda;
+    }
+
+    public void setId_endereco(int id_endereco) {
+        this.id_endereco = id_endereco;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+
+    //    toString
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                "\nnome='" + nome +
+                "\nemail='" + email +
+                "\nsenha='" + senha +
+                "\ntipo='" + tipo +
+                "\ntipo_venda='" + tipo_venda +
+                "\nid_endereco=" + id_endereco +
+                "\ncnpj='" + cnpj;
+    }
+}

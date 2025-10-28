@@ -1,6 +1,14 @@
 // funcoes para mudar o SVG do header
 // ao passar o mouse por cima e voltar ao normal ao tirar o mouse
 
+window.addEventListener("load", () => {
+  document.documentElement.style.overflow = "hidden hidden";
+  setTimeout(() => {
+    document.querySelector("iframe").remove();
+    document.documentElement.style.overflow = "hidden scroll"
+  }, 2000)
+})
+
 let html = window.location.pathname; // pegar o caminho do arquivo para verificacao
 html = html.substring(html.lastIndexOf("/") + 1); // selecionar com substring para apenas pegar o nome
 
@@ -47,10 +55,42 @@ svg.addEventListener("mouseout", () => {
 
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
+  const inicio = document.getElementById("inicio");
+  const essentia = document.getElementById("Essentia");
+  const saveit = document.getElementById("SaveIt");
+  const contato = document.getElementById("Contato");
 
   if (window.scrollY > 190) {
     header.classList.add("scrolled");
+    inicio.classList.add("mudarCor");
+    essentia.classList.add("mudarCor");
+    saveit.classList.add("mudarCor");
+    contato.classList.add("mudarCor");
   } else {
     header.classList.remove("scrolled");
+    inicio.classList.remove("mudarCor");
+    essentia.classList.remove("mudarCor");
+    saveit.classList.remove("mudarCor");
+    contato.classList.remove("mudarCor");
   }
 })
+// funcoes para  lateral
+const closel = document.querySelector("#close");
+const lateral = document.querySelector("#lateral");
+const navLateral = document.querySelector("#nav-lateral");
+const abrirLateral = document.querySelector("#abrir-lateral");
+
+abrirLateral.addEventListener("click", () => {
+  abrirLateral.classList.toggle("invisivel");
+  lateral.classList.toggle("invisivel");
+  lateral.classList.toggle("lateral");
+  closel.classList.toggle("invisivel");
+  navLateral.classList.toggle("invisivel");
+});
+closel.addEventListener("click", () => {
+  abrirLateral.classList.toggle("invisivel");
+  lateral.classList.toggle("invisivel");
+  lateral.classList.toggle("lateral");
+  closel.classList.toggle("invisivel");
+  navLateral.classList.toggle("invisivel");
+});

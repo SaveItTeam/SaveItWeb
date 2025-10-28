@@ -1,20 +1,43 @@
 package br.com.example.saveit.saveitweb.model.admin;
 
 public class Admin {
+//    Atributos
     public int id;
+    public String nome_admin;
+    public String email;
     public String senha;
-    public String nome_cliente;
-    public String qual_empresa;
 
-    public Admin(int id, String senha, String nome_cliente, String qual_empresa) {
+//    Construtor
+    public Admin(int id, String nome_admin, String emial, String senha) {
         this.id = id;
+        this.nome_admin = nome_admin;
+        this.email = emial;
         this.senha = senha;
-        this.nome_cliente = nome_cliente;
-        this.qual_empresa = qual_empresa;
     }
 
+//    Getters e Setters
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome_admin() {
+        return nome_admin;
+    }
+
+    public void setNome_admin(String nome_admin) {
+        this.nome_admin = nome_admin;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -25,29 +48,15 @@ public class Admin {
         this.senha = senha;
     }
 
-    public String getNome_cliente() {
-        return nome_cliente;
-    }
-
-    public void setNome_cliente(String nome_cliente) {
-        this.nome_cliente = nome_cliente;
-    }
-
-    public String getQual_empresa() {
-        return qual_empresa;
-    }
-
-    public void setQual_empresa(String qual_empresa) {
-        this.qual_empresa = qual_empresa;
-    }
-
-    @Override
+//    toString
     public String toString() {
         return String.format("""
+                \n
                 id: %d
-                senha: %s
-                nome cliente: %s
-                qual empresa: %s"""
-                , id, senha, nome_cliente, qual_empresa);
+                Nome Admin: %s
+                Email: %s
+                Senha: %s
+                \n"""
+                , id, nome_admin, email, senha);
     }
 }
