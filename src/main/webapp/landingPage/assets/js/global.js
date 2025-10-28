@@ -94,4 +94,3 @@ closel.addEventListener("click", () => {
   closel.classList.toggle("invisivel");
   navLateral.classList.toggle("invisivel");
 });
-});
