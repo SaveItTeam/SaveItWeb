@@ -69,3 +69,23 @@ window.addEventListener("scroll", () => {
     contato.classList.remove("mudarCor");
   }
 })
+// funcoes para  lateral
+const closel = document.querySelector("#close");
+const lateral = document.querySelector("#lateral");
+const navLateral = document.querySelector("#nav-lateral");
+const abrirLateral = document.querySelector("#abrir-lateral");
+
+abrirLateral.addEventListener("click", () => {
+  abrirLateral.classList.toggle("invisivel");
+  lateral.classList.toggle("invisivel");
+  lateral.classList.toggle("lateral");
+  closel.classList.toggle("invisivel");
+  navLateral.classList.toggle("invisivel");
+});
+closel.addEventListener("click", () => {
+  abrirLateral.classList.toggle("invisivel");
+  lateral.classList.toggle("invisivel");
+  lateral.classList.toggle("lateral");
+  closel.classList.toggle("invisivel");
+  navLateral.classList.toggle("invisivel");
+});

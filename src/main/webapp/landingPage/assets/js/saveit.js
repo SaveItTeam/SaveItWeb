@@ -26,13 +26,13 @@ estoAntes.addEventListener("click", () => {
     viAntes.classList.toggle("outrosEstoClicado");
     viAntes.classList.toggle("viEstoClicado");
     relAntes.classList.toggle('outrosEstoClicado');
-    if (tamanhoTela > 820) {
+    if (tamanhoTela > 800) {
         tamnhoSection.style.height = "100vh";
     }
     else if (tamanhoTela == 412) {
         tamnhoSection.style.height = "80vh";
     }
-    else if (tamanhoTela == 820) {
+    else if (tamanhoTela == 800) {
         tamnhoSection.style.height = "120vh";
     }
 
@@ -56,11 +56,11 @@ estoDepois.addEventListener("click", () => {
     viAntes.classList.toggle("outrosEstoClicado");
     viAntes.classList.toggle("viEstoClicado");
     relAntes.classList.toggle('outrosEstoClicado');
-    if (tamanhoTela != 820) {
+    if (tamanhoTela != 800) {
         tamnhoSection.style.height = "60vh";
     }
     else {
-        tamnhoSection.style.height = "90vh";
+        tamnhoSection.style.height = "80vh";
     }
 })
 viAntes.addEventListener("click", () => {
@@ -82,13 +82,13 @@ viAntes.addEventListener("click", () => {
     estoAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("relViClicado");
-    if (tamanhoTela > 820) {
+    if (tamanhoTela > 800) {
         tamnhoSection.style.height = "100vh";
     }
     else if (tamanhoTela == 412) {
         tamnhoSection.style.height = "80vh";
     }
-    else if (tamanhoTela == 820) {
+    else if (tamanhoTela == 800) {
         tamnhoSection.style.height = "120vh";
     }
 
@@ -113,11 +113,11 @@ viDepois.addEventListener("click", () => {
     estoAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("outrosEstoClicado");
     relAntes.classList.toggle("relViClicado");
-    if (tamanhoTela != 820) {
+    if (tamanhoTela != 800) {
         tamnhoSection.style.height = "60vh";
     }
     else {
-        tamnhoSection.style.height = "90vh";
+        tamnhoSection.style.height = "80vh";
     }
 
 })
@@ -140,13 +140,13 @@ relAntes.addEventListener("click", () => {
     relDepois.classList.toggle("invisivel");
     estoAntes.classList.toggle("outrosEstoClicado");
     viAntes.classList.toggle("outrosEstoClicado");
-    if (tamanhoTela > 820) {
+    if (tamanhoTela > 800) {
         tamnhoSection.style.height = "100vh";
     }
     else if (tamanhoTela == 412) {
         tamnhoSection.style.height = "80vh";
     }
-    else if (tamanhoTela == 820) {
+    else if (tamanhoTela == 800) {
         tamnhoSection.style.height = "120vh";
     }
 })
@@ -170,10 +170,12 @@ relDepois.addEventListener("click", () => {
     relDepois.classList.toggle("invisivel");
     estoAntes.classList.toggle("outrosEstoClicado");
     viAntes.classList.toggle("outrosEstoClicado");
-    if (tamanhoTela != 820) {
+    if (tamanhoTela != 800) {
         tamnhoSection.style.height = "60vh";
     }
     else {
-        tamnhoSection.style.height = "90vh";
+        tamnhoSection.style.height = "80vh";
     }
 })
+
+document.documentElement.style.overflowX = "hidden"; 
