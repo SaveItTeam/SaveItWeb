@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
-
 html {
   font-size: 62.5%;
   overflow-x: hidden;
@@ -117,15 +116,19 @@ nav {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    li {
+    form {
+      border: none;
       margin-left: 1.9rem;
-      a {
-        text-decoration: none;
-        color: #f0ece1;
-
+      display: flex;
+      button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s ease;
         i {
           font-size: 3.5rem;
           transition: 0.3s ease;
+          color: #f0ece1;
 
           &:hover {
             color: #6b8e4e;
@@ -137,17 +140,15 @@ nav {
           width: 3.5rem;
           height: 3.5rem;
           transition: 0.3 ease;
+          color: #f0ece1;
+          transition: .3s ease;
           &:hover {
             color: #6b8e4e;
             transition: 0.3s ease;
           }
         }
-
-        svg:hover {
-          color: #6b8e4e;
-        }
       }
-   }
+    }
   }
 }
 
@@ -155,6 +156,7 @@ nav p {
   font-size: 20px;
   font-weight: 450;
   color: #f0ece1;
+  align-self: center;
   display: none;
 }
 
@@ -163,8 +165,9 @@ nav p {
   margin-bottom: 1.8rem;
   transition: all 0.3s ease;
 
-  a {
-    text-decoration: none;
+  button {
+    background: none;
+    border: none;
     i {
       font-size: 3.5rem;
       color: #f0ece1;
@@ -188,7 +191,8 @@ nav.open {
   }
 
   #settings {
-    a {
+    button {
+        cursor: pointer;
       i {
         transition: 0.3s ease;
 
@@ -200,44 +204,10 @@ nav.open {
   }
 
   p {
-    display: inline-block;
     margin-left: 3rem;
   }
 }
 
-
-nav.open {
-  width: 25rem;
-  transition: width 0.3s ease;
-
-  div {
-    transition: 0.3s ease;
-    width: auto;
-  }
-
-  #essentia,
-  #settings {
-    transform: translateX(2rem);
-    transition: 0.3s ease;
-  }
-
-  #settings {
-    a {
-      i {
-        transition: 0.3s ease;
-
-        &:hover {
-          color: #6b8e4e;
-        }
-      }
-    }
-  }
-
-  p {
-    display: inline-block;
-    margin-left: 3rem;
-  }
-}
 .administrador {
   display: flex;
   gap: 1rem;
@@ -266,7 +236,6 @@ nav.open {
     }
   }
 }
-
 
 #texto-principal {
   padding: 5rem 0 0 6rem;
