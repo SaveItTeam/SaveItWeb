@@ -47,7 +47,7 @@
           </button>
         </div>
         <div class="administrador">
-          <img src="imagem (4).jpeg" alt="" />
+          <img src="<%=request.getAttribute("img")%>" alt="" />
           <div>
             <p>Marcelo Grilo</p>
             <p>Admin</p>

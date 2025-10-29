@@ -59,7 +59,7 @@
                     <p class="sidenav-p">Indústria</p>
                 </form>
 
-                <form  class="acao-sidebar" id="pagamento">
+                <form  class="acao-sidebar" id="pagamento" action="pagamentoServlet" method="post">
                     <button type="submit"><i class="ri-bank-card-fill"></i> </button>
                     <p class="sidenav-p">Pagamento</p>
                 </form>

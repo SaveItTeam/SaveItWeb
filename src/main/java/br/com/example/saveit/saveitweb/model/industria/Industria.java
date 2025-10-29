@@ -20,6 +20,7 @@ public class Industria {
         this.id_cliente = id_cliente;
     }
 
+    public Industria() {}
 
     //    Getters
     public int getId() {

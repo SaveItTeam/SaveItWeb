@@ -14,6 +14,8 @@ public class Empresa {
         this.id_cliente = id_cliente;
     }
 
+    public Empresa() {}
+
 
     //    Getters
     public int getId() {

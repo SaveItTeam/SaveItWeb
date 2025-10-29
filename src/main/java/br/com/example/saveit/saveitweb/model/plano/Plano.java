@@ -14,6 +14,8 @@ public class Plano {
         this.id_pagamento = id_pagamento;
     }
 
+    public Plano() {}
+
 
     //    Getters
     public int getId() {

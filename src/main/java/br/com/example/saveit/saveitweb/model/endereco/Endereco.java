@@ -23,6 +23,7 @@ public class Endereco {
         this.cep_complemento = complemento;
     }
 
+    public Endereco() {}
 
     //    Getters
     public int getId() {

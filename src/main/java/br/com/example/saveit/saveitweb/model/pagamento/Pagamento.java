@@ -14,6 +14,7 @@ public class Pagamento {
         this.dt_validade = dt_validade;
     }
 
+    public Pagamento() {}
 
     //    Getters
     public int getId() {
