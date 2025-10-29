@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/logarAdmin")
-public class LogarAdmin extends HttpServlet {
+@WebServlet("/logarAdminServlet")
+public class LogarAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();

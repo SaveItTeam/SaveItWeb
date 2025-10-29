@@ -65,7 +65,7 @@
                 </form>
             </div>
 
-            <form id="settings">
+            <form id="settings" method="post" action="configuracoesServlet">
                 <button type="submit"><i class="ri-settings-3-fill"></i></button>
             </form>
         </ul>

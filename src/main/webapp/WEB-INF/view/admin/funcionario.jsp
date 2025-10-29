@@ -10,8 +10,7 @@
       <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon_essentia.png" type="image/x-icon">
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
   </head>
 
   <body>
