@@ -49,7 +49,7 @@
         <div class="administrador">
           <img src="<%=request.getAttribute("img")%>" alt="" />
           <div>
-            <p>Marcelo Grilo</p>
+            <p><%=session.getAttribute("nome")%></p>
             <p>Admin</p>
           </div>
         </div>

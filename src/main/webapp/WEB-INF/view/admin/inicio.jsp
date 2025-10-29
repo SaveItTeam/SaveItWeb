@@ -46,9 +46,9 @@
             </button>
         </div>
         <div class="administrador">
-            <img src="<%=request.getAttribute("img")%>" alt="" />
+            <img src="<%=session.getAttribute("img")%>" alt="" />
             <div>
-                <p><%=request.getAttribute("nome")%></p>
+                <p><%=session.getAttribute("nome")%></p>
                 <p>Admin</p>
             </div>
         </div>
@@ -61,8 +61,8 @@
             <div id="texto-principal">
                 <div>
                     <%
-                        char genero = (char) request.getAttribute("genero");
-                        String nome = (String) request.getAttribute("nome");
+                        char genero = (char) session.getAttribute("genero");
+                        String nome = (String) session.getAttribute("nome");
                         String saudacao = "Bem-Vindo(a)";
 
                         if (genero == 'F') {
@@ -84,11 +84,11 @@
             <div id="cards-infos-gerais">
                 <div>
                     <h3>Plano Atual</h3>
-                    <h2><%=request.getAttribute("plano")%></h2>
+                    <h2><%=session.getAttribute("plano")%></h2>
                 </div>
                 <div>
                     <h3>Total de funcionários</h3>
-                    <h2><%=request.getAttribute("count")%></h2>
+                    <h2><%=session.getAttribute("count")%></h2>
                 </div>
             </div>
 
@@ -108,28 +108,28 @@
 
         <div id="card-industria">
             <div>
-                <img src="<%=request.getAttribute("img")%>" alt="" />
+                <img src="<%=session.getAttribute("img")%>" alt="" />
                 <div>
-                    <h4><%=request.getAttribute("nome_empresa")%></h4>
-                    <p><%=request.getAttribute("telefone_trabalho")%></p>
+                    <h4><%=session.getAttribute("nome_empresa")%></h4>
+                    <p><%=session.getAttribute("telefone_trabalho")%></p>
                 </div>
             </div>
 
             <div>
                 <h4>CPF/CNPJ</h4>
-                <p><%=request.getAttribute("cnpj")%></p>
+                <p><%=session.getAttribute("cnpj")%></p>
             </div>
             <div>
                 <h4>Endereço</h4>
-                <p><%=request.getAttribute("endereco")%></p>
+                <p><%=session.getAttribute("endereco")%></p>
             </div>
             <div>
                 <h4>Tipo de operação</h4>
-                <p><%=request.getAttribute("tipo_servico")%></p>
+                <p><%=session.getAttribute("tipo_servico")%></p>
             </div>
             <div>
                 <h4>Atividade Comercial</h4>
-                <p><%=request.getAttribute("atividade_comercial")%></p>
+                <p><%=session.getAttribute("atividade_comercial")%></p>
             </div>
         </div>
     </section>
