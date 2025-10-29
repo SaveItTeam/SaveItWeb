@@ -62,7 +62,7 @@
                     <input type="text" id="inputNome" name="inputNome" value="Marcelo Grilo" disabled>
                     <label for="inputEmail">Email
                     </label>
-                    <input type="email" id="inputEmail" name="inputFile" disabled
+                    <input type="email" id="inputEmail" name="inputEmail" disabled
                         value="marcelo.grilo@germinare.org.br">
                     <label for="inputSenha">Senha
                     </label>

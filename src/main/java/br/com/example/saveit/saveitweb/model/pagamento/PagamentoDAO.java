@@ -269,14 +269,4 @@ public class PagamentoDAO {
             return pagamentos;//Retornando lista de pagamentos
         }
     }
-
-
-    public List<String> buscarDadosPlano(int id) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando a lista de dados
-        List<String> dadosPlano = new ArrayList<>();
-    }
-
-
 }
