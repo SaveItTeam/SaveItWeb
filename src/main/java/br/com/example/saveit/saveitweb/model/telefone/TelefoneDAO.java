@@ -10,23 +10,19 @@ public class TelefoneDAO {
     //    Insert
     public boolean inserir(Telefone telefone) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente(num_telefone, id_cliente) Values(?,?)");
+            PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente(num_telefone, id_cliente) Values(?,?)");//Comando SQL
 //        Setando o valor dos parâmetros
             pstmt.setString(1, telefone.getNum_telefone());
             pstmt.setInt(2, telefone.getId_cliente());
-            int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
-//            Validação
-            if (validar > 0) {
-                System.out.println("Inserido com sucesso!");
-                pstmt.close();
-                return true;
-            }
+            boolean validar = pstmt.executeUpdate() > 0;//Executando o comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Fechando a conexão com o banco
+            conexao.desconectar(conn);//Fechando a conexão com o banco de dados
         }
         return false;
     }
@@ -34,89 +30,81 @@ public class TelefoneDAO {
 
 //    Update
 
-    public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Statement statement;
+    public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, String valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Telefone set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("Update Telefone set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
 
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Telefone set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("Update Telefone set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
 
 
     public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Telefone set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("Update Telefone set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
 
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Telefone set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("Update Telefone set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate(query) > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -125,44 +113,38 @@ public class TelefoneDAO {
 //    Delete
 
     public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String excluir = String.format("delete from Telefone where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
-            statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("delete from Telefone where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorOndeExcluir);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
 
 
     public boolean excluir(String campoOndeExcluir, int valorOndeExcluir) {
-        Statement statement;
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String excluir = String.format("delete from Telefone where %s = %d", campoOndeExcluir, valorOndeExcluir);
-            statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            String query = String.format("delete from Telefone where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorOndeExcluir);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -171,23 +153,19 @@ public class TelefoneDAO {
     //    Select
     public List<Telefone> buscar() {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Telefone telefone = new Telefone();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+//        Iniciando a lista de objetos Telefone
         List<Telefone> telefones = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Endereco";
-            ResultSet rset = stmt.executeQuery(query);
-
+            String query = "select * from Endereco";//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    telefone.setId(rset.getInt(1));
-                    telefone.setNum_telefone(rset.getString(2));
-                    telefone.setId_cliente(rset.getInt(3));
+                    Telefone telefone = new Telefone(rset.getInt(1), rset.getString(2), rset.getInt(3));
                     telefones.add(telefone);
-                    telefone = new Telefone();
                 }
             }
             stmt.close();
@@ -195,31 +173,27 @@ public class TelefoneDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return telefones;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return telefones;//Retornando a lista de telefones
         }
     }
 
 
     public List<Telefone> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Telefone telefone = new Telefone();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+//        Iniciando a lista de objetos Telefone
         List<Telefone> telefones = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Endereco order by " + campoOrdenar;
-            ResultSet rset = stmt.executeQuery(query);
-
+            String query = "select * from Endereco order by " + campoOrdenar;//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    telefone.setId(rset.getInt(1));
-                    telefone.setNum_telefone(rset.getString(2));
-                    telefone.setId_cliente(rset.getInt(3));
+                    Telefone telefone = new Telefone(rset.getInt(1), rset.getString(2), rset.getInt(3));
                     telefones.add(telefone);
-                    telefone = new Telefone();
                 }
             }
             stmt.close();
@@ -227,70 +201,64 @@ public class TelefoneDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return telefones;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return telefones;//Retornando a lista de telefones
         }
     }
 
 
     public List<Telefone> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Telefone telefone = new Telefone();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+//        Iniciando a lista de objetos Telefone
         List<Telefone> telefones = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM Endereco WHERE %s = '%s'", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            String query = String.format("SELECT * FROM Endereco WHERE %s = '%s'", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorPesquisar);//Setando valor
+            ResultSet rset = pstmt.executeQuery();
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    telefone.setId(rset.getInt(1));
-                    telefone.setNum_telefone(rset.getString(2));
-                    telefone.setId_cliente(rset.getInt(3));
+                    Telefone telefone = new Telefone(rset.getInt(1), rset.getString(2), rset.getInt(3));
                     telefones.add(telefone);
-                    telefone = new Telefone();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return telefones;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return telefones;//Retornando a lista de telefones
         }
     }
 
 
     public List<Telefone> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Telefone telefone = new Telefone();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+//        Iniciando a lista de objetos Telefone
         List<Telefone> telefones = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM Endereco WHERE %s = %d", campoOndePesquisar, valorPesquisar);
-            ResultSet rset = stmt.executeQuery(query);
+            String query = String.format("SELECT * FROM telefone WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);//Setando valor
+            ResultSet rset = pstmt.executeQuery();
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-                    telefone.setId(rset.getInt(1));
-                    telefone.setNum_telefone(rset.getString(2));
-                    telefone.setId_cliente(rset.getInt(3));
+                    Telefone telefone = new Telefone(rset.getInt(1), rset.getString(2), rset.getInt(3));
                     telefones.add(telefone);
-                    telefone = new Telefone();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return telefones;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return telefones;//Retornando a lista de telefones
         }
     }
 }

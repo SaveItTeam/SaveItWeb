@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -27,8 +27,7 @@
                 >
                     <path
                             d="M10.7625 0.812388C5.1375 1.42489 0.75 6.19989 0.75 11.9999C0.75 14.9836 1.93526 17.8451 4.04505 19.9548C6.15483 22.0646 9.01631 23.2499 12 23.2499C17.7875 23.2499 22.5625 18.8749 23.1875 13.2499C23.3 12.2624 22.2125 11.4749 21.2625 12.0624C20.2421 12.7137 19.0654 13.0788 17.8555 13.1194C16.6456 13.1601 15.447 12.8748 14.3852 12.2934C13.3234 11.712 12.4374 10.8559 11.8198 9.81472C11.2023 8.77351 10.876 7.58545 10.875 6.37489C10.875 5.04989 11.2625 3.79989 11.925 2.76239C12.4875 1.92489 11.875 0.724888 10.7625 0.812388Z"
-                            fill="#B3B0C3"
-                    />
+                            fill="#B3B0C3"></path>
                 </svg>
             </button>
             <button class="light-mode">
@@ -93,7 +92,7 @@
                 </div>
             </div>
 
-            <!-- ! davi da uma olhada nisso pq eu nao sei como q vai deixar no servlet, nao sei se precisa de form para redirecionar para as outras paginas funcionais -->
+            <!-- ! davi dá uma olhada nisso porque eu não sei como que vai deixar no servlet, não sei se precisa de form para redirecionar para as outras páginas funcionais -->
             <div id="acoes">
                 <div>
                     <i class="ri-add-large-line"></i>

@@ -14,8 +14,6 @@ public class Telefone {
         this.id_cliente = id_cliente;
     }
 
-    public Telefone() {}
-
 
 //    Getters e Setters
     public int getId() {return id;}
