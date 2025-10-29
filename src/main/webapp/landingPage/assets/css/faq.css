@@ -58,6 +58,7 @@ section {
       border-radius: 1rem;
       padding: 1rem;
       cursor: pointer;
+      transition: .3s ease;
       &:hover {
         background-color: #2e2e2e40;
       }
@@ -65,7 +66,7 @@ section {
   }
 
   button {
-    margin-top: 15rem;
+    margin-top: 6rem;
     background-color: transparent;
     border: none;
     color: #f24822;
