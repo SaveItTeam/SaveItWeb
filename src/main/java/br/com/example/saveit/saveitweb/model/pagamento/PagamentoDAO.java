@@ -213,34 +213,6 @@ public class PagamentoDAO {
         }
     }
 
-    public List<Pagamento> buscar(int id) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo conexão com o banco
-//    Iniciando a lista de objetos Industrias
-        List<Pagamento> pagamentos = new ArrayList<>();
-        try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = "select * from pagamento where id = ? ";//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
-
-            if (rset != null) {
-//                Inserção de dados
-                while (rset.next()) {
-                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
-                    pagamentos.add(pagamento);
-                }
-            }
-            stmt.close();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            return null;
-        } finally {
-            conexao.desconectar(conn);//Desconectando comando SQL
-            return pagamentos;//Retornando lista de pagamentos
-        }
-    }
-
     public List<Pagamento> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco
@@ -296,6 +268,14 @@ public class PagamentoDAO {
             conexao.desconectar(conn);//Desconectando comando SQL
             return pagamentos;//Retornando lista de pagamentos
         }
+    }
+
+
+    public List<String> buscarDadosPlano(int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
+//        Iniciando a lista de dados
+        List<String> dadosPlano = new ArrayList<>();
     }
 
 

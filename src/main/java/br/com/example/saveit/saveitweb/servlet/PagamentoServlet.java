@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -14,6 +15,14 @@ public class PagamentoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Pagamento pagamento = new Pagamento();
+
+        HttpSession sessao = request.getSession();
+        Object admin = request.getAttribute("admin");
+
+        if (admin == null) {
+            String nome = (String) sessao.getAttribute("nome");
+        }
+
 
         request.getRequestDispatcher("/WEB-INF/view/admin/pagamentos.jsp").forward(request, response);
     }
