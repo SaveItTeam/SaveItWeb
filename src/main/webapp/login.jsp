@@ -20,7 +20,7 @@
       <h1>Entre como administrador</h1>
       <p>Acesse o painel para controlar infoasarmações da sua indústria.</p>
 
-      <form action="logarAdmin" method="post">
+      <form action="logarAdminServlet" method="post">
         <label for="email">Email ou CPF</label>
         <input type="text" placeholder="Digite seu Email ou CPF" id="inputEmail" name="email" />
 

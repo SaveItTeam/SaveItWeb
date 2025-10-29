@@ -7,15 +7,15 @@ public class Plano {
     private String descricao;
     private int id_pagamento;
 
-    public Plano(double preco, String descricao, int id_pagamento) {
+    public Plano(int id, double preco, String descricao, int id_pagamento) {
+        this.id = id;
         this.preco = preco;
         this.descricao = descricao;
         this.id_pagamento = id_pagamento;
     }
 
-    public Plano() {
+    public Plano() {}
 
-    }
 
     //    Getters
     public int getId() {

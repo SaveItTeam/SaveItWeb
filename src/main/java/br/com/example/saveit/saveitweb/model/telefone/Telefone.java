@@ -16,7 +16,6 @@ public class Telefone {
 
     public Telefone() {}
 
-
 //    Getters e Setters
     public int getId() {return id;}
 

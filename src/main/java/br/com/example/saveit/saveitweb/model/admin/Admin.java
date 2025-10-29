@@ -2,10 +2,10 @@ package br.com.example.saveit.saveitweb.model.admin;
 
 public class Admin {
 //    Atributos
-    public int id;
-    public String nome_admin;
-    public String email;
-    public String senha;
+    private int id;
+    private String nome_admin;
+    private String email;
+    private String senha;
 
 //    Construtor
     public Admin(int id, String nome_admin, String emial, String senha) {
@@ -14,6 +14,8 @@ public class Admin {
         this.email = emial;
         this.senha = senha;
     }
+
+    public Admin() {}
 
 //    Getters e Setters
     public int getId() {

@@ -25,6 +25,7 @@ botaoEditar.addEventListener("click", () => {
 
         // ativa inputs e seus respectivos estilos
         inputs.forEach((e) => {
+            document.querySelector("#inputFile").style.display = "flex";
             e.removeAttribute("disabled");
             getComputedStyle(document.documentElement).getPropertyValue("--cor-fundo") === "#f0ece1" ? e.style.background = "rgba(46, 46, 46, 0.1)" : e.style.background = "rgba(240, 236, 225, 0.1)"
             e.style.paddingLeft = "0.5rem";
