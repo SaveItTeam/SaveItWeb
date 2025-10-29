@@ -10,8 +10,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/logarAdmin")
-public class LogarAdmin extends HttpServlet {
+@WebServlet("/logarAdminServlet")
+public class LogarAdminServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -22,7 +23,7 @@ public class LogarAdmin extends HttpServlet {
 
         String senhaHash = hash.hashar(senha);
 
-        java.util.List<String> a = funcionarioDAO.logarFuncionarioAdmin(emailOUcpf, senhaHash);
+        java.util.List<String> a = funcionarioDAO.logarAdmin(emailOUcpf, senhaHash);
         int id = Integer.parseInt(a.get(0));
 
         Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);

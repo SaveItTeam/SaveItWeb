@@ -4,9 +4,7 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static javax.swing.UIManager.getInt;
 
@@ -14,25 +12,21 @@ public class EmpresaDAO {
     //    Insert
     public boolean inserir(Empresa empresa) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
             String query = "Insert into Empresa (procura, cod_empresa, id_cliente) Values(?,?,?)";//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
 //          Setando o valor dos parâmetros
             pstmt.setString(1, empresa.getProcura());
             pstmt.setString(2, empresa.getCod_empresa());
             pstmt.setInt(3, empresa.getId_cliente());
-            int validar = pstmt.executeUpdate();//Executando o comando sql do preparedStament
-//              Validação
-            if (validar > 0) {
-                System.out.println("Inserido com sucesso!");
+            boolean validar = pstmt.executeUpdate() > 0;//Executando o comando SQL
                 pstmt.close();
-                return true;
-            }
+                return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Fechando a conexão com o banco
+            conexao.desconectar(conn);//Fechando a conexão com o banco de dados
         }
         return false;
     }
@@ -41,20 +35,20 @@ public class EmpresaDAO {
     //    Update
     public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Empresa set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("Update Empresa set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -62,20 +56,20 @@ public class EmpresaDAO {
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Empresa set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("Update Empresa set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+//            Setando valores
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -83,20 +77,20 @@ public class EmpresaDAO {
 
     public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Empresa set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("Update Empresa set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -104,20 +98,20 @@ public class EmpresaDAO {
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Empresa set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("Update Empresa set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+//            Setando valores
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
         return false;
     }
@@ -128,20 +122,18 @@ public class EmpresaDAO {
     //    Delete
     public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("delete from Empresa where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
+            String query = String.format("delete from Empresa where %s = ?", campoOndeExcluir, valorOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setString(1, campoOndeExcluir);//Setando valor
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando
+                pstmt.close();
                 return validar;
-            }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -149,20 +141,18 @@ public class EmpresaDAO {
 
     public boolean excluir(String campoOndeExcluir, int valorOndeExcluir) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("delete from Empresa where %s = %d", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
+            String query = String.format("delete from Empresa where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setInt(1, valorOndeExcluir);//Setando valor
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+                pstmt.close();
                 return validar;
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            conexao.desconectar(conn);
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -172,7 +162,7 @@ public class EmpresaDAO {
     //    Select
     public List<Empresa> buscar() {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
 //    Iniciando a lista de objetos Industrias
         List<Empresa> empresas = new ArrayList<>();
         try {
@@ -182,6 +172,7 @@ public class EmpresaDAO {
             ResultSet rset = stmt.executeQuery(query);//Eecutando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
                     Empresa empresa = new Empresa(rset.getInt("id"), rset.getString("procura"), rset.getString("cod_empresa"), rset.getInt("id_cliente"));
                     empresas.add(empresa);

@@ -87,6 +87,7 @@ public class FuncionarioDAO {
         } finally {
             conexao.desconectar(conn); // Desconectando do banco de dados
         }
+        return false;
     }
 
 
@@ -293,7 +294,7 @@ public class FuncionarioDAO {
 
         try {
             PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
-            pstmt.setString(1, valorPesquisar);//Setando Valor
+            pstmt.setInt(1, valorPesquisar );//Setando Valor
 
             ResultSet rset = pstmt.executeQuery();//Executando comando SQL
 
@@ -319,6 +320,8 @@ public class FuncionarioDAO {
                             rset.getBoolean("is_admin")
                     ));
                 }
+            } else {
+                return null;
             }
             pstmt.close();
         } catch (SQLException sqle) {
