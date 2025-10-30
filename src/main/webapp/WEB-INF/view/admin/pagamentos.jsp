@@ -1,3 +1,4 @@
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +90,6 @@
               <th>Forma de Pagamento</th>
             </tr>
           </thead>
-<%--            <% for (int i = 0; i < (Integer) request.getAttribute("dadosPlano"); i++){ %>--%>
 
           <tbody>
             <tr>
@@ -97,11 +97,9 @@
               <td><%=session.getAttribute("dt_pagamento")%>></td>
               <td><%=session.getAttribute("preco")%></td>
               <td class="status-pagamento"><%=session.getAttribute("status")%></td>
-              <td>-</td>
-              <td>-</td>
+              <td><%=session.getAttribute("idPlano")%></td>
+              <td><%=session.getAttribute("forma_pagamento")%></td>
             </tr>
-<%--            <% } %>--%>
-
 <%--            <tr>--%>
 <%--              <td>SaveIt Pro</td>--%>
 <%--              <td>09/09/2025</td>--%>
