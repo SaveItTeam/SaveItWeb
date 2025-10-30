@@ -24,6 +24,10 @@ public class LogarAdminServlet extends HttpServlet {
         String senhaHash = hash.hashar(senha);
 
         java.util.List<String> a = funcionarioDAO.logarAdmin(emailOUcpf, senhaHash);
+
+        int c = senha.length();
+        String senhaAnonimizada = "*".repeat(c);
+
         int id = Integer.parseInt(a.get(0));
 
         Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
@@ -64,6 +68,7 @@ public class LogarAdminServlet extends HttpServlet {
                 sessao.setAttribute("endereco", endereco);
                 sessao.setAttribute("count", count);
                 sessao.setAttribute("atividade_comercial", atividade_comercial);
+                sessao.setAttribute("senha", senhaAnonimizada);
 
                 request.getRequestDispatcher("/WEB-INF/view/admin/inicio.jsp").forward(request, response);
             } catch (Exception e) {

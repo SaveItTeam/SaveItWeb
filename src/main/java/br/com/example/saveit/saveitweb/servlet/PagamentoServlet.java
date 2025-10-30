@@ -34,11 +34,22 @@ public class PagamentoServlet extends HttpServlet {
             String preco =  dadosPlano.get(1);
             String status = dadosPlano.get(2);
             String idPlano = dadosPlano.get(3);
-            String dt_criacao = dadosPlano.get(4);
-            String dt_validade = dadosPlano.get(5);
             String forma_pagamento = dadosPlano.get(6);
 
+            String dt_criacao = dadosPlano.get(4);
 
+            String anoC = dt_criacao.split("-")[0];
+            String mesC = dt_criacao.split("-")[1];
+            String diaC = dt_criacao.split("-")[2];
+            dt_criacao = diaC + "/" + mesC + "/" + anoC;
+
+
+            String dt_validade = dadosPlano.get(5);
+
+            String anoV = dt_validade.split("-")[0];
+            String mesV = dt_validade.split("-")[1];
+            String diaV = dt_validade.split("-")[2];
+            dt_validade = diaV + "/" + mesV + "/" + anoV;
 
             try{
                 sessao.setAttribute("descricao", descricao);

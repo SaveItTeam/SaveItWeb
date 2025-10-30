@@ -9,20 +9,21 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/configuracoesServlet")
-public class ConfiguracoesServlet extends HttpServlet {
-    @Override
-    protected  void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@WebServlet("/industriaServlet")
+public class IndustriaServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession sessao = request.getSession();
         Object admin = request.getSession().getAttribute("admin");
 
         if (admin != null) {
-        try {
-            request.getRequestDispatcher("/WEB-INF/view/admin/configuracoes.jsp").forward(request, response);
+            try {
 
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();}
+                request.getRequestDispatcher("/WEB-INF/view/admin/industria.jsp").forward(request, response);
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
-
     }
+
 }

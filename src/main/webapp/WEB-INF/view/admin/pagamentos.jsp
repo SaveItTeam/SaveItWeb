@@ -94,7 +94,7 @@
           <tbody>
             <tr>
               <td><%=session.getAttribute("plano")%></td>
-              <td><%=session.getAttribute("dt_pagamento")%>></td>
+              <td><%=session.getAttribute("dt_pagamento")%></td>
               <td><%=session.getAttribute("preco")%></td>
               <td class="status-pagamento"><%=session.getAttribute("status")%></td>
               <td><%=session.getAttribute("idPlano")%></td>

@@ -31,9 +31,9 @@
                 </button>
             </div>
             <div class="administrador">
-                <img src="imagem (4).jpeg" alt="" />
+                <img src="<%=session.getAttribute("img")%>" alt="" />
                 <div>
-                    <p>Marcelo Grilo</p>
+                    <p><%=session.getAttribute("nome")%></p>
                     <p>Admin</p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
             <div id="configuracoes-principal">
                 <form>
                     <div id="imagem-container">
-                        <img src="imagem (4).jpeg" alt="Imagem do Usuário" id="imgPreview">
+                        <img src="<%=session.getAttribute("img")%>" alt="Imagem do Usuário" id="imgPreview">
 
                         <label for="inputFile"><i class="ri-camera-line"></i>
                             <input type="file" id="inputFile" name="inputFile" accept="image/*" disabled>
@@ -59,14 +59,14 @@
                     </div>
                     <label for="inputNome">Nome
                     </label>
-                    <input type="text" id="inputNome" name="inputNome" value="Marcelo Grilo" disabled>
+                    <input type="text" id="inputNome" name="inputNome" value="<%=session.getAttribute("nome")%>" disabled>
                     <label for="inputEmail">Email
                     </label>
                     <input type="email" id="inputEmail" name="inputEmail" disabled
-                        value="marcelo.grilo@germinare.org.br">
+                        value="aaaaaaaaaa@gmail.com">
                     <label for="inputSenha">Senha
                     </label>
-                    <input type="password" id="inputSenha" name="inputSenha" disabled value="senha123">
+                    <input type="password" id="inputSenha" name="inputSenha" disabled value="<%=session.getAttribute("senha")%>">
 
                     <div>
                         <button type="submit">Salvar Alterações</button>

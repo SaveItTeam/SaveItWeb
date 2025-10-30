@@ -8,12 +8,14 @@ import br.com.example.saveit.saveitweb.model.industria.*;
 import br.com.example.saveit.saveitweb.model.pagamento.*;
 import br.com.example.saveit.saveitweb.model.plano.*;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         Conexao conexao = new Conexao();
-        if (conexao.conectar() == null) {
+        Connection conn = conexao.conectar();
+        if (conn == null) {
             System.out.println("Falha ao conectar ao banco de dados.");
         } else {
             System.out.println("Conexão bem-sucedida ao banco de dados.");
@@ -26,32 +28,40 @@ public class Main {
             PlanoDAO planoDAO = new PlanoDAO();
             EnderecoDAO enderecoDAO = new EnderecoDAO();
 
+            String senha = "davi123";
+            int c = senha.length();
+            senha = "*".repeat(c);
+            System.out.println(senha);
+
+            conexao.desconectar(conn);
+
+
 //            System.out.println(funcionarioDAO.buscar("email", "mariana@empresa1.com"));
-            java.util.List<String> a = funcionarioDAO.logarAdmin("flavia.ribeiros@gmail.com", "39f3dbe6f821b61f4a2fcdf089c482dcfdb05f0cca82a091d19b4cbe2b2c9369");
-            int c = 0;
-            for (String a1 : a) {
-                System.out.println(c + " " + a1);
-                c++;
-            }
+//            java.util.List<String> a = funcionarioDAO.logarAdmin("flavia.ribeiros@gmail.com", "39f3dbe6f821b61f4a2fcdf089c482dcfdb05f0cca82a091d19b4cbe2b2c9369");
+//            int c = 0;
+//            for (String a1 : a) {
+//                System.out.println(c + " " + a1);
+//                c++;
+//            }
 //            System.out.println(a.get(2));
-            int id = Integer.parseInt(a.get(0));
+//            int id = Integer.parseInt(a.get(0));
 //            System.out.println(funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));
 
 //            Empresa empresa = new Empresa();
 //            empresa = empresaDAO.buscar("id", id).get(0);
 //            System.out.println(empresa.getCod_empresa());
 
-            Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
+//            Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
 
             System.out.println("\n");
 
-            int co = 0;
-           java.util.List<String> b = pagamentoDAO.buscarDadosPlano(Integer.parseInt(a.get(3)));
-
-            for (String a1 : b) {
-                System.out.println(co + " " + a1);
-                co++;
-            }
+//            int co = 0;
+//           java.util.List<String> b = pagamentoDAO.buscarDadosPlano(Integer.parseInt(a.get(3)));
+//
+//            for (String a1 : b) {
+//                System.out.println(co + " " + a1);
+//                co++;
+//            }
 
 //            adminDAO.listarAdmin();
 //            System.out.println("\n\n");
