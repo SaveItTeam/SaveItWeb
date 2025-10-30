@@ -121,6 +121,21 @@ header.scrolled {
 .invisivel {
   display: none;
 }
+  #Interrogacao {
+    text-decoration: none;
+    position: fixed;
+    top: 86rem;
+    right: 5rem;
+    color: #405d49;
+    z-index: 5;
+    border-radius: 100%;
+    width: 6rem;
+    
+    img{
+          width: 6rem;
+
+    }
+  }
 
 #abrir-lateral {
   position: fixed;

@@ -5,9 +5,9 @@ const divBotoes = document.querySelector(
 
 divBotoes.addEventListener("click", () => {
   const textos = {
-    1: "Texto Bacana 1",
-    2: "Texto Bacana 2",
-    3: "Texto Bacana 3",
+    1: "Gerenciador de Estoque",
+    2: "Vitrine Virtual",
+    3: "Relatórios",
   };
 
   const h3 = document.getElementById("inicio-funcionalidades-quadro-texto-h3");

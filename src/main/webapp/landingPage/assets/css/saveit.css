@@ -632,7 +632,7 @@ body {
   }
 
   /* celular */
-  @media (width: 412px) {
+@media (width: 412px) {
     html {
       overflow-x: hidden;
     }
