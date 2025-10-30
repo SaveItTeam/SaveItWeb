@@ -9,7 +9,7 @@ html {
 
 section {
   width: 100%;
-  height: 100vh;
+  height: auto;
   background-color: #f0ece1;
   display: flex;
 }
@@ -19,6 +19,10 @@ section {
   width: 45rem;
   border-radius: 0 4.6rem 4.6rem 0;
   background-color: #e6e2d6;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
 
   h1 {
     width: 39rem;
@@ -36,6 +40,8 @@ section {
 
 #faq {
   margin-left: 2rem;
+  height: auto;
+  padding-bottom: 5rem;
   h2 {
     color: #405d49;
     font-size: 2.3rem;
@@ -47,7 +53,7 @@ section {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
     margin-top: 3rem;
 
     li {
@@ -56,42 +62,67 @@ section {
       font-weight: 500;
       line-height: 110%;
       border-radius: 1rem;
-      padding: 1rem;
+      padding: 2rem;
       cursor: pointer;
-      transition: .3s ease;
+      transition: 0.3s ease;
       &:hover {
         background-color: #2e2e2e40;
       }
     }
   }
+}
 
-  button {
-    margin-top: 6rem;
-    background-color: transparent;
-    border: none;
-    color: #f24822;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-size: 1.8rem;
+#lateral a {
+  background-color: transparent;
+  border: none;
+  color: #f24822;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-left: 3rem;
+  text-decoration: none;
+  i {
+    margin-right: 1rem;
+  }
 
-    p {
-      font-weight: 550;
-    }
+  &:hover {
+    text-decoration: underline;
+    color: #ff2f00;
   }
 }
 
 /* estilizacao do chat */
 #chat-container {
-  width: calc(100% - 45rem);
+    width: calc(100% - 45rem);
+    margin-left: 45rem;
+    height: 100vh; /* Alterado de min-height para height */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 #mensagens {
-  width: 100%;
-  height: 90%;
-  overflow: auto;
-  padding-bottom: 3rem;
+    width: 100%;
+    overflow-y: auto;
+    padding-bottom: 10rem;
+}
+
+#default {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 15rem;
+    aspect-ratio: 1/1;
+  }
+
+  h3 {
+    color: #2e2e2e;
+    font-size: 2rem;
+  }
 }
 
 .mensagem-usuario,
@@ -99,8 +130,8 @@ section {
   padding: 2rem;
   border-radius: 1rem;
   color: #f0ece1;
-  overflow-wrap: break-word;  
-  line-height: 200%;
+  overflow-wrap: break-word;
+  line-height: 2.5rem;
 
   p {
     font-size: 1.6rem;
@@ -127,6 +158,14 @@ section {
 #input-usuario {
   margin-left: 2rem;
   background: none;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  align-self: center;
+  background: none;
+  position: fixed;
+  bottom: 2rem;
+  left: 40%;
   input {
     width: 50rem;
     border: none;
@@ -135,6 +174,7 @@ section {
     color: #2e2e2e;
     background-color: #e6e2d6;
     padding-left: 3rem;
+    font-size: 1.8rem;
 
     &:focus {
       outline: 0.2rem solid #405d49;
@@ -145,7 +185,7 @@ section {
     border: none;
     width: 10rem;
     border-radius: 1rem;
-    height: 3.5rem;
+    height: 4rem;
     margin-left: 1rem;
     color: #f0ece1;
     font-size: 1.5rem;
@@ -163,7 +203,7 @@ section {
   width: 8rem;
   height: 2.5rem;
   border-radius: 1rem;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;

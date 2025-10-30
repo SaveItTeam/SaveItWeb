@@ -28,12 +28,11 @@ public class Main {
 
 //            System.out.println(funcionarioDAO.buscar("email", "mariana@empresa1.com"));
             java.util.List<String> a = funcionarioDAO.logarAdmin("flavia.ribeiros@gmail.com", "39f3dbe6f821b61f4a2fcdf089c482dcfdb05f0cca82a091d19b4cbe2b2c9369");
-
-//            int c = 0;
-//            for (String a1 : a) {
-//                System.out.println(c + " " + a1);
-//                c++;
-//            }
+            int c = 0;
+            for (String a1 : a) {
+                System.out.println(c + " " + a1);
+                c++;
+            }
 //            System.out.println(a.get(2));
             int id = Integer.parseInt(a.get(0));
 //            System.out.println(funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));
@@ -44,9 +43,11 @@ public class Main {
 
             Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
 
-            List<String> b = pagamentoDAO.buscarDadosPlano(id);
+            System.out.println("\n");
 
             int co = 0;
+           java.util.List<String> b = pagamentoDAO.buscarDadosPlano(Integer.parseInt(a.get(3)));
+
             for (String a1 : b) {
                 System.out.println(co + " " + a1);
                 co++;

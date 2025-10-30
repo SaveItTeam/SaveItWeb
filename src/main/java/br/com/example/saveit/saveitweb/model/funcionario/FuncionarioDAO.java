@@ -338,6 +338,7 @@ public class FuncionarioDAO {
     public List<String> logarAdmin(String email, String senha) {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();//Abrindo conexão com o banco de dados
+
         ResultSet rs;
         List<String> funcionarios = new ArrayList<>();//Instanciando a lista de objetos Funcionario
 
@@ -412,7 +413,7 @@ public class FuncionarioDAO {
             rs = pstmt.executeQuery();//Executando comando SQL
 
             if (rs != null){
-                if (rs.next()) {
+                while (rs.next()) {
                     funcionarios.add(rs.getString("id_func"));
                     funcionarios.add(rs.getString("nome_func"));
                     funcionarios.add(rs.getString("telefone_trabalho"));
@@ -429,9 +430,9 @@ public class FuncionarioDAO {
                     funcionarios.add(rs.getString("cont_func"));
                     funcionarios.add(rs.getString("atividade_comercial"));
                     return funcionarios;
-                } else {
-                    return null;
                 }
+                return funcionarios;
+
             } else {
                 return null;
             }
