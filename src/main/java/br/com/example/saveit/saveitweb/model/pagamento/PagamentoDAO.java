@@ -274,47 +274,51 @@ public class PagamentoDAO {
     public List<String> buscarDadosPlano(int id) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando a lista de dados
-        List<String> dadosPlano = new ArrayList<>();
-        try {
-            String query = "select\n" +
-                    "    pl.descricao as servico\n" +
-                    "    , pl.preco\n" +
-                    "    , pg.status\n" +
-                    "    , pg.id as id_pagamento\n" +
-                    "    , pg.dt_criacao as dt_pagamento\n" +
-                    "    , pg.dt_validade\n" +
-                    "    , pg.forma_pagamento\n" +
-                    "from industria i\n" +
-                    "left join plano pl on i.id_plano = pl.id\n" +
-                    "left join pagamento pg on i.id_pagamento = pg.id\n" +
-                    "where i.id = ?";
 
+//        Iniciando a lista de dados
+        ResultSet rs;
+        List<String> dadosPlano = new ArrayList<>();
+
+        String query = "select\n" +
+                "    pl.descricao as servico\n" +
+                "    , pl.preco\n" +
+                "    , pg.status\n" +
+                "    , pg.id as id_pagamento\n" +
+                "    , pg.dt_criacao as dt_pagamento\n" +
+                "    , pg.dt_validade\n" +
+                "    , pg.forma_pagamento\n" +
+                "from industria i\n" +
+                "left join plano pl on i.id_plano = pl.id\n" +
+                "left join pagamento pg on i.id_pagamento = pg.id\n" +
+                "where i.id = ?";
+
+        try {
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
             pstmt.setInt(1, id);//Setando valor
-            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
+            rs = pstmt.executeQuery();//Executando comando SQL
 
-            if (rset != null) {
+            if (rs != null) {
 //                Inserção de dados
-                while (rset.next()) {
-                    dadosPlano.add(rset.getString(1));
-                    dadosPlano.add(rset.getString(2));
-                    dadosPlano.add(rset.getString(3));
-                    dadosPlano.add(rset.getString(4));
-                    dadosPlano.add(rset.getString(5));
-                    dadosPlano.add(rset.getString(6));
-                    dadosPlano.add(rset.getString(7));
+                while (rs.next()) {
+                    dadosPlano.add(rs.getString("servico"));
+                    dadosPlano.add(rs.getString("preco"));
+                    dadosPlano.add(rs.getString("status"));
+                    dadosPlano.add(rs.getString("id_pagamento"));
+                    dadosPlano.add(rs.getString("dt_pagamento"));
+                    dadosPlano.add(rs.getString("dt_validade"));
+                    dadosPlano.add(rs.getString("forma_pagamento"));
                     return dadosPlano;
                 }
-            }else {
+                return dadosPlano;
+            } else {
                 return null;
             }
+
         }catch (SQLException sqle){
             sqle.printStackTrace();
             return null;
         }finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
-            return dadosPlano;
         }
     }
 

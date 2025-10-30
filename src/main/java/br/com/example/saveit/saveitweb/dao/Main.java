@@ -43,6 +43,16 @@ public class Main {
 
             Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
 
+            System.out.println("\n");
+
+            int co = 0;
+           java.util.List<String> b = pagamentoDAO.buscarDadosPlano(Integer.parseInt(a.get(3)));
+
+            for (String a1 : b) {
+                System.out.println(co + " " + a1);
+                co++;
+            }
+
 //            adminDAO.listarAdmin();
 //            System.out.println("\n\n");
 //
