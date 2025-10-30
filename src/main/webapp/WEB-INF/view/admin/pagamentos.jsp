@@ -71,7 +71,7 @@
 
         <div id="informacoes-gerais">
           <div>
-            <h2>Plano Atual: <%=session.getAttribute("Plano")%></h2>
+            <h2>Plano Atual: <%=session.getAttribute("plano")%></h2>
           </div>
           <div>
             <h2>Vencimento: <%=session.getAttribute("dt_validade")%></h2>
@@ -94,7 +94,7 @@
           <tbody>
             <tr>
               <td><%=session.getAttribute("plano")%></td>
-              <td><%=session.getAttribute("dt_validade")%>></td>
+              <td><%=session.getAttribute("dt_pagamento")%>></td>
               <td><%=session.getAttribute("preco")%></td>
               <td class="status-pagamento"><%=session.getAttribute("status")%></td>
               <td>-</td>

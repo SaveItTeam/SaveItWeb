@@ -26,8 +26,8 @@ public class PagamentoServlet extends HttpServlet {
 
         if (admin == null) {
             String nome = (String) sessao.getAttribute("nome");
-            int id = (int) sessao.getAttribute("id");
-            String url = (String) sessao.getAttribute("url");
+            int id = (int) sessao.getAttribute("id_industria");
+            String url = (String) sessao.getAttribute("img");
             String plano = (String) sessao.getAttribute("plano");
             dadosPlano = pagamentoDAO.buscarDadosPlano(id);
             String descricao = dadosPlano.get(0);
@@ -45,16 +45,12 @@ public class PagamentoServlet extends HttpServlet {
                 sessao.setAttribute("preco", preco);
                 sessao.setAttribute("status", status);
                 sessao.setAttribute("idPlano", idPlano);
-                sessao.setAttribute("dt_criacao", dt_criacao);
+                sessao.setAttribute("dt_pagamento", dt_criacao);
                 sessao.setAttribute("dt_validade", dt_validade);
                 sessao.setAttribute("forma_pagamento", forma_pagamento);
-                sessao.setAttribute("nome", nome);
-                sessao.setAttribute("id", id);
-                sessao.setAttribute("url", url);
-                sessao.setAttribute("plano", plano);
                 sessao.setAttribute("dadosPlano", dadosPlano);
 
-                request.getRequestDispatcher("/WEB-INF/view/admin/pagamentos.jsp").forward((ServletRequest) sessao, response);
+                request.getRequestDispatcher("/WEB-INF/view/admin/pagamentos.jsp").forward(request, response);
             }catch(Exception e){
                 e.printStackTrace();
             }
