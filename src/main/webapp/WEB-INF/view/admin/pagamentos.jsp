@@ -71,7 +71,7 @@
 
         <div id="informacoes-gerais">
           <div>
-            <h2>Plano Atual: <%=request.getAttribute("Plano")%></h2>
+            <h2>Plano Atual: <%=session.getAttribute("Plano")%></h2>
           </div>
           <div>
             <h2>Vencimento: <%=request.getAttribute("dt_validade")%></h2>
