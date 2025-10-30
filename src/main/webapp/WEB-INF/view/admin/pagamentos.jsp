@@ -47,9 +47,9 @@
           </button>
         </div>
         <div class="administrador">
-          <img src="imagem (4).jpeg" alt="" />
+          <img src="<%=request.getAttribute("img")%>" alt="" />
           <div>
-            <p>Marcelo Grilo</p>
+            <p><%=session.getAttribute("nome")%></p>
             <p>Admin</p>
           </div>
         </div>
@@ -71,10 +71,10 @@
 
         <div id="informacoes-gerais">
           <div>
-            <h2>Plano Atual: SaveIt Pro</h2>
+            <h2>Plano Atual: <%=request.getAttribute("Plano")%></h2>
           </div>
           <div>
-            <h2>Vencimento: 09/11/2025</h2>
+            <h2>Vencimento: <%=request.getAttribute("dt_validade")%></h2>
           </div>
         </div>
 
@@ -89,47 +89,51 @@
               <th>Forma de Pagamento</th>
             </tr>
           </thead>
+            <% for (int i = 0; i < (Integer) session.getAttribute("dadosPlano"); i++){ %>
+
           <tbody>
             <tr>
-              <td>SaveIt Pro</td>
-              <td>09/10/2025</td>
-              <td>R$ 949,99</td>
-              <td class="status-pagamento">Pendente</td>
+              <td><%=request.getAttribute("plano")%></td>
+              <td><%=session.getAttribute("dt_validade")%>></td>
+              <td><%=session.getAttribute("preco")%></td>
+              <td class="status-pagamento"><%=session.getAttribute("status")%></td>
               <td>-</td>
               <td>-</td>
             </tr>
-            <tr>
-              <td>SaveIt Pro</td>
-              <td>09/09/2025</td>
-              <td>R$ 949,99</td>
-              <td class="status-pagamento">Pago</td>
-              <td>3814</td>
-              <td>Cartão de Crédito</td>
-            </tr>
-            <tr>
-              <td>SaveIt Pro</td>
-              <td>09/08/2025</td>
-              <td>R$ 949,99</td>
-              <td class="status-pagamento">Pago</td>
-              <td>2303</td>
-              <td>Cartão de Crédito</td>
-            </tr>
-            <tr>
-              <td>SaveIt Pro</td>
-              <td>09/07/2025</td>
-              <td>R$ 949,99</td>
-              <td class="status-pagamento">Pago</td>
-              <td>2104</td>
-              <td>Cartão de Crédito</td>
-            </tr>
-            <tr>
-              <td>SaveIt Pro</td>
-              <td>09/06/2025</td>
-              <td>R$ 949,99</td>
-              <td class="status-pagamento">Pago</td>
-              <td>1985</td>
-              <td>Cartão de Crédito</td>
-            </tr>
+            <% } %>
+
+<%--            <tr>--%>
+<%--              <td>SaveIt Pro</td>--%>
+<%--              <td>09/09/2025</td>--%>
+<%--              <td>R$ 949,99</td>--%>
+<%--              <td class="status-pagamento">Pago</td>--%>
+<%--              <td>3814</td>--%>
+<%--              <td>Cartão de Crédito</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--              <td>SaveIt Pro</td>--%>
+<%--              <td>09/08/2025</td>--%>
+<%--              <td>R$ 949,99</td>--%>
+<%--              <td class="status-pagamento">Pago</td>--%>
+<%--              <td>2303</td>--%>
+<%--              <td>Cartão de Crédito</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--              <td>SaveIt Pro</td>--%>
+<%--              <td>09/07/2025</td>--%>
+<%--              <td>R$ 949,99</td>--%>
+<%--              <td class="status-pagamento">Pago</td>--%>
+<%--              <td>2104</td>--%>
+<%--              <td>Cartão de Crédito</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--              <td>SaveIt Pro</td>--%>
+<%--              <td>09/06/2025</td>--%>
+<%--              <td>R$ 949,99</td>--%>
+<%--              <td class="status-pagamento">Pago</td>--%>
+<%--              <td>1985</td>--%>
+<%--              <td>Cartão de Crédito</td>--%>
+<%--            </tr>--%>
           </tbody>
         </table>
       </section>

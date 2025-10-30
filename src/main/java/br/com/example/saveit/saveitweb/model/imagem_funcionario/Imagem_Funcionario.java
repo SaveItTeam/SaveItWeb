@@ -14,11 +14,7 @@ public class Imagem_Funcionario {
         this.id_funcionario = id_funcionario;
     }
 
-    public Imagem_Funcionario(String url, int id_funcionario) {
-        this.url = url;
-        this.id_funcionario = id_funcionario;
-    }
-
+    public Imagem_Funcionario() {}
 
     //    Getters e Setters
     public int getId() {return id;}

@@ -52,7 +52,7 @@ body {
       height: 10.2rem;
       font-size: 2.5rem;
       margin-top: -6rem;
-      color: #f0ece1ea;
+      color: #f0ece1;
       font-weight: 400;
       line-height: 135%;
     }
@@ -271,10 +271,11 @@ body {
 
         p {
           font-size: 2.2rem;
-          color: #f0ece1ea;
+          color: #2e2e2e;
           margin-top: 2rem;
           line-height: 140%;
           font-weight: 450;
+          
         }
       }
     }
@@ -643,7 +644,7 @@ body {
 
       p {
         font-size: 2.2rem;
-        color: #f0ece1ea;
+        color: #f0ece1;
         margin-top: -2rem;
         text-align: center;
         font-weight: 450;
@@ -745,7 +746,7 @@ body {
       width: 70rem;
       height: 10.2rem;
       font-size: 2.8rem;
-      color: #f0ece1ea;
+      color: #f0ece1;
       font-weight: 400;
       line-height: 135%;
       text-align: center;
@@ -984,8 +985,8 @@ body {
         }
 
         p {
-          font-size: 2.2rem;
-          color: #f0ece1ea;
+          font-size: 2rem;
+          color: #2e2e2e;
           margin-top: 2rem;
           line-height: 140%;
           font-weight: 450;
@@ -1377,7 +1378,7 @@ body {
 
       p {
         font-size: 2.2rem;
-        color: #f0ece1ea;
+        color: #f0ece1;
         margin-top: -2rem;
         text-align: center;
         font-weight: 450;
@@ -1488,7 +1489,7 @@ body {
       height: 10.2rem;
       font-size: 3rem;
       margin-top: 90rem;
-      color: #f0ece1ea;
+      color: #f0ece1;
       font-weight: 400;
       line-height: 135%;
       text-align: center;
@@ -1720,11 +1721,12 @@ body {
         }
 
         p {
-          font-size: 2.2rem;
-          color: #f0ece1ea;
+          font-size: 2rem;
+          color: #2e2e2e;
           margin-top: 2rem;
           line-height: 140%;
           font-weight: 450;
+          margin-left: 5rem;
         }
       }
     }
@@ -2120,7 +2122,7 @@ body {
 
       p {
         font-size: 2.2rem;
-        color: #f0ece1ea;
+        color: #f0ece1;
         margin-top: -2rem;
         text-align: center;
         font-weight: 450;

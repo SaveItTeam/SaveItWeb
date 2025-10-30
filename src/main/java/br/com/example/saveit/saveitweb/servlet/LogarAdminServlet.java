@@ -7,11 +7,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/logarAdmin")
-public class LogarAdmin extends HttpServlet {
+@WebServlet("/logarAdminServlet")
+public class LogarAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -42,26 +43,27 @@ public class LogarAdmin extends HttpServlet {
         String count = a.get(13);
         String atividade_comercial = a.get(14);
 
-
         Object admin = funcionarioDAO.buscar(emailOUcpf, senha);
+        HttpSession sessao = request.getSession();
+        request.getSession().setAttribute("admin", admin);
+
 
         if (admin != null) {
 
             try {
-                request.getSession().setAttribute("admin", admin);
-                request.setAttribute("nome", nome);
-                request.setAttribute("telefone_trabalho", telefone_trabalho);
-                request.setAttribute("id_industria", id_industria);
-                request.setAttribute("plano", plano);
-                request.setAttribute("tipo_industria", tipo_industria);
-                request.setAttribute("img", img);
-                request.setAttribute("genero", genero);
-                request.setAttribute("nome_empresa", nome_empresa);
-                request.setAttribute("cnpj", cnpj);
-                request.setAttribute("tipo_servico", tipo_servico);
-                request.setAttribute("endereco", endereco);
-                request.setAttribute("count", count);
-                request.setAttribute("atividade_comercial", atividade_comercial);
+                sessao.setAttribute("nome", nome);
+                sessao.setAttribute("telefone_trabalho", telefone_trabalho);
+                sessao.setAttribute("id_industria", id_industria);
+                sessao.setAttribute("plano", plano);
+                sessao.setAttribute("tipo_industria", tipo_industria);
+                sessao.setAttribute("img", img);
+                sessao.setAttribute("genero", genero);
+                sessao.setAttribute("nome_empresa", nome_empresa);
+                sessao.setAttribute("cnpj", cnpj);
+                sessao.setAttribute("tipo_servico", tipo_servico);
+                sessao.setAttribute("endereco", endereco);
+                sessao.setAttribute("count", count);
+                sessao.setAttribute("atividade_comercial", atividade_comercial);
 
                 request.getRequestDispatcher("/WEB-INF/view/admin/inicio.jsp").forward(request, response);
             } catch (Exception e) {
