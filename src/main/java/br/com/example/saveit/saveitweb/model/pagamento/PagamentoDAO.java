@@ -170,7 +170,7 @@ public class PagamentoDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5));
                     pagamentos.add(pagamento);
                 }
             }
@@ -199,7 +199,7 @@ public class PagamentoDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5));
                     pagamentos.add(pagamento);
                 }
             }
@@ -227,7 +227,7 @@ public class PagamentoDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5));
                     pagamentos.add(pagamento);
                 }
             }
@@ -256,7 +256,7 @@ public class PagamentoDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5));
                     pagamentos.add(pagamento);
                 }
             }
