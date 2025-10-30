@@ -47,7 +47,7 @@
           </button>
         </div>
         <div class="administrador">
-          <img src="<%=request.getAttribute("img")%>" alt="" />
+          <img src="<%=session.getAttribute("img")%>" alt="" />
           <div>
             <p><%=session.getAttribute("nome")%></p>
             <p>Admin</p>
@@ -71,10 +71,10 @@
 
         <div id="informacoes-gerais">
           <div>
-            <h2>Plano Atual: <%=request.getAttribute("Plano")%></h2>
+            <h2>Plano Atual: <%=session.getAttribute("Plano")%></h2>
           </div>
           <div>
-            <h2>Vencimento: <%=request.getAttribute("dt_validade")%></h2>
+            <h2>Vencimento: <%=session.getAttribute("dt_validade")%></h2>
           </div>
         </div>
 
@@ -89,18 +89,18 @@
               <th>Forma de Pagamento</th>
             </tr>
           </thead>
-            <% for (int i = 0; i < (Integer) session.getAttribute("dadosPlano"); i++){ %>
+<%--            <% for (int i = 0; i < (Integer) request.getAttribute("dadosPlano"); i++){ %>--%>
 
           <tbody>
             <tr>
-              <td><%=request.getAttribute("plano")%></td>
+              <td><%=session.getAttribute("plano")%></td>
               <td><%=session.getAttribute("dt_validade")%>></td>
               <td><%=session.getAttribute("preco")%></td>
               <td class="status-pagamento"><%=session.getAttribute("status")%></td>
               <td>-</td>
               <td>-</td>
             </tr>
-            <% } %>
+<%--            <% } %>--%>
 
 <%--            <tr>--%>
 <%--              <td>SaveIt Pro</td>--%>

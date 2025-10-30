@@ -213,6 +213,34 @@ public class PagamentoDAO {
         }
     }
 
+    public List<Pagamento> buscar(int campoOrdenar) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco
+//    Iniciando a lista de objetos Industrias
+        List<Pagamento> pagamentos = new ArrayList<>();
+        try {
+//            Iniciando objeto Statment
+            Statement stmt = conn.createStatement();
+            String query = "select * from pagamento order by " + campoOrdenar;//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+
+            if (rset != null) {
+//                Inserção de dados
+                while (rset.next()) {
+                    Pagamento pagamento = new Pagamento(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
+                    pagamentos.add(pagamento);
+                }
+            }
+            stmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Desconectando comando SQL
+            return pagamentos;//Retornando lista de pagamentos
+        }
+    }
+
     public List<Pagamento> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco
@@ -276,36 +304,27 @@ public class PagamentoDAO {
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de dados
         List<String> dadosPlano = new ArrayList<>();
-        try {
-            String query = "select\n" +
-                    "    pl.descricao as servico\n" +
-                    "    , pl.preco\n" +
-                    "    , pg.status\n" +
-                    "    , pg.id as id_pagamento\n" +
-                    "    , pg.dt_criacao as dt_pagamento\n" +
-                    "    , pg.dt_validade\n" +
-                    "    , pg.forma_pagamento\n" +
-                    "from industria i\n" +
-                    "left join plano pl on i.id_plano = pl.id\n" +
-                    "left join pagamento pg on i.id_pagamento = pg.id\n" +
-                    "where i.id = ?";
+        String query = "select pl.descricao as servico, pl.preco, pg.status, pg.id as id_pagamento, pg.dt_criacao as dt_pagamento, pg.dt_validade, pg.forma_pagamento from industria i left join plano pl on i.id_plano = pl.id left join pagamento pg on i.id_pagamento = pg.id where i.id = ?";
 
+        try {
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
             pstmt.setInt(1, id);//Setando valor
+
             ResultSet rset = pstmt.executeQuery();//Executando comando SQL
 
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    dadosPlano.add(rset.getString(1));
-                    dadosPlano.add(rset.getString(2));
-                    dadosPlano.add(rset.getString(3));
-                    dadosPlano.add(rset.getString(4));
-                    dadosPlano.add(rset.getString(5));
-                    dadosPlano.add(rset.getString(6));
-                    dadosPlano.add(rset.getString(7));
-                    return dadosPlano;
+                    dadosPlano.add(rset.getString("servico"));
+                    dadosPlano.add(rset.getString("preco"));
+                    dadosPlano.add(rset.getString("status"));
+                    dadosPlano.add(rset.getString("id_pagamento"));
+                    dadosPlano.add(rset.getString("dt_pagamento"));
+                    dadosPlano.add(rset.getString("dt_validade"));
+                    dadosPlano.add(rset.getString("forma_pagamento"));
                 }
+
+                return dadosPlano;
             }else {
                 return null;
             }
@@ -314,7 +333,6 @@ public class PagamentoDAO {
             return null;
         }finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
-            return dadosPlano;
         }
     }
 
