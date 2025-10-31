@@ -31,7 +31,7 @@ public class LogarAdminServlet extends HttpServlet {
 
         int id = Integer.parseInt(a.get(0));
 
-        Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
+        Funcionario funcionario = funcionarioDAO.buscarId(id).get(0);
 
         String nome = funcionario.getNome();
         String telefone_trabalho = funcionario.getTelefone_trabalho();
@@ -48,7 +48,7 @@ public class LogarAdminServlet extends HttpServlet {
         String atividade_comercial = a.get(14);
         String email = funcionario.getEmail();
 
-        Object admin = funcionarioDAO.buscar(emailOUcpf, senha);
+        Object admin = funcionarioDAO.buscarEmail(senha);
         HttpSession sessao = request.getSession();
         request.getSession().setAttribute("admin", admin);
 
@@ -76,7 +76,12 @@ public class LogarAdminServlet extends HttpServlet {
 
                 request.getRequestDispatcher("/WEB-INF/view/admin/inicio.jsp").forward(request, response);
             } catch (Exception e) {
-                e.printStackTrace();
+                try {
+                    request.setAttribute("error", "Credenciais inválidas");
+                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                } catch (Exception ed) {
+                    ed.printStackTrace();
+                }
             }
         } else {
             try {
