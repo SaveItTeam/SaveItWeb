@@ -49,68 +49,6 @@ public class FuncionarioDAO {
 
 
     //    Updates
-    public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
-        try {
-            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
-//            Setando valores
-            pstmt.setString(1, valorAlterar);
-            pstmt.setString(2, valorOndeAlterar);
-            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-            pstmt.close();
-            return validar;
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            conexao.desconectar(conn); // Desconectando do banco de dados
-        }
-        return false;
-    }
-
-
-    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
-        try {
-            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
-//            Setando valores
-            pstmt.setInt(1, valorAlterar);
-            pstmt.setString(2, valorOndeAlterar);
-            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-            pstmt.close();
-            return validar;
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            conexao.desconectar(conn); // Desconectando do banco de dados
-        }
-        return false;
-    }
-
-
-    public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
-        try {
-            String query = "Update Funcionario set" + campoAlterar + " = ? where " + ondeAlterar + " = ?";//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
-//            Setando valores
-            pstmt.setString(1, valorAlterar);
-            pstmt.setInt(2, valorOndeAlterar);
-            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-            pstmt.close();
-            return validar;
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            conexao.desconectar(conn); // Desconectando do banco de dados
-        }
-        return false;
-    }
-
     public boolean alterarNome(String novoNome, int id) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
@@ -160,27 +98,6 @@ public class FuncionarioDAO {
 //            Setando valores
             pstmt.setString(1, novaSenha);
             pstmt.setInt(2, id);
-            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-            pstmt.close();
-            return validar;
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            conexao.desconectar(conn); // Desconectando do banco de dados
-        }
-        return false;
-    }
-
-
-    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
-        try {
-            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
-//            Setando valores
-            pstmt.setInt(1, valorAlterar);
-            pstmt.setInt(2, valorOndeAlterar);
             boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
             pstmt.close();
             return validar;
