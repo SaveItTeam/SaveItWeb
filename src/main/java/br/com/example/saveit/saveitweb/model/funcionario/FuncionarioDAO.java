@@ -95,11 +95,71 @@ public class FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            String query = "Update Funcionario set" + campoAlterar + " = ? where " + ondeAlterar + " = ?";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
 //            Setando valores
             pstmt.setString(1, valorAlterar);
             pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarNome(String novoNome, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set nome = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoNome);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarEmail(String novoEmail, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set email = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoEmail);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarSenha(String novaSenha, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set senha = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novaSenha);
+            pstmt.setInt(2, id);
             boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
             pstmt.close();
             return validar;
@@ -343,65 +403,64 @@ public class FuncionarioDAO {
         List<String> funcionarios = new ArrayList<>();//Instanciando a lista de objetos Funcionario
 
         String sql = """
-                with info_func as (
-                    select
-                        f.id as id_func
-                        , f.email as func_email
-                        , f.nome as nome_func
-                        , f.telefone_trabalho
-                        , coalesce(id_empresa, id_industria) AS id_estabelecimento
-                        , case
-                            when id_empresa is null then 'Saveit Pro'
-                            when id_industria is null then 'Saveit Basico'
-                    end as plano
-                    , case
-                        when id_empresa is not null then 'Empresa'
-                        when id_industria is not null then 'Industria'
-                    end as tipo
-                    , i.url as img
-                    , f.genero
-                    from funcionario f
-                    left join imagem_funcionario i on f.id = i.id_funcionario
-                    where (cpf = ? or email = ?)
-                    and senha = ?
-                    and is_admin = true
-                )
-                , info_estab as (
-                    select
-                        c.nome as nome_empresa
-                        , c.cnpj
-                        , c.tipo_venda
-                        , t.num_telefone
-                        , concat(e.cep_rua, ', ', cep_rua_num, ' - ', e.cep_bairro, ' ', e.cep_estado) as endereco
-                    from cliente c
-                        join telefone t on c.id = t.id_cliente
-                        join endereco e on e.id = c.id_endereco
-                )
-                , cont_func as (
-                    select
-                        case
-                            when id_empresa is not null then 'Empresa'
-                            when id_industria is not null then 'Industria'
-                        end as tipo
-                        , coalesce(id_empresa, id_industria) AS id_estabelecimento
-                        , case
-                            when id_empresa is not null then e.procura
-                            when id_industria is not null then i.vende
-                        end as atividade_comercial
-                        , count(f.id) as cont_func
-                    from funcionario f
-                    left join empresa e on f.id_empresa = e.id
-                    left join industria i on f.id_industria = i.id
-                    group by 1, 2, 3
-                )
-                select
-                    f.*
-                    , e.*
-                    , c.cont_func
-                    , c.atividade_comercial
-                from info_func f
-                left join info_estab e on f.telefone_trabalho = e.num_telefone
-                left join cont_func c on c.tipo = f.tipo and c.id_estabelecimento = f.id_estabelecimento;
+            with info_func as (
+            select
+                f.id as id_func
+                , f.nome as nome_func
+                , f.telefone_trabalho
+                , coalesce(id_empresa, id_industria) AS id_estabelecimento
+                , case
+                    when id_empresa is null then 'Saveit Pro'
+                    when id_industria is null then 'Saveit Basico'
+            end as plano
+            , case
+                when id_empresa is not null then 'Empresa'
+                when id_industria is not null then 'Industria'
+            end as tipo
+            , i.url as img
+            , f.genero
+            from funcionario f
+            left join imagem_funcionario i on f.id = i.id_funcionario
+            where (cpf = ? or email = ?)
+            and senha = ?
+            and is_admin = true
+        )
+        , info_estab as (
+            select
+                c.nome as nome_empresa
+                , c.cnpj
+                , c.tipo_venda
+                , t.num_telefone
+                , concat(e.cep_rua, ', ', cep_rua_num, ' - ', e.cep_bairro, ' ', e.cep_estado) as endereco
+            from cliente c
+                join telefone t on c.id = t.id_cliente
+                join endereco e on e.id = c.id_endereco
+        )
+        , cont_func as (
+            select
+                case
+                    when id_empresa is not null then 'Empresa'
+                    when id_industria is not null then 'Industria'
+                end as tipo
+                , coalesce(id_empresa, id_industria) AS id_estabelecimento
+                , case
+                    when id_empresa is not null then e.procura
+                    when id_industria is not null then i.vende
+                end as atividade_comercial
+                , count(f.id) as cont_func
+            from funcionario f
+            left join empresa e on f.id_empresa = e.id
+            left join industria i on f.id_industria = i.id
+            group by 1, 2, 3
+        )
+        select
+            f.*
+            , e.*
+            , c.cont_func
+            , c.atividade_comercial
+        from info_func f
+        left join info_estab e on f.telefone_trabalho = e.num_telefone
+        left join cont_func c on c.tipo = f.tipo and c.id_estabelecimento = f.id_estabelecimento;
         """;
 
         try {
@@ -413,7 +472,7 @@ public class FuncionarioDAO {
 
             rs = pstmt.executeQuery();//Executando comando SQL
 
-            if (rs != null){
+            if (rs != null) {
                 while (rs.next()) {
                     funcionarios.add(rs.getString("id_func"));
                     funcionarios.add(rs.getString("nome_func"));
@@ -430,11 +489,9 @@ public class FuncionarioDAO {
                     funcionarios.add(rs.getString("endereco"));
                     funcionarios.add(rs.getString("cont_func"));
                     funcionarios.add(rs.getString("atividade_comercial"));
-//                    funcionarios.add(rs.getString("email"));
                     return funcionarios;
                 }
                 return funcionarios;
-
             } else {
                 return null;
             }

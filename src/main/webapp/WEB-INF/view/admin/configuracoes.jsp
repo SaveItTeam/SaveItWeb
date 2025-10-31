@@ -49,7 +49,7 @@
             </div>
 
             <div id="configuracoes-principal">
-                <form>
+                <form method="post" action="alterarConfiguracoesServlet">
                     <div id="imagem-container">
                         <img src="<%=session.getAttribute("img")%>" alt="Imagem do Usuário" id="imgPreview">
 
@@ -63,10 +63,10 @@
                     <label for="inputEmail">Email
                     </label>
                     <input type="email" id="inputEmail" name="inputEmail" disabled
-                        value="aaaaaaaaaa@gmail.com">
+                        value="<%=session.getAttribute("email")%>">
                     <label for="inputSenha">Senha
                     </label>
-                    <input type="password" id="inputSenha" name="inputSenha" disabled value="<%=session.getAttribute("senha")%>">
+                    <input type="password" id="inputSenha" name="inputSenha" disabled value="<%=session.getAttribute("senha_anonimzada")%>">
 
                     <div>
                         <button type="submit">Salvar Alterações</button>

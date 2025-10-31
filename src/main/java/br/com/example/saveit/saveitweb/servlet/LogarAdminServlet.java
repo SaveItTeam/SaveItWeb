@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/logarAdminServlet")
 public class LogarAdminServlet extends HttpServlet {
@@ -32,7 +33,6 @@ public class LogarAdminServlet extends HttpServlet {
 
         Funcionario funcionario = funcionarioDAO.buscar("id", id).get(0);
 
-
         String nome = funcionario.getNome();
         String telefone_trabalho = funcionario.getTelefone_trabalho();
         int id_industria = funcionario.getId_industria();
@@ -46,6 +46,7 @@ public class LogarAdminServlet extends HttpServlet {
         String endereco = a.get(12);
         String count = a.get(13);
         String atividade_comercial = a.get(14);
+        String email = funcionario.getEmail();
 
         Object admin = funcionarioDAO.buscar(emailOUcpf, senha);
         HttpSession sessao = request.getSession();
@@ -55,6 +56,7 @@ public class LogarAdminServlet extends HttpServlet {
         if (admin != null) {
 
             try {
+                sessao.setAttribute("id_funcionario", id);
                 sessao.setAttribute("nome", nome);
                 sessao.setAttribute("telefone_trabalho", telefone_trabalho);
                 sessao.setAttribute("id_industria", id_industria);
@@ -68,7 +70,9 @@ public class LogarAdminServlet extends HttpServlet {
                 sessao.setAttribute("endereco", endereco);
                 sessao.setAttribute("count", count);
                 sessao.setAttribute("atividade_comercial", atividade_comercial);
-                sessao.setAttribute("senha", senhaAnonimizada);
+                sessao.setAttribute("senha_anonimzada", senhaAnonimizada);
+                sessao.setAttribute("senha", senha);
+                sessao.setAttribute("email", email);
 
                 request.getRequestDispatcher("/WEB-INF/view/admin/inicio.jsp").forward(request, response);
             } catch (Exception e) {

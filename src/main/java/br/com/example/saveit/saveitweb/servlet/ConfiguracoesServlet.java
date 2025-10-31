@@ -1,5 +1,6 @@
 package br.com.example.saveit.saveitweb.servlet;
 
+import br.com.example.saveit.saveitweb.model.funcionario.FuncionarioDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
