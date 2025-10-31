@@ -10,10 +10,11 @@ public class Cliente {
     private String tipo_venda;
     private int id_endereco;
     private String cnpj;
+    private String imagem;
 
 
     //    Construtor
-    public Cliente(int id, String nome, String email, String senha, String tipo, String tipo_venda, int id_endereco, String cnpj) {
+    public Cliente(int id, String nome, String email, String senha, String tipo, String tipo_venda, int id_endereco, String cnpj, String imagem) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -22,6 +23,7 @@ public class Cliente {
         this.tipo_venda = tipo_venda;
         this.id_endereco = id_endereco;
         this.cnpj = cnpj;
+        this.imagem = imagem;
     }
 
     public Cliente() {}
@@ -59,6 +61,8 @@ public class Cliente {
         return cnpj;
     }
 
+    public String getImagem() {return imagem;}
+
     //    Setters
     public void setId(int id) {
         this.id = id;
@@ -92,6 +96,8 @@ public class Cliente {
         this.cnpj = cnpj;
     }
 
+    public void setImagem(String imagem) {this.imagem = imagem;}
+
 
     //    toString
 
@@ -104,6 +110,7 @@ public class Cliente {
                 "\ntipo='" + tipo +
                 "\ntipo_venda='" + tipo_venda +
                 "\nid_endereco=" + id_endereco +
-                "\ncnpj='" + cnpj;
+                "\ncnpj='" + cnpj +
+                "\nimagem='" + imagem;
     }
 }
