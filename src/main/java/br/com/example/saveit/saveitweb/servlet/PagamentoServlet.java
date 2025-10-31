@@ -26,35 +26,42 @@ public class PagamentoServlet extends HttpServlet {
 
         if (admin == null) {
             String nome = (String) sessao.getAttribute("nome");
-            int id = (int) sessao.getAttribute("id");
-            String url = (String) sessao.getAttribute("url");
+            int id = (int) sessao.getAttribute("id_industria");
+            String url = (String) sessao.getAttribute("img");
             String plano = (String) sessao.getAttribute("plano");
             dadosPlano = pagamentoDAO.buscarDadosPlano(id);
             String descricao = dadosPlano.get(0);
             String preco =  dadosPlano.get(1);
             String status = dadosPlano.get(2);
             String idPlano = dadosPlano.get(3);
-            String dt_criacao = dadosPlano.get(4);
-            String dt_validade = dadosPlano.get(5);
             String forma_pagamento = dadosPlano.get(6);
 
+            String dt_criacao = dadosPlano.get(4);
 
+            String anoC = dt_criacao.split("-")[0];
+            String mesC = dt_criacao.split("-")[1];
+            String diaC = dt_criacao.split("-")[2];
+            dt_criacao = diaC + "/" + mesC + "/" + anoC;
+
+
+            String dt_validade = dadosPlano.get(5);
+
+            String anoV = dt_validade.split("-")[0];
+            String mesV = dt_validade.split("-")[1];
+            String diaV = dt_validade.split("-")[2];
+            dt_validade = diaV + "/" + mesV + "/" + anoV;
 
             try{
                 sessao.setAttribute("descricao", descricao);
                 sessao.setAttribute("preco", preco);
                 sessao.setAttribute("status", status);
                 sessao.setAttribute("idPlano", idPlano);
-                sessao.setAttribute("dt_criacao", dt_criacao);
+                sessao.setAttribute("dt_pagamento", dt_criacao);
                 sessao.setAttribute("dt_validade", dt_validade);
                 sessao.setAttribute("forma_pagamento", forma_pagamento);
-                sessao.setAttribute("nome", nome);
-                sessao.setAttribute("id", id);
-                sessao.setAttribute("url", url);
-                sessao.setAttribute("plano", plano);
                 sessao.setAttribute("dadosPlano", dadosPlano);
 
-                request.getRequestDispatcher("/WEB-INF/view/admin/pagamentos.jsp").forward((ServletRequest) sessao, response);
+                request.getRequestDispatcher("/WEB-INF/view/admin/pagamentos.jsp").forward(request, response);
             }catch(Exception e){
                 e.printStackTrace();
             }

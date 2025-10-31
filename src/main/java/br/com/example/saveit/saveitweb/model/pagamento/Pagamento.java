@@ -6,8 +6,9 @@ public class Pagamento {
     private String status;
     private String dt_criacao;
     private String dt_validade;
+    private String forma_pagamento;
 
-    public Pagamento(int id, String status, String dt_criacao, String dt_validade) {
+    public Pagamento(int id, String status, String dt_criacao, String dt_validade, String forma_pagamento) {
         this.id = id;
         this.status = status;
         this.dt_criacao = dt_criacao;
@@ -33,8 +34,9 @@ public class Pagamento {
         return dt_validade;
     }
 
+    public String getForma_pagamento() {return forma_pagamento;}
 
-//    Setters
+    //    Setters
     public void setId(int id) {
         this.id = id;
     }
@@ -51,9 +53,10 @@ public class Pagamento {
         this.dt_validade = dt_validade;
     }
 
+    public void setForma_pagamento(String forma_pagamento) {this.forma_pagamento = forma_pagamento;}
 
     //    toString
     public String toString(){
-        return String.format("|ID: %-5s  |Status: %-10s  |Data_Criação: %-15s  |Data_Validade: %-5s", this.id, this.status, this.dt_criacao, this.dt_validade);
+        return String.format("|ID: %-5s  |Status: %-10s  |Data_Criação: %-15s  |Data_Validade: %-5s  |Forma_Pagamento: %-15s", this.id, this.status, this.dt_criacao, this.dt_validade, this.forma_pagamento);
     }
 }

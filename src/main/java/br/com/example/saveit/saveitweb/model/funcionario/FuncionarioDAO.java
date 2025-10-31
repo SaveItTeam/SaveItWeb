@@ -95,11 +95,71 @@ public class FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            String query = "Update Funcionario set" + campoAlterar + " = ? where " + ondeAlterar + " = ?";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
 //            Setando valores
             pstmt.setString(1, valorAlterar);
             pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarNome(String novoNome, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set nome = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoNome);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarEmail(String novoEmail, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set email = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoEmail);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarSenha(String novaSenha, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set senha = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novaSenha);
+            pstmt.setInt(2, id);
             boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
             pstmt.close();
             return validar;
@@ -338,6 +398,7 @@ public class FuncionarioDAO {
     public List<String> logarAdmin(String email, String senha) {
         Conexao conexao = new Conexao();
         Connection conn = Conexao.conectar();//Abrindo conexão com o banco de dados
+
         ResultSet rs;
         List<String> funcionarios = new ArrayList<>();//Instanciando a lista de objetos Funcionario
 
@@ -411,8 +472,8 @@ public class FuncionarioDAO {
 
             rs = pstmt.executeQuery();//Executando comando SQL
 
-            if (rs != null){
-                if (rs.next()) {
+            if (rs != null) {
+                while (rs.next()) {
                     funcionarios.add(rs.getString("id_func"));
                     funcionarios.add(rs.getString("nome_func"));
                     funcionarios.add(rs.getString("telefone_trabalho"));
@@ -429,9 +490,8 @@ public class FuncionarioDAO {
                     funcionarios.add(rs.getString("cont_func"));
                     funcionarios.add(rs.getString("atividade_comercial"));
                     return funcionarios;
-                } else {
-                    return null;
                 }
+                return funcionarios;
             } else {
                 return null;
             }
