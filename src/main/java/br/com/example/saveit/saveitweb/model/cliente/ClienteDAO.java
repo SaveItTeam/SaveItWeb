@@ -1,7 +1,12 @@
 package br.com.example.saveit.saveitweb.model.cliente;
 
 import br.com.example.saveit.saveitweb.dao.Conexao;
+import jakarta.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,6 +130,39 @@ public class ClienteDAO {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+
+    public boolean alterarImagem(File imagem, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
+        byte [] imagemBytes;//Iniciando variavel do tipo ByteArray
+
+        try {
+            Part partesAruivo = (Part) imagem;
+            if (partesAruivo != null) {
+                InputStream conteudoAruivo = partesAruivo.getInputStream();
+                imagemBytes = IOUtils.toByteArray(conteudoAruivo);
+                String query = "Update Cliente set imagem = ? where id = ?";//Comando SQL
+                PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
+                pstmt.setBytes(1, imagemBytes);
+                pstmt.setInt(2, id);
+                boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+                if (validar) {
+                    pstmt.close();
+                    return validar;//True
+                }
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
