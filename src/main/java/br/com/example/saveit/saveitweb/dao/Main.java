@@ -29,20 +29,20 @@ public class Main {
             EnderecoDAO enderecoDAO = new EnderecoDAO();
 
             String senha = "davi123";
-            int c = senha.length();
-            senha = "*".repeat(c);
+            int cO = senha.length();
+            senha = "*".repeat(cO);
             System.out.println(senha);
 
             conexao.desconectar(conn);
 
 
 //            System.out.println(funcionarioDAO.buscar("email", "mariana@empresa1.com"));
-//            java.util.List<String> a = funcionarioDAO.logarAdmin("flavia.ribeiros@gmail.com", "39f3dbe6f821b61f4a2fcdf089c482dcfdb05f0cca82a091d19b4cbe2b2c9369");
-//            int c = 0;
-//            for (String a1 : a) {
-//                System.out.println(c + " " + a1);
-//                c++;
-//            }
+            java.util.List<String> a = funcionarioDAO.logarAdmin("flavia.ribeiros@gmail.com", "39f3dbe6f821b61f4a2fcdf089c482dcfdb05f0cca82a091d19b4cbe2b2c9369");
+            int c = 0;
+            for (String a1 : a) {
+                System.out.println(c + " " + a1);
+                c++;
+            }
 //            System.out.println(a.get(2));
 //            int id = Integer.parseInt(a.get(0));
 //            System.out.println(funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));
