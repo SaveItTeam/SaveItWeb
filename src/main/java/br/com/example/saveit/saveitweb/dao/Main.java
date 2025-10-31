@@ -1,8 +1,8 @@
 package br.com.example.saveit.saveitweb.dao;
 
 import br.com.example.saveit.saveitweb.model.admin.*;
-import br.com.example.saveit.saveitweb.model.empresa.*;
 import br.com.example.saveit.saveitweb.model.endereco.EnderecoDAO;
+import br.com.example.saveit.saveitweb.model.empresa.*;
 import br.com.example.saveit.saveitweb.model.funcionario.*;
 import br.com.example.saveit.saveitweb.model.industria.*;
 import br.com.example.saveit.saveitweb.model.pagamento.*;
