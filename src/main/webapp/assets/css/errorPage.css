@@ -60,21 +60,20 @@ button:hover {
 
 .blob {
   position: absolute;
-  background-repeat: no-repeat;
-  background-size: contain;
   width: 40vw;
   height: 40vw;
   z-index: 1;
 }
 
 .blob-left {
-  background-image: url('imagens/blob 4.png');
-  top: -10%;
-  left: -10%;
+  background-image: url('../images/blob\(4\).svg');
+  top: -24%;
+  left: -11%;
 }
 
 .blob-right {
-  background-image: url('imagens/blob 5.png');
-  bottom: -10%;
-  right: -10%;
+  background-image: url('../images/blob\(4\).svg');
+  bottom: -24%;
+  right: -9%;
+  transform: rotate(180deg);
 }
