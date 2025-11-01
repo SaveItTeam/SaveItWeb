@@ -93,8 +93,8 @@ public class Main {
 //        Endereco endereco2 = new Endereco(2, "20040-010", "Avenida Atlântica", "Copacabana", "Rio de Janeiro", "RJ", "Brasil", "Cobertura", 1500);
 //
 //// Cliente
-//        Cliente cliente1 = new Cliente(1, "Empresa Verde Ltda", "contato@empresaverde.com", "verde123", 1, "B2B", 1, "12.345.678/0001-90");
-//        Cliente cliente2 = new Cliente(2, "Indústria Solar S.A.", "vendas@solar.com", "solar456", 2, "B2C", 2, "98.765.432/0001-12");
+//        Cliente cliente1 = new Cliente(1, "Empresa Verde Ltda", "contato@empresaverde.com", "verde123", 1, "B2B", 1, "12.345.678/0001-90", null);
+//        Cliente cliente2 = new Cliente(2, "Indústria Solar S.A.", "vendas@solar.com", "solar456", 2, "B2C", 2, "98.765.432/0001-12", null);
 //
 //// Empresa
 //        Empresa empresa1 = new Empresa(1, "Fornecedores de materiais recicláveis", "EMP001", 1);

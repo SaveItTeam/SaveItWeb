@@ -46,7 +46,7 @@
             </button>
         </div>
         <div class="administrador">
-            <img src="<%=session.getAttribute("img")%>" alt="" />
+            <img src="<%=session.getAttribute("img_funcionario]")%>" alt="" />
             <div>
                 <p><%=session.getAttribute("nome")%></p>
                 <p>Admin</p>
@@ -108,7 +108,7 @@
 
         <div id="card-industria">
             <div>
-                <img src="<%=session.getAttribute("img")%>" alt="" />
+                <img src="<%=session.getAttribute("img_empresa")%>" alt="" />
                 <div>
                     <h4><%=session.getAttribute("nome_empresa")%></h4>
                     <p><%=session.getAttribute("telefone_trabalho")%></p>

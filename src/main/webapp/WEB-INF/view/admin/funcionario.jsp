@@ -5,12 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Funcionário - Essentia</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/funcionario.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/global.css" />
-      <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon_essentia.png" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="${pageContext.request.contextPath}/assets/css/funcionario.css"
+    />
+    <link
+      rel="stylesheet"
+      href="${pageContext.request.contextPath}/assets/css/global.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="${pageContext.request.contextPath}/assets/images/favicon_essentia.png"
+      type="image/x-icon"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"/>
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -54,32 +65,17 @@
           </div>
         </div>
       </div>
-        <%@ include file="../../../assets/sidebar.jsp"%>
+      <%@include file="../../../assets/sidebar.jsp"%>
       <section id="painel-funcionarios">
         <div id="texto-principal">
           <div>
             <h1>Gerenciar Funcionários</h1>
             <hr />
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Tellus sit risus venenatis
-              commodo id sollicitudin fringilla nunc. Dui sed quis id nunc
-              condimentum arcu.
-            </p>
-          </div>
-
-          <div class="funcionarios-ativos">
-            <i class="ri-group-fill"></i>
-            <div>
-              <p id="texto-funcionarios">Funcionários Ativos</p>
-              <h2 id="quantidade-funcionarios"></h2>
-            </div>
           </div>
         </div>
 
         <div id="tabela-funcionarios">
           <div class="topo">
-            <input type="search" placeholder="Digite o nome" />
-            <i class="ri-search-line"></i>
             <button id="botao-adicionar-funcionario">
               <i class="ri-add-line"></i> Novo Funcionário
             </button>
@@ -90,79 +86,83 @@
               <tr>
                 <th>Nome</th>
                 <th>Data de Contratação</th>
-                <th>ID</th>
                 <th>Cargo</th>
-                <th>Status</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <!-- Nas linhas da tabela, adicione os novos campos no JSON -->
+              <tr
+                data-funcionario='{"nome":"Nisflei Galoni","cargo":"Professor","email":"nisflei@email.com","telefone":"(11) 99999-9999", "id":"1"}'
+              >
                 <td>Nisflei Galoni</td>
                 <td>27/01/2021</td>
-                <td>1</td>
                 <td>Professor</td>
-                <td class="funcionario-status">Ativo</td>
                 <td class="acoes">
                   <button class="botao-deletar-funcionario">
                     <i class="ri-delete-bin-6-line"></i>
                   </button>
                 </td>
               </tr>
-              <tr>
+
+              <tr
+                data-funcionario='{"nome":"Myrna Yoshie","cargo":"Professor","email":"myrna@email.com","telefone":"(11) 88888-8888"}'
+              >
                 <td>Myrna Yoshie</td>
                 <td>21/01/2022</td>
-                <td>2</td>
                 <td>Professor</td>
-                <td class="funcionario-status">Ativo</td>
                 <td class="acoes">
                   <button class="botao-deletar-funcionario">
                     <i class="ri-delete-bin-6-line"></i>
                   </button>
                 </td>
               </tr>
-              <tr>
+
+              <tr
+                data-funcionario='{"nome":"Carlos Santi","cargo":"Professor","email":"carlos@email.com","telefone":"(11) 77777-7777"}'
+              >
                 <td>Carlos Santi</td>
                 <td>14/01/2021</td>
-                <td>3</td>
                 <td>Professor</td>
-                <td class="funcionario-status">Ativo</td>
                 <td class="acoes">
                   <button class="botao-deletar-funcionario">
                     <i class="ri-delete-bin-6-line"></i>
                   </button>
                 </td>
               </tr>
-              <tr>
+
+              <tr
+                data-funcionario='{"nome":"Bruno Baptista","cargo":"Professor","email":"bruno@email.com","telefone":"(11) 66666-6666"}'
+              >
                 <td>Bruno Baptista</td>
                 <td>20/02/2018</td>
-                <td>4</td>
                 <td>Professor</td>
-                <td class="funcionario-status">Ativo</td>
                 <td class="acoes">
                   <button class="botao-deletar-funcionario">
                     <i class="ri-delete-bin-6-line"></i>
                   </button>
                 </td>
               </tr>
-              <tr>
+
+              <tr
+                data-funcionario='{"nome":"Marcelo Modolo","cargo":"Professor","email":"marcelo@email.com","telefone":"(11) 55555-5555"}'
+              >
                 <td>Marcelo Modolo</td>
                 <td>18/01/2019</td>
-                <td>5</td>
                 <td>Professor</td>
-                <td class="funcionario-status">Inativo</td>
                 <td class="acoes">
                   <button class="botao-deletar-funcionario">
                     <i class="ri-delete-bin-6-line"></i>
                   </button>
                 </td>
               </tr>
-              <tr>
+
+              <tr
+                data-funcionario='{"nome":"Carlos Alberto","cargo":"Professor","email":"carlosa@email.com","telefone":"(11) 44444-4444"}'
+              >
                 <td>Carlos Alberto</td>
                 <td>28/02/2024</td>
-                <td>6</td>
                 <td>Professor</td>
-                <td class="funcionario-status">Inativo</td>
                 <td class="acoes">
                   <button class="botao-deletar-funcionario">
                     <i class="ri-delete-bin-6-line"></i>
@@ -204,26 +204,14 @@
 
         <div class="inputs">
           <label for=""
-            >Primeiro Nome
+            >Nome
             <input
               type="text"
-              placeholder="Digite o primeiro nome"
+              placeholder="Digite o nome"
               name="inputNome"
               id="inputNome"
             />
           </label>
-          <label for=""
-            >Último Nome
-            <input
-              type="text"
-              placeholder="Digite o último nome"
-              name="inputUltimoNome"
-              id="inputSegNome"
-            />
-          </label>
-          <!-- <label for="">ID
-                    <input type="number" placeholder="Marcelo" name="inputNome" id="inputId">
-                </label> -->
           <label for=""
             >Cargo
             <input
@@ -260,26 +248,35 @@
             />
           </label>
           <label for=""
-            >Status
+            >Data de Contratação
             <input
-              type="tel"
-              placeholder="Digite o status"
+              type="date"
+              placeholder="Digite a data de contratação"
               name="inputStatus"
               id="inputStatus"
             />
           </label>
           <label for=""
-            >Endereço
+            >CPF
             <input
               type="text"
-              placeholder="Digite o endereço"
-              name="inputEndereco"
-              id="inputEndereco"
+              placeholder="Digite o CPF"
+              name="inputCpf"
+              id="inputCpf"
+            />
+          </label>
+          <label for=""
+            >RG
+            <input
+              type="text"
+              placeholder="Digite o RG"
+              name="inputRg"
+              id="inputRg"
             />
           </label>
         </div>
+        <hr />
 
-        <hr style="margin-top: 2rem" />
         <div class="acoesForm">
           <button class="fechar-adicionar-funcionario" type="button">
             Cancelar
@@ -288,8 +285,6 @@
             Adicionar Funcionário
           </button>
         </div>
-
-        <!-- <button type="submit">Adicionar Funcionário</button> -->
       </form>
     </div>
 
@@ -315,6 +310,7 @@
                 name="inputFile2"
                 id="inputFile2"
                 accept=".jpg, .png, .jpeg"
+                1qaa
               />
             </label>
           </div>
@@ -322,26 +318,15 @@
 
         <div class="inputs">
           <label for=""
-            >Primeiro Nome
+            >Nome Completo
             <input
               type="text"
-              placeholder="Digite o primeiro nome"
+              placeholder="Digite o nome"
               name="inputNome2"
               id="inputNome2"
             />
           </label>
-          <label for=""
-            >Último Nome
-            <input
-              type="text"
-              placeholder="Digite o último nome"
-              name="inputUltimoNome"
-              id="inputUltimoNome2"
-            />
-          </label>
-          <!-- <label for="">ID
-                    <input type="number" placeholder="Marcelo" name="inputNome" id="inputId">
-                </label> -->
+
           <label for=""
             >Cargo
             <input
@@ -350,14 +335,6 @@
               name="inputCargo2"
               id="inputCargo2"
             />
-          </label>
-          <label for="inputSelect"
-            >Gênero
-            <select name="inputSelect2" id="inputSelect2">
-              <option value="masc">Masculino</option>
-              <option value="femi">Feminino</option>
-              <option value="outros">Outros</option>
-            </select>
           </label>
           <label for=""
             >Email
@@ -377,35 +354,14 @@
               id="inputTel2"
             />
           </label>
-          <label for=""
-            >Status
-            <input
-              type="tel"
-              placeholder="Digite o status"
-              name="inputStatus2"
-              id="inputStatus2"
-            />
-          </label>
-          <label for=""
-            >Endereço
-            <input
-              type="text"
-              placeholder="Digite o endereço"
-              name="inputEndereco2"
-              id="inputEndereco2"
-            />
-          </label>
         </div>
-
-        <hr style="margin-top: 2rem" />
+        <hr />
         <div class="acoesForm">
           <button class="fechar-editar-funcionario" type="button">
-            Cancelar
+            Fechar
           </button>
-          <button type="submit">Adicionar Funcionário</button>
+          <button type="submit">Salvar Alterações</button>
         </div>
-
-        <!-- <button type="submit">Adicionar Funcionário</button> -->
       </form>
     </div>
 
