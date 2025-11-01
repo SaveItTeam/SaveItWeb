@@ -36,7 +36,6 @@ public class Main {
 
             conexao.desconectar(conn);
 
-            Date.valueOf("20/20/2O");
 
 //            System.out.println(funcionarioDAO.buscar("email", "mariana@empresa1.com"));
             java.util.List<String> a = funcionarioDAO.logarAdmin("flavia.ribeiros@gmail.com", "39f3dbe6f821b61f4a2fcdf089c482dcfdb05f0cca82a091d19b4cbe2b2c9369");
