@@ -260,6 +260,97 @@ public class FuncionarioDAO {
             return funcionarios;//Retornando a lista de funcionarios
         }
     }
+    public List<Funcionario> buscarFuncionarioPorAdminINDUSTRIA(int valorPesquisar) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String query = "SELECT * FROM Funcionario WHERE  id_industria = ?";//Comando SQL
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);//Setando Valor
+
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
+
+            if (rset != null) {
+//                Inserção de valores
+                while (rset.next()) {
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionarios
+        }
+    }
+
+    public List<Funcionario> buscarFuncionarioPorAdminEMPRESA(int valorPesquisar) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String query = "SELECT * FROM Funcionario WHERE  id_empresa = ?";//Comando SQL
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);//Setando Valor
+
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
+
+            if (rset != null) {
+//                Inserção de valores
+                while (rset.next()) {
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionarios
+        }
+    }
 
     public List<Funcionario> buscarEmail(String valorPesquisar) {
         Conexao conexao = new Conexao();

@@ -35,9 +35,9 @@ public class LogarAdminServlet extends HttpServlet {
 
         String nome = funcionario.getNome();
         String telefone_trabalho = funcionario.getTelefone_trabalho();
-        int id_industria = funcionario.getId_industria();
+        int id_estabelecimento = funcionario.getId_industria();
         String plano = a.get(4);
-        String tipo_industria = a.get(5);
+        String tipo_estabelecimento = a.get(5);
         String img_funcionario = a.get(6);
         String img_empresa = a.get(7);
         char genero = funcionario.getGenero();
@@ -60,9 +60,9 @@ public class LogarAdminServlet extends HttpServlet {
                 sessao.setAttribute("id_funcionario", id);
                 sessao.setAttribute("nome", nome);
                 sessao.setAttribute("telefone_trabalho", telefone_trabalho);
-                sessao.setAttribute("id_industria", id_industria);
+                sessao.setAttribute("id_estabelecimento", id_estabelecimento);
                 sessao.setAttribute("plano", plano);
-                sessao.setAttribute("tipo_industria", tipo_industria);
+                sessao.setAttribute("tipo_estabelecimento", tipo_estabelecimento);
                 sessao.setAttribute("img_funcionario", img_funcionario);
                 sessao.setAttribute("img_empresa", img_empresa);
                 sessao.setAttribute("genero", genero);

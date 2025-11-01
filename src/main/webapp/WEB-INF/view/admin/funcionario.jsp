@@ -1,4 +1,7 @@
+<%@ page import="br.com.example.saveit.saveitweb.model.funcionario.Funcionario" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,9 +36,9 @@
         </button>
       </div>
       <div class="administrador">
-        <img src="imagem (4).jpeg" alt="" />
+        <img src="<%=session.getAttribute("img_funcionario")%>" alt="" />
         <div>
-          <p>Marcelo Grilo</p>
+          <p><%=session.getAttribute("nome")%></p>
           <p>Admin</p>
         </div>
       </div>
@@ -65,81 +68,25 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
-
-            <!-- Nas linhas da tabela, adicione os novos campos no JSON -->
-            <tr
-              data-funcionario='{"nome":"Nisflei Galoni","dataContratacao":"27/01/2021","id":"1","cargo":"Professor","status":"Ativo","email":"nisflei@email.com","telefone":"(11) 99999-9999","cpf":"123.456.789-00","rg":"12.345.678-9"}'>
-              <td>Nisflei Galoni</td>
-              <td>27/01/2021</td>
-              <td>Professor</td>
-              <td class="acoes">
-                <button class="botao-deletar-funcionario">
-                  <i class="ri-delete-bin-6-line"></i>
-                </button>
-              </td>
+            <tbody>
+            <%
+                List<Funcionario> funcionarios = (List<Funcionario>) request.getAttribute("funcionarios");
+                for(Funcionario func : funcionarios) {
+            %>
+            <tr data-funcionario='{"nome":"<%=func.getNome()%>", "dataContratacao":"<%=func.getDt_contratacao()%>", "id":"<%=func.getId()%>", "cargo":"<%=func.getCargo()%>", "email":"<%=func.getEmail()%>", "telefone":"<%=func.getTelefone_pessoal()%>"}'>
+                <td><%=func.getNome()%></td>
+                <td><%=func.getDt_contratacao()%></td>
+                <td><%=func.getCargo()%></td>
+                <td class="acoes">
+                    <button class="botao-deletar-funcionario">
+                        <i class="ri-delete-bin-6-line"></i>
+                    </button>
+                </td>
             </tr>
-
-            <tr
-              data-funcionario='{"nome":"Myrna Yoshie","dataContratacao":"21/01/2022","id":"2","cargo":"Professor","status":"Ativo","email":"myrna@email.com","telefone":"(11) 88888-8888","cpf":"234.567.890-11","rg":"23.456.789-0"}'>
-              <td>Myrna Yoshie</td>
-              <td>21/01/2022</td>
-              <td>Professor</td>
-              <td class="acoes">
-                <button class="botao-deletar-funcionario">
-                  <i class="ri-delete-bin-6-line"></i>
-                </button>
-              </td>
-            </tr>
-
-            <tr
-              data-funcionario='{"nome":"Carlos Santi","dataContratacao":"14/01/2021","id":"3","cargo":"Professor","status":"Ativo","email":"carlos@email.com","telefone":"(11) 77777-7777","cpf":"345.678.901-22","rg":"34.567.890-1"}'>
-              <td>Carlos Santi</td>
-              <td>14/01/2021</td>
-              <td>Professor</td>
-              <td class="acoes">
-                <button class="botao-deletar-funcionario">
-                  <i class="ri-delete-bin-6-line"></i>
-                </button>
-              </td>
-            </tr>
-
-            <tr
-              data-funcionario='{"nome":"Bruno Baptista","dataContratacao":"20/02/2018","id":"4","cargo":"Professor","status":"Ativo","email":"bruno@email.com","telefone":"(11) 66666-6666","cpf":"456.789.012-33","rg":"45.678.901-2"}'>
-              <td>Bruno Baptista</td>
-              <td>20/02/2018</td>
-              <td>Professor</td>
-              <td class="acoes">
-                <button class="botao-deletar-funcionario">
-                  <i class="ri-delete-bin-6-line"></i>
-                </button>
-              </td>
-            </tr>
-
-            <tr
-              data-funcionario='{"nome":"Marcelo Modolo","dataContratacao":"18/01/2019","id":"5","cargo":"Professor","status":"Inativo","email":"marcelo@email.com","telefone":"(11) 55555-5555","cpf":"567.890.123-44","rg":"56.789.012-3"}'>
-              <td>Marcelo Modolo</td>
-              <td>18/01/2019</td>
-              <td>Professor</td>
-              <td class="acoes">
-                <button class="botao-deletar-funcionario">
-                  <i class="ri-delete-bin-6-line"></i>
-                </button>
-              </td>
-            </tr>
-
-            <tr
-              data-funcionario='{"nome":"Carlos Alberto","dataContratacao":"28/02/2024","id":"6","cargo":"Professor","status":"Inativo","email":"carlosa@email.com","telefone":"(11) 44444-4444","cpf":"678.901.234-55","rg":"67.890.123-4"}'>
-              <td>Carlos Alberto</td>
-              <td>28/02/2024</td>
-              <td>Professor</td>
-              <td class="acoes">
-                <button class="botao-deletar-funcionario">
-                  <i class="ri-delete-bin-6-line"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
+            <%
+                }
+            %>
+            </tbody>
         </table>
       </div>
     </section>

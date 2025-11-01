@@ -51,20 +51,14 @@
             <div id="configuracoes-principal">
                 <form method="post" action="alterarConfiguracoesServlet">
                     <div id="imagem-container">
-                        <img src="<%=session.getAttribute("img")%>" alt="Imagem do Usuário" id="imgPreview">
+                        <img src="<%=session.getAttribute("img_funcionario")%>" alt="Imagem do Usuário" id="imgPreview">
 
                         <label for="inputFile"><i class="ri-camera-line"></i>
                             <input type="file" id="inputFile" name="inputFile" accept="image/*" disabled>
                         </label>
                     </div>
 
-                    <div>
-                        <div id="img-container">
-                            <img src="<%=session.getAttribute("img_empresa")%>" alt="Foto da empresa/indústria" id="imgPreview">
-                            <label for="inputImg"><i class="ri-upload-2-line"></i>Enviar Foto
-                                <input type="file" accept="image/*" name="inputImg" id="inputImg">
-                            </label>
-                        </div>
+
 
                     <label for="inputNome">Nome
                     </label>

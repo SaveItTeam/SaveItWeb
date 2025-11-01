@@ -44,6 +44,14 @@ public class Main {
                 System.out.println(c + " " + a1);
                 c++;
             }
+
+            List<Funcionario> da = funcionarioDAO.buscarFuncionarioPorAdminINDUSTRIA(Integer.parseInt(a.get(3)));
+            int d = 0;
+            for (Funcionario da1 : da) {
+                System.out.println(da1.getNome());
+                d++;
+            }
+
 //            System.out.println(a.get(2));
 //            int id = Integer.parseInt(a.get(0));
 //            System.out.println(funcionarioDAO.logarAdmin("carlos@empresa1.com", "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251").get(0));

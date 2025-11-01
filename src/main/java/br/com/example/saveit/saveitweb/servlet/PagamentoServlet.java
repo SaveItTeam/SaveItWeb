@@ -26,7 +26,7 @@ public class PagamentoServlet extends HttpServlet {
 
         if (admin == null) {
             String nome = (String) sessao.getAttribute("nome");
-            int id = (int) sessao.getAttribute("id_industria");
+            int id = (int) sessao.getAttribute("id_estabelecimento");
             String url = (String) sessao.getAttribute("img");
             String plano = (String) sessao.getAttribute("plano");
             dadosPlano = pagamentoDAO.buscarDadosPlano(id);
