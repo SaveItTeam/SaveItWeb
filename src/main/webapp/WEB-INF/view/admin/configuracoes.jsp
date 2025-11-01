@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,7 +25,7 @@
                 <button class="light-mode">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="28" viewBox="0 0 26 28" fill="none">
                         <path
-                            d="M12.9996 21.75C13.3311 21.75 13.6491 21.8817 13.8835 22.1161C14.1179 22.3505 14.2496 22.6685 14.2496 23V24.25C14.2496 24.5815 14.1179 24.8995 13.8835 25.1339C13.6491 25.3683 13.3311 25.5 12.9996 25.5C12.6681 25.5 12.3501 25.3683 12.1157 25.1339C11.8813 24.8995 11.7496 24.5815 11.7496 24.25V23C11.7496 22.6685 11.8813 22.3505 12.1157 22.1161C12.3501 21.8817 12.6681 21.75 12.9996 21.75ZM20.9546 19.1875L21.8383 20.0712C22.066 20.307 22.192 20.6228 22.1892 20.9505C22.1863 21.2782 22.0549 21.5918 21.8231 21.8235C21.5914 22.0553 21.2778 22.1867 20.9501 22.1896C20.6223 22.1924 20.3066 22.0664 20.0708 21.8387L19.1871 20.955C18.9594 20.7192 18.8334 20.4035 18.8363 20.0757C18.8391 19.748 18.9706 19.4345 19.2023 19.2027C19.4341 18.971 19.7476 18.8395 20.0753 18.8367C20.4031 18.8338 20.7188 18.9598 20.9546 19.1875ZM5.04459 19.1875C5.26954 18.9633 5.57138 18.8332 5.88882 18.8235C6.20626 18.8138 6.51548 18.9253 6.75369 19.1353C6.9919 19.3454 7.14122 19.6382 7.17134 19.9543C7.20146 20.2705 7.11011 20.5863 6.91584 20.8375L6.81209 20.955L5.92834 21.8387C5.70339 22.0629 5.40155 22.1931 5.08411 22.2028C4.76668 22.2125 4.45745 22.101 4.21924 21.8909C3.98104 21.6809 3.83171 21.3881 3.80159 21.0719C3.77148 20.7558 3.86283 20.44 4.05709 20.1887L4.16084 20.0712L5.04459 19.1875ZM12.9996 5.5C14.9887 5.5 16.8964 6.29018 18.3029 7.6967C19.7094 9.10322 20.4996 11.0109 20.4996 13C20.4996 14.9891 19.7094 16.8968 18.3029 18.3033C16.8964 19.7098 14.9887 20.5 12.9996 20.5C11.0105 20.5 9.10281 19.7098 7.69629 18.3033C6.28977 16.8968 5.49959 14.9891 5.49959 13C5.49959 11.0109 6.28977 9.10322 7.69629 7.6967C9.10281 6.29018 11.0105 5.5 12.9996 5.5ZM2.99959 11.75C3.31819 11.7504 3.62463 11.8723 3.8563 12.0911C4.08797 12.3098 4.22739 12.6087 4.24606 12.9267C4.26473 13.2448 4.16125 13.558 3.95676 13.8023C3.75227 14.0466 3.46221 14.2036 3.14584 14.2413L2.99959 14.25H1.74959C1.43099 14.2496 1.12455 14.1277 0.892881 13.9089C0.661211 13.6902 0.521798 13.3913 0.503127 13.0733C0.484455 12.7552 0.587935 12.442 0.792423 12.1977C0.996911 11.9534 1.28697 11.7964 1.60334 11.7587L1.74959 11.75H2.99959ZM24.2496 11.75C24.5811 11.75 24.8991 11.8817 25.1335 12.1161C25.3679 12.3505 25.4996 12.6685 25.4996 13C25.4996 13.3315 25.3679 13.6495 25.1335 13.8839C24.8991 14.1183 24.5811 14.25 24.2496 14.25H22.9996C22.6681 14.25 22.3501 14.1183 22.1157 13.8839C21.8813 13.6495 21.7496 13.3315 21.7496 13C21.7496 12.6685 21.8813 12.3505 22.1157 12.1161C22.3501 11.8817 22.6681 11.75 22.9996 11.75H24.2496ZM4.16084 4.16125C4.37608 3.94603 4.66246 3.81674 4.96624 3.79764C5.27002 3.77854 5.57034 3.87094 5.81084 4.0575L5.92834 4.16125L6.81209 5.045C7.03628 5.26995 7.16643 5.57179 7.17613 5.88923C7.18582 6.20667 7.07432 6.51589 6.86428 6.7541C6.65424 6.99231 6.3614 7.14163 6.04525 7.17175C5.72909 7.20187 5.41333 7.11051 5.16209 6.91625L5.04459 6.8125L4.16084 5.92875C3.9265 5.69434 3.79486 5.37646 3.79486 5.045C3.79486 4.71354 3.9265 4.39566 4.16084 4.16125ZM21.8383 4.16125C22.0727 4.39566 22.2043 4.71354 22.2043 5.045C22.2043 5.37646 22.0727 5.69434 21.8383 5.92875L20.9546 6.8125C20.8393 6.93189 20.7014 7.02712 20.5488 7.09263C20.3963 7.15814 20.2323 7.19262 20.0663 7.19406C19.9004 7.19551 19.7358 7.16388 19.5821 7.10103C19.4285 7.03818 19.289 6.94536 19.1716 6.82799C19.0542 6.71063 18.9614 6.57106 18.8986 6.41744C18.8357 6.26382 18.8041 6.09922 18.8055 5.93325C18.807 5.76727 18.8415 5.60325 18.907 5.45074C18.9725 5.29824 19.0677 5.16031 19.1871 5.045L20.0708 4.16125C20.3053 3.92691 20.6231 3.79527 20.9546 3.79527C21.286 3.79527 21.6039 3.92691 21.8383 4.16125ZM12.9996 0.5C13.3311 0.5 13.6491 0.631696 13.8835 0.866116C14.1179 1.10054 14.2496 1.41848 14.2496 1.75V3C14.2496 3.33152 14.1179 3.64946 13.8835 3.88388C13.6491 4.1183 13.3311 4.25 12.9996 4.25C12.6681 4.25 12.3501 4.1183 12.1157 3.88388C11.8813 3.64946 11.7496 3.33152 11.7496 3V1.75C11.7496 1.41848 11.8813 1.10054 12.1157 0.866116C12.3501 0.631696 12.6681 0.5 12.9996 0.5Z"
+                            d="M12.9996 21.75C13.3311 21.75 13.6491 21.8817 13.8835 22.1161C14.1179 22.3505 14.2496 22.6685 14.2496 23V24.25C14.2496 24.5815 14.1179 24.8995 13.8835 25.1339C13.6491 25.3683 13.3311 25.5 12.9996 25.5C12.6681 25.5 12.3501 25.3683 12.1157 25.1339C11.8813 24.8995 11.7496 24.5815 11.7496 24.25V23C11.7496 22.6685 11.8813 22.3505 12.1157 22.1161C12.3501 21.8817 12.6681 21.75 12.9996 21.75ZM20.9546 19.1875L21.8383 20.0712C22.066 20.307 22.192 20.6228 22.1892 20.9505C22.1863 21.2782 22.0549 21.5918 21.8231 21.8235C21.5914 22.0553 21.2778 22.1867 20.9501 22.1896C20.6223 22.1924 20.3066 22.0664 20.0708 21.8387L19.1871 20.955C18.9594 20.7192 18.8334 20.4035 18.8363 20.0757C18.8391 19.748 18.9706 19.4345 19.2023 19.2027C19.4341 18.971 19.7476 18.8395 20.0753 18.8367C20.4031 18.8338 20.7188 18.9598 20.9546 19.1875ZM5.04459 19.1875C5.26954 18.9633 5.57138 18.8332 5.88882 18.8235C6.20626 18.8138 6.51548 18.9253 6.75369 19.1353C6.9919 19.3454 7.14122 19.6382 7.17134 19.9543C7.20146 20.2705 7.11011 20.5863 6.91584 20.8375L6.81209 20.955L5.92834 21.8387C5.70339 22.0629 5.40155 22.1931 5.08411 22.2028C4.76668 22.2125 4.45745 22.101 4.21924 21.8909C3.98104 21.6809 3.83171 21.3881 3.80159 21.0719C3.77148 20.7558 3.86283 20.44 4.05709 20.1887L4.16084 20.0712L5.04459 19.1875ZM12.9996 5.5C14.9887 5.5 16.8964 6.29018 18.3029 7.6967C19.7094 9.10322 20.4996 11.0109 20.4996 13C20.4996 14.9891 19.7094 16.8968 18.3029 18.3033C16.8964 19.7098 14.9887 20.5 12.9996 20.5C11.0105 20.5 9.10281 19.7098 7.69629 18.3033C6.28977 16.8968 5.49959 14.9891 5.49959 13C5.49959 11.0109 6.28977 9.10322 7.69629 7.6967C9.10281 6.29018 11.0105 5.5 12.9996 5.5Z"
                             fill="#FCC86A" />
                     </svg>
                 </button>
@@ -40,6 +40,7 @@
         </div>
 
         <%@include file="../../../assets/sidebar.jsp"%>
+
         <section id="configuracoes">
             <div id="texto-principal">
                 <div>
@@ -51,41 +52,44 @@
             <div id="configuracoes-principal">
                 <form method="post" action="alterarConfiguracoesServlet">
                     <div id="imagem-container">
-                        <img src="<%=session.getAttribute("img")%>" alt="Imagem do Usuário" id="imgPreview">
-
+                        <img src="<%=session.getAttribute("img")%>" alt="Imagem do Usuário" id="imgPreviewUser">
                         <label for="inputFile"><i class="ri-camera-line"></i>
                             <input type="file" id="inputFile" name="inputFile" accept="image/*" disabled>
                         </label>
                     </div>
 
-                    <div>
-                        <div id="img-container">
-                            <img src="<%=session.getAttribute("img_empresa")%>" alt="Foto da empresa/indústria" id="imgPreview">
-                            <label for="inputImg"><i class="ri-upload-2-line"></i>Enviar Foto
-                                <input type="file" accept="image/*" name="inputImg" id="inputImg">
-                            </label>
+                    <label for="inputNome">Nome</label>
+                    <input type="text" id="inputNome" name="inputNome" value="<%=session.getAttribute("nome")%>" disabled>
+
+                    <label for="inputEmail">Email</label>
+                    <input type="email" id="inputEmail" name="inputEmail" disabled value="<%=session.getAttribute("email")%>">
+
+                    <div id="senhas-extra" style="display: none;">
+                        <label for="inputSenhaAntiga">Senha Antiga</label>
+                        <div class="password-container">
+                            <input type="password" id="inputSenhaAntiga" name="inputSenhaAntiga" placeholder="Digite sua senha atual">
+                            <button type="button" class="toggle-password" data-target="inputSenhaAntiga">
+                                <i class="ri-eye-line"></i>
+                            </button>
                         </div>
 
-                    <label for="inputNome">Nome
-                    </label>
-                    <input type="text" id="inputNome" name="inputNome" value="<%=session.getAttribute("nome")%>" disabled>
-                    <label for="inputEmail">Email
-                    </label>
-                    <input type="email" id="inputEmail" name="inputEmail" disabled
-                        value="<%=session.getAttribute("email")%>">
-                    <label for="inputSenha">Senha
-                    </label>
-                    <input type="password" id="inputSenha" name="inputSenha" disabled value="<%=session.getAttribute("senha")%>">
-
-                    <div>
-                        <button type="submit">Salvar Alterações</button>
-
-                        <button type="button" id="botao-cancelar">Cancelar</button>
-
-                        <button type="button" id="botao-editar"><i class="ri-edit-box-line"></i></button>
+                        <label for="inputSenhaNovaConfirmar">Confirmar Nova Senha</label>
+                        <div class="password-container">
+                            <input type="password" id="inputSenhaNovaConfirmar" name="inputSenhaNovaConfirmar" placeholder="Confirme a nova senha">
+                            <button type="button" class="toggle-password" data-target="inputSenhaNovaConfirmar">
+                                <i class="ri-eye-line"></i>
+                            </button>
+                        </div>
                     </div>
 
+                    <label for="inputSenha">Senha</label>
+                    <input type="password" id="inputSenha" name="inputSenha" disabled>
 
+                    <div class="botoes">
+                        <button type="submit" id="botao-salvar">Salvar Alterações</button>
+                        <button type="button" id="botao-cancelar">Cancelar</button>
+                        <button type="button" id="botao-editar"><i class="ri-edit-box-line"></i></button>
+                    </div>
                 </form>
 
                 <div id="contato">
@@ -95,10 +99,8 @@
                     <a href="mailto:essentia.saveit@gmail.com"><i class="ri-mail-fill"></i>essentia.saveit@gmail.com</a>
                 </div>
             </div>
-
         </section>
     </main>
-
 
     <script src="${pageContext.request.contextPath}/assets/js/global.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/configuracoes.js"></script>
