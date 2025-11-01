@@ -26,17 +26,12 @@ document.querySelectorAll("tbody tr").forEach(row => {
     
     const funcionarioData = JSON.parse(row.getAttribute('data-funcionario'));
     
-    // preenche o form com os dados para editar mais facil
+    // preenche o form com os dados para edicao
     document.querySelector("#inputNome2").value = funcionarioData.nome;
-    document.querySelector("#inputDataContratacao").value = funcionarioData.dataContratacao;
-
     document.querySelector("#inputCargo2").value = funcionarioData.cargo;
     
-    // NOVOS CAMPOS ADICIONADOS
     document.querySelector("#inputEmail2").value = funcionarioData.email || "";
     document.querySelector("#inputTel2").value = funcionarioData.telefone || "";
-    document.querySelector("#inputCpf2").value = funcionarioData.cpf || "";
-    document.querySelector("#inputRg2").value = funcionarioData.rg || "";
     
     document.querySelector(".editar-funcionario").style.display = "block";
   });
