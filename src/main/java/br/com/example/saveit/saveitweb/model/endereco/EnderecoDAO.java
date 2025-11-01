@@ -192,7 +192,7 @@ public class EnderecoDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8));
+                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getInt(9));
                     enderecos.add(endereco);
                 }
             }
@@ -219,7 +219,7 @@ public class EnderecoDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8));
+                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getInt(9));
                     enderecos.add(endereco);
                 }
             }
@@ -246,7 +246,7 @@ public class EnderecoDAO {
             ResultSet rset = pstmt.executeQuery(query);//Executando comando SQL
             if (rset != null) {
                 while (rset.next()) {
-                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8));
+                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getInt(9));
                     enderecos.add(endereco);
                 }
             }
@@ -273,7 +273,7 @@ public class EnderecoDAO {
             ResultSet rset = pstmt.executeQuery(query);//Executando comando SQL
             if (rset != null) {
                 while (rset.next()) {
-                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8));
+                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getInt(9));
                     enderecos.add(endereco);
                 }
             }

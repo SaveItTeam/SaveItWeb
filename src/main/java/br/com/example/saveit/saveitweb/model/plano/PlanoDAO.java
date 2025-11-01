@@ -12,12 +12,11 @@ public class PlanoDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = "Insert into Plano (preco, descricao, id_pagamento) Values(?,?,?)";//Comando SQL
+            String query = "Insert into Plano (preco, descricao) Values(?,?)";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
 //          Setando valores
             pstmt.setDouble(1, plano.getPreco());
             pstmt.setString(2, plano.getDescricao());
-            pstmt.setInt(3, plano.getId_pagamento());
             boolean validar = pstmt.executeUpdate() > 0;//Executando o comando SQL
             pstmt.close();
             return validar;
@@ -172,7 +171,7 @@ public class PlanoDAO {
             if (rset != null) {
 //                Inserção de valores
                 while (rset.next()) {
-                    Plano plano = new Plano(rset.getInt(1), rset.getDouble(2), rset.getString(3), rset.getInt(4));
+                    Plano plano = new Plano(rset.getInt(1), rset.getDouble(2), rset.getString(3));
                     planos.add(plano);
                 }
             }
@@ -201,7 +200,7 @@ public class PlanoDAO {
             if (rset != null) {
 //                Inserção de valores
                 while (rset.next()) {
-                    Plano plano = new Plano(rset.getInt(1), rset.getDouble(2), rset.getString(3), rset.getInt(4));
+                    Plano plano = new Plano(rset.getInt(1), rset.getDouble(2), rset.getString(3));
                     planos.add(plano);
                 }
             }
@@ -228,7 +227,7 @@ public class PlanoDAO {
             if (rset != null) {
 //                Inserção de valores
                 while (rset.next()) {
-                    Plano plano = new Plano(rset.getInt(1), rset.getDouble(2), rset.getString(3), rset.getInt(4));
+                    Plano plano = new Plano(rset.getInt(1), rset.getDouble(2), rset.getString(3));
                     planos.add(plano);
                 }
             }
@@ -256,7 +255,7 @@ public class PlanoDAO {
             if (rset != null) {
 //                Inserção de valores
                 while (rset.next()) {
-                    Plano plano = new Plano(rset.getInt(1), rset.getDouble(2), rset.getString(3), rset.getInt(4));
+                    Plano plano = new Plano(rset.getInt(1), rset.getDouble(2), rset.getString(3));
                     planos.add(plano);
                 }
             }
