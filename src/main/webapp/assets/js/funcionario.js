@@ -76,4 +76,4 @@ const input = document.querySelector("#inputFile");
 input.addEventListener("change", () => mudarPreview("inputFile", "preview"));
 
 const input2 = document.querySelector("#inputFile2");
-input2.addEventListener("change", () => mudarPreview("inputFile2", "preview2"));
+input2.addEventListener("change", () => mudarPreview("inputFile2", "preview2"));  
