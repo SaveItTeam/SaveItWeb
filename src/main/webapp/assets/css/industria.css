@@ -64,7 +64,7 @@ main {
   margin-left: 8rem;
 }
 
-form {
+#industria-principal form {
   margin-top: 7rem;
   margin-left: 8rem;
   > div:nth-child(1),
