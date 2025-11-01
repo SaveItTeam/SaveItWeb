@@ -38,17 +38,18 @@ public class LogarAdminServlet extends HttpServlet {
         int id_industria = funcionario.getId_industria();
         String plano = a.get(4);
         String tipo_industria = a.get(5);
-        String img = a.get(6);
+        String img_funcionario = a.get(6);
+        String img_empresa = a.get(7);
         char genero = funcionario.getGenero();
-        String nome_empresa = a.get(8);
-        String cnpj = a.get(9);
-        String tipo_servico = a.get(10);
-        String endereco = a.get(12);
-        String count = a.get(13);
-        String atividade_comercial = a.get(14);
+        String nome_empresa = a.get(9);
+        String cnpj = a.get(10);
+        String tipo_servico = a.get(11);
+        String endereco = a.get(13);
+        String count = a.get(14);
+        String atividade_comercial = a.get(15);
         String email = funcionario.getEmail();
 
-        Object admin = funcionarioDAO.buscarEmail(senha);
+        Object admin = funcionarioDAO.logarAdmin(emailOUcpf, senhaHash);
         HttpSession sessao = request.getSession();
         request.getSession().setAttribute("admin", admin);
 
@@ -62,7 +63,8 @@ public class LogarAdminServlet extends HttpServlet {
                 sessao.setAttribute("id_industria", id_industria);
                 sessao.setAttribute("plano", plano);
                 sessao.setAttribute("tipo_industria", tipo_industria);
-                sessao.setAttribute("img", img);
+                sessao.setAttribute("img_funcionario", img_funcionario);
+                sessao.setAttribute("img_empresa", img_empresa);
                 sessao.setAttribute("genero", genero);
                 sessao.setAttribute("nome_empresa", nome_empresa);
                 sessao.setAttribute("cnpj", cnpj);

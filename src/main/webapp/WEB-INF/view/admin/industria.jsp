@@ -30,9 +30,9 @@
             </button>
         </div>
         <div class="administrador">
-            <img src="imagem (4).jpeg" alt="" />
+            <img src="<%=session.getAttribute("img_funcionario")%>" alt="" />
             <div>
-                <p>Marcelo Grilo</p>
+                <p><%=session.getAttribute("nome")%></p>
                 <p>Admin</p>
             </div>
         </div>
@@ -103,7 +103,7 @@
 
                     <div>
                         <div id="img-container">
-                            <img src="imagem (4).jpeg" alt="Foto da empresa/indústria" id="imgPreview">
+                            <img src="<%=session.getAttribute("img_empresa")%>" alt="Foto da empresa/indústria" id="imgPreview">
                             <label for="inputImg"><i class="ri-upload-2-line"></i>Enviar Foto
                                 <input type="file" accept="image/*" name="inputImg" id="inputImg">
                             </label>

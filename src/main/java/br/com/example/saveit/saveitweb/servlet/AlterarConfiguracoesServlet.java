@@ -47,8 +47,8 @@ public class AlterarConfiguracoesServlet extends HttpServlet {
 
                 if (senhaNova != senhaAntiga) {
                     Hash hash = new  Hash();
-                    senhaNova = hash.hashar(senhaNova);
-                    funcionarioDAO.alterarSenha(senhaNova, id);
+                    String senhaNovaHash = hash.hashar(senhaNova);
+                    funcionarioDAO.alterarSenha(senhaNovaHash, id);
                     sessao.removeAttribute("senha");
                     sessao.setAttribute("senha", senhaNova);
 

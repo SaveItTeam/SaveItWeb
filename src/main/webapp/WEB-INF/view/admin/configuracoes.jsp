@@ -57,6 +57,15 @@
                             <input type="file" id="inputFile" name="inputFile" accept="image/*" disabled>
                         </label>
                     </div>
+
+                    <div>
+                        <div id="img-container">
+                            <img src="<%=session.getAttribute("img_empresa")%>" alt="Foto da empresa/indústria" id="imgPreview">
+                            <label for="inputImg"><i class="ri-upload-2-line"></i>Enviar Foto
+                                <input type="file" accept="image/*" name="inputImg" id="inputImg">
+                            </label>
+                        </div>
+
                     <label for="inputNome">Nome
                     </label>
                     <input type="text" id="inputNome" name="inputNome" value="<%=session.getAttribute("nome")%>" disabled>
@@ -66,7 +75,7 @@
                         value="<%=session.getAttribute("email")%>">
                     <label for="inputSenha">Senha
                     </label>
-                    <input type="password" id="inputSenha" name="inputSenha" disabled value="<%=session.getAttribute("senha_anonimzada")%>">
+                    <input type="password" id="inputSenha" name="inputSenha" disabled value="<%=session.getAttribute("senha")%>">
 
                     <div>
                         <button type="submit">Salvar Alterações</button>
