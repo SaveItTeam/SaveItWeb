@@ -39,7 +39,7 @@ public class FuncionarioServlet extends HttpServlet {
                 }
             }
 
-            request.setAttribute("funcionarios", listaFuncionarios);
+            sessao.setAttribute("funcionarios", listaFuncionarios);
             request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + "/login.jsp");
