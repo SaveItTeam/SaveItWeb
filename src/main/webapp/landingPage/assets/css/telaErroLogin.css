@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  background-color: #f0ece1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.card {
+  background-color: #FFFAF0;
+  padding: 3rem 4rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  z-index: 2;
+}
+
+.logo {
+  width: 48px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));
+}
+
+h2 {
+  color: #2F2F2F;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: #2F2F2F;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+button {
+  background-color: #6B8E4E;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #5e7d48;
+}
+
+.blob {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40vw;
+  height: 40vw;
+  z-index: 1;
+}
+
+.blob-left {
+  background-image: url('imagens/blob 4.png');
+  top: -10%;
+  left: -10%;
+}
+
+.blob-right {
+  background-image: url('imagens/blob 5.png');
+  bottom: -10%;
+  right: -10%;
+}
