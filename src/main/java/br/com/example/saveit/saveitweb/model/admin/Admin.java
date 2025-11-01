@@ -8,10 +8,10 @@ public class Admin {
     private String senha;
 
 //    Construtor
-    public Admin(int id, String nome_admin, String emial, String senha) {
+    public Admin(int id, String nome_admin, String email, String senha) {
         this.id = id;
         this.nome_admin = nome_admin;
-        this.email = emial;
+        this.email = email;
         this.senha = senha;
     }
 
@@ -53,12 +53,12 @@ public class Admin {
 //    toString
     public String toString() {
         return String.format("""
-                \n
-                id: %d
-                Nome Admin: %s
-                Email: %s
-                Senha: %s
-                \n"""
+                    {
+                        "id": %d,
+                        "nome_admin": "%s",
+                        "email": "%s",
+                        "senha": "%s"
+                    }"""
                 , id, nome_admin, email, senha);
     }
 }
