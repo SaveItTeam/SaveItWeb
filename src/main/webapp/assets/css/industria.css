@@ -134,89 +134,53 @@ form {
   }
 }
 
-#categoria-input {
-  width: 83% !important;
-  position: relative;
-
-  #abrir-categorias {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    color: #777;
-    font-size: 18px;
-    z-index: 100;
-    cursor: pointer;
-  }
-
-  label {
-    width: 98%;
-    position: relative;
-  }
-
-  input {
-    width: 100% !important;
-    border: none;
-    padding-left: 35px;
-    border-radius: 8px;
-    background-color: #f5f5f5;
-    height: 35px;
-  }
+/* Estilos para categorias integradas no formulário */
+label[for="categoriaProdutos"] {
+  color: #585858;
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem 0;
 }
 
-#categorias-industria {
-  position: absolute;
-  width: 40rem;
-  background-color: #fff;
-  height: 50rem;
-  top: 30rem;
-  right: 20rem;
-  z-index: 101;
+#categorias-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: #e6e2d6;
   border-radius: 1rem;
-  display: none;
+  margin-bottom: 1rem;
 
-  div {
+  .radio-label {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    justify-self: center;
-    width: 90%;
-    margin-top: 1rem;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    color: #585858;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
 
-    h2 {
-      color: #2e2e2e;
+    &:hover {
+      background-color: rgba(46, 46, 46, 0.1);
+    }
+
+    input[type="radio"] {
+      width: 1.6rem;
+      height: 1.6rem;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    span {
       font-weight: 500;
-      font-size: 1.8rem;
     }
 
-    button {
-      background-color: transparent;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-  }
-
-  hr {
-    margin-top: 1rem;
-  }
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    margin-left: 2.5rem;
-    margin-top: 2rem;
-
-    label {
-      font-size: 1.6rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    input[type="checkbox"] {
-      transform: scale(1.5);
-      cursor: pointer;
+    &:has(input:checked) {
+      background-color: rgba(107, 142, 78, 0.2);
     }
   }
 }
