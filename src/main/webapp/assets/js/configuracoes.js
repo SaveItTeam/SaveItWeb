@@ -42,7 +42,7 @@ botaoEditar.addEventListener("click", () => {
         }
 
         // ativa inputs e seus respectivos estilos (exceto inputSenha por segurança)
-        const inputSenha = document.querySelector("#inputSenha");
+        // const inputSenha = document.querySelector("#inputSenha");
         inputs.forEach((e) => {
             // Mantém inputSenha desabilitado por segurança
             if (e.id === "inputSenha") {
@@ -64,7 +64,7 @@ botaoEditar.addEventListener("click", () => {
         // Desabilita o botão de salvar durante a edição
         const botaoSalvar = document.querySelector("#botao-salvar");
         if (botaoSalvar) {
-            botaoSalvar.disabled = true;
+            botaoSalvar.disabled = false;
         }
 
         // focus no primeiro input de texto (que não seja inputSenha)
@@ -213,3 +213,7 @@ function mudarPreview(inputId, imgId) {
 document
     .querySelector("#inputFile")
     .addEventListener("change", () => mudarPreview("inputFile", "imgPreviewUser"));
+
+document
+    .querySelector("#inputImg")
+    .addEventListener("change", () => mudarPreview("inputImg", "imgPreviewEmpresa"));

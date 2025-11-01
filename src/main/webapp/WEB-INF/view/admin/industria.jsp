@@ -129,17 +129,6 @@
                         </label>
                     </div>
                 </div>
-                <div id="categoria-input">
-                    <div id="abrir-categorias">
-                        <i class="ri-arrow-down-s-line"></i>
-                    </div>
-
-                    <label for="">
-                        Categoria de Produtos
-                        <input type="text" disabled>
-                    </label>
-                </div>
-
                 <div id="categorias-industria">
                     <div>
                         <h2>Categoria de produtos</h2>
