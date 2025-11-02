@@ -5,7 +5,7 @@ import br.com.example.saveit.saveitweb.model.cliente.Cliente;
 import br.com.example.saveit.saveitweb.model.cliente.ClienteDAO;
 import br.com.example.saveit.saveitweb.model.funcionario.Funcionario;
 import br.com.example.saveit.saveitweb.model.funcionario.FuncionarioDAO;
-import br.com.example.saveit.saveitweb.model.imagem_funcionario.ImagemDAO;
+import br.com.example.saveit.saveitweb.model.imagem.ImagemDAO;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/logarAdminServlet")
 public class LogarAdminServlet extends HttpServlet {

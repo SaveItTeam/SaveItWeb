@@ -21,8 +21,7 @@ public class IndustriaServlet extends HttpServlet {
         IndustriaDAO industriaDAO = new IndustriaDAO();
 
         if (admin != null) {
-            String  id = (String) sessao.getAttribute("id_estabelecimento");
-
+            int  id = (int) sessao.getAttribute("id_estabelecimento");
             List<String> dadosIndustria = industriaDAO.buscarDados(12);
             String nome_industria = dadosIndustria.get(0);
             String estado = dadosIndustria.get(1);
@@ -33,6 +32,7 @@ public class IndustriaServlet extends HttpServlet {
             String tipo_venda = dadosIndustria.get(6);
             String rua = dadosIndustria.get(7);
             String complemento = dadosIndustria.get(8);
+            String categoria = dadosIndustria.get(9);
 
             try {
                 sessao.setAttribute("nome_industria", nome_industria);
@@ -44,6 +44,7 @@ public class IndustriaServlet extends HttpServlet {
                 sessao.setAttribute("tipo_venda", tipo_venda);
                 sessao.setAttribute("rua", rua);
                 sessao.setAttribute("complemento", complemento);
+                sessao.setAttribute("categoria", categoria);
                 request.getRequestDispatcher("/WEB-INF/view/admin/industria.jsp").forward(request, response);
 
             } catch (Exception e){

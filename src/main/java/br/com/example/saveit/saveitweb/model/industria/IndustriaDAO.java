@@ -298,7 +298,7 @@ public List<Industria> buscar() {
                     "     , e.cep_rua\n" +
                     "     , e.cep_complemento\n" +
                     "     , string_agg(distinct (case\n" +
-                    "                                when emp.id = 12 then emp.procura\n" +
+                    "                                when emp.id = ? then emp.procura\n" +
                     "                                else ind.vende\n" +
                     "    end)\n" +
                     "    , '; ') as categoria_prod\n" +
@@ -308,7 +308,7 @@ public List<Industria> buscar() {
                     "         join telefone t on c.id = t.id_cliente\n" +
                     "         left join empresa emp on c.id = emp.id_cliente\n" +
                     "         left join industria ind on t.id_cliente = ind.id_cliente\n" +
-                    "where ind.id = 12\n" +
+                    "where ind.id = ?\n" +
                     "group by 1, 2, 3,4,5,7,8,9";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
             pstmt.setInt(1, id_industria);
@@ -326,6 +326,7 @@ public List<Industria> buscar() {
                     dadosIndustria.add(rset.getString(7));
                     dadosIndustria.add(rset.getString(8));
                     dadosIndustria.add(rset.getString(9));
+                    dadosIndustria.add(rset.getString(10));
                 }
             }
             pstmt.close();

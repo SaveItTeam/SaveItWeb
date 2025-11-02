@@ -70,12 +70,12 @@
           </div>
         </div>
 
-        <form action="" enctype="multipart/form-data" method="post">
+        <form action="EditarIndustria" enctype="multipart/form-data" method="post">
           <div>
             <div>
               <label for="inputNome"
                 >Nome do Negócio
-                <input value=" "
+                <input value="<%=session.getAttribute("nome_industria")%> "
                   type="text"
                   name="inputNome"
                   id="inputNome"
@@ -118,7 +118,7 @@
 
               <label for="inputCidade"
                 >Cidade
-                <input value=" "
+                <input value="<%=session.getAttribute("cidade")%>"
                   type="text"
                   name="inputCidade"
                   id="inputCidade"
@@ -128,7 +128,7 @@
               </label>
               <label for="inputCep"
                 >CEP
-                <input value=" "
+                <input value="<%=session.getAttribute("cep")%>"
                   type="text"
                   name="inputCep"
                   id="inputCep"
@@ -166,7 +166,7 @@
 
               <label for="inputContato"
                 >Contato
-                <input value=" "
+                  <input value="<%=session.getAttribute("contato")%>"
                   type="tel"
                   name="inputContato"
                   id="inputContato"
@@ -177,7 +177,7 @@
 
               <label for="inputOperacao"
                 >Tipo de Operação
-                <input value=" "
+                  <input value="<%=session.getAttribute("tipo_venda")%>"
                   type="text"
                   name="inputOperacao"
                   id="inputOperacao"
@@ -188,7 +188,7 @@
 
               <label for="inputRua"
                 >Rua
-                <input value=" "
+                  <input value="<%=session.getAttribute("rua")%>"
                   type="text"
                   name="inputRua"
                   id="inputRua"
@@ -199,7 +199,7 @@
 
               <label for="inputComplemento"
                 >Complemento (opcional)
-                <input value=" "
+                  <input value="<%=session.getAttribute("complemento")%>"
                   type="text"
                   name="inputComplemento"
                   id="inputComplemento"
@@ -210,7 +210,7 @@
 
               <label for="categoriaProdutos">
                 Categoria de Produtos
-                <div id="categorias-container" data-radio-ativado="Cereais">
+                <div id="categorias-container" data-radio-ativado="<%=session.getAttribute("categoria")%>>">
                   <label class="radio-label">
                     <input
                       type="radio"
@@ -280,7 +280,7 @@
           </div>
 
           <div id="acoes-form">
-            <button type="submit" id="btnSalvar" disabled>
+            <button type="submit" id="btnSalvar">
               Salvar Alterações
             </button>
             <button type="button" id="btnCancelar">Cancelar</button>
