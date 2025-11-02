@@ -46,7 +46,7 @@
             </button>
         </div>
         <div class="administrador">
-            <img src="<%=session.getAttribute("img_funcionario")%>" alt="" />
+            <img src="<%=session.getAttribute("img_funcionario]")%>" alt="" />
             <div>
                 <p><%=session.getAttribute("nome")%></p>
                 <p>Admin</p>
@@ -92,17 +92,22 @@
                 </div>
             </div>
 
-            <form id="acoes" method="post" action="funcionarioServlet">
-            <button type="submit" name="acao" value="adicionar-funcionario">
-              <i class="ri-add-large-line"></i>
-              <h3>Adicionar funcionario</h3>
-            </button>
+            <div id="acoes-forms">
+                <form class="acoes" method="post" action="">
+                    <button type="submit" name="acao" value="adicionar-funcionario">
+                        <i class="ri-add-large-line"></i>
+                        <h3>Adicionar funcionario</h3>
+                    </button>
+                </form>
 
-            <button type="submit" name="acao" value="editar-informacoes">
-              <i class="ri-edit-box-line"></i>
-              <h3>Editar informacões</h3>
-            </button>
-          </form>
+                <form class="acoes" method="post" action="">
+                    <button type="submit" name="acao" value="editar-informacoes">
+                        <i class="ri-edit-box-line"></i>
+                        <h3>Editar informacões</h3>
+                    </button>
+                </form>
+            </div>
+
         </div>
 
         <div id="card-industria">

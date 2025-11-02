@@ -79,7 +79,11 @@ main {
   }
 }
 
-#acoes {
+#acoes-forms {
+    display: flex;
+}
+
+.acoes {
   display: flex;
   gap: 8rem;
   margin-left: 6rem;

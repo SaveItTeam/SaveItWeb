@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <%@include file="../../../assets/sidebar.jsp"%>
+      <jsp:include page="../../../assets/sidebar.jsp"/>
 
       <section id="configuracoes">
         <div id="texto-principal">

@@ -54,7 +54,7 @@
     gap: 6rem;
 }
 
-form {
+#configuracoes-principal form {
     margin-top: 3rem;
     display: flex;
     flex-direction: column;
