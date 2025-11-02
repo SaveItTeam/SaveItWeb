@@ -107,7 +107,7 @@ public class Cliente {
                     "tipo": %d,
                     "tipo_venda": "%s",
                     "id_endereco": %d,
-                    "cnpj": "%s",
+                    "cnpj": "%s"
                 }"""
                 , id, nome, email, senha, tipo, tipo_venda, id_endereco, cnpj);
     }
