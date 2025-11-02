@@ -262,6 +262,10 @@
         </div>
 
         <div class="inputs">
+          <label for="">
+              ID
+              <input type="text" readonly name="inputId2" id="inputId2">
+            </label>
             <label for=""
             >Nome Completo
                 <input
@@ -299,10 +303,7 @@
                         id="inputTel2"
                 />
             </label>
-            <label for="">
-              ID
-              <input type="text" readonly name="inputId2" id="inputId2">
-            </label>
+            
         </div>
         <hr />
         <div class="acoesForm">

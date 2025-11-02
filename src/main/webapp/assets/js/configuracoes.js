@@ -17,10 +17,9 @@ botaoEditar.addEventListener("click", () => {
         : "#ffffff00";
 
     if (editando) {
-        // salva o estado inicial (incluindo o valor da senha, mas excluindo inputs de senha extra que ainda não existem)
+        // salva o estado inicial
         valoresIniciais = [imgPreview.src];
         inputs.forEach((e) => {
-            // Não salvar inputs de senha extra e não salvar file inputs
             if (e.type !== "file" && e.id !== "inputSenhaAntiga" && e.id !== "inputSenhaNovaConfirmar") {
                 valoresIniciais.push(e.value);
             }
@@ -42,9 +41,7 @@ botaoEditar.addEventListener("click", () => {
         }
 
         // ativa inputs e seus respectivos estilos (exceto inputSenha por segurança)
-        // const inputSenha = document.querySelector("#inputSenha");
         inputs.forEach((e) => {
-            // Mantém inputSenha desabilitado por segurança
             if (e.id === "inputSenha") {
                 e.disabled = true;
                 e.style.background = "transparent";
@@ -60,14 +57,7 @@ botaoEditar.addEventListener("click", () => {
                 : (e.style.background = "rgba(240, 236, 225, 0.1)");
             e.style.paddingLeft = "0.5rem";
         });
-
-        // Desabilita o botão de salvar durante a edição
-        const botaoSalvar = document.querySelector("#botao-salvar");
-        if (botaoSalvar) {
-            botaoSalvar.disabled = false;
-        }
-
-        // focus no primeiro input de texto (que não seja inputSenha)
+        // focus no primeiro input de texto
         const primeiroAtivo = [...inputs].find((e) => e.type !== "file" && e.id !== "inputSenha");
         if (primeiroAtivo) {
             primeiroAtivo.focus();
@@ -75,11 +65,6 @@ botaoEditar.addEventListener("click", () => {
             primeiroAtivo.setSelectionRange(len, len);
         }
     } else {
-        // Habilita o botão de salvar quando sair do modo de edição
-        const botaoSalvar = document.querySelector("#botao-salvar");
-        if (botaoSalvar) {
-            botaoSalvar.disabled = false;
-        }
         // oculta os inputs de senha extra
         const senhasExtra = document.querySelector("#senhas-extra");
         if (senhasExtra) {
@@ -92,8 +77,7 @@ botaoEditar.addEventListener("click", () => {
         }
 
         // desativa os inputs e restaura valores iniciais
-        // Ordem dos valores: imgPreview[0], inputNome[1], inputEmail[2], inputSenha[3]
-        let i = 1; // índice para valores iniciais (pulando imgPreview que está em [0])
+        let i = 1; 
 
         inputs.forEach((e) => {
             // Pular inputs de senha extra e file inputs
@@ -145,8 +129,7 @@ botaoCancelar.addEventListener("click", () => {
         }
     }
 
-    // Restaura valores iniciais (incluindo inputSenha)
-    // Ordem dos valores: imgPreview[0], inputNome[1], inputEmail[2], inputSenha[3]
+    // restaura valores iniciais
     let i = 1;
     inputs.forEach((e) => {
         if (e.type !== "file") {

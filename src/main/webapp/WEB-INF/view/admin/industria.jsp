@@ -210,9 +210,9 @@
 
               <label for="categoriaProdutos">
                 Categoria de Produtos
-                <div id="categorias-container">
+                <div id="categorias-container" data-radio-ativado="Cereais">
                   <label class="radio-label">
-                    <input value=" "
+                    <input
                       type="radio"
                       name="categoria-radio"
                       value="Laticínios"
@@ -221,7 +221,7 @@
                     <span>Laticínios</span>
                   </label>
                   <label class="radio-label">
-                    <input value=" "
+                    <input
                       type="radio"
                       name="categoria-radio"
                       value="Proteínas"
@@ -230,7 +230,7 @@
                     <span>Proteínas</span>
                   </label>
                   <label class="radio-label">
-                    <input value=" "
+                    <input
                       type="radio"
                       name="categoria-radio"
                       value="Cereais"
@@ -239,7 +239,7 @@
                     <span>Cereais</span>
                   </label>
                   <label class="radio-label">
-                    <input value=" "
+                    <input
                       type="radio"
                       name="categoria-radio"
                       value="Grãos"
@@ -248,7 +248,7 @@
                     <span>Grãos</span>
                   </label>
                   <label class="radio-label">
-                    <input value=" "
+                    <input
                       type="radio"
                       name="categoria-radio"
                       value="Embutidos"
@@ -257,7 +257,7 @@
                     <span>Embutidos</span>
                   </label>
                   <label class="radio-label">
-                    <input value=" "
+                    <input
                       type="radio"
                       name="categoria-radio"
                       value="Óleos"
@@ -266,7 +266,7 @@
                     <span>Óleos</span>
                   </label>
                   <label class="radio-label">
-                    <input value=" "
+                    <input
                       type="radio"
                       name="categoria-radio"
                       value="Bebidas"
