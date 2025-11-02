@@ -319,10 +319,12 @@
 </div>
 
 <div class="deletar-funcionario">
-    <form action="exluirFuncionarioServlet" method="post">
-        <input type="text" readonly name="inputId2" id="inputId2">
+    <form action="excluirFuncionarioServlet" method="post">
+        <!-- Campo hidden para enviar o ID -->
+        <input type="hidden" name="idFuncionario" id="idFuncionarioDeletar" value="">
+        
         <h2>Excluir Funcionário?</h2>
-        <h3>Tem certeza que deseja excluir esse funcionário?</h3>
+        <h3>Tem certeza que deseja excluir esse funcionário? <b>Essa ação é irreversível.</b></h3>
         <div>
             <button class="fechar-deletar-funcionario" type="button">
                 Cancelar
