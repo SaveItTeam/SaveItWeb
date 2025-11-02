@@ -256,7 +256,7 @@
                     <input
                             type="file"
                             name="inputFile2"
-                            id="arquivo"
+                            id="inputFile2"
                             accept="image/*"
                     />
                 </label>
