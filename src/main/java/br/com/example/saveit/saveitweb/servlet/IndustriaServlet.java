@@ -22,7 +22,7 @@ public class IndustriaServlet extends HttpServlet {
 
         if (admin != null) {
             int  id = (int) sessao.getAttribute("id_estabelecimento");
-            List<String> dadosIndustria = industriaDAO.buscarDados(12);
+            List<String> dadosIndustria = industriaDAO.buscarDados(id);
             String nome_industria = dadosIndustria.get(0);
             String estado = dadosIndustria.get(1);
             String cidade = dadosIndustria.get(2);
