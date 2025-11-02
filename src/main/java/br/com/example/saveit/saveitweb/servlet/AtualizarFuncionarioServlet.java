@@ -1,61 +1,71 @@
 package br.com.example.saveit.saveitweb.servlet;
 
+import br.com.example.saveit.saveitweb.dao.Api;
+import br.com.example.saveit.saveitweb.model.funcionario.Funcionario;
 import br.com.example.saveit.saveitweb.model.funcionario.FuncionarioDAO;
 import br.com.example.saveit.saveitweb.model.imagem.ImagemDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 @WebServlet("/atualizarFuncionarioServlet")
+@MultipartConfig
 public class AtualizarFuncionarioServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         HttpSession sessao = request.getSession();
-        Object admin = sessao.getAttribute("admin");
 
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        ImagemDAO imagemDAO = new ImagemDAO();
-
-        if (admin != null){
-            try {
-                int id = Integer.parseInt(request.getParameter("inputId2"));
-
-                Part filePart = request.getPart("arquivo");
-                if (filePart != null && filePart.getSize() > 0) {
-                    InputStream fileContent = filePart.getInputStream();
-                    byte[] imagemBytes = IOUtils.toByteArray(fileContent);
-
-                    // Atualizar imagem no banco de dados
-                    imagemDAO.salvarImagemFuncionario(imagemBytes, id);
-
-                    // Atualizar imagem na sessão (convertendo para Base64 para exibição)
-                    String imagemBytesString = java.util.Base64.getEncoder().encodeToString(imagemBytes);
-                    // Atualizar ambas as chaves na sessão
-                    sessao.setAttribute("img", "data:image/jpeg;base64," + imagemBytesString);
-                    sessao.setAttribute("img_funcionario", "data:image/jpeg;base64," + imagemBytesString);
-                }
-
-                String novoNome = request.getParameter("inputNome2");
-                funcionarioDAO.alterarNome(novoNome, id);
-
-                String novoCargo = request.getParameter("inputCargo2");
-                funcionarioDAO.alterarCargo(novoCargo, id);
-
-                String novoEmail = request.getParameter("inputEmail2");
-                funcionarioDAO.alterarEmail(novoEmail, id);
-
-                String novoTelefone = request.getParameter("inputTel2");
-                funcionarioDAO.alterarTelefone(novoTelefone, id);
-
-                request.getRequestDispatcher("/WEB-INF/jsp/editarFuncionario.jsp").forward(request, response);
-
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+        // Verificar se está logado
+        if (sessao.getAttribute("admin") == null) {
+            response.sendRedirect("login.jsp");
+            return;
         }
 
+        try {
+            // Pegar ID do funcionário que está sendo editado
+            int id = Integer.parseInt(request.getParameter("inputId2"));
+
+            // ✅ VERIFICAR SE É O MESMO ADMIN LOGADO
+            int idAdminLogado = (int) sessao.getAttribute("id_funcionario");
+
+            // Atualizar dados do funcionário
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+            funcionarioDAO.alterarNome(request.getParameter("inputNome2"), id);
+            funcionarioDAO.alterarCargo(request.getParameter("inputCargo2"), id);
+            funcionarioDAO.alterarEmail(request.getParameter("inputEmail2"), id);
+            funcionarioDAO.alterarTelefone(request.getParameter("inputTel2"), id);
+
+            // Processar imagem se foi enviada
+            Part filePart = request.getPart("inputFile2");
+            if (filePart != null && filePart.getSize() > 0) {
+                InputStream fileContent = filePart.getInputStream();
+                byte[] imagemBytes = IOUtils.toByteArray(fileContent);
+
+                ImagemDAO imagemDAO = new ImagemDAO();
+                imagemDAO.salvarImagemFuncionario(imagemBytes, id);
+            }
+
+            List<Funcionario> funcionarios = funcionarioDAO.buscarId(id);
+            Funcionario funcionario = funcionarios.get(0);
+
+            Api api = new Api();
+            api.enviarDados("funcionario", funcionario.toString());
+
+            // Redirecionar
+            request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Erro ao atualizar funcionário");
+            request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
+        }
     }
 }

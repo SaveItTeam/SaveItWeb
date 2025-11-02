@@ -238,7 +238,7 @@ main {
   z-index: 1000;
   form {
     width: 57rem;
-    height: 60rem;
+    height: 70rem;
     border-radius: 1.5rem;
     background: var(--cor-fundo-form);
     position: fixed;
@@ -430,7 +430,7 @@ main {
   z-index: 1000;
   form {
     width: 57rem;
-    height: 53rem;
+    height: 45rem;
     border-radius: 1.5rem;
     background: var(--cor-fundo-form);
     position: fixed;

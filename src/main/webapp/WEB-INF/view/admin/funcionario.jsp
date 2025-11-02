@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.com.example.saveit.saveitweb.model.funcionario.Funcionario" %>
+<%@ page import="br.com.example.saveit.saveitweb.model.imagem_funcionario.ImagemDAO" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,9 +100,16 @@
                     if (funcionarios != null) {
                         for (Funcionario funcionario : funcionarios) {
                             if (!funcionario.getIs_admin()){
+                                ImagemDAO imagemDAO = new ImagemDAO();
+                                byte[] imagemBytes = imagemDAO.buscarImagemFuncionario(funcionario.getId());
+                                String imagemBase64 = null;
+
+                                if (imagemBytes != null) {
+                                    imagemBase64 = java.util.Base64.getEncoder().encodeToString(imagemBytes);
+                                }
                 %>
                 <tr
-                        data-funcionario='{"nome":"<%= funcionario.getNome() %>","cargo":"<%= funcionario.getCargo() %>","email":"<%= funcionario.getEmail() %>","telefone":"<%= funcionario.getTelefone_pessoal() %>", "id":"<%= funcionario.getId() %>"}'
+                        data-funcionario='{"nome":"<%= funcionario.getNome() %>","cargo":"<%= funcionario.getCargo() %>","email":"<%= funcionario.getEmail() %>","telefone":"<%= funcionario.getTelefone_pessoal() %>", "id":"<%= funcionario.getId() %>", "imagem":"<%= imagemBase64 != null ? "data:image/*;base64," + imagemBase64 : "caminho/para/imagem-padrao.jpg" %>"}'
                 >
                     <td><%= funcionario.getNome() %></td>
                     <td><%= funcionario.getDt_contratacao() %></td>
@@ -125,7 +133,7 @@
 
 <!-- ADICIONAR FUNCIONARIO -->
 <div class="adicionar-funcionario">
-    <form action="" method="post">
+    <form action="adicionarFuncionarioServlet" method="post" enctype="multipart/form-data">
         <div>
             <h2>Adicionar Funcionário</h2>
             <button type="button" class="fechar-adicionar-funcionario">
@@ -222,6 +230,10 @@
                         id="inputRg"
                 />
             </label>
+            <label for="">
+                Data de Nascimento
+                <input type="date" name="inputDtNascimento" id="inputDtNascimento">
+            </label>
         </div>
         <hr />
 
@@ -256,7 +268,7 @@
                     <input
                             type="file"
                             name="inputFile2"
-                            id="arquivo"
+                            id="inputFile2"
                             accept="image/*"
                     />
                 </label>
@@ -264,12 +276,9 @@
         </div>
 
         <div class="inputs">
-          <label for="">
-              ID
-              <input type="text" readonly name="inputId2" id="inputId2">
-            </label>
+            <input type="hidden" name="inputId2" id="inputId2">
 
-            <label for=""
+            <label for="inputNome2"
             >Nome Completo
                 <input
                         type="text"
@@ -279,7 +288,7 @@
                 />
             </label>
 
-            <label for=""
+            <label for="inputCargo2"
             >Cargo
                 <input
                         type="text"
@@ -288,7 +297,7 @@
                         id="inputCargo2"
                 />
             </label>
-            <label for=""
+            <label for="inputEmail2"
             >Email
                 <input
                         type="text"
@@ -297,7 +306,7 @@
                         id="inputEmail2"
                 />
             </label>
-            <label for=""
+            <label for="inputTel2"
             >Telefone
                 <input
                         type="tel"
@@ -306,7 +315,7 @@
                         id="inputTel2"
                 />
             </label>
-            
+
         </div>
         <hr />
         <div class="acoesForm">
@@ -319,10 +328,11 @@
 </div>
 
 <div class="deletar-funcionario">
-    <form action="exluirFuncionarioServlet" method="post">
-        <input type="text" readonly name="inputId2" id="inputId2">
+    <form action="excluirFuncionarioServlet" method="post">
+        <input type="hidden" name="idFuncionario" id="idFuncionarioDeletar" value="">
+
         <h2>Excluir Funcionário?</h2>
-        <h3>Tem certeza que deseja excluir esse funcionário?</h3>
+        <h3>Tem certeza que deseja excluir esse funcionário? <b>Essa ação é irreversível.</b></h3>
         <div>
             <button class="fechar-deletar-funcionario" type="button">
                 Cancelar
