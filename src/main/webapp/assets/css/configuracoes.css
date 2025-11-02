@@ -23,6 +23,7 @@
     margin-left: 8rem;
     height: 91.2vh;
     background-color: var(--cor-fundo);
+    padding-bottom: 10rem;
 
     #texto-principal {
         padding: 5rem 0 0 6rem;

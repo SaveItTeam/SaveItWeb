@@ -75,7 +75,7 @@
             <div>
               <label for="inputNome"
                 >Nome do Negócio
-                <input
+                <input value=" "
                   type="text"
                   name="inputNome"
                   id="inputNome"
@@ -118,7 +118,7 @@
 
               <label for="inputCidade"
                 >Cidade
-                <input
+                <input value=" "
                   type="text"
                   name="inputCidade"
                   id="inputCidade"
@@ -128,7 +128,7 @@
               </label>
               <label for="inputCep"
                 >CEP
-                <input
+                <input value=" "
                   type="text"
                   name="inputCep"
                   id="inputCep"
@@ -138,7 +138,7 @@
               </label>
               <label for="inputBairro"
                 >Bairro
-                <input
+                <input value=" "
                   type="text"
                   name="inputBairro"
                   id="inputBairro"
@@ -154,7 +154,7 @@
                 empresa/indústria" id="imgPreview">
                 <label for="inputImg"
                   ><i class="ri-upload-2-line"></i>Enviar Foto
-                  <input
+                  <input value=" "
                     type="file"
                     accept="image/*"
                     name="inputImg"
@@ -166,7 +166,7 @@
 
               <label for="inputContato"
                 >Contato
-                <input
+                <input value=" "
                   type="tel"
                   name="inputContato"
                   id="inputContato"
@@ -177,7 +177,7 @@
 
               <label for="inputOperacao"
                 >Tipo de Operação
-                <input
+                <input value=" "
                   type="text"
                   name="inputOperacao"
                   id="inputOperacao"
@@ -188,7 +188,7 @@
 
               <label for="inputRua"
                 >Rua
-                <input
+                <input value=" "
                   type="text"
                   name="inputRua"
                   id="inputRua"
@@ -199,7 +199,7 @@
 
               <label for="inputComplemento"
                 >Complemento (opcional)
-                <input
+                <input value=" "
                   type="text"
                   name="inputComplemento"
                   id="inputComplemento"
@@ -210,7 +210,7 @@
 
               <label for="categoriaProdutos">
                 Categoria de Produtos
-                <div id="categorias-container">
+                <div id="categorias-container" data-radio-ativado="Cereais">
                   <label class="radio-label">
                     <input
                       type="radio"

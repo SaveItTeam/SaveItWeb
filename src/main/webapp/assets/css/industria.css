@@ -5,34 +5,41 @@
   --cor-fundo: #f0ece1;
   --cor-titulo: #2e2e2e;
   --cor-texto: rgba(46, 46, 46, 0.8);
-  --cor-ativo: #6b8e4e;
+  --cor-ativo: #405d49;
   --cor-digitacao-input-e-select: black;
+  --hover-alteracoes: #314638;
 
-  /* VARIAVEIS DE CORES PARA OS FORMULARIOS */
+
   --cor-fundo-form: white;
   --cor-titulo-form: #2e2e2e;
   --cor-input: rgba(46, 46, 46, 0.9);
   --cor-input-placeholder: rgba(46, 46, 46, 0.3);
   --cor-fundo-input: #fff;
   --cancelar-hover: #eeee;
-  --borda-adicionar-editar-funcionario: rgba(46, 46, 46, 0.64);
+
+  --cor-fundo-secundario: #e6e2d6;
+  --cor-texto-secundario: #585858;
+  --cor-texto-input: #747474;
 }
 
 .darkMode {
   --cor-fundo: #2e2e2e;
   --cor-titulo: #f0ece1;
   --cor-texto: rgba(240, 236, 225, 0.8);
-  --cor-ativo: #86c84e;
+  --cor-ativo: #6b8e4e;
   --cor-digitacao-input-e-select: #f0ece1;
+  --hover-alteracoes: #4f683a;
 
-  /* VARIAVEIS DE CORES PARA OS FORMULARIOS */
   --cor-fundo-form: #2e2e2e;
   --cor-titulo-form: #fff;
   --cor-input: rgba(240, 236, 225, 0.9);
   --cor-input-placeholder: rgba(255, 255, 255, 0.3);
   --cor-fundo-input: #2e2e2e;
   --cancelar-hover: #eeeeee4d;
-  --borda-adicionar-editar-funcionario: rgba(240, 236, 225, 0.64);
+
+  --cor-fundo-secundario: #3a3a3a;
+  --cor-texto-secundario: #b0b0b0;
+  --cor-texto-input: #cccccc;
 }
 
 html {
@@ -75,9 +82,10 @@ form {
       width: 10rem;
       border: none;
       padding: 0.5rem;
-      background-color: #e6e2d6;
+      background-color: var(--cor-fundo-secundario);
       border-radius: 0.5rem;
       padding-bottom: 1rem;
+      color: var(--cor-digitacao-input-e-select);
     }
 
     img {
@@ -88,7 +96,7 @@ form {
     }
 
     label:not([for="inputImg"]) {
-      color: #585858;
+      color: var(--cor-texto-secundario);
       font-size: 1.8rem;
       font-weight: 600;
       display: flex;
@@ -99,10 +107,10 @@ form {
         width: 50rem;
         height: 4rem;
         border-radius: 1rem;
-        background: #e6e2d6;
+        background: var(--cor-fundo-secundario);
         border: none;
         padding-left: 2rem;
-        color: #747474;
+        color: var(--cor-texto-input);
         margin-bottom: 1rem;
         font-size: 1.8rem;
       }
@@ -117,11 +125,11 @@ form {
   padding-bottom: 1rem;
 
   label {
-    background-color: #e6e2d6;
+    background-color: var(--cor-fundo-secundario);
     border-radius: 1rem;
     padding: 1rem;
     font-size: 1.6rem;
-    color: #747474;
+    color: var(--cor-texto-input);
     font-weight: 600;
     cursor: pointer;
     i {
@@ -134,7 +142,7 @@ form {
 }
 
 label[for="categoriaProdutos"] {
-  color: #585858;
+  color: var(--cor-texto-secundario);
   font-size: 1.8rem;
   font-weight: 600;
   display: flex;
@@ -147,7 +155,7 @@ label[for="categoriaProdutos"] {
   flex-wrap: wrap;
   gap: 1.5rem;
   padding: 1rem;
-  background-color: #e6e2d6;
+  background-color: var(--cor-fundo-secundario);
   border-radius: 1rem;
   margin-bottom: 1rem;
 
@@ -156,7 +164,7 @@ label[for="categoriaProdutos"] {
     align-items: center;
     gap: 0.5rem;
     font-size: 1.4rem;
-    color: #585858;
+    color: var(--cor-texto-secundario);
     cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -192,28 +200,43 @@ label[for="categoriaProdutos"] {
     width: 18rem;
     height: 4rem;
     text-align: center;
-    background-color: #405d49;
+    background-color: var(--cor-ativo);
     border: none;
     border-radius: 1rem;
     color: #f0ece1;
     font-size: 1.7rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--hover-alteracoes);
+    }
   }
 
   button:nth-child(2) {
     background-color: transparent;
-    border: 0.2rem solid #405d49;
+    border: 0.2rem solid var(--cor-ativo);
     width: 15rem;
     height: 4rem;
     border-radius: 1rem;
     font-size: 1.7rem;
+    cursor: pointer;
+    color: var(--cor-titulo);
+
+    &:hover {
+      background-color: var(--cancelar-hover);
+    }
   }
 
   button:last-child {
     background-color: transparent;
-    color: #405d49;
+    color: var(--cor-titulo);
     border: none;
-    font-size: 1.8rem;
+    padding: .5rem;
     border-radius: 1rem;
+    cursor: pointer;
+    i {
+      font-size: 2.5rem;
+    }
   }
 }
 
