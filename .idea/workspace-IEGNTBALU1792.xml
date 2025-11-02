@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Saveit-Web:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0a02b969-ad67-4816-aa76-7bff037ea0b8" name="Changes" comment="Resolvendo bugs do servlet">
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/cliente/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/cliente/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/cliente/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/cliente/ClienteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/imagem_funcionario/Imagem_Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/imagem_funcionario/Imagem_Funcionario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/imagem_funcionario/Imagem_FuncionarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/imagem_funcionario/Imagem_FuncionarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/telefone/Telefone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/telefone/Telefone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/telefone/TelefoneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/model/telefone/TelefoneDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/servlet/LogarAdmin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/example/saveit/saveitweb/servlet/RegistrarClasse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/funcionario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/funcionario.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/funcionario.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/funcionario.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/sidebar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/landingPage/assets/css/faq.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/landingPage/assets/css/faq.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/landingPage/assets/js/faq.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/landingPage/assets/js/faq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/landingPage/html/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/landingPage/html/faq.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;gabriel03013&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SaveItTeam/SaveItWeb.git&quot;,
+    &quot;accountId&quot;: &quot;7513e173-8da9-4e49-9fc5-ede0cf1e81d9&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="32CNYZuqMTnHKlkYcMFbTQY9jrE" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.login.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.Tomcat: Saveit-Web.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 11.0.11.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.login.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.saveitweb.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gm577/OneDrive - Instituto J&amp;F/Área de Trabalho/Inter/SaveItWeb/src/main/webapp/admin/assets/images/logos&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gm577\OneDrive - Instituto J&amp;F\Área de Trabalho\Inter\SaveItWeb\src\main\webapp\admin\assets\images\logos" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gabrielgoncalves-ieg\OneDrive - Instituto J&amp;F\Área de Trabalho\Inter\SaveItWeb\src\main\webapp\assets" />
+      <recent name="C:\Users\gabrielgoncalves-ieg\OneDrive - Instituto J&amp;F\Área de Trabalho\Inter\SaveItWeb\src\main\webapp" />
+      <recent name="C:\Users\gabrielgoncalves-ieg\OneDrive - Instituto J&amp;F\Área de Trabalho\Inter\SaveItWeb\src\main\webapp\landingPage\assets" />
+      <recent name="C:\Users\gm577\OneDrive - Instituto J&amp;F\Área de Trabalho\Inter\SaveItWeb\src\main\webapp\WEB-INF\lib" />
+      <recent name="C:\Users\gm577\OneDrive - Instituto J&amp;F\Área de Trabalho\Inter\SaveItWeb" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+          <value>
+            <map>
+              <entry key="Tomcat 11.0.11" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 11.0.11" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="openjdk-23" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/SaveItWeb/index.html" />
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Saveit-Web:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/SaveItWeb" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="ef980030-1ce4-44b5-86cd-88473943b372" />
+        <option name="JNDI_PORT" value="1100" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="61262" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Saveit-Web:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="Tomcat 11.0.11" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="openjdk-23" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Saveit-Web:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/SaveItWeb" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="ef980030-1ce4-44b5-86cd-88473943b372" />
+        <option name="JNDI_PORT" value="1100" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="61262" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Saveit-Web:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0a02b969-ad67-4816-aa76-7bff037ea0b8" name="Changes" comment="" />
+      <created>1756920643328</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756920643328</updated>
+      <workItem from="1756920644726" duration="914000" />
+      <workItem from="1756921590268" duration="2332000" />
+      <workItem from="1756932683336" duration="126000" />
+      <workItem from="1756932820952" duration="709000" />
+      <workItem from="1756934217141" duration="192000" />
+      <workItem from="1756934420887" duration="181000" />
+      <workItem from="1756935233879" duration="584000" />
+      <workItem from="1756935835614" duration="226000" />
+      <workItem from="1756936073550" duration="50000" />
+      <workItem from="1756936136069" duration="848000" />
+      <workItem from="1756987962805" duration="763000" />
+      <workItem from="1756992614448" duration="58000" />
+      <workItem from="1756992679123" duration="603000" />
+      <workItem from="1756994527950" duration="211000" />
+      <workItem from="1756995486062" duration="65000" />
+      <workItem from="1756995844296" duration="3000" />
+      <workItem from="1757001540932" duration="620000" />
+      <workItem from="1757002269356" duration="2426000" />
+      <workItem from="1757084204255" duration="6000" />
+      <workItem from="1757189305716" duration="1309000" />
+      <workItem from="1757930556522" duration="247000" />
+      <workItem from="1757931973123" duration="2482000" />
+      <workItem from="1758103805341" duration="42000" />
+      <workItem from="1758655797251" duration="136000" />
+      <workItem from="1758659049501" duration="4000" />
+      <workItem from="1758726881551" duration="4120000" />
+      <workItem from="1758802398964" duration="4339000" />
+      <workItem from="1758811417455" duration="3379000" />
+      <workItem from="1759140127548" duration="18000" />
+      <workItem from="1759406812013" duration="3899000" />
+      <workItem from="1759491109079" duration="36000" />
+      <workItem from="1759500990062" duration="1013000" />
+      <workItem from="1759923440201" duration="879000" />
+      <workItem from="1760011948641" duration="5926000" />
+      <workItem from="1760029364435" duration="1343000" />
+      <workItem from="1760210873146" duration="504000" />
+      <workItem from="1760733378754" duration="1229000" />
+      <workItem from="1760882134792" duration="608000" />
+      <workItem from="1760956667576" duration="801000" />
+      <workItem from="1760980791578" duration="188000" />
+      <workItem from="1761083153574" duration="1241000" />
+      <workItem from="1761084414983" duration="2008000" />
+      <workItem from="1761126669856" duration="16499000" />
+      <workItem from="1761304347036" duration="2186000" />
+      <workItem from="1761586578284" duration="1374000" />
+      <workItem from="1761644543626" duration="2142000" />
+      <workItem from="1761668287712" duration="6665000" />
+      <workItem from="1761749050896" duration="542000" />
+      <workItem from="1761777139120" duration="39000" />
+    </task>
+    <task id="LOCAL-00001" summary="Resolvendo bugs do servlet">
+      <option name="closed" value="true" />
+      <created>1757006946706</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757006946706</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Resolvendo bugs do servlet">
+      <option name="closed" value="true" />
+      <created>1761145210295</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761145210295</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="bug servlet resolvido" />
+    <MESSAGE value="Resolvendo bugs do servlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolvendo bugs do servlet" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
