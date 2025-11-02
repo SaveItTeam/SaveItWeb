@@ -64,11 +64,10 @@ main {
   margin-left: 8rem;
 }
 
-#industria-principal form {
+form {
   margin-top: 7rem;
   margin-left: 8rem;
-  > div:nth-child(1),
-  #categoria-input {
+  > div:nth-child(1) {
     display: flex;
     gap: 9rem;
 
@@ -134,13 +133,12 @@ main {
   }
 }
 
-/* Estilos para categorias integradas no formulário */
 label[for="categoriaProdutos"] {
   color: #585858;
   font-size: 1.8rem;
   font-weight: 600;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem 0;
 }
 
@@ -209,4 +207,16 @@ label[for="categoriaProdutos"] {
     border-radius: 1rem;
     font-size: 1.7rem;
   }
+
+  button:last-child {
+    background-color: transparent;
+    color: #405d49;
+    border: none;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+  }
+}
+
+.acao-sidebar {
+  margin-top: 2rem;
 }

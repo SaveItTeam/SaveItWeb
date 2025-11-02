@@ -61,7 +61,6 @@
     </div>
     <%@include file="../../../assets/sidebar.jsp"%>
 
-
     <main>
       <section id="industria-principal">
         <div id="texto-principal">
@@ -285,7 +284,7 @@
               Salvar Alterações
             </button>
             <button type="button" id="btnCancelar">Cancelar</button>
-            <button type="button" id="btnEditar">Editar</button>
+            <button type="button" id="btnEditar"><i class="ri-edit-box-line"></i></button>
           </div>
         </form>
       </section>
