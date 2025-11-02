@@ -75,12 +75,12 @@
             <div>
               <label for="inputNome"
                 >Nome do Negócio
-                <input value="<%=session.getAttribute("nome_industria")%> "
+                <input value='<%=session.getAttribute("nome_industria")%'>
                   type="text"
                   name="inputNome"
                   id="inputNome"
                   placeholder="Digite o nome do negócio"
-                  disabled
+                  
                 />
               </label>
               <label for="selectEstado"
