@@ -17,13 +17,14 @@ public class PagamentoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Pagamento pagamento = new Pagamento(1, "ativo", "2025-01-10", "2026-01-10");
-        PagamentoDAO pagamentoDAO = new PagamentoDAO();
+        PagamentoDAO pagamentoDAO = new PagamentoDAO();//Iniciando o objeto PagamentoDAO
         List<String> dadosPlano;
 
-        HttpSession sessao = request.getSession();
+        HttpSession sessao = request.getSession();//Criando a Sessão
         Object admin = request.getAttribute("admin");
 
         if (admin == null) {
+//            Pegando os atributos e colocando-os em variaveis
             String nome = (String) sessao.getAttribute("nome");
             int id = (int) sessao.getAttribute("id_estabelecimento");
             String url = (String) sessao.getAttribute("img");
@@ -51,6 +52,7 @@ public class PagamentoServlet extends HttpServlet {
             dt_validade = diaV + "/" + mesV + "/" + anoV;
 
             try{
+//                Definindo valores que serão mandados para a página JSP
                 sessao.setAttribute("descricao", descricao);
                 sessao.setAttribute("preco", preco);
                 sessao.setAttribute("status", status);
@@ -60,7 +62,7 @@ public class PagamentoServlet extends HttpServlet {
                 sessao.setAttribute("forma_pagamento", forma_pagamento);
                 sessao.setAttribute("dadosPlano", dadosPlano);
 
-                request.getRequestDispatcher("/WEB-INF/view/admin/pagamentos.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/view/admin/pagamentos.jsp").forward(request, response);//Enviando para o JSP
             }catch(Exception e){
                 e.printStackTrace();
             }
