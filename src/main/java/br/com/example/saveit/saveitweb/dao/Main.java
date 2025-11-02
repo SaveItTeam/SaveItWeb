@@ -2,6 +2,7 @@ package br.com.example.saveit.saveitweb.dao;
 
 import br.com.example.saveit.saveitweb.model.admin.*;
 import br.com.example.saveit.saveitweb.model.cliente.Cliente;
+import br.com.example.saveit.saveitweb.model.cliente.ClienteDAO;
 import br.com.example.saveit.saveitweb.model.empresa.*;
 import br.com.example.saveit.saveitweb.model.endereco.Endereco;
 import br.com.example.saveit.saveitweb.model.endereco.EnderecoDAO;
@@ -65,6 +66,10 @@ public class Main {
                 System.out.println(co + " " + a1);
                 co++;
             }
+
+            ClienteDAO clienteDAO = new  ClienteDAO();
+            Cliente cliente = clienteDAO.buscarPorCNPJ(a.get(10));
+            System.out.println(cliente.getId());
 
 //            adminDAO.listarAdmin();
 //            System.out.println("\n\n");

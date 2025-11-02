@@ -46,8 +46,8 @@ public class LogarAdminServlet extends HttpServlet {
         String tipo_estabelecimento = a.get(5);
         String cnpj = a.get(10);
 
-        Cliente b = clienteDAO.buscarPorCNPJ(cnpj);
-        int id_Industria = b.getId();
+        Cliente cliente1 = clienteDAO.buscarPorCNPJ(cnpj);
+        int id_Industria = cliente1.getId();
 
         byte[] imagemBytes = imagemDAO.buscarImagemFuncionario(id);
 
