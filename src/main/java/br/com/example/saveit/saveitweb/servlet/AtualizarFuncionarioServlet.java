@@ -25,8 +25,13 @@ public class AtualizarFuncionarioServlet extends HttpServlet {
                 funcionarioDAO.alterarNome(novoNome, id);
 
                 String novoCargo = request.getParameter("inputCargo2");
+                funcionarioDAO.alterarCargo(novoCargo, id);
+
                 String novoEmail = request.getParameter("inputEmail2");
+                funcionarioDAO.alterarEmail(novoEmail, id);
+
                 String novoTelefone = request.getParameter("inputTel2");
+                funcionarioDAO.alterarTelefone(novoTelefone, id);
 
 
             } catch (Exception e){

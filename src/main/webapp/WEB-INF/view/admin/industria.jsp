@@ -65,7 +65,7 @@
       <section id="industria-principal">
         <div id="texto-principal">
           <div>
-            <h1>Gerenciar Negócio</h1>
+            <h1>Gerir Negócio</h1>
             <hr />
           </div>
         </div>

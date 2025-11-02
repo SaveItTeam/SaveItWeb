@@ -289,7 +289,7 @@ public List<Industria> buscar() {
 //        Iniciando a lista de objetos Industria
         List<Industria> industrias = new ArrayList<>();
         try {
-            String query = ;//Comando SQL
+            String query = "";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
             pstmt.setInt(1, id);
             ResultSet rset = pstmt.executeQuery();//Executando comando SQL

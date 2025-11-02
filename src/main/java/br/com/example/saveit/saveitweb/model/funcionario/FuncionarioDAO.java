@@ -109,7 +109,45 @@ public class FuncionarioDAO {
         return false;
     }
 
+    public boolean alterarCargo(String novoCargo, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set cargo = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoCargo);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
+    }
 
+    public boolean alterarTelefone(String novoTelefone, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set telefone_pessoal = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoTelefone);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
+    }
 
 
     //    Deletes
