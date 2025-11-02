@@ -81,8 +81,7 @@ function habilitarCampos() {
     elementos.inputImg.disabled = false;
     elementos.radiosCategorias.forEach(radio => {
         radio.disabled = false;
-    });
-    btnSalvar.disabled = true; // botao submit desabilitado enquanto edita
+    }); 
     emModoEdicao = true;
     
     // foca no primeiro input
@@ -115,10 +114,12 @@ btnEditar.addEventListener("click", () => {
     if (emModoEdicao) {
         // sair do modo de edicao
         desabilitarCampos();
+        btnEditar.style.background = "transparent"
     } else {
         // entra no modo de edicao
         salvarValoresOriginais();
         habilitarCampos();
+        btnEditar.style.background = "rgba(176, 186, 195, 0.25)"
     }
 });
 

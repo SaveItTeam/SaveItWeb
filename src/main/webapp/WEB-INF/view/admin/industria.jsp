@@ -75,7 +75,7 @@
             <div>
               <label for="inputNome"
                 >Nome do Negócio
-                <input
+                <input value=" "
                   type="text"
                   name="inputNome"
                   id="inputNome"
@@ -118,7 +118,7 @@
 
               <label for="inputCidade"
                 >Cidade
-                <input
+                <input value=" "
                   type="text"
                   name="inputCidade"
                   id="inputCidade"
@@ -128,7 +128,7 @@
               </label>
               <label for="inputCep"
                 >CEP
-                <input
+                <input value=" "
                   type="text"
                   name="inputCep"
                   id="inputCep"
@@ -138,7 +138,7 @@
               </label>
               <label for="inputBairro"
                 >Bairro
-                <input
+                <input value=" "
                   type="text"
                   name="inputBairro"
                   id="inputBairro"
@@ -154,7 +154,7 @@
                 empresa/indústria" id="imgPreview">
                 <label for="inputImg"
                   ><i class="ri-upload-2-line"></i>Enviar Foto
-                  <input
+                  <input value=" "
                     type="file"
                     accept="image/*"
                     name="inputImg"
@@ -166,7 +166,7 @@
 
               <label for="inputContato"
                 >Contato
-                <input
+                <input value=" "
                   type="tel"
                   name="inputContato"
                   id="inputContato"
@@ -177,7 +177,7 @@
 
               <label for="inputOperacao"
                 >Tipo de Operação
-                <input
+                <input value=" "
                   type="text"
                   name="inputOperacao"
                   id="inputOperacao"
@@ -188,7 +188,7 @@
 
               <label for="inputRua"
                 >Rua
-                <input
+                <input value=" "
                   type="text"
                   name="inputRua"
                   id="inputRua"
@@ -199,7 +199,7 @@
 
               <label for="inputComplemento"
                 >Complemento (opcional)
-                <input
+                <input value=" "
                   type="text"
                   name="inputComplemento"
                   id="inputComplemento"
@@ -212,7 +212,7 @@
                 Categoria de Produtos
                 <div id="categorias-container">
                   <label class="radio-label">
-                    <input
+                    <input value=" "
                       type="radio"
                       name="categoria-radio"
                       value="Laticínios"
@@ -221,7 +221,7 @@
                     <span>Laticínios</span>
                   </label>
                   <label class="radio-label">
-                    <input
+                    <input value=" "
                       type="radio"
                       name="categoria-radio"
                       value="Proteínas"
@@ -230,7 +230,7 @@
                     <span>Proteínas</span>
                   </label>
                   <label class="radio-label">
-                    <input
+                    <input value=" "
                       type="radio"
                       name="categoria-radio"
                       value="Cereais"
@@ -239,7 +239,7 @@
                     <span>Cereais</span>
                   </label>
                   <label class="radio-label">
-                    <input
+                    <input value=" "
                       type="radio"
                       name="categoria-radio"
                       value="Grãos"
@@ -248,7 +248,7 @@
                     <span>Grãos</span>
                   </label>
                   <label class="radio-label">
-                    <input
+                    <input value=" "
                       type="radio"
                       name="categoria-radio"
                       value="Embutidos"
@@ -257,7 +257,7 @@
                     <span>Embutidos</span>
                   </label>
                   <label class="radio-label">
-                    <input
+                    <input value=" "
                       type="radio"
                       name="categoria-radio"
                       value="Óleos"
@@ -266,7 +266,7 @@
                     <span>Óleos</span>
                   </label>
                   <label class="radio-label">
-                    <input
+                    <input value=" "
                       type="radio"
                       name="categoria-radio"
                       value="Bebidas"
