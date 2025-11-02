@@ -188,6 +188,24 @@ public class FuncionarioDAO {
         return false;
     }
 
+    public boolean excluiPorId(int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "delete from Funcionario where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, id);//Setando vlaor
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
 
 
 

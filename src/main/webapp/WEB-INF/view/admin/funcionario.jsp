@@ -98,6 +98,7 @@
                     List<Funcionario> funcionarios = (List<Funcionario>) session.getAttribute("funcionarios");
                     if (funcionarios != null) {
                         for (Funcionario funcionario : funcionarios) {
+                            if (!funcionario.getIs_admin()){
                 %>
                 <tr
                         data-funcionario='{"nome":"<%= funcionario.getNome() %>","cargo":"<%= funcionario.getCargo() %>","email":"<%= funcionario.getEmail() %>","telefone":"<%= funcionario.getTelefone_pessoal() %>", "id":"<%= funcionario.getId() %>"}'
@@ -112,6 +113,7 @@
                     </td>
                 </tr>
                 <%
+                            }
                         }
                     }
                 %>
@@ -236,7 +238,7 @@
 
 <!-- EDITAR FUNCIONARIO -->
 <div class="editar-funcionario">
-    <form action="atualizarFuncionarioServlet" method="post">
+    <form action="atualizarFuncionarioServlet" method="post" enctype="multipart/form-data">
         <div>
             <h2>Editar Funcionário</h2>
             <button type="button" class="fechar-editar-funcionario">
@@ -254,8 +256,8 @@
                     <input
                             type="file"
                             name="inputFile2"
-                            id="inputFile2"
-                            accept=".jpg, .png, .jpeg"
+                            id="arquivo"
+                            accept="image/*"
                     />
                 </label>
             </div>
@@ -266,6 +268,7 @@
               ID
               <input type="text" readonly name="inputId2" id="inputId2">
             </label>
+
             <label for=""
             >Nome Completo
                 <input
@@ -316,14 +319,15 @@
 </div>
 
 <div class="deletar-funcionario">
-    <form action="" method="post">
+    <form action="exluirFuncionarioServlet" method="post">
+        <input type="text" readonly name="inputId2" id="inputId2">
         <h2>Excluir Funcionário?</h2>
         <h3>Tem certeza que deseja excluir esse funcionário?</h3>
         <div>
             <button class="fechar-deletar-funcionario" type="button">
                 Cancelar
             </button>
-            <input type="button" value="Deletar" />
+            <input type="submit" value="Deletar" name="deletar"/>
         </div>
     </form>
 </div>
