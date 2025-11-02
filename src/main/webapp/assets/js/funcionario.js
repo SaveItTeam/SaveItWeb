@@ -29,7 +29,7 @@ document.querySelectorAll("tbody tr").forEach(row => {
     // preenche o form com os dados para edicao
     document.querySelector("#inputNome2").value = funcionarioData.nome;
     document.querySelector("#inputCargo2").value = funcionarioData.cargo;
-    
+    document.querySelector("#inputId2").value = funcionarioData.id;
     document.querySelector("#inputEmail2").value = funcionarioData.email || "";
     document.querySelector("#inputTel2").value = funcionarioData.telefone || "";
     

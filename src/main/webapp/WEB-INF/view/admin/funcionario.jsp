@@ -256,7 +256,6 @@
                             name="inputFile2"
                             id="inputFile2"
                             accept=".jpg, .png, .jpeg"
-                            1qaa
                     />
                 </label>
             </div>
@@ -299,6 +298,10 @@
                         name="inputTel2"
                         id="inputTel2"
                 />
+            </label>
+            <label for="">
+              ID
+              <input type="text" readonly name="inputId2" id="inputId2">
             </label>
         </div>
         <hr />

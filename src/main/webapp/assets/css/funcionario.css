@@ -430,7 +430,7 @@ main {
   z-index: 1000;
   form {
     width: 57rem;
-    height: 45rem;
+    height: 53rem;
     border-radius: 1.5rem;
     background: var(--cor-fundo-form);
     position: fixed;
