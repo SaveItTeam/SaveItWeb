@@ -37,10 +37,11 @@ public class AdicionarFuncionarioServlet extends HttpServlet {
             String cargo = request.getParameter("inputCargo");
             String genero = request.getParameter("inputSelect");
             String email = request.getParameter("inputEmail");
-            String telefone = request.getParameter("inputTel");
+            String telefone_pessoal = request.getParameter("inputTel");
             String dataContratacaoStr = request.getParameter("inputStatus");
             String cpf = request.getParameter("inputCpf");
             String rg = request.getParameter("inputRg");
+            String dt_nascimentoStr = request.getParameter("inputDtNascimento");
 
             // Obter ID da indústria do admin logado
             int idIndustria = (int) sessao.getAttribute("id_estabelecimento");
@@ -60,8 +61,13 @@ public class AdicionarFuncionarioServlet extends HttpServlet {
                 dataContratacao = Date.valueOf(dataContratacaoStr);
             }
 
+            Date dataNascimeto = null;
+            if (dt_nascimentoStr != null && !dt_nascimentoStr.trim().isEmpty()) {
+                dataNascimeto = Date.valueOf(dt_nascimentoStr);
+            }
+
             // Gerar senha padrão (CPF ou data de nascimento)
-            String senhaPadrao = cpf != null && !cpf.trim().isEmpty() ? cpf : "123456";
+            String senhaPadrao = cpf;
             Hash hash = new Hash();
             String senhaHash = hash.hashar(senhaPadrao);
 
@@ -70,20 +76,21 @@ public class AdicionarFuncionarioServlet extends HttpServlet {
             Funcionario funcionario = new Funcionario();
 
             funcionario.setNome(nome.trim());
+            funcionario.setCpf(cpf != null ? cpf.trim() : null);
+            funcionario.setRg(rg != null ? rg.trim() : null);
             funcionario.setCargo(cargo.trim());
             funcionario.setGenero(genero != null ? genero.charAt(0) : 'O');
             funcionario.setEmail(email.trim());
-            funcionario.setTelefone_pessoal(telefone != null ? telefone.trim() : null);
-            funcionario.setTelefone_trabalho(telefone != null ? telefone.trim() : null);
+            funcionario.setTelefone_pessoal(telefone_pessoal != null ? telefone_pessoal.trim() : null);
+            funcionario.setTelefone_trabalho((String) sessao.getAttribute("telefone_trabalho"));
             funcionario.setDt_contratacao(dataContratacao);
-            funcionario.setCpf(cpf != null ? cpf.trim() : null);
-            funcionario.setRg(rg != null ? rg.trim() : null);
+            funcionario.setDt_nascimento(dataNascimeto);
             funcionario.setId_industria(idIndustria);
             funcionario.setSenha(senhaHash);
             funcionario.setIs_admin(false); // Novo funcionário não é admin
 
             // Inserir no banco
-            boolean funcionarioSalvo = funcionarioDAO.inserirFuncionario(funcionario);
+            boolean funcionarioSalvo = funcionarioDAO.inserirFuncionarioIndustria(funcionario);
 
             if (funcionarioSalvo) {
                 // Buscar ID do funcionário recém-criado
@@ -110,7 +117,7 @@ public class AdicionarFuncionarioServlet extends HttpServlet {
                     List<Funcionario> listaFuncionarios = funcionarioDAO.buscarTodosPorIndustria(idIndustria);
                     sessao.setAttribute("funcionarios", listaFuncionarios);
 
-                    request.setAttribute("success", "Funcionário adicionado com sucesso! Senha padrão: " + senhaPadrao);
+                    request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
                 }
             } else {
                 request.setAttribute("error", "Erro ao adicionar funcionário!");
@@ -120,7 +127,5 @@ public class AdicionarFuncionarioServlet extends HttpServlet {
             e.printStackTrace();
             request.setAttribute("error", "Erro ao adicionar funcionário: " + e.getMessage());
         }
-
-        request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
     }
 }
