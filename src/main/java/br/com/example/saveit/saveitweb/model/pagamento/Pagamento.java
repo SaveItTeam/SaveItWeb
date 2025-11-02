@@ -13,9 +13,10 @@ public class Pagamento {
         this.status = status;
         this.dt_criacao = dt_criacao;
         this.dt_validade = dt_validade;
+        this.forma_pagamento = forma_pagamento;
     }
 
-    public Pagamento() {}
+    public Pagamento(int i, String ativo, String date, String s) {}
 
     //    Getters
     public int getId() {
@@ -57,6 +58,14 @@ public class Pagamento {
 
     //    toString
     public String toString(){
-        return String.format("|ID: %-5s  |Status: %-10s  |Data_Criação: %-15s  |Data_Validade: %-5s  |Forma_Pagamento: %-15s", this.id, this.status, this.dt_criacao, this.dt_validade, this.forma_pagamento);
+        return String.format("""
+                {
+                    "id": %d,
+                    "status": "%s",
+                    "dt_criacao": "%s",
+                    "dt_validade": "%s",
+                    "forma_pagamento": "%s"
+                }"""
+                , this.id, this.status, this.dt_criacao, this.dt_validade, this.forma_pagamento);
     }
 }

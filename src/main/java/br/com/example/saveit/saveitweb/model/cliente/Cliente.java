@@ -6,14 +6,15 @@ public class Cliente {
     private String nome;
     private String email;
     private String senha;
-    private String tipo;
+    private int tipo;
     private String tipo_venda;
     private int id_endereco;
     private String cnpj;
+    private byte[] imagem;
 
 
     //    Construtor
-    public Cliente(int id, String nome, String email, String senha, String tipo, String tipo_venda, int id_endereco, String cnpj) {
+    public Cliente(int id, String nome, String email, String senha, int tipo, String tipo_venda, int id_endereco, String cnpj, byte[] imagem) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -22,6 +23,7 @@ public class Cliente {
         this.tipo_venda = tipo_venda;
         this.id_endereco = id_endereco;
         this.cnpj = cnpj;
+        this.imagem = imagem;
     }
 
     public Cliente() {}
@@ -43,7 +45,7 @@ public class Cliente {
         return senha;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
@@ -58,6 +60,8 @@ public class Cliente {
     public String getCnpj() {
         return cnpj;
     }
+
+    public byte[] getImagem() {return imagem;}
 
     //    Setters
     public void setId(int id) {
@@ -76,7 +80,7 @@ public class Cliente {
         this.senha = senha;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
@@ -92,18 +96,25 @@ public class Cliente {
         this.cnpj = cnpj;
     }
 
+    public void setImagem(byte[] imagem) {this.imagem = imagem;}
+
 
     //    toString
 
     @Override
     public String toString() {
-        return "id=" + id +
-                "\nnome='" + nome +
-                "\nemail='" + email +
-                "\nsenha='" + senha +
-                "\ntipo='" + tipo +
-                "\ntipo_venda='" + tipo_venda +
-                "\nid_endereco=" + id_endereco +
-                "\ncnpj='" + cnpj;
+        return String.format("""
+                {
+                    "id": %d,
+                    "nome": "%s",
+                    "email": "%s",
+                    "senha": "%s",
+                    "tipo": %d,
+                    "tipo_venda": "%s",
+                    "id_endereco": %d,
+                    "cnpj": "%s",
+                    "imagem": "%s"
+                }"""
+                , id, nome, email, senha, tipo, tipo_venda, id_endereco, cnpj,  imagem);
     }
 }

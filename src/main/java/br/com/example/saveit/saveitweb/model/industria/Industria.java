@@ -75,11 +75,15 @@ public class Industria {
 
     //    toString
     public String toString() {
-        return "id=" + id +
-                "\nvende='" + vende +
-                "\nid_plano=" + id_plano +
-                "\ncod_industria='" + cod_industria +
-                "\nid_pagamento=" + id_pagamento +
-                "\nid_cliente=" + id_cliente;
+        return String.format("""
+                {
+                    "id": %d,
+                    "vende": "%s",
+                    "id_plano": %d,
+                    "cod_industria": "%s",
+                    "id_pagamento": %d,
+                    "id_cliente": %d
+                }"""
+                , id, vende, id_pagamento, cod_industria, id_pagamento, id_cliente);
     }
 }

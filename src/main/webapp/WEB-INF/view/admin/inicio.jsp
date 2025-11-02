@@ -46,7 +46,7 @@
             </button>
         </div>
         <div class="administrador">
-            <img src="<%=session.getAttribute("img")%>" alt="" />
+            <img src="<%=session.getAttribute("img_funcionario]")%>" alt="" />
             <div>
                 <p><%=session.getAttribute("nome")%></p>
                 <p>Admin</p>
@@ -92,23 +92,27 @@
                 </div>
             </div>
 
-            <!-- ! davi dá uma olhada nisso porque eu não sei como que vai deixar no servlet, não sei se precisa de form para redirecionar para as outras páginas funcionais -->
-            <div id="acoes">
-                <div>
-                    <i class="ri-add-large-line"></i>
-                    <h3>Adicionar funcionario</h3>
-                </div>
+            <div id="acoes-forms">
+                <form class="acoes" method="post" action="">
+                    <button type="submit" name="acao" value="adicionar-funcionario">
+                        <i class="ri-add-large-line"></i>
+                        <h3>Adicionar funcionario</h3>
+                    </button>
+                </form>
 
-                <div>
-                    <i class="ri-edit-box-line"></i>
-                    <h3>Editar informacões</h3>
-                </div>
+                <form class="acoes" method="post" action="">
+                    <button type="submit" name="acao" value="editar-informacoes">
+                        <i class="ri-edit-box-line"></i>
+                        <h3>Editar informacões</h3>
+                    </button>
+                </form>
             </div>
+
         </div>
 
         <div id="card-industria">
             <div>
-                <img src="<%=session.getAttribute("img")%>" alt="" />
+                <img src="<%=session.getAttribute("img_empresa")%>" alt="" />
                 <div>
                     <h4><%=session.getAttribute("nome_empresa")%></h4>
                     <p><%=session.getAttribute("telefone_trabalho")%></p>

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
+
 * {
     font-family: "Plus Jakarta Sans", sans-serif;
 }
@@ -24,14 +25,14 @@ div {
     background-color: #FFFAF0;
     border-radius: 20px;
     box-shadow: 8px 10px 10px rgba(0, 0, 0, 0.2);
-    
+
     img {
         width: 50px;
         height: 50px;
         padding-top: 70px;
         margin-bottom: -100px;
     }
-    
+
     h1 {
         color: #2F2F2F;
         font-size: 30px;
@@ -40,8 +41,8 @@ div {
         margin-top: 140px;
         margin-bottom: -10px;
     }
-    
-    
+
+
     form {
         display: flex;
         gap: 10px;
@@ -51,7 +52,7 @@ div {
         width: 550px;
         height: 450px;
         margin-top: 20px;
-    
+
         input[placeholder] {
             width: 95%;
             height: 50px;
@@ -62,18 +63,18 @@ div {
             outline: 0.3px solid #7C838A;
             margin-bottom: 15px;
             font-size: 17px;
-    
+
             &::placeholder {
                 color: rgba(0, 0, 0, 0.5);
                 font-size: 17px;
                 font-weight: 450;
             }
-    
+
             &:focus {
                 outline: 2px solid #6b8e4e;
             }
         }
-    
+
         input[type = "submit"] {
             background-color: #6b8e4e;
             border: none;
@@ -87,12 +88,12 @@ div {
             margin-top: 10px;
             cursor: pointer;
             transition: .3s ease;
-    
+
             &:hover {
                 background-color: #5d8040;
             }
         }
-        
+
         label {
             margin-right: auto;
             color: #7C838A;
@@ -120,6 +121,15 @@ div {
     }
 }
 
+div a {
+    color: #405d49;
+    font-weight: 600;
+    transition: .3s ease;
+    &:hover {
+        color: #5d8040;
+    }
+}
+
 #svg-topo {
     position: absolute;
     z-index: -1;
@@ -128,7 +138,7 @@ div {
     top: -450px;
     left: -450px;
     transform: rotateX(180deg);
-    
+
 }
 
 #svg-baixo {
@@ -140,5 +150,5 @@ div {
     right: -400px;
     transform: rotateX(180deg);
     object-fit: cover;
-    
+
 }

@@ -1,7 +1,12 @@
 package br.com.example.saveit.saveitweb.model.cliente;
 
 import br.com.example.saveit.saveitweb.dao.Conexao;
+import jakarta.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +17,16 @@ public class ClienteDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente (nome, email, senha, tipo, tipo_venda, id_endereco, cnpj) Values(?,?,?,?,?,?,?)");//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente (nome, email, senha, tipo, tipo_venda, id_endereco, cnpj, imagem) Values(?,?,?,?,?,?,?,?)");//Comando SQL
 //        Setando valores
             pstmt.setString(1, cliente.getNome());
             pstmt.setString(2, cliente.getEmail());
             pstmt.setString(3, cliente.getSenha());
-            pstmt.setString(4, cliente.getTipo());
+            pstmt.setInt(4, cliente.getTipo());
             pstmt.setString(5, cliente.getTipo_venda());
             pstmt.setInt(6, cliente.getId_endereco());
             pstmt.setString(7, cliente.getCnpj());
+            pstmt.setBytes(8, cliente.getImagem());
             boolean validar = pstmt.executeUpdate() > 0;//Executando o comando sql do preparedStament
 //            Validação
             if (validar) {
@@ -130,6 +136,39 @@ public class ClienteDAO {
     }
 
 
+    public boolean alterarImagem(File imagem, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
+        byte [] imagemBytes;//Iniciando variavel do tipo ByteArray
+
+        try {
+            Part partesAruivo = (Part) imagem;
+            if (partesAruivo != null) {
+                InputStream conteudoAruivo = partesAruivo.getInputStream();
+                imagemBytes = IOUtils.toByteArray(conteudoAruivo);
+                String query = "Update Cliente set imagem = ? where id = ?";//Comando SQL
+                PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
+                pstmt.setBytes(1, imagemBytes);
+                pstmt.setInt(2, id);
+                boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+                if (validar) {
+                    pstmt.close();
+                    return validar;//True
+                }
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+
 //    Delete
 
     public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
@@ -191,7 +230,7 @@ public class ClienteDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getInt(7), rset.getString(8));
+                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getInt(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
                     clientes.add(cliente);
                 }
             }
@@ -220,7 +259,7 @@ public class ClienteDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getInt(7), rset.getString(8));
+                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getInt(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
                     clientes.add(cliente);
                 }
             }
@@ -248,7 +287,7 @@ public class ClienteDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getInt(7), rset.getString(8));
+                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getInt(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
                     clientes.add(cliente);
                 }
             }
@@ -276,7 +315,7 @@ public class ClienteDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getInt(7), rset.getString(8));
+                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getInt(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
                     clientes.add(cliente);
                 }
             }

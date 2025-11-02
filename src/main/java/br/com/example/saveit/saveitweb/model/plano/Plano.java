@@ -1,17 +1,17 @@
 package br.com.example.saveit.saveitweb.model.plano;
 
+import java.util.Locale;
+
 public class Plano {
 //    Atributos
     private int id;
     private double preco;
     private String descricao;
-    private int id_pagamento;
 
-    public Plano(int id, double preco, String descricao, int id_pagamento) {
+    public Plano(int id, double preco, String descricao) {
         this.id = id;
         this.preco = preco;
         this.descricao = descricao;
-        this.id_pagamento = id_pagamento;
     }
 
     public Plano() {}
@@ -30,10 +30,6 @@ public class Plano {
         return descricao;
     }
 
-    public int getId_pagamento() {
-        return id_pagamento;
-    }
-
 
 //    Setters
     public void setId(int id) {
@@ -48,13 +44,15 @@ public class Plano {
         this.descricao = descricao;
     }
 
-    public void setId_pagamento(int id_pagamento) {
-        this.id_pagamento = id_pagamento;
-    }
-
 
 //    toString
     public String toString(){
-        return String.format("|ID: %-5s  |Preço: %-5s  |Descrição: %-30s  |ID_Pagamento: %-5s", this.id, this.preco, this.descricao, this.id_pagamento);
+        return String.format(Locale.US, """
+                {
+                    "id": %d,
+                    "preco": %f,
+                    "descricao": "%s"
+                }"""
+                , this.id, this.preco, this.descricao);
     }
 }
