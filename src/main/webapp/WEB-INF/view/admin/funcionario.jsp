@@ -264,12 +264,9 @@
         </div>
 
         <div class="inputs">
-          <label for="">
-              ID
-              <input type="text" readonly name="inputId2" id="inputId2">
-            </label>
+            <input type="hidden" name="inputId2" id="inputId2">
 
-            <label for=""
+            <label for="inputNome2"
             >Nome Completo
                 <input
                         type="text"
@@ -279,7 +276,7 @@
                 />
             </label>
 
-            <label for=""
+            <label for="inputCargo2"
             >Cargo
                 <input
                         type="text"
@@ -288,7 +285,7 @@
                         id="inputCargo2"
                 />
             </label>
-            <label for=""
+            <label for="inputEmail2"
             >Email
                 <input
                         type="text"
@@ -297,7 +294,7 @@
                         id="inputEmail2"
                 />
             </label>
-            <label for=""
+            <label for="inputTel2"
             >Telefone
                 <input
                         type="tel"
@@ -306,7 +303,6 @@
                         id="inputTel2"
                 />
             </label>
-            
         </div>
         <hr />
         <div class="acoesForm">
@@ -318,16 +314,18 @@
     </form>
 </div>
 
+<!-- DELETAR FUNCIONARIO -->
 <div class="deletar-funcionario">
-    <form action="exluirFuncionarioServlet" method="post">
-        <input type="text" readonly name="inputId2" id="inputId2">
+    <form action="excluirFuncionarioServlet" method="post">
+        <input type="hidden" name="idFuncionario" id="idFuncionarioDelete">
+
         <h2>Excluir Funcionário?</h2>
         <h3>Tem certeza que deseja excluir esse funcionário?</h3>
         <div>
             <button class="fechar-deletar-funcionario" type="button">
                 Cancelar
             </button>
-            <input type="submit" value="Deletar" name="deletar"/>
+            <button type="submit">Deletar</button>
         </div>
     </form>
 </div>
