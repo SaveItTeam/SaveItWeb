@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.com.example.saveit.saveitweb.model.funcionario.Funcionario" %>
+<%@ page import="br.com.example.saveit.saveitweb.model.imagem_funcionario.ImagemDAO" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,9 +100,16 @@
                     if (funcionarios != null) {
                         for (Funcionario funcionario : funcionarios) {
                             if (!funcionario.getIs_admin()){
+                                ImagemDAO imagemDAO = new ImagemDAO();
+                                byte[] imagemBytes = imagemDAO.buscarImagemFuncionario(funcionario.getId());
+                                String imagemBase64 = null;
+
+                                if (imagemBytes != null) {
+                                    imagemBase64 = java.util.Base64.getEncoder().encodeToString(imagemBytes);
+                                }
                 %>
                 <tr
-                        data-funcionario='{"nome":"<%= funcionario.getNome() %>","cargo":"<%= funcionario.getCargo() %>","email":"<%= funcionario.getEmail() %>","telefone":"<%= funcionario.getTelefone_pessoal() %>", "id":"<%= funcionario.getId() %>"}'
+                        data-funcionario='{"nome":"<%= funcionario.getNome() %>","cargo":"<%= funcionario.getCargo() %>","email":"<%= funcionario.getEmail() %>","telefone":"<%= funcionario.getTelefone_pessoal() %>", "id":"<%= funcionario.getId() %>", "imagem":"<%= imagemBase64 != null ? "data:image/*;base64," + imagemBase64 : "caminho/para/imagem-padrao.jpg" %>"}'
                 >
                     <td><%= funcionario.getNome() %></td>
                     <td><%= funcionario.getDt_contratacao() %></td>
@@ -303,6 +311,7 @@
                         id="inputTel2"
                 />
             </label>
+
         </div>
         <hr />
         <div class="acoesForm">
@@ -314,18 +323,17 @@
     </form>
 </div>
 
-<!-- DELETAR FUNCIONARIO -->
 <div class="deletar-funcionario">
     <form action="excluirFuncionarioServlet" method="post">
-        <input type="hidden" name="idFuncionario" id="idFuncionarioDelete">
+        <input type="hidden" name="idFuncionario" id="idFuncionarioDeletar" value="">
 
         <h2>Excluir Funcionário?</h2>
-        <h3>Tem certeza que deseja excluir esse funcionário?</h3>
+        <h3>Tem certeza que deseja excluir esse funcionário? <b>Essa ação é irreversível.</b></h3>
         <div>
             <button class="fechar-deletar-funcionario" type="button">
                 Cancelar
             </button>
-            <button type="submit">Deletar</button>
+            <input type="submit" value="Deletar" name="deletar"/>
         </div>
     </form>
 </div>

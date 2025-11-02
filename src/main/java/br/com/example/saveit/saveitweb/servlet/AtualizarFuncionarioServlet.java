@@ -27,8 +27,11 @@ public class AtualizarFuncionarioServlet extends HttpServlet {
         }
 
         try {
-            // Pegar ID do funcionário
+            // Pegar ID do funcionário que está sendo editado
             int id = Integer.parseInt(request.getParameter("inputId2"));
+
+            // ✅ VERIFICAR SE É O MESMO ADMIN LOGADO
+            int idAdminLogado = (int) sessao.getAttribute("id_funcionario");
 
             // Atualizar dados do funcionário
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -45,10 +48,6 @@ public class AtualizarFuncionarioServlet extends HttpServlet {
 
                 ImagemDAO imagemDAO = new ImagemDAO();
                 imagemDAO.salvarImagemFuncionario(imagemBytes, id);
-
-                // Atualizar na sessão
-                String imagemBase64 = java.util.Base64.getEncoder().encodeToString(imagemBytes);
-                sessao.setAttribute("img_funcionario", "data:image/jpeg;base64," + imagemBase64);
             }
 
             // Redirecionar
