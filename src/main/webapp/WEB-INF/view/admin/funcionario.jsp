@@ -133,7 +133,7 @@
 
 <!-- ADICIONAR FUNCIONARIO -->
 <div class="adicionar-funcionario">
-    <form action="" method="post">
+    <form action="adicionarFuncionarioServlet" method="post" enctype="multipart/form-data">
         <div>
             <h2>Adicionar Funcionário</h2>
             <button type="button" class="fechar-adicionar-funcionario">

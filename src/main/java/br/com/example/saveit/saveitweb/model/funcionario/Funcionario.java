@@ -44,8 +44,11 @@ public class Funcionario {
 
     public Funcionario() {}
 
+    public Funcionario(int id, String nome, String email, String senha, String telefonePessoal, String telefoneTrabalho, String cargo, Date dtContratacao, String cpf, String rg, int idIndustria, boolean isAdmin, char genero) {
+    }
 
-//    Getters e Setters
+
+    //    Getters e Setters
     public int getId() {return this.id;}
 
     public String getNome() {
