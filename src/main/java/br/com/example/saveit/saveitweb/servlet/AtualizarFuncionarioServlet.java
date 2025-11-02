@@ -50,7 +50,7 @@ public class AtualizarFuncionarioServlet extends HttpServlet {
                 String novoTelefone = request.getParameter("inputTel2");
                 funcionarioDAO.alterarTelefone(novoTelefone, id);
 
-                request.getRequestDispatcher("/WEB-INF/jsp/editarFuncionario.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
 
             } catch (Exception e){
                 e.printStackTrace();
