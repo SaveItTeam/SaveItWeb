@@ -320,7 +320,6 @@
 
 <div class="deletar-funcionario">
     <form action="excluirFuncionarioServlet" method="post">
-        <!-- Campo hidden para enviar o ID -->
         <input type="hidden" name="idFuncionario" id="idFuncionarioDeletar" value="">
         
         <h2>Excluir Funcionário?</h2>
