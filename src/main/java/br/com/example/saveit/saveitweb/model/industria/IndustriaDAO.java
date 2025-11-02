@@ -281,4 +281,32 @@ public List<Industria> buscar() {
             return industrias;//Retornando a lista de industrias
         }
     }
+
+
+    public List<Industria> buscarDados(int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
+//        Iniciando a lista de objetos Industria
+        List<Industria> industrias = new ArrayList<>();
+        try {
+            String query = ;//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, id);
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
+            if (rset != null) {
+//                Inserção de dados
+                while (rset.next()) {
+                    Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
+                    industrias.add(industria);
+                }
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return industrias;//Retornando a lista de industrias
+        }
+    }
 }
