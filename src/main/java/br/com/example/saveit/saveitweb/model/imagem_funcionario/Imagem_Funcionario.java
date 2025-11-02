@@ -34,8 +34,12 @@ public class Imagem_Funcionario {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                "\nurl='" + url +
-                "\nid_funcionario=" + id_funcionario;
+        return String.format("""
+                {
+                    "id": %d,
+                    "url": "%s",
+                    "id_funcionario": %d
+                }"""
+                , id, url, id_funcionario);
     }
 }

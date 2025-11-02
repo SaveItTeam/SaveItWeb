@@ -3,7 +3,6 @@ package br.com.example.saveit.saveitweb.servlet;
 import br.com.example.saveit.saveitweb.model.pagamento.Pagamento;
 import br.com.example.saveit.saveitweb.model.pagamento.PagamentoDAO;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +16,7 @@ import java.util.List;
 public class PagamentoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Pagamento pagamento = new Pagamento();
+        Pagamento pagamento = new Pagamento(1, "ativo", "2025-01-10", "2026-01-10");
         PagamentoDAO pagamentoDAO = new PagamentoDAO();
         List<String> dadosPlano;
 
@@ -26,7 +25,7 @@ public class PagamentoServlet extends HttpServlet {
 
         if (admin == null) {
             String nome = (String) sessao.getAttribute("nome");
-            int id = (int) sessao.getAttribute("id_industria");
+            int id = (int) sessao.getAttribute("id_estabelecimento");
             String url = (String) sessao.getAttribute("img");
             String plano = (String) sessao.getAttribute("plano");
             dadosPlano = pagamentoDAO.buscarDadosPlano(id);

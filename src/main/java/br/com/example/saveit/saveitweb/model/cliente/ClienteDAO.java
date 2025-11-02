@@ -22,7 +22,7 @@ public class ClienteDAO {
             pstmt.setString(1, cliente.getNome());
             pstmt.setString(2, cliente.getEmail());
             pstmt.setString(3, cliente.getSenha());
-            pstmt.setString(4, cliente.getTipo());
+            pstmt.setInt(4, cliente.getTipo());
             pstmt.setString(5, cliente.getTipo_venda());
             pstmt.setInt(6, cliente.getId_endereco());
             pstmt.setString(7, cliente.getCnpj());
@@ -230,7 +230,7 @@ public class ClienteDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
+                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getInt(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
                     clientes.add(cliente);
                 }
             }
@@ -259,7 +259,7 @@ public class ClienteDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
+                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getInt(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
                     clientes.add(cliente);
                 }
             }
@@ -287,7 +287,7 @@ public class ClienteDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
+                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getInt(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
                     clientes.add(cliente);
                 }
             }
@@ -315,7 +315,7 @@ public class ClienteDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
+                    Cliente cliente = new Cliente(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getInt(5), rset.getString(6), rset.getInt(7), rset.getString(8), rset.getBytes(9));
                     clientes.add(cliente);
                 }
             }

@@ -6,7 +6,7 @@ public class Cliente {
     private String nome;
     private String email;
     private String senha;
-    private String tipo;
+    private int tipo;
     private String tipo_venda;
     private int id_endereco;
     private String cnpj;
@@ -14,7 +14,7 @@ public class Cliente {
 
 
     //    Construtor
-    public Cliente(int id, String nome, String email, String senha, String tipo, String tipo_venda, int id_endereco, String cnpj, byte[] imagem) {
+    public Cliente(int id, String nome, String email, String senha, int tipo, String tipo_venda, int id_endereco, String cnpj, byte[] imagem) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -45,7 +45,7 @@ public class Cliente {
         return senha;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
@@ -80,7 +80,7 @@ public class Cliente {
         this.senha = senha;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
@@ -103,14 +103,17 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                "\nnome='" + nome +
-                "\nemail='" + email +
-                "\nsenha='" + senha +
-                "\ntipo='" + tipo +
-                "\ntipo_venda='" + tipo_venda +
-                "\nid_endereco=" + id_endereco +
-                "\ncnpj='" + cnpj +
-                "\nimagem='" + imagem;
+        return String.format("""
+                {
+                    "id": %d,
+                    "nome": "%s",
+                    "email": "%s",
+                    "senha": "%s",
+                    "tipo": %d,
+                    "tipo_venda": "%s",
+                    "id_endereco": %d,
+                    "cnpj": "%s"
+                }"""
+                , id, nome, email, senha, tipo, tipo_venda, id_endereco, cnpj);
     }
 }
