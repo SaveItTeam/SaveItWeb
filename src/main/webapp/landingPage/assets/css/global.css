@@ -12,6 +12,13 @@ body {
   bottom: 0;
 }
 
+iframe {
+  position: fixed;
+  width: 100%;
+  height: 102vh;
+  z-index: 2000;
+  margin-top: -2rem;
+}
 
 .titulo-geist {
   font-family: 'Geist', sans-serif;
@@ -113,6 +120,22 @@ header.scrolled {
 
 .invisivel {
   display: none;
+}
+
+#Interrogacao {
+  text-decoration: none;
+  position: fixed;
+  top: 86rem;
+  right: 5rem;
+  color: #405d49;
+  z-index: 5;
+  border-radius: 100%;
+  width: 6rem;
+
+  img {
+    width: 6rem;
+
+  }
 }
 
 #abrir-lateral {
@@ -274,6 +297,17 @@ footer {
   body {
     position: relative;
   }
+
+  #Interrogacao {
+    display: none;
+  }
+
+  #footer {
+    #faqF {
+      display: none;
+    }
+  }
+
 }
 
 @media(width: 800px) {
@@ -287,6 +321,16 @@ footer {
         text-decoration: none;
         color: #f0ece1;
       }
+    }
+  }
+
+  #Interrogacao {
+    display: none;
+  }
+
+  #footer {
+    #faqF {
+      display: none;
     }
   }
 }

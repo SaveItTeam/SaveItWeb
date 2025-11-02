@@ -17,13 +17,13 @@ public class Funcionario {
     public String telefone_pessoal;
     public String telefone_trabalho;
     public String experiencia;
-    public int id_empresa;
-    public int id_industria;
+    public Integer id_empresa;
+    public Integer id_industria;
     public boolean is_admin;
 
 
 //    Construtor
-    public Funcionario(int id, String nome, String cpf, String rg, char genero, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone_pessoal, String telefone_trabalho, String experiencia, int id_empresa, int id_industria, boolean is_admin) {
+    public Funcionario(int id, String nome, String cpf, String rg, char genero, Date dt_nascimento, String email, String senha, String cargo, Date dt_contratacao, String telefone_pessoal, String telefone_trabalho, String experiencia, Integer id_empresa, Integer id_industria, boolean is_admin) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -42,9 +42,7 @@ public class Funcionario {
         this.is_admin = is_admin;
     }
 
-    public Funcionario() {
-
-    }
+    public Funcionario() {}
 
 
 //    Getters e Setters
@@ -174,23 +172,27 @@ public class Funcionario {
 //    toString
     @Override
     public String toString() {
-        return "Funcionario{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", rg='" + rg + '\'' +
-                ", genero=" + genero +
-                ", dt_nascimento=" + dt_nascimento +
-                ", email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
-                ", cargo='" + cargo + '\'' +
-                ", dt_contratacao=" + dt_contratacao +
-                ", telefone_pessoal='" + telefone_pessoal + '\'' +
-                ", experiencia='" + experiencia + '\'' +
-                ", id_empresa=" + id_empresa +
-                ", id_industria=" + id_industria +
-                ", id_admin=" + is_admin +
-                '}';
+        return String.format("""
+            {
+                    "id": %d,
+                    "nome": "%s",
+                    "cpf": "%s",
+                    "rg": "%s",
+                    "genero": "%s",
+                    "dt_nascimento": "%s",
+                    "email": "%s",
+                    "senha": "%s",
+                    "cargo": "%s",
+                    "dt_contratacao": "%s",
+                    "telefone_pessoal": "%s",
+                    "telefone_trabalho": "%s",
+                    "experiencia": "%s",
+                    "id_empresa": %d,
+                    "id_industria": %d,
+                    "is_admin": %b
+                }"""
+                , id, nome, cpf, rg, genero, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal
+                , telefone_trabalho, experiencia, id_empresa, id_industria, is_admin);
     }
 }
 

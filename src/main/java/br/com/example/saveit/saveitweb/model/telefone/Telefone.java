@@ -16,7 +16,6 @@ public class Telefone {
 
     public Telefone() {}
 
-
 //    Getters e Setters
     public int getId() {return id;}
 
@@ -35,8 +34,13 @@ public class Telefone {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                "\nnum_telefone=" + num_telefone +
-                "\nid_cliente=" + id_cliente;
+        return String.format("""
+                {
+                    "id": %d,
+                    "num_telefone": "%s",
+                    "id_cliente": %d
+                }
+                """
+                , id, num_telefone, id_cliente);
     }
 }

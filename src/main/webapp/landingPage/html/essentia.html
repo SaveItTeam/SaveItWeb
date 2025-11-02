@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <iframe src="telaCarregamento.html" frameborder="0"></iframe>
   <!--* --------------- HEADER ---------------------------->
   <header>
     <nav>
@@ -24,13 +25,17 @@
     </nav>
   </header>
   <!-- * BOTÃO ENTRAR COMO ADMIN -->
-  <a href="../../login.jsp" class="botao-admin">Entrar como Admin</a>
+  <a href="../../login.jsp" target="_blank" class="botao-admin">Entrar como Admin</a>
   <!--* --------------- MAIN ---------------------------->
   <main>
+    <!-- * Botão de FAQ -->
+    <a id="Interrogacao" href="../html/faq.html" target="_blank"><img src="../assets/images/faq hover.svg" alt=""></i></a>
+    <!-- * botao para abrir a Barra-lateral -->
+    <a id="abrir-lateral"><i class="ri-menu-fill"></i></a>
     <!-- * Barra-lateral -->
-    <section id="lateral">
-      <a id="close" href=""><i class="ri-close-line"></i></a>
-      <nav>
+    <section id="lateral" class="invisivel">
+      <a id="close" class="invisivel"><i class="ri-close-line"></i></a>
+      <nav id="nav-lateral" class="invisivel">
         <a id="inicio-side" href="../../index.html">Início</a>
         <a id="Essentia-side" href="essentia.html">Essentia</a>
         <a id="SaveIt-side" href="saveit.html">SaveIt</a>
@@ -39,153 +44,117 @@
     </section>
     <!--* --------------- Sobre ---------------------------->
     <section id="Sobre">
-      <div class="subtitulo">
-        <h3>[Essentia / Sobre nós]</h3>
-      </div>
-
-      <div class="pela-essencia-de-um-mundo-melhor">
-        <h1><b>Pela Essência de Um Mundo Melhor.</b></h1>
-      </div>
-
-      <span class="lorem-ipsum-dolor">Lorem ipsum dolor sit amet consectetur. Tortor magna et a id faucibus
-        rutrum tincidunt. Ultricies eu vitae non mollis dolor convallis nulla.
-        Donec scelerisque imperdiet odio posuere mauris vitae condimentum.
-        Fringilla tristique ornare vitae sed et auctor maecenas nullam.</span>
+      <h3 class="subtitulo">[Essentia / Sobre nós]</h3>
+      <h2><b>Pela Essência de Um Mundo Melhor.</b></h2>
+      <p>A Essentia é uma equipe de 15 alunos do Germinare Tech, composta por oito estudantes do primeiro ano e sete do segundo.
+        Eles desenvolveram o aplicativo SaveIt com base na ODS 9 (Indústria, Inovação e Infraestrutura), pela essência de um mundo melhor.</p>
       <div class="redes-sociais">
         <a href="mailto:essentia.saveit@gmail.com" target="_blank"><i class="ri-mail-line"></i></a>
         <a href="https://www.instagram.com/saveit._app/" target="_blank"><i class="ri-instagram-line"></i></a>
       </div>
+      <div class="imagens-inicial">
+        <img src="../assets/images/arvore.png" alt="arvore" class="arvore" />
+        <img src="../assets/images/arvore2.png" alt="arvore2" class="arvore2" />
+      </div>
+
     </section>
+    <!--* --------------- Missão ---------------------------->
+    <section id="Missao">
+      <h3 class="subtitulo">[Essentia / Nossa Missão]</h3>
+      <h2><b>Nossa Missão</b></h2>
 
-    <div class="imagens-inicial">
-      <img src="../assets/images/arvore.png" alt="arvore" class="arvore" />
-      <img src="../assets/images/arvore2.png" alt="arvore2" class="arvore2" />
-    </div>
-
-    <br />
-
-    <br />
-
-    <br />
-
-    <div class="textinho">
-      <div class="essentia-nossa-missao">
-        <h3>[Essentia / Nossa Missão]</h3>
-      </div>
-
-      <div class="nossa-missao">
-        <h1><b>Nossa Missão</b></h1>
-      </div>
-
-      <span class="lorem-ipsum-dolor1">Lorem ipsum dolor sit amet consectetur. Tortor magna et a id faucibus
-        rutrum tincidunt. Ultricies eu vitae non mollis dolor convallis nulla.
-        Donec scelerisque imperdiet odio posuere mauris vitae condimentum.
-        Fringilla tristique ornare vitae sed et auctor maecenas nullam.</span>
-
-      <br />
-
+      <p class="texto-missao">Na Essentia, nossa missão é usar a tecnologia como força para um futuro mais sustentável e consciente.
+        Acreditamos que pequenas inovações podem gerar grandes mudanças quando movidas por propósito.
+        Trabalhamos para unir eficiência, impacto e responsabilidade em cada projeto.
+        Tudo isso, pela essência de um mundo melhor.</p>
       <div class="objetivos">
         <div class="objetivo">
           <span class="check"><img src="../assets/images/check.png" alt="" /></span>
-          <div class="objetivox">Objetivo X</div>
+          <p class="objetivox">Inovar</p>
         </div>
         <div class="objetivo">
           <span class="check"><img src="../assets/images/check.png" alt="" /></span>
-          <div class="objetivox">Objetivo X</div>
+          <p class="objetivox">Sustentar</p>
         </div>
         <div class="objetivo">
           <span class="check"><img src="../assets/images/check.png" alt="" /></span>
-          <div class="objetivox">Objetivo X</div>
+          <p class="objetivox">Otimizar</p>
         </div>
         <div class="objetivo">
           <span class="check"><img src="../assets/images/check.png" alt="" /></span>
-          <div class="objetivox">Objetivo X</div>
+          <p class="objetivox">Simplificar</p>
         </div>
         <div class="objetivo">
           <span class="check"><img src="../assets/images/check.png" alt="" /></span>
-          <div class="objetivox">Objetivo X</div>
+          <p class="objetivox">Conectar</p>
         </div>
         <div class="objetivo">
           <span class="check"><img src="../assets/images/check.png" alt="" /></span>
-          <div class="objetivox">Objetivo X</div>
+          <p class="objetivox">Inspirar</p>
         </div>
       </div>
-    </div>
-
-    <br />
-
-    <div class="imagens-missao">
-      <img src="../assets/images/imggrande.png" alt="" class="imggrande" />
-      <img src="../assets/images/imgpq.png" alt="" class="imgpq" />
-    </div>
-
-    <br />
-
-    <div class="subtitulo">
-      <h3>[Essentia / Nossos Valores]</h3>
-    </div>
-    <div class="nossos-valores">
-      <h1><b>Nossos Valores</b></h1>
-    </div>
-    <div class="loren">Lorem ipsum dolor sit amet.</div>
-
-    <section class="container">
-      <div class="card">
-        <h3>
-          <div class="valor">Valor 1</div>
-        </h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Est varius vulputate congue
-          tincidunt et senectus.
-        </p>
       </div>
-      <div class="card">
-        <h3>
-          <div class="valor">Valor 1</div>
-        </h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Est varius vulputate congue
-          tincidunt et senectus.
-        </p>
-      </div>
-      <div class="card">
-        <h3>
-          <div class="valor">Valor 1</div>
-        </h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Est varius vulputate congue
-          tincidunt et senectus.
-        </p>
-      </div>
-      <div class="card">
-        <h3>
-          <div class="valor">Valor 1</div>
-        </h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Est varius vulputate congue
-          tincidunt et senectus.
-        </p>
+      <div class="imagens-missao">
+        <img src="../assets/images/imggrande.png" alt="" class="imggrande" />
+        <img src="../assets/images/imgpq.png" alt="" class="imgpq" />
       </div>
     </section>
-
-    <div class="imagens-valores">
-      <img src="../assets/images/image 31.png" alt="" class="imgg" />
-      <img src="../assets/images/Rectangle 121.png" alt="" class="imgfolha" />
-      <img src="../assets/images/Rectangle 117.png" alt="" class="imgpes" />
-    </div>
-
-    <div class="sessao-time">
-      <div class="essentia-time">
-        <h3>[Essentia / Nosso Time]</h3>
+    <!--* --------------- Valores ---------------------------->
+    <section id="Valores">
+      <h3 class="subtitulo">[Essentia / Nossos Valores]</h3>
+      <h2><b>Nossos Valores</b></h2>
+      <hr>
+      <div class="container">
+        <div class="card">
+          <h4>
+            <div class="valor">Sustentabilidade</div>
+          </h4>
+          <p>
+            Transformamos desperdício em oportunidades e impacto positivo.
+          </p>
+        </div>
+        <div class="card">
+          <h4>
+            <div class="valor">Simplicidade</div>
+          </h4>
+          <p>
+            Tecnologia clara e prática para facilitar a gestão de estoques.
+          </p>
+        </div>
+        <div class="card">
+          <h4>
+            <div class="valor">Atitude de dono</div>
+          </h4>
+          <p>
+           Assumimos responsabilidade total, cuidando de cada detalhe como se fosse nosso.
+          </p>
+        </div>
+        <div class="card">
+          <h4>
+            <div class="valor">Inovação</div>
+          </h4>
+          <p>
+            Soluções inteligentes que reinventam processos industriais.
+          </p>
+        </div>
       </div>
+
+      <div class="imagens-valores">
+        <img src="../assets/images/image 31.png" alt="" class="imgg" />
+        <img src="../assets/images/Rectangle 121.png" alt="" class="imgfolha" />
+        <img src="../assets/images/Rectangle 117.png" alt="" class="imgpes" />
+      </div>
+    </section>
+    <!--* --------------- Time ---------------------------->
+
+    <section id="Time">
+      <h3 class="essentia-time">[Essentia / Nosso Time]</h3>
       <div class="nosso-time">
-        <h1><b>Nosso Time</b></h1>
+        <h2><b>Nosso Time</b></h2>
       </div>
-      <img src="../assets/images/linha.png" class="linha-img" />
-
-      <div class="lorem-nossotime">
-        Lorem ipsum dolor sit amet consectetur
-      </div>
+      <p class="p-nossotime">
+        Profissionais dedicados e apaixonados por tecnologia e sustentabilidade.
+      </p>
 
       <div>
         <div class="turma">
@@ -199,44 +168,66 @@
 
         <div class="carrossel">
           <div class="time-card">
-            <img src="../assets/images/Ellipse 10.svg" alt="" />
+            <div class="imagem">
+              <img src="../assets/images/time/cibelle-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+            </div>
+            <p>Cibelle Goltara</p>
+            <p>Dev. FrontEnd</p>
+          </div>
+          <div class="time-card">
+            <div class="imagem">
+              <img src="../assets/images/time/davi-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+            </div>
+            <p>Davi Nascimento</p>
+            <p>Dev. BackEnd</p>
+          </div>
+          <div class="time-card">
+            <div class="imagem">
+              <img src="../assets/images/time/gabriel-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+            </div>
+
             <p>Gabriel Mendes</p>
             <p>Dev. FrontEnd</p>
           </div>
           <div class="time-card">
-            <img src="../assets/images/Ellipse 10.svg" alt="" />
-            <p>Gabriel Mendes</p>
+            <div class="imagem">
+              <img src="../assets/images/time/guilherme-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+            </div>
+
+            <p>Guilherme Norcia</p>
             <p>Dev. FrontEnd</p>
           </div>
           <div class="time-card">
-            <img src="../assets/images/Ellipse 10.svg" alt="" />
-            <p>Gabriel Mendes</p>
+            <div class="imagem">
+              <img src="../assets/images/time/gustavo-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+            </div>
+
+            <p>Gustavo Manganelli</p>
+            <p>Dev. FrontBack</p>
+          </div>
+          <div class="time-card">
+            <div class="imagem">
+              <img src="../assets/images/time/luiza-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+            </div>
+
+            <p>Luiza Cursino</p>
+            <p>An. Dados</p>
+          </div>
+          <div class="time-card">
+            <div class="imagem">
+              <img src="../assets/images/time/mariana-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+            </div>
+
+            <p>Mariana Torres</p>
             <p>Dev. FrontEnd</p>
           </div>
           <div class="time-card">
-            <img src="../assets/images/Ellipse 10.svg" alt="" />
-            <p>Gabriel Mendes</p>
-            <p>Dev. FrontEnd</p>
-          </div>
-          <div class="time-card">
-            <img src="../assets/images/Ellipse 10.svg" alt="" />
-            <p>Gabriel Mendes</p>
-            <p>Dev. FrontEnd</p>
-          </div>
-          <div class="time-card">
-            <img src="../assets/images/Ellipse 10.svg" alt="" />
-            <p>Gabriel Mendes</p>
-            <p>Dev. FrontEnd</p>
-          </div>
-          <div class="time-card">
-            <img src="../assets/images/Ellipse 10.svg" alt="" />
-            <p>Gabriel Mendes</p>
-            <p>Dev. FrontEnd</p>
-          </div>
-          <div class="time-card">
-            <img src="../assets/images/Ellipse 10.svg" alt="" />
-            <p>Gabriel Mendes</p>
-            <p>Dev. FrontEnd</p>
+            <div class="imagem">
+              <img src="../assets/images/time/rafael-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+            </div>
+
+            <p>Rafael Takematsu</p>
+            <p>An. Dados</p>
           </div>
         </div>
 
@@ -255,43 +246,53 @@
 
           <div class="carrossel carrossel-2">
             <div class="time-card">
-              <img src="../assets/images/Ellipse 10.svg" alt="" />
-              <p>Gabriel Mendes</p>
+              <div class="imagem">
+                <img src="../assets/images/time/daniel-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+              </div>
+
+              <p>Daniel Ferreira</p>
+              <p>Dev. BackEnd</p>
+            </div>
+            <div class="time-card">
+              <div class="imagem">
+                <img src="../assets/images/time/bento-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+              </div>
+              <p>Gabriel Bento</p>
+              <p>An. Dados</p>
+            </div>
+            <div class="time-card">
+              <div class="imagem">
+                <img src="../assets/images/time/gustavo-2o-foto.jpeg" />
+              </div>
+              <p>Gustavo Henrique</p>
+              <p>An. Dados</p>
+            </div>
+            <div class="time-card">
+              <div class="imagem">
+                <img src="../assets/images/time/igor-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+              </div>
+              <p>Igor Malaquias</p>
+              <p>An. Dados</p>
+            </div>
+            <div class="time-card">
+              <div class="imagem">
+                <img src="../assets/images/time/carvalho-foto.jpeg" alt="Foto do integrante da equipe Essentia" />
+              </div>
+              <p>João Carvalho</p>
+              <p>Dev. BackEnd</p>
+            </div>
+            <div class="time-card">
+              <div class="imagem">
+                <img src="../assets/images/time/paulino-foto.jpg" alt="Foto do integrante da equipe Essentia" />
+              </div>
+              <p>João Paulino</p>
               <p>Dev. FrontEnd</p>
             </div>
             <div class="time-card">
-              <img src="../assets/images/Ellipse 10.svg" alt="" />
-              <p>Gabriel Mendes</p>
-              <p>Dev. FrontEnd</p>
-            </div>
-            <div class="time-card">
-              <img src="../assets/images/Ellipse 10.svg" alt="" />
-              <p>Gabriel Mendes</p>
-              <p>Dev. FrontEnd</p>
-            </div>
-            <div class="time-card">
-              <img src="../assets/images/Ellipse 10.svg" alt="" />
-              <p>Gabriel Mendes</p>
-              <p>Dev. FrontEnd</p>
-            </div>
-            <div class="time-card">
-              <img src="../assets/images/Ellipse 10.svg" alt="" />
-              <p>Gabriel Mendes</p>
-              <p>Dev. FrontEnd</p>
-            </div>
-            <div class="time-card">
-              <img src="../assets/images/Ellipse 10.svg" alt="" />
-              <p>Gabriel Mendes</p>
-              <p>Dev. FrontEnd</p>
-            </div>
-            <div class="time-card">
-              <img src="../assets/images/Ellipse 10.svg" alt="" />
-              <p>Gabriel Mendes</p>
-              <p>Dev. FrontEnd</p>
-            </div>
-            <div class="time-card">
-              <img src="../assets/images/Ellipse 10.svg" alt="" />
-              <p>Gabriel Mendes</p>
+              <div class="imagem">
+                <img src="../assets/images/time/nathan-foto.jpg" alt="Foto do integrante da equipe Essentia" />
+              </div>
+              <p>Nathan Fuchida</p>
               <p>Dev. FrontEnd</p>
             </div>
           </div>
@@ -301,37 +302,24 @@
           </button>
         </div>
       </div>
-    </div>
+    </section>
+    <!--* --------------- SaveIt ---------------------------->
 
-    <div class="essentia-saveit">
-      <h3>[Essentia / SaveIt]</h3>
-    </div>
+    <section id="essentia-saveit">
+      <h3 class="subtitulo">[Essentia / SaveIt]</h3>
+      <h2><b>Nosso App: SaveIt</b></h2>
 
-    <div class="Nossoapp">
-      <h1><b>Nosso App: SaveIt</b></h1>
-    </div>
+      <p>
+        A ideia do SaveIt nasceu de um dado alarmante: 30% dos alimentos são desperdiçados antes mesmo de chegarem ao varejo, e parte disso vem da falta de sistemas de estoque eficientes nas indústrias.
+        Foi a partir desse problema que criamos o SaveIt: um aplicativo que ajuda as empresas a gerenciar melhor seus insumos, reduzir desperdícios e dar novo destino a produtos não utilizados, tornando a produção mais inteligente, sustentável e lucrativa.
+      </p>
 
-    <div class="lorem-nosso">
-      Lorem ipsum dolor sit amet consectetur. Tortor magna et a id faucibus
-      rutrum tincidunt. Ultricies eu vitae non mollis dolor convallis nulla.
-      Donec scelerisque imperdiet odio posuere mauris vitae condimentum.
-      Fringilla tristique ornare vitae sed et auctor maecenas nullam.
-    </div>
+      <a href="landingPage/html/saveit.html" class="botao-saveit">Conheça mais <img src="../assets/images/seta.png" class="setinha" /></a>
 
-    <br />
-
-    <div class="lorem-nosso">
-      Lorem ipsum dolor sit amet consectetur. Tortor magna et a id faucibus
-      rutrum tincidunt. Ultricies eu vitae non mollis dolor convallis nulla.
-      Donec scelerisque imperdiet odio posuere mauris vitae condimentum.
-      Fringilla tristique ornare vitae sed et auctor maecenas nullam.
-    </div>
-
-    <a href="" class="botao-saveit">Conheça mais <img src="../assets/images/seta.png" class="setinha" /></a>
-
-    <div class="celular">
-      <img src="../assets/images/celular.png" alt="" />
-    </div>
+      <div class="celular">
+        <img src="../assets/images/celular.png" alt="" />
+      </div>
+    </section>
   </main>
 
   <!-- * --------------- FOOTER ---------------------------->
@@ -340,8 +328,8 @@
       <img src="../assets/images/logos/essentia_logo_verde.svg" alt="" />
       <p>Pela essência de um mundo melhor.</p>
       <div>
-        <a href=""><i class="ri-instagram-line"></i></a>
-        <a href=""><i class="ri-mail-line"></i></a>
+        <a href="https://www.instagram.com/saveit._app/"><i class="ri-instagram-line"></i></a>
+        <a href="mailto:essentia.saveit@gmail.com"><i class="ri-mail-line"></i></a>
       </div>
     </div>
 
@@ -352,6 +340,7 @@
         <a href="essentia.html">Sobre Nós</a>
         <a href="saveit.html">SaveIt</a>
         <a href="#footer">Contato</a>
+        <a id="faqF" href="../html/faq.html">Chat FAQ</a>
       </nav>
     </div>
 
@@ -375,6 +364,22 @@
       const carrossel = document.querySelector(".carrossel");
       const cardWidth =
         carrossel.querySelector(".time-card").offsetWidth + 16;
+      const scrollMax = carrossel.scrollWidth - carrossel.clientWidth;
+      const scrollAtual = carrossel.scrollLeft;
+
+      // se estiver no ultimo e for pra direita, volta pro inicio
+      if (direcao > 0 && scrollAtual + cardWidth >= scrollMax - 10) {
+        carrossel.scrollTo({ left: 0, behavior: "smooth" });
+        return;
+      }
+
+      // se estiver no inicio e for pra esquerda, vai pro final
+      if (direcao < 0 && scrollAtual <= 0) {
+        carrossel.scrollTo({ left: scrollMax, behavior: "smooth" });
+        return;
+      }
+
+      // rola normal
       carrossel.scrollBy({ left: direcao * cardWidth, behavior: "smooth" });
     }
 
@@ -382,6 +387,19 @@
       const carrossel = document.querySelector(".carrossel-2");
       const cardWidth =
         carrossel.querySelector(".time-card").offsetWidth + 16;
+      const scrollMax = carrossel.scrollWidth - carrossel.clientWidth;
+      const scrollAtual = carrossel.scrollLeft;
+
+      if (direcao > 0 && scrollAtual + cardWidth >= scrollMax - 10) {
+        carrossel.scrollTo({ left: 0, behavior: "smooth" });
+        return;
+      }
+
+      if (direcao < 0 && scrollAtual <= 0) {
+        carrossel.scrollTo({ left: scrollMax, behavior: "smooth" });
+        return;
+      }
+
       carrossel.scrollBy({ left: direcao * cardWidth, behavior: "smooth" });
     }
   </script>

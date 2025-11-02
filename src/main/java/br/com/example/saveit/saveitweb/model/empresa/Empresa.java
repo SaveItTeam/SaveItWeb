@@ -14,9 +14,8 @@ public class Empresa {
         this.id_cliente = id_cliente;
     }
 
-    public Empresa() {
+    public Empresa() {}
 
-    }
 
     //    Getters
     public int getId() {
@@ -57,9 +56,13 @@ public class Empresa {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                "\nprocura='" + procura +
-                "\ncod_empresa=" + cod_empresa +
-                "\nid_cliente=" + id_cliente;
+        return String.format("""
+                {
+                    "id": %d,
+                    "procura": "%s",
+                    "cod_empresa": "%s",
+                    "id_cliente": %d
+                }"""
+                , id, procura, cod_empresa, id_cliente);
     }
 }

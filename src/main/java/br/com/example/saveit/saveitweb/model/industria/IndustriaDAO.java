@@ -4,9 +4,7 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class IndustriaDAO {
 //    Insert
@@ -172,8 +170,7 @@ public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
 public List<Industria> buscar() {
     Conexao conexao = new Conexao();
     Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//    Iniciando objeto Industria e lista de objetos Industrias
-    Industria industria = new Industria();
+//        Iniciando a lista de objetos Industria
     List<Industria> industrias = new ArrayList<>();
     try {
 //            Iniciando objeto Statment
@@ -182,20 +179,16 @@ public List<Industria> buscar() {
         ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
         if (rset != null) {
-//            Inserção de dados
+//                Inserção de dados
             while (rset.next()) {
-                industria.setId(rset.getInt(1));
-                industria.setVende(rset.getString(2));
-                industria.setId_plano(rset.getInt(3));
-                industria.setId_pagamento(rset.getInt(4));
-                industria.setId_cliente(rset.getInt(5));
+                Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
                 industrias.add(industria);
-                industria = new Industria();
             }
         }
         stmt.close();
     } catch (SQLException sqle) {
         sqle.printStackTrace();
+        return null;
     } finally {
         conexao.desconectar(conn);//Desconectando do banco de dados
         return industrias;//Retornando a lista de industrias
@@ -206,30 +199,25 @@ public List<Industria> buscar() {
     public List<Industria> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Industria e lista de objetos Industrias
-        Industria industria = new Industria();
+//        Iniciando a lista de objetos Industria
         List<Industria> industrias = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from industria order by " + campoOrdenar;//COmando SQL
+            String query = "select * from industria order by " + campoOrdenar;//Comando SQL
             ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-//                    Inserssão de dados
-                    industria.setId(rset.getInt(1));
-                    industria.setVende(rset.getString(2));
-                    industria.setId_plano(rset.getInt(3));
-                    industria.setId_pagamento(rset.getInt(4));
-                    industria.setId_cliente(rset.getInt(5));
+                    Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
                     industrias.add(industria);
-                    industria = new Industria();
                 }
             }
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return industrias;//Retornando a lista de industrias
@@ -240,29 +228,24 @@ public List<Industria> buscar() {
     public List<Industria> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Industria e lista de objetos Industrias
-        Industria industria = new Industria();
+//        Iniciando a lista de objetos Industria
         List<Industria> industrias = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("select * from industria where %s = %d", campoOndePesquisar, valorPesquisar);//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+            String query = String.format("SELECT * FROM industria WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
-//                    Inserssão de dados
-                    industria.setId(rset.getInt(1));
-                    industria.setVende(rset.getString(2));
-                    industria.setId_plano(rset.getInt(3));
-                    industria.setId_pagamento(rset.getInt(4));
-                    industria.setId_cliente(rset.getInt(5));
+                    Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
                     industrias.add(industria);
-                    industria = new Industria();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return industrias;//Retornando a lista de industrias
@@ -273,32 +256,85 @@ public List<Industria> buscar() {
     public List<Industria> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Industria e lista de objetos Industrias
-        Industria industria = new Industria();
+//        Iniciando a lista de objetos Industria
         List<Industria> industrias = new ArrayList<>();
         try {
-//            Iniciando objeto Statment
-            Statement stmt = conn.createStatement();
-            String query = String.format("SELECT * FROM industria WHERE %s = %d", campoOndePesquisar, valorPesquisar);//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+            String query = String.format("SELECT * FROM industria WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    industria.setId(rset.getInt(1));
-                    industria.setVende(rset.getString(2));
-                    industria.setId_plano(rset.getInt(3));
-                    industria.setId_pagamento(rset.getInt(4));
-                    industria.setId_cliente(rset.getInt(5));
+                    Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
                     industrias.add(industria);
-                    industria = new Industria();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return industrias;//Retornando a lista de industrias
+        }
+    }
+
+
+    public List<String> buscarDados(int id_industria) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
+//        Iniciando a lista de dados da Industria
+        List<String> dadosIndustria = new ArrayList<>();
+        try {
+            String query = "select\n" +
+                    "    c.nome\n" +
+                    "     , e.cep_estado\n" +
+                    "     , e.cep_cidade\n" +
+                    "     , e.cep\n" +
+                    "     , e.cep_bairro\n" +
+                    "     , string_agg(distinct (t.num_telefone), '; ') as contato\n" +
+                    "     , c.tipo_venda\n" +
+                    "     , e.cep_rua\n" +
+                    "     , e.cep_complemento\n" +
+                    "     , string_agg(distinct (case\n" +
+                    "                                when emp.id = 12 then emp.procura\n" +
+                    "                                else ind.vende\n" +
+                    "    end)\n" +
+                    "    , '; ') as categoria_prod\n" +
+                    "\n" +
+                    "from cliente c\n" +
+                    "         join endereco e on e.id = c.id_endereco\n" +
+                    "         join telefone t on c.id = t.id_cliente\n" +
+                    "         left join empresa emp on c.id = emp.id_cliente\n" +
+                    "         left join industria ind on t.id_cliente = ind.id_cliente\n" +
+                    "where ind.id = 12\n" +
+                    "group by 1, 2, 3,4,5,7,8,9";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, id_industria);
+            pstmt.setInt(2, id_industria);
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
+            if (rset != null) {
+//                Inserção de dados
+                while (rset.next()) {
+                    dadosIndustria.add(rset.getString(1));
+                    dadosIndustria.add(rset.getString(2));
+                    dadosIndustria.add(rset.getString(3));
+                    dadosIndustria.add(rset.getString(4));
+                    dadosIndustria.add(rset.getString(5));
+                    dadosIndustria.add(rset.getString(6));
+                    dadosIndustria.add(rset.getString(7));
+                    dadosIndustria.add(rset.getString(8));
+                    dadosIndustria.add(rset.getString(9));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return dadosIndustria;//Retornando a lista de industrias
         }
     }
 }

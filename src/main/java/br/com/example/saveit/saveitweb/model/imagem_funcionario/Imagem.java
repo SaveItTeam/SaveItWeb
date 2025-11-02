@@ -1,6 +1,6 @@
 package br.com.example.saveit.saveitweb.model.imagem_funcionario;
 
-public class Imagem_Funcionario {
+public class Imagem {
     //    Atributos
     private int id;
     private String url;
@@ -8,17 +8,13 @@ public class Imagem_Funcionario {
 
 
     //    Construtor
-    public Imagem_Funcionario(int id, String url, int id_funcionario) {
+    public Imagem(int id, String url, int id_funcionario) {
         this.id = id;
         this.url = url;
         this.id_funcionario = id_funcionario;
     }
 
-    public Imagem_Funcionario(String url, int id_funcionario) {
-        this.url = url;
-        this.id_funcionario = id_funcionario;
-    }
-
+    public Imagem() {}
 
     //    Getters e Setters
     public int getId() {return id;}
@@ -38,8 +34,12 @@ public class Imagem_Funcionario {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                "\nurl='" + url +
-                "\nid_funcionario=" + id_funcionario;
+        return String.format("""
+                {
+                    "id": %d,
+                    "url": "%s",
+                    "id_funcionario": %d
+                }"""
+                , id, url, id_funcionario);
     }
 }

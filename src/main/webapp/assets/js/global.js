@@ -1,8 +1,14 @@
 const nav = document.querySelector("nav");
 let jsp = window.location.pathname; // pegar o caminho do arquivo para verificacao
 jsp = jsp.substring(jsp.lastIndexOf("/") + 1); // selecionar com substring para apenas pegar o nome
+
 nav.addEventListener("mouseover", () => {
-  nav.classList.add("open");
+    // se ja ta aberto, nao faz nada
+    if (nav.classList.contains("open")) {
+      return;
+    } else {
+      nav.classList.add("open");
+    }
   setTimeout(() => {
     document.querySelectorAll("nav p").forEach((e) => {
       setTimeout(() => {

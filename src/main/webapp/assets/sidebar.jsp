@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/global.css">
+    <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/landingPage/assets/css/global.css"> -->
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -12,20 +12,28 @@
 </head>
 <body>
 <nav>
-        <ul>
+
+                <%--------------------------------      LandingPage     -----------------------------------------------%>
+
+    <ul>
             <li id="essentia">
-                <a href="#">
+                <a href="/SaveitWeb/index.html">
                     <img src="${pageContext.request.contextPath}/assets/images/essentia_logo_verde.svg" alt="" />
                 </a>
             </li>
 
+                <%--------------------------------      Inicio     ----------------------------------------------------%>
+
             <div>
-                <form class="acao-sidebar">
+                <form class="acao-sidebar" action="adminServlet" method="post">
                     <button type="submit"><i class="ri-function-fill"></i></button>
                     <p class="sidenav-p">Início</p>
                 </form>
 
-                <form class="acao-sidebar" id="funcionario">
+                <%--------------------------------    Funcionario     -------------------------------------------------%>
+
+
+                <form class="acao-sidebar" id="funcionario" action="funcionarioServlet" method="post">
                     <button type="submit"
                     ><svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +50,10 @@
                     <p class="sidenav-p">Funcionários</p>
                 </form>
 
-                <form class="acao-sidebar" id="empresa">
+                <%--------------------------------      Industria     -------------------------------------------------%>
+
+
+                <form class="acao-sidebar" id="empresa" method="post" action="industriaServlet">
                     <button type="submit"
                     ><svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -59,13 +70,19 @@
                     <p class="sidenav-p">Indústria</p>
                 </form>
 
-                <form  class="acao-sidebar" id="pagamento">
+                <%--------------------------------      Pagamento     -------------------------------------------------%>
+
+
+                <form  class="acao-sidebar" id="pagamento" action="pagamentoServlet" method="post">
                     <button type="submit"><i class="ri-bank-card-fill"></i> </button>
                     <p class="sidenav-p">Pagamento</p>
                 </form>
             </div>
 
-            <form id="settings">
+                 <%--------------------------------      Configuracoes     --------------------------------------------%>
+
+
+            <form id="settings" method="post" action="configuracoesServlet">
                 <button type="submit"><i class="ri-settings-3-fill"></i></button>
             </form>
         </ul>

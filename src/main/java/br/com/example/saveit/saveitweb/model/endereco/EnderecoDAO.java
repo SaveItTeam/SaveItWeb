@@ -12,10 +12,10 @@ public class EnderecoDAO {
 //    Insert
     public boolean inserir(Endereco endereco) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            PreparedStatement pstmt = conn.prepareStatement("Insert into Endereco (cep, rua, bairro, cidade, estado, pais, complemento) Values(?,?,?,?,?,?,?)");
-//        Setando o valor dos parâmetros
+            PreparedStatement pstmt = conn.prepareStatement("Insert into Endereco (cep, rua, bairro, cidade, estado, pais, complemento) Values(?,?,?,?,?,?,?)");//Comando SQL
+//        Setando valores
             pstmt.setString(1, endereco.getCep());
             pstmt.setString(2, endereco.getCep_rua());
             pstmt.setString(3, endereco.getCep_bairro());
@@ -44,12 +44,14 @@ public class EnderecoDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Endereco set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("Update Endereco set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
 //            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//true
             }
         } catch (SQLException sqle) {
@@ -65,13 +67,15 @@ public class EnderecoDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Endereco set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("Update Endereco set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
 //            Validação
             if (validar) {
-                statement.close();
-                return validar;//True
+                pstmt.close();
+                return validar;//true
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -86,13 +90,15 @@ public class EnderecoDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Endereco set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("Update Endereco set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
 //            Validação
             if (validar) {
-                statement.close();
-                return validar;//True
+                pstmt.close();
+                return validar;//true
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -107,13 +113,15 @@ public class EnderecoDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String query = String.format("Update Endereco set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = String.format("Update Endereco set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorAlterar);
+            pstmt.setString(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
 //            Validação
             if (validar) {
-                statement.close();
-                return validar;//True
+                pstmt.close();
+                return validar;//true
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -128,14 +136,15 @@ public class EnderecoDAO {
 
     public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String excluir = String.format("delete from Endereco where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
+            String query = String.format("delete from Endereco where %s = ?", campoOndeExcluir);
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorOndeExcluir);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando
 //            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//True
             }
         } catch (SQLException sqle) {
@@ -151,12 +160,13 @@ public class EnderecoDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco
         try {
-            String excluir = String.format("delete from Endereco where %s = %d", campoOndeExcluir, valorOndeExcluir);//Comando SQL
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(excluir) > 0;//Executando comando
+            String query = String.format("delete from Endereco where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorOndeExcluir);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando
 //            Validação
             if (validar) {
-                statement.close();
+                pstmt.close();
                 return validar;//True
             }
         } catch (SQLException e) {
@@ -172,32 +182,24 @@ public class EnderecoDAO {
     public List<Endereco> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Endereco endereco = new Endereco();
+//        Iniciando a lista de objetos Endereço
         List<Endereco> enderecos = new ArrayList<>();
         try {
-            Statement stmt = conn.createStatement();//Criando statement
             String query = "select * from Endereco";//Comando SQL
+            Statement stmt = conn.createStatement();//Criando statement
             ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    endereco.setId(rset.getInt(1));
-                    endereco.setCep(rset.getString(2));
-                    endereco.setCep_rua(rset.getString(3));
-                    endereco.setCep_bairro(rset.getString(4));
-                    endereco.setCep_cidade(rset.getString(5));
-                    endereco.setCep_estado(rset.getString(6));
-                    endereco.setCep_pais(rset.getString(7));
-                    endereco.setCep_complemento(rset.getString(8));
+                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getInt(9));
                     enderecos.add(endereco);
-                    endereco = new Endereco();
                 }
             }
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
             return enderecos;//Retornando a lista de Endereços
@@ -208,8 +210,7 @@ public class EnderecoDAO {
     public List<Endereco> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Endereco endereco = new Endereco();
+//        Iniciando a lista de objetos Endereço
         List<Endereco> enderecos = new ArrayList<>();
         try {
             Statement stmt = conn.createStatement();//Criando statement
@@ -218,22 +219,14 @@ public class EnderecoDAO {
 
             if (rset != null) {
                 while (rset.next()) {
-//                    Inserção de dados
-                    endereco.setId(rset.getInt(1));
-                    endereco.setCep(rset.getString(2));
-                    endereco.setCep_rua(rset.getString(3));
-                    endereco.setCep_bairro(rset.getString(4));
-                    endereco.setCep_cidade(rset.getString(5));
-                    endereco.setCep_estado(rset.getString(6));
-                    endereco.setCep_pais(rset.getString(7));
-                    endereco.setCep_complemento(rset.getString(8));
+                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getInt(9));
                     enderecos.add(endereco);
-                    endereco = new Endereco();
                 }
             }
             stmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Fechando conexão com o banco de dados
             return enderecos;//Retornando a lista de Endereços
@@ -244,31 +237,23 @@ public class EnderecoDAO {
     public List<Endereco> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Endereco endereco = new Endereco();
+//        Iniciando a lista de objetos Endereço
         List<Endereco> enderecos = new ArrayList<>();
         try {
-            Statement stmt = conn.createStatement();//Criando statement
-            String query = String.format("SELECT * FROM Endereco WHERE %s = '%s'", campoOndePesquisar, valorPesquisar);//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+            String query = String.format("SELECT * FROM Endereco WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PrepareStatement
+            pstmt.setString(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery(query);//Executando comando SQL
             if (rset != null) {
                 while (rset.next()) {
-//                    Inserção de dados
-                    endereco.setId(rset.getInt(1));
-                    endereco.setCep(rset.getString(2));
-                    endereco.setCep_rua(rset.getString(3));
-                    endereco.setCep_bairro(rset.getString(4));
-                    endereco.setCep_cidade(rset.getString(5));
-                    endereco.setCep_estado(rset.getString(6));
-                    endereco.setCep_pais(rset.getString(7));
-                    endereco.setCep_complemento(rset.getString(8));
+                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getInt(9));
                     enderecos.add(endereco);
-                    endereco = new Endereco();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Fechando conexão com o banco de dados
             return enderecos;//Retornando a lista de Endereços
@@ -279,31 +264,23 @@ public class EnderecoDAO {
     public List<Endereco> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando objeto Endereço e lista de objetos Endereço
-        Endereco endereco = new Endereco();
+//        Iniciando a lista de objetos Endereço
         List<Endereco> enderecos = new ArrayList<>();
         try {
-            Statement stmt = conn.createStatement();//Criando statement
-            String query = String.format("SELECT * FROM Endereco WHERE %s = %d", campoOndePesquisar, valorPesquisar);//Comando SQL
-            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
+            String query = String.format("SELECT * FROM Endereco WHERE %s = ?", campoOndePesquisar);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PrepareStatement
+            pstmt.setInt(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery(query);//Executando comando SQL
             if (rset != null) {
                 while (rset.next()) {
-//                    Inserção de dados
-                    endereco.setId(rset.getInt(1));
-                    endereco.setCep(rset.getString(2));
-                    endereco.setCep_rua(rset.getString(3));
-                    endereco.setCep_bairro(rset.getString(4));
-                    endereco.setCep_cidade(rset.getString(5));
-                    endereco.setCep_estado(rset.getString(6));
-                    endereco.setCep_pais(rset.getString(7));
-                    endereco.setCep_complemento(rset.getString(8));
+                    Endereco endereco = new Endereco(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getInt(9));
                     enderecos.add(endereco);
-                    endereco = new Endereco();
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
+            return null;
         } finally {
             conexao.desconectar(conn);//Fechando conexão com o banco de dados
             return enderecos;//Retornando a lista de Endereços

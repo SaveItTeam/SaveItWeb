@@ -11,8 +11,10 @@ public class Endereco {
     private String cep_estado;
     private String cep_pais;
     private String cep_complemento;
+    private int cep_rua_num;
 
-    public Endereco(String cep, String rua, String bairro, String cidade, String estado, String pais, String complemento) {
+    public Endereco(int id, String cep, String rua, String bairro, String cidade, String estado, String pais, String complemento, int cep_rua_num) {
+        this.id =id;
         this.cep = cep;
         this.cep_rua = rua;
         this.cep_bairro = bairro;
@@ -20,12 +22,10 @@ public class Endereco {
         this.cep_estado = estado;
         this.cep_pais = pais;
         this.cep_complemento = complemento;
+        this.cep_rua_num = cep_rua_num;
     }
 
-    public Endereco() {
-
-    }
-
+    public Endereco() {}
 
     //    Getters
     public int getId() {
@@ -95,7 +95,18 @@ public class Endereco {
     }
 
     public String toString(){
-        String retorno = String.format("|ID: %-5s  |CEP: %-8s  |Rua: %-30s  |Bairro: %-30s  |Cidade: %-30s  |Estado: %-3s  |País: %-15s  |Complemento: %-30s", this.id, this.cep, this.cep_rua, this.cep_bairro, this.cep_cidade, this.cep_estado, this.cep_pais, this.cep_complemento);
-        return retorno;
+        return String.format("""
+                {
+                    "id": %d,
+                    "cep": "%s",
+                    "cep_rua": "%s",
+                    "cep_bairro": "%s",
+                    "cep_cidade": "%s",
+                    "cep_estado": "%s",
+                    "cep_pais": "%s",
+                    "cep_complemento": "%s",
+                    "cep_rua_numero": %d
+                }"""
+                , id, cep, cep_rua, cep_bairro, cep_cidade, cep_estado, cep_pais, cep_complemento, cep_rua_num);
     }
 }

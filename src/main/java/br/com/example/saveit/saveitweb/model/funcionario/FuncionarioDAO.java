@@ -7,34 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioDAO {
-//    Insert
+    //    Insert
     public boolean inserirFuncionario(Funcionario funcionario) {
         Conexao conexao = new Conexao();
-        Connection conn = Conexao.conectar();
-
+        Connection conn = Conexao.conectar();//Abrindo conexão com o banco de dados
+//        Comando SQL
         String sql = "Insert into funcionario (nome, cpf, rg, genero, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal, telefone_trabalho, experiencia, id_empresa, id_industria, is_admin) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getCpf());
-            stmt.setString(3, funcionario.getRg());
-            stmt.setString(4, String.valueOf(funcionario.getGenero()));
-            stmt.setDate(5, funcionario.getDt_nascimento());
-            stmt.setString(6, funcionario.getEmail());
-            stmt.setString(7, funcionario.getSenha());
-            stmt.setString(8, funcionario.getCargo());
-            stmt.setDate(9, funcionario.getDt_contratacao());
-            stmt.setString(10, funcionario.getTelefone_pessoal());
-            stmt.setString(11, funcionario.getTelefone_trabalho());
-            stmt.setString(12, funcionario.getExperiencia());
-            stmt.setInt(13, funcionario.getId_empresa());
-            stmt.setInt(14, funcionario.getId_industria());
-            stmt.setBoolean(15, funcionario.getIs_admin());
+            PreparedStatement pstmt = conn.prepareStatement(sql);//Iniciando o PreparedStatement
+            pstmt.setString(1, funcionario.getNome());
+            pstmt.setString(2, funcionario.getCpf());
+            pstmt.setString(3, funcionario.getRg());
+            pstmt.setString(4, String.valueOf(funcionario.getGenero()));
+            pstmt.setDate(5, funcionario.getDt_nascimento());
+            pstmt.setString(6, funcionario.getEmail());
+            pstmt.setString(7, funcionario.getSenha());
+            pstmt.setString(8, funcionario.getCargo());
+            pstmt.setDate(9, funcionario.getDt_contratacao());
+            pstmt.setString(10, funcionario.getTelefone_pessoal());
+            pstmt.setString(11, funcionario.getTelefone_trabalho());
+            pstmt.setString(12, funcionario.getExperiencia());
+            pstmt.setInt(13, funcionario.getId_empresa());
+            pstmt.setInt(14, funcionario.getId_industria());
+            pstmt.setBoolean(15, funcionario.getIs_admin());
 
-            int validar = stmt.executeUpdate();
+            int validar = pstmt.executeUpdate();
 
-            stmt.close();
+            pstmt.close();
 
             return validar > 0;
 
@@ -42,116 +42,129 @@ public class FuncionarioDAO {
             e.printStackTrace();
             return false;
         } finally {
-            conexao.desconectar(conn);
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
     }
 
 
 
-//    Updates
-    public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
+    //    Updates
+    public boolean alterarNome(String novoNome, int id) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = "Update Funcionario set nome = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoNome);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-            return false;
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
+        return false;
     }
 
-
-    public boolean alterar(String valorAlterar, int campoAlterar, String ondeAlterar, String valorOndeAlterar) {
+    public boolean alterarEmail(String novoEmail, int id) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = "Update Funcionario set email = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoEmail);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-            return false;
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
+        return false;
     }
 
-
-    public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, int valorOndeAlterar) {
+    public boolean alterarSenha(String novaSenha, int id) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = "Update Funcionario set senha = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novaSenha);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-            return false;
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
+        return false;
     }
 
-
-    public boolean alterar(String valorAlterar, int campoAlterar, String ondeAlterar, int valorOndeAlterar) {
+    public boolean alterarCargo(String novoCargo, int id) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("Update Funcionario set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = "Update Funcionario set cargo = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoCargo);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-            return false;
+            conexao.desconectar(conn); // Desconectando do banco de dados
         }
+        return false;
+    }
+
+    public boolean alterarTelefone(String novoTelefone, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "Update Funcionario set telefone_pessoal = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+//            Setando valores
+            pstmt.setString(1, novoTelefone);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn); // Desconectando do banco de dados
+        }
+        return false;
     }
 
 
-
-
-//    Deletes
+    //    Deletes
     public boolean excluir(String campoOndeExcluir, String valorOndeExcluir) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("delete from Funcionario where %s = '%s'", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("delete from Funcionario where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorOndeExcluir);//Setando valor
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -159,20 +172,36 @@ public class FuncionarioDAO {
 
     public boolean excluir(String campoOndeExcluir, int valorOndeExcluir) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = String.format("delete from Funcionario where %s = %d", campoOndeExcluir, valorOndeExcluir);
-            Statement statement = conn.createStatement();
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando
-            if (validar) {
-                System.out.println("Atualizado com sucesso!");
-                statement.close();
-                return validar;
-            }
+            String query = String.format("delete from Funcionario where %s = ?", campoOndeExcluir);//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, valorOndeExcluir);//Setando vlaor
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn);//Desconectando do banco
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean excluiPorId(int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "delete from Funcionario where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, id);//Setando vlaor
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+            pstmt.close();
+            return validar;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
@@ -181,19 +210,20 @@ public class FuncionarioDAO {
 
 
 
-//    Selects
+    //    Selects
     public List<Funcionario> buscar() {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Funcionario";
-            ResultSet rset = stmt.executeQuery(query);
+            String query = "select * from Funcionario";//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
                     Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
                             rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
@@ -205,24 +235,25 @@ public class FuncionarioDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionários
         }
     }
 
 
     public List<Funcionario> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
-            String query = "select * from Funcionario order by " + campoOrdenar;
-            ResultSet rset = stmt.executeQuery(query);
+            String query = "select * from Funcionario order by " + campoOrdenar;//Comando SQL
+            ResultSet rset = stmt.executeQuery(query);//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de dados
                 while (rset.next()) {
                     Funcionario funcionario = new Funcionario(rset.getInt("id"), rset.getString("nome"), rset.getString("cpf"), rset.getString("rg"), rset.getString("genero").charAt(0), rset.getDate("dt_nascimento"), rset.getString("email"), rset.getString("senha"), rset.getString("cargo"), rset.getDate("dt_contratacao"), rset.getString("telefone_pessoal"), rset.getString("telefone_trabalho"),
                             rset.getString("experiencia"), rset.getInt("id_empresa"), rset.getInt("id_industria"), rset.getBoolean("is_admin"));
@@ -234,27 +265,27 @@ public class FuncionarioDAO {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionários
         }
     }
 
 
-    public List<Funcionario> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Funcionario> buscarId(int valorPesquisar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
-
-        String query = "SELECT * FROM Funcionario WHERE " + campoOndePesquisar + " = ?";
+        String query = "SELECT * FROM Funcionario WHERE  id = ?";//Comando SQL
 
         try {
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, valorPesquisar);
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);//Setando Valor
 
-            ResultSet rset = stmt.executeQuery();
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de valores
                 while (rset.next()) {
                     funcionarios.add(new Funcionario(
                             rset.getInt("id"),
@@ -276,31 +307,169 @@ public class FuncionarioDAO {
                     ));
                 }
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionarios
+        }
+    }
+    public List<Funcionario> buscarFuncionarioPorAdminINDUSTRIA(int valorPesquisar) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String query = "SELECT * FROM Funcionario WHERE  id_industria = ?";//Comando SQL
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);//Setando Valor
+
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
+
+            if (rset != null) {
+//                Inserção de valores
+                while (rset.next()) {
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionarios
+        }
+    }
+
+    public List<Funcionario> buscarFuncionarioPorAdminEMPRESA(int valorPesquisar) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String query = "SELECT * FROM Funcionario WHERE  id_empresa = ?";//Comando SQL
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setInt(1, valorPesquisar);//Setando Valor
+
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
+
+            if (rset != null) {
+//                Inserção de valores
+                while (rset.next()) {
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionarios
+        }
+    }
+
+    public List<Funcionario> buscarEmail(String valorPesquisar) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String query = "SELECT * FROM Funcionario WHERE  email = ?";//Comando SQL
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setString(1, valorPesquisar);//Setando Valor
+
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
+
+            if (rset != null) {
+//                Inserção de valores
+                while (rset.next()) {
+                    funcionarios.add(new Funcionario(
+                            rset.getInt("id"),
+                            rset.getString("nome"),
+                            rset.getString("cpf"),
+                            rset.getString("rg"),
+                            rset.getString("genero").charAt(0),
+                            rset.getDate("dt_nascimento"),
+                            rset.getString("email"),
+                            rset.getString("senha"),
+                            rset.getString("cargo"),
+                            rset.getDate("dt_contratacao"),
+                            rset.getString("telefone_pessoal"),
+                            rset.getString("telefone_trabalho"),
+                            rset.getString("experiencia"),
+                            rset.getInt("id_empresa"),
+                            rset.getInt("id_industria"),
+                            rset.getBoolean("is_admin")
+                    ));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionarios
         }
     }
 
 
     public List<Funcionario> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Iniciando cnexão com o banco
-//        Iniciando objeto Endereço e lista de objetos Endereço
+        Connection conn = conexao.conectar();//Iniciando conexão com o banco de dados
+//        Iniciando a lista de objetos Endereço
         List<Funcionario> funcionarios = new ArrayList<>();
-        String query = "SELECT * FROM Funcionario WHERE " + campoOndePesquisar + " = ?";
+        String query = "SELECT * FROM Funcionario WHERE " + campoOndePesquisar + " = ?";//Comando SQL
 
         try {
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, valorPesquisar);
+            PreparedStatement pstmt = conn.prepareStatement(query);//Iniciando PreparedStatement
+            pstmt.setInt(1, valorPesquisar );//Setando Valor
 
-            ResultSet rset = stmt.executeQuery();
+            ResultSet rset = pstmt.executeQuery();//Executando comando SQL
 
             if (rset != null) {
+//                Inserção de valores
                 while (rset.next()) {
                     funcionarios.add(new Funcionario(
                             rset.getInt("id"),
@@ -321,44 +490,49 @@ public class FuncionarioDAO {
                             rset.getBoolean("is_admin")
                     ));
                 }
+            } else {
+                return null;
             }
-            stmt.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         } finally {
-            conexao.desconectar(conn);
-            return funcionarios;
+            conexao.desconectar(conn);//Desconectando do banco de dados
+            return funcionarios;//Retornando a lista de funcionarios
         }
     }
 
 
-//    Logar Funcionário
+    //    Logar Funcionário
     public List<String> logarAdmin(String email, String senha) {
         Conexao conexao = new Conexao();
-        Connection conn = Conexao.conectar();
-        ResultSet rs = null;
-        List<String> funcionarios = new ArrayList<>();
+        Connection conn = Conexao.conectar();//Abrindo conexão com o banco de dados
 
-        String sql = """
-            with info_func as (
+        ResultSet rs;
+        List<String> funcionarios = new ArrayList<>();//Instanciando a lista de objetos Funcionario
+
+        String sql = """   
+             -- ========================== resultado da minha escravidao pt.213 ==========================
+        with info_func as (  -- CTE de validação de login + busca de informações associadas ao funcionário
             select
                 f.id as id_func
                 , f.nome as nome_func
+                , f.email
                 , f.telefone_trabalho
-                , coalesce(id_empresa, id_industria) AS id_estabelecimento
+                , coalesce(id_empresa, id_industria) AS id_estabelecimento   -- campo com id do estabelecimento a depender de seu tipo (industria // empresa)
                 , case
                     when id_empresa is null then 'Saveit Pro'
                     when id_industria is null then 'Saveit Basico'
-            end as plano
+            end as plano  -- campo com o plano ativo do estabelecimento do funcionário
             , case
                 when id_empresa is not null then 'Empresa'
                 when id_industria is not null then 'Industria'
             end as tipo
-            , i.url as img
+            , i.url as img_func
             , f.genero
             from funcionario f
-            left join imagem_funcionario i on f.id = i.id_funcionario
+            left join imagem i on f.id = i.id_funcionario
             where (cpf = ? or email = ?)
             and senha = ?
             and is_admin = true
@@ -370,9 +544,11 @@ public class FuncionarioDAO {
                 , c.tipo_venda
                 , t.num_telefone
                 , concat(e.cep_rua, ', ', cep_rua_num, ' - ', e.cep_bairro, ' ', e.cep_estado) as endereco
+                , i.url as img_estab
             from cliente c
                 join telefone t on c.id = t.id_cliente
                 join endereco e on e.id = c.id_endereco
+                left join imagem i on c.id = i.id_cliente
         )
         , cont_func as (
             select
@@ -402,22 +578,24 @@ public class FuncionarioDAO {
         """;
 
         try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, email);
-            stmt.setString(2, email);
-            stmt.setString(3, senha);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+//            Setando valores
+            pstmt.setString(1, email);
+            pstmt.setString(2, email);
+            pstmt.setString(3, senha);
 
-            rs = stmt.executeQuery();
+            rs = pstmt.executeQuery();//Executando comando SQL
 
-            if (rs != null){
-                if (rs.next()) {
+            if (rs != null) {
+                while (rs.next()) {
                     funcionarios.add(rs.getString("id_func"));
                     funcionarios.add(rs.getString("nome_func"));
                     funcionarios.add(rs.getString("telefone_trabalho"));
                     funcionarios.add(rs.getString("id_estabelecimento"));
                     funcionarios.add(rs.getString("plano"));
                     funcionarios.add(rs.getString("tipo"));
-                    funcionarios.add(rs.getString("img"));
+                    funcionarios.add(rs.getString("img_func"));
+                    funcionarios.add(rs.getString("img_estab"));
                     funcionarios.add(rs.getString("genero"));
                     funcionarios.add(rs.getString("nome_empresa"));
                     funcionarios.add(rs.getString("cnpj"));
@@ -426,10 +604,10 @@ public class FuncionarioDAO {
                     funcionarios.add(rs.getString("endereco"));
                     funcionarios.add(rs.getString("cont_func"));
                     funcionarios.add(rs.getString("atividade_comercial"));
+                    funcionarios.add(rs.getString("email"));
                     return funcionarios;
-                } else {
-                    return null;
                 }
+                return funcionarios;
             } else {
                 return null;
             }
