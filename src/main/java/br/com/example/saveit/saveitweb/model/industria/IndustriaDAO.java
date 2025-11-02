@@ -4,9 +4,7 @@ import br.com.example.saveit.saveitweb.dao.Conexao;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class IndustriaDAO {
 //    Insert
@@ -283,21 +281,51 @@ public List<Industria> buscar() {
     }
 
 
-    public List<Industria> buscarDados(int id) {
+    public List<String> buscarDados(int id_industria) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-//        Iniciando a lista de objetos Industria
-        List<Industria> industrias = new ArrayList<>();
+//        Iniciando a lista de dados da Industria
+        List<String> dadosIndustria = new ArrayList<>();
         try {
-            String query = "";//Comando SQL
+            String query = "select\n" +
+                    "    c.nome\n" +
+                    "     , e.cep_estado\n" +
+                    "     , e.cep_cidade\n" +
+                    "     , e.cep\n" +
+                    "     , e.cep_bairro\n" +
+                    "     , string_agg(distinct (t.num_telefone), '; ') as contato\n" +
+                    "     , c.tipo_venda\n" +
+                    "     , e.cep_rua\n" +
+                    "     , e.cep_complemento\n" +
+                    "     , string_agg(distinct (case\n" +
+                    "                                when emp.id = 12 then emp.procura\n" +
+                    "                                else ind.vende\n" +
+                    "    end)\n" +
+                    "    , '; ') as categoria_prod\n" +
+                    "\n" +
+                    "from cliente c\n" +
+                    "         join endereco e on e.id = c.id_endereco\n" +
+                    "         join telefone t on c.id = t.id_cliente\n" +
+                    "         left join empresa emp on c.id = emp.id_cliente\n" +
+                    "         left join industria ind on t.id_cliente = ind.id_cliente\n" +
+                    "where ind.id = 12\n" +
+                    "group by 1, 2, 3,4,5,7,8,9";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
-            pstmt.setInt(1, id);
+            pstmt.setInt(1, id_industria);
+            pstmt.setInt(2, id_industria);
             ResultSet rset = pstmt.executeQuery();//Executando comando SQL
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Industria industria = new Industria(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getInt(5), rset.getInt(6));
-                    industrias.add(industria);
+                    dadosIndustria.add(rset.getString(1));
+                    dadosIndustria.add(rset.getString(2));
+                    dadosIndustria.add(rset.getString(3));
+                    dadosIndustria.add(rset.getString(4));
+                    dadosIndustria.add(rset.getString(5));
+                    dadosIndustria.add(rset.getString(6));
+                    dadosIndustria.add(rset.getString(7));
+                    dadosIndustria.add(rset.getString(8));
+                    dadosIndustria.add(rset.getString(9));
                 }
             }
             pstmt.close();
@@ -306,7 +334,7 @@ public List<Industria> buscar() {
             return null;
         } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
-            return industrias;//Retornando a lista de industrias
+            return dadosIndustria;//Retornando a lista de industrias
         }
     }
 }

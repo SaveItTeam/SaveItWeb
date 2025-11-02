@@ -77,8 +77,8 @@ public class LogarAdminServlet extends HttpServlet {
                 sessao.setAttribute("tipo_estabelecimento", tipo_estabelecimento);
                 if (imagemBytes != null) {
                     String imagemBase64 = java.util.Base64.getEncoder().encodeToString(imagemBytes);
-                    sessao.setAttribute("img", "data:image/jpeg;base64," + imagemBase64);
-                    sessao.setAttribute("img_funcionario", "data:image/jpeg;base64," + imagemBase64); // Padronizar
+                    sessao.setAttribute("img", "data:image/*;base64," + imagemBase64);
+                    sessao.setAttribute("img_funcionario", "data:image/*;base64," + imagemBase64); // Padronizar
                 } else {
                     sessao.setAttribute("img", "caminho/para/imagem-padrao.jpg");
                     sessao.setAttribute("img_funcionario", "caminho/para/imagem-padrao.jpg");

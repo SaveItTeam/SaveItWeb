@@ -70,7 +70,7 @@
           </div>
         </div>
 
-        <form action="">
+        <form action="" enctype="multipart/form-data" method="post">
           <div>
             <div>
               <label for="inputNome"
@@ -157,7 +157,7 @@
                   <input value=" "
                     type="file"
                     accept="image/*"
-                    name="inputImg"
+                    name="arquivo"
                     id="inputImg"
                     disabled
                   />
