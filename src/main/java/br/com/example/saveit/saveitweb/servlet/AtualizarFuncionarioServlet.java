@@ -1,5 +1,7 @@
 package br.com.example.saveit.saveitweb.servlet;
 
+import br.com.example.saveit.saveitweb.dao.Api;
+import br.com.example.saveit.saveitweb.model.funcionario.Funcionario;
 import br.com.example.saveit.saveitweb.model.funcionario.FuncionarioDAO;
 import br.com.example.saveit.saveitweb.model.imagem_funcionario.ImagemDAO;
 import jakarta.servlet.ServletException;
@@ -10,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 @WebServlet("/atualizarFuncionarioServlet")
 @MultipartConfig
@@ -49,6 +52,12 @@ public class AtualizarFuncionarioServlet extends HttpServlet {
                 ImagemDAO imagemDAO = new ImagemDAO();
                 imagemDAO.salvarImagemFuncionario(imagemBytes, id);
             }
+
+            List<Funcionario> funcionarios = funcionarioDAO.buscarId(id);
+            Funcionario funcionario = funcionarios.get(0);
+
+            Api api = new Api();
+            api.enviarDados("funcionario", funcionario.toString());
 
             // Redirecionar
             request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
