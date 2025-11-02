@@ -230,6 +230,10 @@
                         id="inputRg"
                 />
             </label>
+            <label for="">
+                Data de Nascimento
+                <input type="date" name="inputDtNascimento" id="inputDtNascimento">
+            </label>
         </div>
         <hr />
 
