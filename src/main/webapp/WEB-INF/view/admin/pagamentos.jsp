@@ -62,11 +62,6 @@
           <div>
             <h1>Gerencie sua assinatura</h1>
             <hr />
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Tellus sit risus venenatis
-              commodo id sollicitudin fringilla nunc. Dui sed quis id nunc
-              condimentum arcu.
-            </p>
           </div>
         </div>
 

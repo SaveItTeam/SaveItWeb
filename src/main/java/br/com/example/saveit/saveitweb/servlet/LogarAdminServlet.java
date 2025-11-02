@@ -1,8 +1,11 @@
 package br.com.example.saveit.saveitweb.servlet;
 
 import br.com.example.saveit.saveitweb.hash.Hash;
+import br.com.example.saveit.saveitweb.model.cliente.Cliente;
+import br.com.example.saveit.saveitweb.model.cliente.ClienteDAO;
 import br.com.example.saveit.saveitweb.model.funcionario.Funcionario;
 import br.com.example.saveit.saveitweb.model.funcionario.FuncionarioDAO;
+import br.com.example.saveit.saveitweb.model.imagem_funcionario.ImagemDAO;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +20,9 @@ public class LogarAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        ImagemDAO imagemDAO = new ImagemDAO();
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente = new Cliente();
         Hash hash = new Hash();
 
         String emailOUcpf = request.getParameter("email");
@@ -38,11 +44,17 @@ public class LogarAdminServlet extends HttpServlet {
         int id_estabelecimento = funcionario.getId_industria();
         String plano = a.get(4);
         String tipo_estabelecimento = a.get(5);
-        String img_funcionario = a.get(6);
-        String img_empresa = a.get(7);
+        String cnpj = a.get(10);
+
+        Cliente b = clienteDAO.buscarPorCNPJ(cnpj);
+        int id_Industria = b.getId();
+
+        byte[] imagemBytes = imagemDAO.buscarImagemFuncionario(id);
+
+        byte[] imagemEmpresaBytes = imagemDAO.buscarImagemEmpresa(id_Industria);
+
         char genero = funcionario.getGenero();
         String nome_empresa = a.get(9);
-        String cnpj = a.get(10);
         String tipo_servico = a.get(11);
         String endereco = a.get(13);
         String count = a.get(14);
@@ -63,8 +75,21 @@ public class LogarAdminServlet extends HttpServlet {
                 sessao.setAttribute("id_estabelecimento", id_estabelecimento);
                 sessao.setAttribute("plano", plano);
                 sessao.setAttribute("tipo_estabelecimento", tipo_estabelecimento);
-                sessao.setAttribute("img_funcionario", img_funcionario);
-                sessao.setAttribute("img_empresa", img_empresa);
+                if (imagemBytes != null) {
+                    String imagemBase64 = java.util.Base64.getEncoder().encodeToString(imagemBytes);
+                    sessao.setAttribute("img", "data:image/jpeg;base64," + imagemBase64);
+                    sessao.setAttribute("img_funcionario", "data:image/jpeg;base64," + imagemBase64); // Padronizar
+                } else {
+                    sessao.setAttribute("img", "caminho/para/imagem-padrao.jpg");
+                    sessao.setAttribute("img_funcionario", "caminho/para/imagem-padrao.jpg");
+                }
+
+                if (imagemEmpresaBytes != null) {
+                    String imagemEmpresaBase64 = java.util.Base64.getEncoder().encodeToString(imagemEmpresaBytes);
+                    sessao.setAttribute("img_empresa", "data:image/jpeg;base64," + imagemEmpresaBase64);
+                } else {
+                    sessao.setAttribute("img_empresa", "caminho/para/empresa-padrao.jpg");
+                }
                 sessao.setAttribute("genero", genero);
                 sessao.setAttribute("nome_empresa", nome_empresa);
                 sessao.setAttribute("cnpj", cnpj);

@@ -1,6 +1,6 @@
 package br.com.example.saveit.saveitweb.model.imagem_funcionario;
 
-public class Imagem_Funcionario {
+public class Imagem {
     //    Atributos
     private int id;
     private String url;
@@ -8,13 +8,13 @@ public class Imagem_Funcionario {
 
 
     //    Construtor
-    public Imagem_Funcionario(int id, String url, int id_funcionario) {
+    public Imagem(int id, String url, int id_funcionario) {
         this.id = id;
         this.url = url;
         this.id_funcionario = id_funcionario;
     }
 
-    public Imagem_Funcionario() {}
+    public Imagem() {}
 
     //    Getters e Setters
     public int getId() {return id;}

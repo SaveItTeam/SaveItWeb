@@ -61,9 +61,9 @@
             </button>
         </div>
         <div class="administrador">
-            <img src="imagem (4).jpeg" alt="" />
+            <img src="<%=session.getAttribute("img_funcionario")%>" alt="" />
             <div>
-                <p>Marcelo Grilo</p>
+                <p><%=session.getAttribute("nome")%></p>
                 <p>Admin</p>
             </div>
         </div>

@@ -1,10 +1,18 @@
 const botaoEditar = document.querySelector("#botao-editar");
 const botaoCancelar = document.querySelector("#botao-cancelar");
-const imgPreview = document.querySelector("#imgPreviewUser"); // corrigido para o novo ID
+const botaoSalvar = document.querySelector("#botao-salvar");
+const imgPreview = document.querySelector("#imgPreviewUser");
 
 let valoresIniciais = [];
 let editando = false;
 
+// INICIALIZAÇÃO
+document.addEventListener('DOMContentLoaded', function() {
+    inicializarToggleSenha();
+    inicializarPreviewImagem();
+});
+
+// BOTÃO EDITAR
 botaoEditar.addEventListener("click", () => {
     const inputs = document.querySelectorAll("input");
 
@@ -34,21 +42,14 @@ botaoEditar.addEventListener("click", () => {
                 inicializarToggleSenha();
             }, 0);
         }
-        
+
         const labelInputFile = document.querySelector("label[for='inputFile']");
         if (labelInputFile) {
             labelInputFile.style.display = "flex";
         }
 
-        // ativa inputs e seus respectivos estilos (exceto inputSenha por segurança)
+        // ativa inputs e seus respectivos estilos
         inputs.forEach((e) => {
-            if (e.id === "inputSenha") {
-                e.disabled = true;
-                e.style.background = "transparent";
-                e.style.paddingLeft = 0;
-                return;
-            }
-
             e.removeAttribute("disabled");
             getComputedStyle(document.documentElement).getPropertyValue(
                 "--cor-fundo"
@@ -57,53 +58,28 @@ botaoEditar.addEventListener("click", () => {
                 : (e.style.background = "rgba(240, 236, 225, 0.1)");
             e.style.paddingLeft = "0.5rem";
         });
+
+        // Mostrar/ocultar botões
+        botaoSalvar.style.display = "inline-block";
+        botaoCancelar.style.display = "inline-block";
+        botaoEditar.style.display = "none";
+
         // focus no primeiro input de texto
-        const primeiroAtivo = [...inputs].find((e) => e.type !== "file" && e.id !== "inputSenha");
+        const primeiroAtivo = [...inputs].find((e) => e.type !== "file");
         if (primeiroAtivo) {
             primeiroAtivo.focus();
             const len = primeiroAtivo.value.length;
             primeiroAtivo.setSelectionRange(len, len);
         }
     } else {
-        // oculta os inputs de senha extra
-        const senhasExtra = document.querySelector("#senhas-extra");
-        if (senhasExtra) {
-            senhasExtra.style.display = "none";
-            // limpa os valores dos inputs de senha extra
-            const senhaAntiga = document.querySelector("#inputSenhaAntiga");
-            const senhaNovaConfirmar = document.querySelector("#inputSenhaNovaConfirmar");
-            if (senhaAntiga) senhaAntiga.value = "";
-            if (senhaNovaConfirmar) senhaNovaConfirmar.value = "";
-        }
-
-        // desativa os inputs e restaura valores iniciais
-        let i = 1; 
-
-        inputs.forEach((e) => {
-            // Pular inputs de senha extra e file inputs
-            if (e.id === "inputSenhaAntiga" || e.id === "inputSenhaNovaConfirmar" || e.type === "file") {
-                return;
-            }
-
-            if (e.type !== "file") {
-                e.value = valoresIniciais[i] || "";
-                i++;
-            }
-
-            e.disabled = true;
-            e.style.background = "transparent";
-            e.style.paddingLeft = 0;
-        });
-        
-        const labelInputFile = document.querySelector("label[for='inputFile']");
-        if (labelInputFile) {
-            labelInputFile.style.display = "none";
-        }
+        cancelarEdicao();
     }
 });
 
-// CANCELAR
-botaoCancelar.addEventListener("click", () => {
+// CANCELAR EDIÇÃO
+botaoCancelar.addEventListener("click", cancelarEdicao);
+
+function cancelarEdicao() {
     if (!valoresIniciais.length) return;
 
     const inputs = document.querySelectorAll("input");
@@ -141,15 +117,26 @@ botaoCancelar.addEventListener("click", () => {
         e.style.paddingLeft = 0;
     });
 
-    // Habilita o botão de salvar ao cancelar
-    const botaoSalvar = document.querySelector("#botao-salvar");
-    if (botaoSalvar) {
-        botaoSalvar.disabled = false;
+    // Restaurar visibilidade dos botões
+    botaoSalvar.style.display = "none";
+    botaoCancelar.style.display = "none";
+    botaoEditar.style.display = "inline-block";
+
+    // Esconder label da imagem
+    const labelInputFile = document.querySelector("label[for='inputFile']");
+    if (labelInputFile) {
+        labelInputFile.style.display = "none";
+    }
+
+    // Limpar input file
+    const inputFile = document.querySelector("#inputFile");
+    if (inputFile) {
+        inputFile.value = "";
     }
 
     botaoEditar.style.background = "transparent";
     editando = false;
-});
+}
 
 // FUNCIONALIDADE DE MOSTRAR/OCULTAR SENHA
 function inicializarToggleSenha() {
@@ -178,25 +165,78 @@ function inicializarToggleSenha() {
     });
 }
 
-// Inicializar quando a página carregar
-inicializarToggleSenha();
+// PREVIEW DA IMAGEM
+function inicializarPreviewImagem() {
+    const inputFile = document.querySelector("#inputFile");
 
-// MUDAR PREVIEW DA IMAGEM
-function mudarPreview(inputId, imgId) {
-    const input = document.querySelector(`#${inputId}`);
-    const img = document.querySelector(`#${imgId}`);
+    if (inputFile) {
+        inputFile.addEventListener("change", function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Validar tamanho (5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('A imagem deve ter no máximo 5MB');
+                    this.value = '';
+                    return;
+                }
 
-    const arquivo = input.files[0];
-    if (arquivo) {
-        const url = URL.createObjectURL(arquivo);
-        img.src = url;
+                // Validar tipo
+                if (!file.type.startsWith('image/')) {
+                    alert('Por favor, selecione apenas imagens');
+                    this.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
     }
 }
 
-document
-    .querySelector("#inputFile")
-    .addEventListener("change", () => mudarPreview("inputFile", "imgPreviewUser"));
+// VALIDAÇÃO DO FORMULÁRIO
+document.querySelector('form')?.addEventListener('submit', function(e) {
+    if (!editando) {
+        e.preventDefault();
+        return;
+    }
 
-document
-    .querySelector("#inputImg")
-    .addEventListener("change", () => mudarPreview("inputImg", "imgPreviewEmpresa"));
+    // Verificar se há alterações
+    const nome = document.querySelector('#inputNome').value;
+    const email = document.querySelector('#inputEmail').value;
+    const inputFile = document.querySelector('#inputFile');
+    const temArquivo = inputFile.files.length > 0;
+    const senhaAntiga = document.querySelector('#inputSenhaAntiga').value;
+    const senhaNova = document.querySelector('#inputSenhaNovaConfirmar').value;
+
+    const nomeAlterado = nome !== valoresIniciais[1];
+    const emailAlterado = email !== valoresIniciais[2];
+    const senhaPreenchida = senhaAntiga.trim() !== "" || senhaNova.trim() !== "";
+
+    if (!nomeAlterado && !emailAlterado && !temArquivo && !senhaPreenchida) {
+        e.preventDefault();
+        alert('Nenhuma alteração foi feita');
+        return;
+    }
+
+    // Verificar se preencheu campos de senha
+    if ((senhaAntiga || senhaNova) && (!senhaAntiga || !senhaNova)) {
+        e.preventDefault();
+        alert('Para alterar a senha, preencha ambos os campos: Senha Antiga e Nova Senha');
+        return;
+    }
+
+    // Mostrar loading
+    const botaoSalvar = document.querySelector('#botao-salvar');
+    if (botaoSalvar) {
+        botaoSalvar.innerHTML = 'Salvando...';
+        botaoSalvar.disabled = true;
+    }
+});
+
+// Inicializar quando a página carregar
+inicializarToggleSenha();
+inicializarPreviewImagem();

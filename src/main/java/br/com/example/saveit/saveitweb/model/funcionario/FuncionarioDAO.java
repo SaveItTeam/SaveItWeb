@@ -602,8 +602,4 @@ public class FuncionarioDAO {
         }
     }
 
-    public void alterarImagem(byte[] imagemBytes, int id) {
-
-    }
-
 }

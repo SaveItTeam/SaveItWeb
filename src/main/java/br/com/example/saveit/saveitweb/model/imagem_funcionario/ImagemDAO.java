@@ -6,16 +6,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Imagem_FuncionarioDAO {
+public class ImagemDAO {
     //    Insert
-    public boolean inserir(Imagem_Funcionario imagem_Funcionario) {
+    public boolean inserir(Imagem imagem_) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            PreparedStatement pstmt = conn.prepareStatement("Insert into Cliente(url, id_funcionario) Values(?,?)");//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement("Insert into imagem(url, id_funcionario) Values(?,?)");//Comando SQL
 //        Setando o valor dos parâmetros
-            pstmt.setString(1, imagem_Funcionario.getUrl());
-            pstmt.setInt(2, imagem_Funcionario.getId_funcionario());
+            pstmt.setString(1, imagem_.getUrl());
+            pstmt.setInt(2, imagem_.getId_funcionario());
             boolean validar = pstmt.executeUpdate() > 0;//Executando o comando sql
 //            Validação
             if (validar) {
@@ -172,11 +172,11 @@ public class Imagem_FuncionarioDAO {
 
 
     //    Select
-    public List<Imagem_Funcionario> buscar() {
+    public List<Imagem> buscar() {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de objetos Imagem_Funcionario
-        List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
+        List<Imagem> imagens_funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -186,8 +186,8 @@ public class Imagem_FuncionarioDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario(rset.getInt(1), rset.getString(2), rset.getInt(3));
-                    imagens_funcionarios.add(imagem_funcionario);
+                    Imagem imagem_ = new Imagem(rset.getInt(1), rset.getString(2), rset.getInt(3));
+                    imagens_funcionarios.add(imagem_);
                 }
             }
             stmt.close();
@@ -201,11 +201,11 @@ public class Imagem_FuncionarioDAO {
     }
 
 
-    public List<Imagem_Funcionario> buscar(String campoOrdenar) {
+    public List<Imagem> buscar(String campoOrdenar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de objetos Imagem_Funcionario
-        List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
+        List<Imagem> imagens_funcionarios = new ArrayList<>();
         try {
 //            Iniciando objeto Statment
             Statement stmt = conn.createStatement();
@@ -215,8 +215,8 @@ public class Imagem_FuncionarioDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario(rset.getInt(1), rset.getString(2), rset.getInt(3));
-                    imagens_funcionarios.add(imagem_funcionario);
+                    Imagem imagem_ = new Imagem(rset.getInt(1), rset.getString(2), rset.getInt(3));
+                    imagens_funcionarios.add(imagem_);
                 }
             }
             stmt.close();
@@ -230,11 +230,11 @@ public class Imagem_FuncionarioDAO {
     }
 
 
-    public List<Imagem_Funcionario> buscar(String campoOndePesquisar, String valorPesquisar) {
+    public List<Imagem> buscar(String campoOndePesquisar, String valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de objetos Imagem_Funcionario
-        List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
+        List<Imagem> imagens_funcionarios = new ArrayList<>();
         try {
             String query = String.format("SELECT * FROM Imagem_Funcionario WHERE %s = ?", campoOndePesquisar);//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
@@ -244,8 +244,8 @@ public class Imagem_FuncionarioDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario(rset.getInt(1), rset.getString(2), rset.getInt(3));
-                    imagens_funcionarios.add(imagem_funcionario);
+                    Imagem imagem_ = new Imagem(rset.getInt(1), rset.getString(2), rset.getInt(3));
+                    imagens_funcionarios.add(imagem_);
                 }
             }
             pstmt.close();
@@ -259,11 +259,11 @@ public class Imagem_FuncionarioDAO {
     }
 
 
-    public List<Imagem_Funcionario> buscar(String campoOndePesquisar, int valorPesquisar) {
+    public List<Imagem> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
 //        Iniciando a lista de objetos Imagem_Funcionario
-        List<Imagem_Funcionario> imagens_funcionarios = new ArrayList<>();
+        List<Imagem> imagens_funcionarios = new ArrayList<>();
         try {
             String query = String.format("SELECT * FROM Imagem_Funcionario WHERE %s = ?", campoOndePesquisar);//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
@@ -273,8 +273,8 @@ public class Imagem_FuncionarioDAO {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    Imagem_Funcionario imagem_funcionario = new Imagem_Funcionario(rset.getInt(1), rset.getString(2), rset.getInt(3));
-                    imagens_funcionarios.add(imagem_funcionario);
+                    Imagem imagem_ = new Imagem(rset.getInt(1), rset.getString(2), rset.getInt(3));
+                    imagens_funcionarios.add(imagem_);
                 }
             }
             pstmt.close();
@@ -286,4 +286,141 @@ public class Imagem_FuncionarioDAO {
             return imagens_funcionarios;//Retornando a lista de imagem_funcionario
         }
     }
+
+    public byte[] buscarImagemFuncionario(int idFuncionario) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+
+        String sql = "SELECT url FROM imagem WHERE id_funcionario = ?";
+
+        try {
+            PreparedStatement pmst = conn.prepareStatement(sql);
+            pmst.setInt(1, idFuncionario);
+            ResultSet rs = pmst.executeQuery();
+
+            if (rs.next()) {
+                return rs.getBytes("url");
+            }
+            return null;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // MÉTODO PARA SALVAR IMAGEM DA EMPRESA (usando id_cliente)
+    public boolean salvarImagemEmpresa(byte[] imagemBytes, int idCliente) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+
+        try {
+            // Verificar se já existe imagem para este cliente/empresa
+            String verificarSql = "SELECT id FROM imagem WHERE id_cliente = ?";
+            PreparedStatement verificarStmt = conn.prepareStatement(verificarSql);
+            verificarStmt.setInt(1, idCliente);
+            ResultSet rs = verificarStmt.executeQuery();
+
+            if (rs.next()) {
+                // Já existe → UPDATE
+                int idImagem = rs.getInt("id");
+                String updateSql = "UPDATE imagem SET url = ?, id_funcionario = NULL WHERE id = ?";
+                PreparedStatement updateStmt = conn.prepareStatement(updateSql);
+                updateStmt.setBytes(1, imagemBytes);
+                updateStmt.setInt(2, idImagem);
+                return updateStmt.executeUpdate() > 0;
+            } else {
+                // Não existe → INSERT
+                String insertSql = "INSERT INTO imagem(url, id_cliente, id_funcionario) VALUES(?, ?, NULL)";
+                PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+                insertStmt.setBytes(1, imagemBytes);
+                insertStmt.setInt(2, idCliente);
+                return insertStmt.executeUpdate() > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // MÉTODO PARA BUSCAR IMAGEM DA EMPRESA
+    public byte[] buscarImagemEmpresa(int idCliente) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+
+        String sql = "SELECT url FROM imagem WHERE id_cliente = ?";
+
+        try {
+            PreparedStatement pmst = conn.prepareStatement(sql);
+            pmst.setInt(1, idCliente);
+            ResultSet rs = pmst.executeQuery();
+
+            if (rs.next()) {
+                return rs.getBytes("url");
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // ATUALIZE TAMBÉM O MÉTODO DO FUNCIONÁRIO PARA GARANTIR id_cliente = NULL
+    public boolean salvarImagemFuncionario(byte[] imagemBytes, int idFuncionario) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+
+        try {
+            // Verificar se já existe imagem para este funcionário
+            String verificarSql = "SELECT id FROM imagem WHERE id_funcionario = ?";
+            PreparedStatement verificarStmt = conn.prepareStatement(verificarSql);
+            verificarStmt.setInt(1, idFuncionario);
+            ResultSet rs = verificarStmt.executeQuery();
+
+            if (rs.next()) {
+                // Já existe → UPDATE
+                int idImagem = rs.getInt("id");
+                String updateSql = "UPDATE imagem SET url = ?, id_cliente = NULL WHERE id = ?";
+                PreparedStatement updateStmt = conn.prepareStatement(updateSql);
+                updateStmt.setBytes(1, imagemBytes);
+                updateStmt.setInt(2, idImagem);
+                return updateStmt.executeUpdate() > 0;
+            } else {
+                // Não existe → INSERT
+                String insertSql = "INSERT INTO imagem(url, id_funcionario, id_cliente) VALUES(?, ?, NULL)";
+                PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+                insertStmt.setBytes(1, imagemBytes);
+                insertStmt.setInt(2, idFuncionario);
+                return insertStmt.executeUpdate() > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
