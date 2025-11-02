@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <form id="acoes" method="post" action="">
+            <form id="acoes" method="post" action="funcionarioServlet">
             <button type="submit" name="acao" value="adicionar-funcionario">
               <i class="ri-add-large-line"></i>
               <h3>Adicionar funcionario</h3>

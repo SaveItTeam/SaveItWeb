@@ -236,7 +236,7 @@
 
 <!-- EDITAR FUNCIONARIO -->
 <div class="editar-funcionario">
-    <form action="" method="post">
+    <form action="atualizarFuncionarioServlet" method="post">
         <div>
             <h2>Editar Funcionário</h2>
             <button type="button" class="fechar-editar-funcionario">
