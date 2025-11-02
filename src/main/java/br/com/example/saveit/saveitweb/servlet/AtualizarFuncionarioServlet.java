@@ -29,6 +29,8 @@ public class AtualizarFuncionarioServlet extends HttpServlet {
                 String novoTelefone = request.getParameter("inputTel2");
 
 
+            } catch (Exception e){
+                e.printStackTrace();
             }
         }
 
