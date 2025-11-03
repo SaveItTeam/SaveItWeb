@@ -141,7 +141,7 @@
               </label>
               <label for="inputBairro"
                 >Bairro
-                <input value=" "
+                <input value="<%=session.getAttribute("bairro")%>"
                   type="text"
                   name="inputBairro"
                   id="inputBairro"
@@ -217,7 +217,7 @@
 
               <label for="categoriaProdutos">
                 Categoria de Produtos
-                <div id="categorias-container" data-radio-ativado="<%=session.getAttribute("categoria")%>>">
+                <div id="categorias-container" data-radio-ativado="<%=session.getAttribute("categoria")%>">
                   <label class="radio-label">
                     <input
                       type="radio"
