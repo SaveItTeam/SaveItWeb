@@ -272,6 +272,34 @@ public class ClienteDAO {
         }
     }
 
+    public Cliente buscarPorID(int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+        Cliente cliente = null;
+
+        try {
+            String query = "SELECT * FROM cliente WHERE id_industria = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, id);
+            ResultSet rset = pstmt.executeQuery();
+
+            if (rset.next()) {
+                cliente = new Cliente(
+                        rset.getInt(1), rset.getString(2), rset.getString(3),
+                        rset.getString(4), rset.getInt(5), rset.getString(6),
+                        rset.getInt(7), rset.getString(8)
+                );
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);
+            return cliente; // Pode ser null se não encontrou
+        }
+    }
+
 
     public List<Cliente> buscar(String campoOndePesquisar, int valorPesquisar) {
         Conexao conexao = new Conexao();
