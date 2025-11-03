@@ -15,7 +15,6 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
-import java.util.List;
 
 @WebServlet("/EditarIndustria")
 @MultipartConfig
@@ -37,6 +36,10 @@ public class EditarIndustriaServlet extends HttpServlet {
                     String endereco_id_string = (String) sessao.getAttribute("endereco_id");//Colocando o id do endereco em uma variavel
 
                     int endereco_id = Integer.parseInt(endereco_id_string);
+
+                    String id_cliente_String = (String) sessao.getAttribute("id_cliente");
+                    String cnpj = (String) sessao.getAttribute("cnpj");
+                    int id_cliente = clienteDAO.buscarPorCNPJ(cnpj).getId();
 
 
 //                    Atributos novos
@@ -84,7 +87,7 @@ public class EditarIndustriaServlet extends HttpServlet {
 
     //            Telefone
                     if (contatoNovo != null && !contatoNovo.trim().isEmpty() && !contatoNovo.equals(contato)){
-                        telefoneDAO.alterarTelefone(contatoNovo, (int) sessao.getAttribute("id"));
+                        telefoneDAO.alterarTelefone(contatoNovo, id_cliente);
                         sessao.setAttribute("contato", contatoNovo);
                     }
 
@@ -122,13 +125,13 @@ public class EditarIndustriaServlet extends HttpServlet {
 
 
 //                    Cliente
-                    List<Cliente> clientes = clienteDAO.buscar("id_industria", id_industria);
+                    Cliente cliente = clienteDAO.buscarPorCNPJ(cnpj);
                     if (nomeNovo != null && !nomeNovo.trim().isEmpty() && !nomeNovo.equals(nome)){
-                        clienteDAO.alterarNome(nomeNovo, clientes.get(0).getId());
+                        clienteDAO.alterarNome(nomeNovo, cliente.getId());
                         sessao.setAttribute("nome", nomeNovo);
                     }
                     if (operacaoNova != null && !operacaoNova.trim().isEmpty() && !operacaoNova.equals(operacao)) {
-                        clienteDAO.alterarTipoVenda(operacaoNova, clientes.get(0).getId());
+                        clienteDAO.alterarTipoVenda(operacaoNova, cliente.getId());
                         sessao.setAttribute("tipo_venda", operacaoNova);
                     }
                     request.getRequestDispatcher("/WEB-INF/view/admin/industria.jsp").forward(request, response);
