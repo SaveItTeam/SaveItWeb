@@ -35,6 +35,10 @@
   --borda-adicionar-editar-funcionario: rgba(240, 236, 225, 0.64);
 }
 
+#funcionario svg {
+  color: #6b8e4e;
+}
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;
