@@ -18,6 +18,10 @@
     --cor-hover: rgba(240, 236, 225, 0.15);
 }
 
+#settings i {
+    color: #6b8e4e;
+}
+
 #configuracoes {
     width: calc(100% - 8rem);
     margin-left: 8rem;

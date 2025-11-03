@@ -164,7 +164,6 @@
                     name="arquivo"
                     id="inputImg"
                     disabled
-                         required
                   />
                 </label>
               </div>

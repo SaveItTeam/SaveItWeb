@@ -25,7 +25,7 @@
                 <%--------------------------------      Inicio     ----------------------------------------------------%>
 
             <div>
-                <form class="acao-sidebar" action="adminServlet" method="post">
+                <form class="acao-sidebar" action="adminServlet" method="post" id="inicioSidebar">
                     <button type="submit"><i class="ri-function-fill"></i></button>
                     <p class="sidenav-p">Início</p>
                 </form>
@@ -67,7 +67,7 @@
                         />
                     </svg>
                     </button>
-                    <p class="sidenav-p">Indústria</p>
+                    <p class="sidenav-p">Negócio</p>
                 </form>
 
                 <%--------------------------------      Pagamento     -------------------------------------------------%>
