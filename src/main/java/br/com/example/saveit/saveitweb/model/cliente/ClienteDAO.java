@@ -66,34 +66,11 @@ public class ClienteDAO {
     }
 
 
-    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
+    public boolean alterarTipoVenda(String valorAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = String.format("Update Cliente set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
-            pstmt.setInt(1, valorAlterar);
-            pstmt.setInt(2, valorOndeAlterar);
-            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-//            Validação
-            if (validar) {
-                pstmt.close();
-                return validar;//True
-            }
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            conexao.desconectar(conn);//Desconectando do banco de dados
-        }
-        return false;
-    }
-
-
-    public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
-        try {
-            String query = String.format("Update Cliente set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            String query = "Update Cliente set tipo_venda = ? where id = ?";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
             pstmt.setString(1, valorAlterar);
             pstmt.setInt(2, valorOndeAlterar);
@@ -106,66 +83,11 @@ public class ClienteDAO {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-        }
-        return false;
-    }
-
-
-    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-        try {
-            String query = String.format("Update Cliente set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
-            pstmt.setInt(1, valorAlterar);
-            pstmt.setString(2, valorOndeAlterar);
-            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-//            Validação
-            if (validar) {
-                pstmt.close();
-                return validar;//True
-            }
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
 
-
-    public boolean alterarImagem(File imagem, int id) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-        byte [] imagemBytes;//Iniciando variavel do tipo ByteArray
-
-        try {
-            Part partesAruivo = (Part) imagem;
-            if (partesAruivo != null) {
-                InputStream conteudoAruivo = partesAruivo.getInputStream();
-                imagemBytes = IOUtils.toByteArray(conteudoAruivo);
-                String query = "Update Cliente set imagem = ? where id = ?";//Comando SQL
-                PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
-                pstmt.setBytes(1, imagemBytes);
-                pstmt.setInt(2, id);
-                boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-//            Validação
-                if (validar) {
-                    pstmt.close();
-                    return validar;//True
-                }
-            }
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        finally {
-            conexao.desconectar(conn);//Desconectando do banco de dados
-        }
-        return false;
-    }
 
 
 //    Delete

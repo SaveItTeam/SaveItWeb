@@ -36,18 +36,20 @@ public class IndustriaDAO {
 
 
 //    Update
-    public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
+    public boolean alterarNome(String valorAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = String.format("Update Industria set %s = '%s' where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = "Update Industria set nome = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
 //            Validação
             if (validar) {
                 return validar;//True
             }
-            statement.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -57,18 +59,18 @@ public class IndustriaDAO {
     }
 
 
-    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
+    public boolean alterarVenda(String valorAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = String.format("Update Industria set %s = %d where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
+            String query = "Update Industria set vende = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando pstmt
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
 //            Validação
             if (validar) {
                 return validar;//True
             }
-            statement.close();
+            pstmt.close();
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -77,47 +79,6 @@ public class IndustriaDAO {
         return false;
     }
 
-
-    public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-        try {
-            String query = String.format("Update Industria set %s = '%s' where %s = %d", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-//            Validação
-            if (validar) {
-                return validar;//True
-            }
-            statement.close();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            conexao.desconectar(conn);//Desconectando do banco de dados
-        }
-        return false;
-    }
-
-
-    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-        try {
-            String query = String.format("Update Industria set %s = %d where %s = '%s'", campoAlterar, valorAlterar, ondeAlterar, valorOndeAlterar);//Comando SQL
-            Statement statement = conn.createStatement();//Criando statement
-            boolean validar = statement.executeUpdate(query) > 0;//Executando comando SQL
-//            Validação
-            if (validar) {
-                return validar;//True
-            }
-            statement.close();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            conexao.desconectar(conn);//Desconectando do banco de dados
-        }
-        return false;
-    }
 
 
 
@@ -287,8 +248,7 @@ public List<Industria> buscar() {
 //        Iniciando a lista de dados da Industria
         List<String> dadosIndustria = new ArrayList<>();
         try {
-            String query = "select\n" +
-                    "    c.nome\n" +
+            String query = "select e.id as endereco_id, c.nome\n" +
                     "     , e.cep_estado\n" +
                     "     , e.cep_cidade\n" +
                     "     , e.cep\n" +
@@ -309,7 +269,7 @@ public List<Industria> buscar() {
                     "         left join empresa emp on c.id = emp.id_cliente\n" +
                     "         left join industria ind on t.id_cliente = ind.id_cliente\n" +
                     "where ind.id = ?\n" +
-                    "group by 1, 2, 3,4,5,7,8,9";//Comando SQL
+                    "group by 1,2,3,4,6,8,9,10";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
             pstmt.setInt(1, id_industria);
             pstmt.setInt(2, id_industria);
@@ -317,16 +277,17 @@ public List<Industria> buscar() {
             if (rset != null) {
 //                Inserção de dados
                 while (rset.next()) {
-                    dadosIndustria.add(rset.getString(1));
-                    dadosIndustria.add(rset.getString(2));
-                    dadosIndustria.add(rset.getString(3));
-                    dadosIndustria.add(rset.getString(4));
-                    dadosIndustria.add(rset.getString(5));
-                    dadosIndustria.add(rset.getString(6));
-                    dadosIndustria.add(rset.getString(7));
-                    dadosIndustria.add(rset.getString(8));
-                    dadosIndustria.add(rset.getString(9));
-                    dadosIndustria.add(rset.getString(10));
+                    dadosIndustria.add(rset.getString("endereco_id"));
+                    dadosIndustria.add(rset.getString("nome"));
+                    dadosIndustria.add(rset.getString("cep_estado"));
+                    dadosIndustria.add(rset.getString("cep_cidade"));
+                    dadosIndustria.add(rset.getString("cep"));
+                    dadosIndustria.add(rset.getString("cep_bairro"));
+                    dadosIndustria.add(rset.getString("contato"));
+                    dadosIndustria.add(rset.getString("tipo_venda"));
+                    dadosIndustria.add(rset.getString("cep_rua"));
+                    dadosIndustria.add(rset.getString("cep_complemento"));
+                    dadosIndustria.add(rset.getString("categoria_prod"));
                 }
             }
             pstmt.close();

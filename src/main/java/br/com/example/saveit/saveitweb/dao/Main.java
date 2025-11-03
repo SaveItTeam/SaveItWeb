@@ -13,13 +13,15 @@ import br.com.example.saveit.saveitweb.model.plano.*;
 import br.com.example.saveit.saveitweb.model.telefone.Telefone;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         Conexao conexao = new Conexao();
-        if (conexao.conectar() == null) {
+        Connection conn = conexao.conectar();
+        if (conn == null) {
             System.out.println("Falha ao conectar ao banco de dados.");
         } else {
             System.out.println("Conexão bem-sucedida ao banco de dados.");
@@ -92,6 +94,10 @@ public class Main {
 
             System.out.println();
             System.out.println("----------------------------------------------------------------");
+
+            System.out.println(industriaDAO.buscarDados(12));
+
+            conexao.desconectar(conn);
         }
 
 

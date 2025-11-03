@@ -21,7 +21,6 @@ public class LogarAdminServlet extends HttpServlet {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         ImagemDAO imagemDAO = new ImagemDAO();
         ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente cliente = new Cliente();
         Hash hash = new Hash();
 
         String emailOUcpf = request.getParameter("email");
