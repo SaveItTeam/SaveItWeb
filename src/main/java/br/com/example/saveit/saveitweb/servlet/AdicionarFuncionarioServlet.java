@@ -15,10 +15,29 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @WebServlet("/adicionarFuncionarioServlet")
 @MultipartConfig
 public class AdicionarFuncionarioServlet extends HttpServlet {
+
+    // Regex para validação de CPF e Telefone
+    private static final Pattern cpfPattern = Pattern.compile("^\\d{3}\\.?\\d{3}\\.?\\d{3}-?\\d{2}$");
+    private static final Pattern telefonePattern = Pattern.compile("^(\\(?\\d{2}\\)?\\s?)?\\d{4,5}-?\\d{4}$");
+
+    private boolean validarCpf(String cpf) {
+        if (cpf == null || cpf.trim().isEmpty()) {
+            return true; // CPF é opcional
+        }
+        return cpfPattern.matcher(cpf.trim()).matches();
+    }
+
+    private boolean validarTelefone(String telefone) {
+        if (telefone == null || telefone.trim().isEmpty()) {
+            return true; // Telefone é opcional
+        }
+        return telefonePattern.matcher(telefone.trim()).matches();
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -53,6 +72,18 @@ public class AdicionarFuncionarioServlet extends HttpServlet {
                 request.setAttribute("error", "Nome, cargo e email são obrigatórios!");
                 request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
                 return;
+            }
+
+            // Validar CPF com Regex
+            if (!validarCpf(cpf)) {
+                request.setAttribute("erro", "CPF inválido! (formato esperado: xxxxxxxxxxx ou xxx.xxx.xxx-xx)");
+                request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
+            }
+
+            // Validar telefone com Regex
+            if (!validarTelefone(telefone_pessoal)) {
+                request.setAttribute("erro", "Telefone inválido! (formato esperado: (xx) xxxxx-xxxx com ou sem DDD ou xxxxxxxxxxx)");
+                request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
             }
 
             // Converter data de contratação
