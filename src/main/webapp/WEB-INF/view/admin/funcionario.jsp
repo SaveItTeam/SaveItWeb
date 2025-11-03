@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.com.example.saveit.saveitweb.model.funcionario.Funcionario" %>
-<%@ page import="br.com.example.saveit.saveitweb.model.imagem_funcionario.ImagemDAO" %>
+<%@ page import="br.com.example.saveit.saveitweb.model.imagem.ImagemDAO" %>
 
 <!DOCTYPE html>
 <html lang="en">
