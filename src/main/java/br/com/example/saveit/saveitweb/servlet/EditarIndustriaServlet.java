@@ -15,6 +15,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
+import java.util.List;
 
 @WebServlet("/EditarIndustria")
 @MultipartConfig
@@ -29,117 +30,118 @@ public class EditarIndustriaServlet extends HttpServlet {
         ImagemDAO imagemDAO = new ImagemDAO();
         ClienteDAO clienteDAO = new ClienteDAO();
 
-
         if (admin != null) {
-                try {
+            try {
+                // Converter String para Integer
+                String endereco_id_string = (String) sessao.getAttribute("endereco_id");
+                int endereco_id = Integer.parseInt(endereco_id_string);
 
-                    String endereco_id_string = (String) sessao.getAttribute("endereco_id");//Colocando o id do endereco em uma variavel
+                // Converter id_estabelecimento
+                int id_estabelecimento_str = (int) sessao.getAttribute("id_estabelecimento");
+                int id_industria = Integer.parseInt(String.valueOf(id_estabelecimento_str));
 
-                    int endereco_id = Integer.parseInt(endereco_id_string);
+                // Atributos novos
+                String nomeNovo = request.getParameter("inputNome");
+                String estadoNovo = request.getParameter("inputEstado");
+                String cidadeNova = request.getParameter("inputCidade");
+                String cepNovo = request.getParameter("inputCep");
+                String bairroNovo = request.getParameter("inputBairro");
+                String contatoNovo = request.getParameter("inputContato");
+                String operacaoNova = request.getParameter("inputOperacao");
+                String ruaNova = request.getParameter("inputRua");
+                String complementoNovo = request.getParameter("inputComplemento");
+                String categoriaNova = request.getParameter("categoria-radio");
 
-                    String id_cliente_String = (String) sessao.getAttribute("id_cliente");
+                // Atributos antigos
+                String nome = (String) sessao.getAttribute("nome");
+                String estado = (String) sessao.getAttribute("estado");
+                String cidade = (String) sessao.getAttribute("cidade");
+                String cep = (String) sessao.getAttribute("cep");
+                String bairro = (String) sessao.getAttribute("bairro");
+                String contato = (String) sessao.getAttribute("contato");
+                String operacao = (String) sessao.getAttribute("tipo_venda");
+                String rua = (String) sessao.getAttribute("rua");
+                String complemento = (String) sessao.getAttribute("complemento");
+                String categoria = (String) sessao.getAttribute("categoria");
+
+                // Mudando a foto
+                Part filePart = request.getPart("arquivo");
+                if (filePart != null && filePart.getSize() > 0) {
+                    InputStream fileContent = filePart.getInputStream();
+                    byte[] imagemBytes = IOUtils.toByteArray(fileContent);
+
+                    // Se for uma indústria, use salvarImagemEmpresa com o id do cliente
                     String cnpj = (String) sessao.getAttribute("cnpj");
-                    int id_cliente = clienteDAO.buscarPorCNPJ(cnpj).getId();
+                    Cliente clientes = clienteDAO.buscarPorCNPJ(cnpj);
+                    int idCliente = clientes.getId();
+                    imagemDAO.salvarImagemEmpresa(imagemBytes, idCliente);
 
-
-//                    Atributos novos
-                    int id_industria = (int) sessao.getAttribute("id_estabelecimento");
-                    String nomeNovo = request.getParameter("inputNome");
-                    String estadoNovo = request.getParameter("inputEstado");
-                    String cidadeNova = request.getParameter("inputCidade");
-                    String cepNovo = request.getParameter("inputCep");
-                    String bairroNovo = request.getParameter("inputBairro");
-                    String contatoNovo = request.getParameter("inputContato");
-                    String operacaoNova = request.getParameter("inputOperacao");
-                    String ruaNova = request.getParameter("inputRua");
-                    String complementoNovo = request.getParameter("inputComplemento");
-                    String categoriaNova = request.getParameter("categoria-radio");
-
-
-
-//                    Atributos antigos
-                    String nome = (String) sessao.getAttribute("nome");
-                    String estado = (String) sessao.getAttribute("estado");
-                    String cidade = (String) sessao.getAttribute("cidade");
-                    String cep = (String) sessao.getAttribute("cep");
-                    String bairro = (String) sessao.getAttribute("bairro");
-                    String contato = (String) sessao.getAttribute("contato");
-                    String operacao = (String) sessao.getAttribute("tipo_venda");
-                    String rua = (String) sessao.getAttribute("rua");
-                    String complemento = (String) sessao.getAttribute("complemento");
-                    String categoria = (String) sessao.getAttribute("categoria");
-
-//                    Mudando a foto
-                    Part filePart = request.getPart("arquivo");
-                    if (filePart != null && filePart.getSize() > 0) {
-                        InputStream fileContent = filePart.getInputStream();
-                        byte[] imagemBytes = IOUtils.toByteArray(fileContent);
-
-                        // Atualizar imagem no banco de dados
-                        imagemDAO.salvarImagemFuncionario(imagemBytes, id_industria);
-
-                        // Atualizar imagem na sessão (convertendo para Base64 para exibição)
-                        String imagemBytesString = Base64.getEncoder().encodeToString(imagemBytes);
-                        // Atualizar ambas as chaves na sessão
-                        sessao.setAttribute("img", "data:image/jpeg;base64," + imagemBytesString);
-                        sessao.setAttribute("img_funcionario", "data:image/jpeg;base64," + imagemBytesString);
-                    }
-
-    //            Telefone
-                    if (contatoNovo != null && !contatoNovo.trim().isEmpty() && !contatoNovo.equals(contato)){
-                        telefoneDAO.alterarTelefone(contatoNovo, id_cliente);
-                        sessao.setAttribute("contato", contatoNovo);
-                    }
-
-//                    Industria
-                    if (categoriaNova != null && !categoriaNova.trim().isEmpty() && !categoriaNova.equals(categoria)){
-                        industriaDAO.alterarVenda(categoriaNova, (int) sessao.getAttribute("id_estabelecimento"));
-                        sessao.setAttribute("categoria", categoriaNova);
-                    }
-
-//                    Endereco
-                    if (estadoNovo != null && !estadoNovo.trim().isEmpty() && !estado.equals(estado)) {
-                        enderecoDAO.alterarEstado(request.getParameter("selectEstado"), endereco_id);
-                        sessao.setAttribute("estado", estadoNovo);
-                    }
-                    if (cidadeNova != null && !cidadeNova.trim().isEmpty() && !cidadeNova.equals(cidade)){
-                        enderecoDAO.alterarCidade(request.getParameter("inputCidade"), endereco_id);
-                        sessao.setAttribute("cidade", cidadeNova);
-                    }
-                    if (cepNovo != null && !cepNovo.trim().isEmpty() && !cepNovo.equals(cep)){
-                        enderecoDAO.alterarCep(request.getParameter("inputCep"), endereco_id);
-                        sessao.setAttribute("cep", cepNovo);
-                    }
-                    if (bairroNovo != null && !bairroNovo.trim().isEmpty() && !bairro.equals(bairro)){
-                        enderecoDAO.alterarBairro(request.getParameter("inputBairro"), endereco_id);
-                        sessao.setAttribute("bairro", bairroNovo);
-                    }
-                    if (ruaNova != null && !ruaNova.trim().isEmpty() && !ruaNova.equals(rua)) {
-                        enderecoDAO.alterarRua(request.getParameter("inputRua"), endereco_id);
-                        sessao.setAttribute("rua", ruaNova);
-                    }
-                    if (complementoNovo != null && !complementoNovo.trim().isEmpty() && !complementoNovo.equals(complemento)) {
-                        enderecoDAO.alterarComplemento(request.getParameter("inputComplemento"), endereco_id);
-                        sessao.setAttribute("complemento", complementoNovo);
-                    }
-
-
-//                    Cliente
-                    Cliente cliente = clienteDAO.buscarPorCNPJ(cnpj);
-                    if (nomeNovo != null && !nomeNovo.trim().isEmpty() && !nomeNovo.equals(nome)){
-                        clienteDAO.alterarNome(nomeNovo, cliente.getId());
-                        sessao.setAttribute("nome", nomeNovo);
-                    }
-                    if (operacaoNova != null && !operacaoNova.trim().isEmpty() && !operacaoNova.equals(operacao)) {
-                        clienteDAO.alterarTipoVenda(operacaoNova, cliente.getId());
-                        sessao.setAttribute("tipo_venda", operacaoNova);
-                    }
-                    request.getRequestDispatcher("/WEB-INF/view/admin/industria.jsp").forward(request, response);
-                } catch (NumberFormatException  nfe) {
-                    nfe.printStackTrace();
-            } catch (NullPointerException npe){
-                    npe.printStackTrace();
+                    // Atualizar imagem na sessão
+                    String imagemBytesString = Base64.getEncoder().encodeToString(imagemBytes);
+                    sessao.setAttribute("img", "data:image/jpeg;base64," + imagemBytesString);
+                    sessao.setAttribute("img_funcionario", "data:image/jpeg;base64," + imagemBytesString);
+                    sessao.setAttribute("img_empresa", "data:image/jpeg;base64," + imagemBytesString);
                 }
+
+                // Telefone
+                if (contatoNovo != null && !contatoNovo.trim().isEmpty() && !contatoNovo.equals(contato)) {
+                    // CORREÇÃO: Converter id da sessão corretamente
+                    String id_str = (String) sessao.getAttribute("id");
+                    int id = Integer.parseInt(id_str);
+                    telefoneDAO.alterarTelefone(contatoNovo, id);
+                    sessao.setAttribute("contato", contatoNovo);
+                }
+
+                // Industria
+                if (categoriaNova != null && !categoriaNova.trim().isEmpty() && !categoriaNova.equals(categoria)) {
+                    industriaDAO.alterarVenda(categoriaNova, id_industria);
+                    sessao.setAttribute("categoria", categoriaNova);
+                }
+
+                // Endereco
+                if (estadoNovo != null && !estadoNovo.trim().isEmpty() && !estado.equals(estado)) {
+                    enderecoDAO.alterarEstado(estadoNovo, endereco_id);
+                    sessao.setAttribute("estado", estadoNovo);
+                }
+                if (cidadeNova != null && !cidadeNova.trim().isEmpty() && !cidadeNova.equals(cidade)) {
+                    enderecoDAO.alterarCidade(cidadeNova, endereco_id);
+                    sessao.setAttribute("cidade", cidadeNova);
+                }
+                if (cepNovo != null && !cepNovo.trim().isEmpty() && !cepNovo.equals(cep)) {
+                    enderecoDAO.alterarCep(cepNovo, endereco_id);
+                    sessao.setAttribute("cep", cepNovo);
+                }
+                if (bairroNovo != null && !bairroNovo.trim().isEmpty() && !bairro.equals(bairro)) {
+                    enderecoDAO.alterarBairro(bairroNovo, endereco_id);
+                    sessao.setAttribute("bairro", bairroNovo);
+                }
+                if (ruaNova != null && !ruaNova.trim().isEmpty() && !ruaNova.equals(rua)) {
+                    enderecoDAO.alterarRua(ruaNova, endereco_id);
+                    sessao.setAttribute("rua", ruaNova);
+                }
+                if (complementoNovo != null && !complementoNovo.trim().isEmpty() && !complementoNovo.equals(complemento)) {
+                    enderecoDAO.alterarComplemento(complementoNovo, endereco_id);
+                    sessao.setAttribute("complemento", complementoNovo);
+                }
+
+                // Cliente
+                Cliente clientes = clienteDAO.buscarPorID(id_industria);
+                if (nomeNovo != null && !nomeNovo.trim().isEmpty() && !nomeNovo.equals(nome)) {
+                    clienteDAO.alterarNome(nomeNovo, clientes.getId());
+                    sessao.setAttribute("nome", nomeNovo);
+                    sessao.setAttribute("nome_industria", nomeNovo);
+                }
+                if (operacaoNova != null && !operacaoNova.trim().isEmpty() && !operacaoNova.equals(operacao)) {
+                    clienteDAO.alterarTipoVenda(operacaoNova, clientes.getId());
+                    sessao.setAttribute("tipo_venda", operacaoNova);
+                }
+            } finally {
+
+            }
+
+                request.getRequestDispatcher("/WEB-INF/view/admin/industria.jsp").forward(request, response);
+
+
         }
     }
 }
