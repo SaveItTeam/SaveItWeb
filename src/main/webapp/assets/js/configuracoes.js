@@ -6,13 +6,13 @@ const imgPreview = document.querySelector("#imgPreviewUser");
 let valoresIniciais = [];
 let editando = false;
 
-// INICIALIZAÇÃO
+// inicializacao
 document.addEventListener('DOMContentLoaded', function() {
     inicializarToggleSenha();
     inicializarPreviewImagem();
 });
 
-// BOTÃO EDITAR
+// botao editar
 botaoEditar.addEventListener("click", () => {
     const inputs = document.querySelectorAll("input");
 
@@ -37,7 +37,6 @@ botaoEditar.addEventListener("click", () => {
         const senhasExtra = document.querySelector("#senhas-extra");
         if (senhasExtra) {
             senhasExtra.style.display = "flex";
-            // Inicializa os botões de toggle senha quando os campos aparecem
             setTimeout(() => {
                 inicializarToggleSenha();
             }, 0);
@@ -59,7 +58,6 @@ botaoEditar.addEventListener("click", () => {
             e.style.paddingLeft = "0.5rem";
         });
 
-        // Mostrar/ocultar botões
         botaoSalvar.style.display = "inline-block";
         botaoCancelar.style.display = "inline-block";
         botaoEditar.style.display = "none";
@@ -76,7 +74,7 @@ botaoEditar.addEventListener("click", () => {
     }
 });
 
-// CANCELAR EDIÇÃO
+// cancelar edicao
 botaoCancelar.addEventListener("click", cancelarEdicao);
 
 function cancelarEdicao() {
@@ -117,18 +115,16 @@ function cancelarEdicao() {
         e.style.paddingLeft = 0;
     });
 
-    // Restaurar visibilidade dos botões
     botaoSalvar.style.display = "none";
     botaoCancelar.style.display = "none";
     botaoEditar.style.display = "inline-block";
 
-    // Esconder label da imagem
     const labelInputFile = document.querySelector("label[for='inputFile']");
     if (labelInputFile) {
         labelInputFile.style.display = "none";
     }
 
-    // Limpar input file
+
     const inputFile = document.querySelector("#inputFile");
     if (inputFile) {
         inputFile.value = "";
@@ -138,10 +134,9 @@ function cancelarEdicao() {
     editando = false;
 }
 
-// FUNCIONALIDADE DE MOSTRAR/OCULTAR SENHA
+// mostrar/ocultar senha
 function inicializarToggleSenha() {
     document.querySelectorAll(".toggle-password").forEach((button) => {
-        // Remove listeners anteriores se existirem
         const newButton = button.cloneNode(true);
         button.parentNode.replaceChild(newButton, button);
 
@@ -165,7 +160,7 @@ function inicializarToggleSenha() {
     });
 }
 
-// PREVIEW DA IMAGEM
+// preview imagem
 function inicializarPreviewImagem() {
     const inputFile = document.querySelector("#inputFile");
 
@@ -197,7 +192,7 @@ function inicializarPreviewImagem() {
     }
 }
 
-// VALIDAÇÃO DO FORMULÁRIO
+// validacao funcionario
 document.querySelector('form')?.addEventListener('submit', function(e) {
     if (!editando) {
         e.preventDefault();
