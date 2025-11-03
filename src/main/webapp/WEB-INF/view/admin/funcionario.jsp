@@ -153,7 +153,6 @@
                             name="inputFile"
                             id="inputFile"
                             accept=".jpg, .png, .jpeg"
-                            required
                     />
                 </label>
             </div>
@@ -278,7 +277,7 @@
                             name="inputFile2"
                             id="inputFile2"
                             accept="image/*"
-                            required
+
                     />
                 </label>
             </div>
