@@ -1,4 +1,4 @@
-package br.com.example.saveit.saveitweb.model.imagem_funcionario;
+package br.com.example.saveit.saveitweb.model.imagem;
 
 import br.com.example.saveit.saveitweb.dao.Conexao;
 

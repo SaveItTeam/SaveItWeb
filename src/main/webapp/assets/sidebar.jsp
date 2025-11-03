@@ -17,7 +17,7 @@
 
     <ul>
             <li id="essentia">
-                <a href="/SaveitWeb/index.html">
+                <a href="${pageContext.request.contextPath}/index.html">
                     <img src="${pageContext.request.contextPath}/assets/images/essentia_logo_verde.svg" alt="" />
                 </a>
             </li>
@@ -25,7 +25,7 @@
                 <%--------------------------------      Inicio     ----------------------------------------------------%>
 
             <div>
-                <form class="acao-sidebar" action="adminServlet" method="post">
+                <form class="acao-sidebar" action="adminServlet" method="post" id="inicioSidebar">
                     <button type="submit"><i class="ri-function-fill"></i></button>
                     <p class="sidenav-p">Início</p>
                 </form>
@@ -67,7 +67,7 @@
                         />
                     </svg>
                     </button>
-                    <p class="sidenav-p">Indústria</p>
+                    <p class="sidenav-p">Negócio</p>
                 </form>
 
                 <%--------------------------------      Pagamento     -------------------------------------------------%>

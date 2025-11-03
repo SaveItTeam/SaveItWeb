@@ -2,56 +2,58 @@ const documentStyle = document.documentElement.style;
 // MANIPULACAO DOS FORMULARIOS
 const main = document.querySelector("main");
 const formAdicionarFuncionario = document.querySelector(
-  ".adicionar-funcionario"
+    ".adicionar-funcionario"
 );
 
 document
-  .querySelector("#botao-adicionar-funcionario")
-  .addEventListener("click", () => {
-    formAdicionarFuncionario.style.display = "block";
-  });
+    .querySelector("#botao-adicionar-funcionario")
+    .addEventListener("click", () => {
+        formAdicionarFuncionario.style.display = "block";
+    });
 
 document.querySelectorAll(".fechar-adicionar-funcionario").forEach((e) =>
-  e.addEventListener("click", () => {
-    formAdicionarFuncionario.style.display = "none";
-  })
+    e.addEventListener("click", () => {
+        formAdicionarFuncionario.style.display = "none";
+    })
 );
 
 // editar funcionario
 document.querySelectorAll("tbody tr").forEach(tr => {
-  tr.addEventListener("click", (e) => {
-    if (e.target.closest('.botao-deletar-funcionario')) {
-      return;
-    }
-    
-    const funcionarioData = JSON.parse(tr.getAttribute('data-funcionario'));
-    
-    // preenche o form com os dados para edicao
-    document.querySelector("#inputNome2").value = funcionarioData.nome;
-    document.querySelector("#inputCargo2").value = funcionarioData.cargo;
-    document.querySelector("#inputId2").value = funcionarioData.id;
-    document.querySelector("#inputEmail2").value = funcionarioData.email || "";
-    document.querySelector("#inputTel2").value = funcionarioData.telefone || "";
-    
-    document.querySelector(".editar-funcionario").style.display = "block";
-  });
+    tr.addEventListener("click", (e) => {
+        if (e.target.closest('.botao-deletar-funcionario')) {
+            return;
+        }
+
+        const funcionarioData = JSON.parse(tr.getAttribute('data-funcionario'));
+
+        // preenche o form com os dados para edicao
+        document.querySelector("#inputNome2").value = funcionarioData.nome;
+        document.querySelector("#inputCargo2").value = funcionarioData.cargo;
+        document.querySelector("#inputId2").value = funcionarioData.id;
+        document.querySelector("#inputEmail2").value = funcionarioData.email || "";
+        document.querySelector("#inputTel2").value = funcionarioData.telefone || "";
+
+        document.querySelector("#preview2").src = funcionarioData.imagem;
+
+        document.querySelector(".editar-funcionario").style.display = "block";
+    });
 });
 
 document.querySelectorAll(".fechar-editar-funcionario").forEach((e) =>
-  e.addEventListener("click", () => {
-    document.querySelector(".editar-funcionario").style.display = "none";
-  })
+    e.addEventListener("click", () => {
+        document.querySelector(".editar-funcionario").style.display = "none";
+    })
 );
 
 function mudarPreview(inputId, imgId) {
-  const input = document.querySelector(`#${inputId}`);
-  const img = document.querySelector(`#${imgId}`);
+    const input = document.querySelector(`#${inputId}`);
+    const img = document.querySelector(`#${imgId}`);
 
-  const arquivo = input.files[0];
-  if (arquivo) {
-    const url = URL.createObjectURL(arquivo);
-    img.src = url;
-  }
+    const arquivo = input.files[0];
+    if (arquivo) {
+        const url = URL.createObjectURL(arquivo);
+        img.src = url;
+    }
 }
 
 const input = document.querySelector("#inputFile");
@@ -62,20 +64,20 @@ input2.addEventListener("change", () => mudarPreview("inputFile2", "preview2"));
 
 // deletar funcionario
 document.querySelectorAll(".botao-deletar-funcionario").forEach((botao) => {
-  botao.addEventListener("click", (event) => {
-    event.stopPropagation();
-    
-    // obtem o tr do botao
-    const tr = event.target.closest('tr');
-    const funcionarioData = JSON.parse(tr.getAttribute('data-funcionario'));
-    // adiciona o valor do id no input pro servlet receber
-    document.querySelector("#idFuncionarioDeletar").value = funcionarioData.id;
-    document.querySelector(".deletar-funcionario").style.display = "flex";
-  });
+    botao.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        // obtem o tr do botao
+        const tr = event.target.closest('tr');
+        const funcionarioData = JSON.parse(tr.getAttribute('data-funcionario'));
+        // adiciona o valor do id no input pro servlet receber
+        document.querySelector("#idFuncionarioDeletar").value = funcionarioData.id;
+        document.querySelector(".deletar-funcionario").style.display = "flex";
+    });
 });
 
 document
-  .querySelector(".fechar-deletar-funcionario")
-  .addEventListener("click", () => {
-    document.querySelector(".deletar-funcionario").style.display = "none";
-  });
+    .querySelector(".fechar-deletar-funcionario")
+    .addEventListener("click", () => {
+        document.querySelector(".deletar-funcionario").style.display = "none";
+    });

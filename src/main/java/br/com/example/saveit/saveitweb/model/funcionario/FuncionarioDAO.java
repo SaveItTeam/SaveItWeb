@@ -7,47 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioDAO {
-    //    Insert
-    public boolean inserirFuncionario(Funcionario funcionario) {
-        Conexao conexao = new Conexao();
-        Connection conn = Conexao.conectar();//Abrindo conexão com o banco de dados
-//        Comando SQL
-        String sql = "Insert into funcionario (nome, cpf, rg, genero, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal, telefone_trabalho, experiencia, id_empresa, id_industria, is_admin) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-        try {
-            PreparedStatement pstmt = conn.prepareStatement(sql);//Iniciando o PreparedStatement
-            pstmt.setString(1, funcionario.getNome());
-            pstmt.setString(2, funcionario.getCpf());
-            pstmt.setString(3, funcionario.getRg());
-            pstmt.setString(4, String.valueOf(funcionario.getGenero()));
-            pstmt.setDate(5, funcionario.getDt_nascimento());
-            pstmt.setString(6, funcionario.getEmail());
-            pstmt.setString(7, funcionario.getSenha());
-            pstmt.setString(8, funcionario.getCargo());
-            pstmt.setDate(9, funcionario.getDt_contratacao());
-            pstmt.setString(10, funcionario.getTelefone_pessoal());
-            pstmt.setString(11, funcionario.getTelefone_trabalho());
-            pstmt.setString(12, funcionario.getExperiencia());
-            pstmt.setInt(13, funcionario.getId_empresa());
-            pstmt.setInt(14, funcionario.getId_industria());
-            pstmt.setBoolean(15, funcionario.getIs_admin());
-
-            int validar = pstmt.executeUpdate();
-
-            pstmt.close();
-
-            return validar > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        } finally {
-            conexao.desconectar(conn);//Desconectando do banco de dados
-        }
-    }
-
-
-
     //    Updates
     public boolean alterarNome(String novoNome, int id) {
         Conexao conexao = new Conexao();
@@ -206,6 +165,159 @@ public class FuncionarioDAO {
         return false;
     }
 
+    // Método para inserir novo funcionário - INDUSTRIA (CORRIGIDO)
+    public boolean inserirFuncionarioIndustria(Funcionario funcionario) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+
+        try {
+            String sql = "INSERT INTO funcionario(nome, cpf, rg, genero, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal, telefone_trabalho, experiencia, id_industria, id_empresa, is_admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, funcionario.getNome());
+            pstmt.setString(2, funcionario.getCpf());
+            pstmt.setString(3, funcionario.getRg());
+            String genero = String.valueOf(funcionario.getGenero());
+            pstmt.setString(4, genero);
+            pstmt.setDate(5, funcionario.getDt_nascimento());
+            pstmt.setString(6, funcionario.getEmail());
+            pstmt.setString(7, funcionario.getSenha());
+            pstmt.setString(8, funcionario.getCargo());
+            pstmt.setDate(9, funcionario.getDt_contratacao());
+            pstmt.setString(10, funcionario.getTelefone_pessoal());
+            pstmt.setString(11, funcionario.getTelefone_trabalho());
+            pstmt.setNull(12, Types.VARCHAR);
+            pstmt.setInt(13, funcionario.getId_industria());
+            pstmt.setNull(14, Types.INTEGER);
+            pstmt.setBoolean(15, funcionario.getIs_admin());
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
+    // Método para inserir novo funcionário - EMPRESA (CORRIGIDO)
+    public boolean inserirFuncionarioEmpresa(Funcionario funcionario) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+
+        try {
+            String sql = "INSERT INTO funcionario(nome, cpf, rg, genero, dt_nascimento, email, senha, cargo, dt_contratacao, telefone_pessoal, telefone_trabalho, experiencia, id_industria, id_empresa, is_admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, funcionario.getNome());
+            pstmt.setString(2, funcionario.getCpf());
+            pstmt.setString(3, funcionario.getRg());
+            String genero = String.valueOf(funcionario.getGenero());
+            pstmt.setString(4, genero);
+            pstmt.setDate(5, funcionario.getDt_nascimento());
+            pstmt.setString(6, funcionario.getEmail());
+            pstmt.setString(7, funcionario.getSenha());
+            pstmt.setString(8, funcionario.getCargo());
+            pstmt.setDate(9, funcionario.getDt_contratacao());
+            pstmt.setString(10, funcionario.getTelefone_pessoal());
+            pstmt.setString(11, funcionario.getTelefone_trabalho());
+            pstmt.setNull(12, Types.VARCHAR);
+            pstmt.setNull(13, Types.INTEGER);
+            pstmt.setInt(14, funcionario.getId_empresa());
+            pstmt.setBoolean(15, funcionario.getIs_admin());
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            conexao.desconectar(conn);
+        }
+    }
+
+    // Método para buscar funcionário por email
+    public List<Funcionario> buscarPorEmail(String email) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM funcionario WHERE email = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                Funcionario funcionario = new Funcionario(
+                        rset.getInt("id"),
+                        rset.getString("nome"),
+                        rset.getString("email"),
+                        rset.getString("senha"),
+                        rset.getString("telefone_pessoal"),
+                        rset.getString("telefone_trabalho"),
+                        rset.getString("cargo"),
+                        rset.getDate("dt_contratacao"),
+                        rset.getString("cpf"),
+                        rset.getString("rg"),
+                        rset.getInt("id_industria"),
+                        rset.getBoolean("is_admin"),
+                        rset.getString("genero").charAt(0)
+                );
+                funcionarios.add(funcionario);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);
+        }
+
+        return funcionarios;
+    }
+
+    // Método para buscar todos os funcionários por indústria
+    public List<Funcionario> buscarTodosPorIndustria(int idIndustria) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM funcionario WHERE id_industria = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, idIndustria);
+            ResultSet rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                Funcionario funcionario = new Funcionario(
+                        rset.getInt("id"),
+                        rset.getString("nome"),
+                        rset.getString("email"),
+                        rset.getString("senha"),
+                        rset.getString("telefone_pessoal"),
+                        rset.getString("telefone_trabalho"),
+                        rset.getString("cargo"),
+                        rset.getDate("dt_contratacao"),
+                        rset.getString("cpf"),
+                        rset.getString("rg"),
+                        rset.getInt("id_industria"),
+                        rset.getBoolean("is_admin"),
+                        rset.getString("genero").charAt(0)
+                );
+                funcionarios.add(funcionario);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);
+        }
+
+        return funcionarios;
+    }
 
 
 

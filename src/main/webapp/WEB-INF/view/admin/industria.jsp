@@ -70,22 +70,23 @@
           </div>
         </div>
 
-        <form action="" enctype="multipart/form-data" method="post">
+        <form action="EditarIndustria" enctype="multipart/form-data" method="post">
           <div>
             <div>
               <label for="inputNome"
                 >Nome do Negócio
-                <input value=" "
+                <input value="<%=session.getAttribute("nome_industria")%>"
                   type="text"
                   name="inputNome"
                   id="inputNome"
                   placeholder="Digite o nome do negócio"
-                  disabled
+                       required
+                  
                 />
               </label>
               <label for="selectEstado"
                 >Estado
-                <select name="selectEstado" id="selectEstado" disabled>
+                <select name="selectEstado" id="selectEstado" disabled required data-estado="GO">
                   <option value="AC">AC</option>
                   <option value="AL">AL</option>
                   <option value="AM">AM</option>
@@ -118,22 +119,24 @@
 
               <label for="inputCidade"
                 >Cidade
-                <input value=" "
+                <input value="<%=session.getAttribute("cidade")%>"
                   type="text"
                   name="inputCidade"
                   id="inputCidade"
                   placeholder="Digite a cidade"
                   disabled
+                       required
                 />
               </label>
               <label for="inputCep"
                 >CEP
-                <input value=" "
+                <input value="<%=session.getAttribute("cep")%>"
                   type="text"
                   name="inputCep"
                   id="inputCep"
                   placeholder="Digite o CEP"
                   disabled
+                       required
                 />
               </label>
               <label for="inputBairro"
@@ -144,6 +147,7 @@
                   id="inputBairro"
                   placeholder="Digite o bairro"
                   disabled
+                       required
                 />
               </label>
             </div>
@@ -166,40 +170,43 @@
 
               <label for="inputContato"
                 >Contato
-                <input value=" "
+                  <input value="<%=session.getAttribute("contato")%>"
                   type="tel"
                   name="inputContato"
                   id="inputContato"
                   placeholder="Digite o telefone"
                   disabled
+                         required
                 />
               </label>
 
               <label for="inputOperacao"
                 >Tipo de Operação
-                <input value=" "
+                  <input value="<%=session.getAttribute("tipo_venda")%>"
                   type="text"
                   name="inputOperacao"
                   id="inputOperacao"
                   placeholder="Digite o tipo de operação"
                   disabled
+                         required
                 />
               </label>
 
               <label for="inputRua"
                 >Rua
-                <input value=" "
+                  <input value="<%=session.getAttribute("rua")%>"
                   type="text"
                   name="inputRua"
                   id="inputRua"
                   placeholder="Digite a rua"
                   disabled
+                         required
                 />
               </label>
 
               <label for="inputComplemento"
                 >Complemento (opcional)
-                <input value=" "
+                  <input value="<%=session.getAttribute("complemento")%>"
                   type="text"
                   name="inputComplemento"
                   id="inputComplemento"
@@ -210,7 +217,7 @@
 
               <label for="categoriaProdutos">
                 Categoria de Produtos
-                <div id="categorias-container" data-radio-ativado="Cereais">
+                <div id="categorias-container" data-radio-ativado="<%=session.getAttribute("categoria")%>>">
                   <label class="radio-label">
                     <input
                       type="radio"
@@ -280,7 +287,7 @@
           </div>
 
           <div id="acoes-form">
-            <button type="submit" id="btnSalvar" disabled>
+            <button type="submit" id="btnSalvar">
               Salvar Alterações
             </button>
             <button type="button" id="btnCancelar">Cancelar</button>

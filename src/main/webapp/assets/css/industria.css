@@ -42,6 +42,10 @@
   --cor-texto-input: #cccccc;
 }
 
+#empresa svg {
+  color: #6b8e4e;
+}
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;

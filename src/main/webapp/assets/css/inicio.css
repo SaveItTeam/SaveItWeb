@@ -35,6 +35,11 @@ main {
   min-height: 100vh;
   height: auto;
 }
+
+#inicioSidebar i {
+  color: #6b8e4e;
+}
+
 #inicio {
   width: calc(100% - 8rem);
   margin-left: 8rem;
