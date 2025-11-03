@@ -90,27 +90,27 @@ public class EditarIndustriaServlet extends HttpServlet {
 
 //                    Endereco
                     if (estadoNovo != null && !estadoNovo.trim().isEmpty() && !estado.equals(estado)) {
-                        enderecoDAO.alterar("cep_estado", request.getParameter("selectEstado"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarEstado(request.getParameter("selectEstado"), (int) sessao.getAttribute("endereco_id"));
                         sessao.setAttribute("estado", estadoNovo);
                     }
                     if (cidadeNova != null && !cidadeNova.trim().isEmpty() && !cidadeNova.equals(cidade)){
-                        enderecoDAO.alterar("cep_cidade", request.getParameter("inputCidade"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarCidade(request.getParameter("inputCidade"), (int) sessao.getAttribute("endereco_id"));
                         sessao.setAttribute("cidade", cidadeNova);
                     }
                     if (cepNovo != null && !cepNovo.trim().isEmpty() && !cepNovo.equals(cep)){
-                        enderecoDAO.alterar("cep", request.getParameter("inputCep"), "id", (String) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarCep(request.getParameter("inputCep"), (int) sessao.getAttribute("endereco_id"));
                         sessao.setAttribute("cep", cepNovo);
                     }
                     if (bairroNovo != null && !bairroNovo.trim().isEmpty() && !bairro.equals(bairro)){
-                        enderecoDAO.alterar("cep_bairro", request.getParameter("inputBairro"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarBairro(request.getParameter("inputBairro"), (int) sessao.getAttribute("endereco_id"));
                         sessao.setAttribute("bairro", bairroNovo);
                     }
                     if (ruaNova != null && !ruaNova.trim().isEmpty() && !ruaNova.equals(rua)) {
-                        enderecoDAO.alterar("cep_rua", request.getParameter("inputRua"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarRua(request.getParameter("inputRua"), (int) sessao.getAttribute("endereco_id"));
                         sessao.setAttribute("rua", ruaNova);
                     }
                     if (complementoNovo != null && !complementoNovo.trim().isEmpty() && !complementoNovo.equals(complemento)) {
-                        enderecoDAO.alterar("cep_complemento", request.getParameter("inputComplemento"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarComplemento(request.getParameter("inputComplemento"), (int) sessao.getAttribute("endereco_id"));
                         sessao.setAttribute("complemento", complementoNovo);
                     }
 
@@ -118,11 +118,11 @@ public class EditarIndustriaServlet extends HttpServlet {
 //                    Cliente
                     List<Cliente> clientes = clienteDAO.buscar("id_industria", id_industria);
                     if (nomeNovo != null && !nomeNovo.trim().isEmpty() && !nomeNovo.equals(nome)){
-                        clienteDAO.alterarNome(nomeNovo, clientes.getFirst().getId());
+                        clienteDAO.alterarNome(nomeNovo, clientes.get(0).getId());
                         sessao.setAttribute("nome", nomeNovo);
                     }
                     if (operacaoNova != null && !operacaoNova.trim().isEmpty() && !operacaoNova.equals(operacao)) {
-                        clienteDAO.alterarTipoVenda(operacaoNova, clientes.getFirst().getId());
+                        clienteDAO.alterarTipoVenda(operacaoNova, clientes.get(0).getId());
                         sessao.setAttribute("tipo_venda", operacaoNova);
                     }
                     request.getRequestDispatcher("/WEB-INF/view/admin/industria.jsp").forward(request, response);
