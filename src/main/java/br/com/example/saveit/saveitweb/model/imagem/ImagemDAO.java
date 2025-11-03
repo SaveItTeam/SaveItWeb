@@ -170,6 +170,27 @@ public class ImagemDAO {
         return false;
     }
 
+    public boolean excluirPorId(int id){
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
+        try {
+            String query = "delete from imagem where id_funcionario = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setInt(1, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+            if (validar) {
+                pstmt.close();
+                return validar;//True
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
 
     //    Select
     public List<Imagem> buscar() {
