@@ -20,7 +20,7 @@ body {
 
 }
 
-@media(min-width: 801px) {
+@media(min-width: 1024px) {
   .subtitulo {
     width: 60rem;
     position: relative;
@@ -508,7 +508,7 @@ body {
       text-align: left;
       display: flex;
       align-items: center;
-      margin-left: 75rem;
+      margin-left: 70rem;
       margin-top: -3rem;
       text-align: center;
       margin-bottom: 6rem;
@@ -903,7 +903,7 @@ body {
       margin-top: -1rem;
       text-align: center;
       margin-bottom: 6rem;
-      margin-left: 24rem;
+      margin-left: 15rem;
 
     }
 
@@ -1408,7 +1408,7 @@ body {
       margin-top: -1rem;
       text-align: center;
       margin-bottom: 6rem;
-      margin-left: 18.5rem;
+      margin-left: 13rem;
 
     }
 

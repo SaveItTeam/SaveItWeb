@@ -153,6 +153,7 @@
                             name="inputFile"
                             id="inputFile"
                             accept=".jpg, .png, .jpeg"
+                            required
                     />
                 </label>
             </div>
@@ -166,6 +167,7 @@
                         placeholder="Digite o nome"
                         name="inputNome"
                         id="inputNome"
+                        required
                 />
             </label>
             <label for=""
@@ -175,6 +177,7 @@
                         placeholder="Digite o cargo"
                         name="inputCargo"
                         id="inputCargo"
+                        required
                 />
             </label>
             <label for="inputSelect"
@@ -192,6 +195,7 @@
                         placeholder="Digite o email"
                         name="inputEmail"
                         id="inputEmail"
+                        required
                 />
             </label>
             <label for=""
@@ -201,6 +205,7 @@
                         placeholder="Digite o telefone"
                         name="inputTel"
                         id="inputTel"
+                        required
                 />
             </label>
             <label for=""
@@ -210,6 +215,7 @@
                         placeholder="Digite a data de contratação"
                         name="inputStatus"
                         id="inputStatus"
+                        required
                 />
             </label>
             <label for=""
@@ -219,6 +225,7 @@
                         placeholder="Digite o CPF"
                         name="inputCpf"
                         id="inputCpf"
+                        required
                 />
             </label>
             <label for=""
@@ -228,11 +235,12 @@
                         placeholder="Digite o RG"
                         name="inputRg"
                         id="inputRg"
+                        required
                 />
             </label>
             <label for="">
                 Data de Nascimento
-                <input type="date" name="inputDtNascimento" id="inputDtNascimento">
+                <input type="date" name="inputDtNascimento" id="inputDtNascimento" required>
             </label>
         </div>
         <hr />
@@ -270,6 +278,7 @@
                             name="inputFile2"
                             id="inputFile2"
                             accept="image/*"
+                            required
                     />
                 </label>
             </div>
@@ -285,6 +294,7 @@
                         placeholder="Digite o nome"
                         name="inputNome2"
                         id="inputNome2"
+                        required
                 />
             </label>
 
@@ -295,6 +305,7 @@
                         placeholder="Digite o cargo"
                         name="inputCargo2"
                         id="inputCargo2"
+                        required
                 />
             </label>
             <label for="inputEmail2"
@@ -304,6 +315,7 @@
                         placeholder="Digite o email"
                         name="inputEmail2"
                         id="inputEmail2"
+                        required
                 />
             </label>
             <label for="inputTel2"
@@ -313,6 +325,7 @@
                         placeholder="Digite o telefone"
                         name="inputTel2"
                         id="inputTel2"
+                        required
                 />
             </label>
 
