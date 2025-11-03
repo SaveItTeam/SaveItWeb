@@ -62,6 +62,139 @@ public class EnderecoDAO {
         return false;
     }
 
+    public boolean alterarEstado(String valorAlterar, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        try {
+            String query = "Update Endereco set cep_estado = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+            if (validar) {
+                pstmt.close();
+                return validar;//true
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarCidade(String valorAlterar, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        try {
+            String query = "Update Endereco set cep_cidade = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+            if (validar) {
+                pstmt.close();
+                return validar;//true
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarCep(String valorAlterar, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        try {
+            String query = "Update Endereco set cep = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+            if (validar) {
+                pstmt.close();
+                return validar;//true
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarBairro(String valorAlterar, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        try {
+            String query = "Update Endereco set cep_bairro = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+            if (validar) {
+                pstmt.close();
+                return validar;//true
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarRua(String valorAlterar, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        try {
+            String query = "Update Endereco set cep_rua = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+            if (validar) {
+                pstmt.close();
+                return validar;//true
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+    public boolean alterarComplemento(String valorAlterar, int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo a conexão com o banco
+        try {
+            String query = "Update Endereco set cep_complemento = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, id);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+            if (validar) {
+                pstmt.close();
+                return validar;//true
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
+
 
     public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
