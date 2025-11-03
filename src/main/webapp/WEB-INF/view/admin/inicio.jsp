@@ -93,14 +93,14 @@
             </div>
 
             <div id="acoes-forms">
-                <form class="acoes" method="post" action="">
+                <form class="acoes" method="post" action="funcionarioServlet">
                     <button type="submit" name="acao" value="adicionar-funcionario">
                         <i class="ri-add-large-line"></i>
                         <h3>Adicionar funcionario</h3>
                     </button>
                 </form>
 
-                <form class="acoes" method="post" action="">
+                <form class="acoes" method="post" action="industriaServlet">
                     <button type="submit" name="acao" value="editar-informacoes">
                         <i class="ri-edit-box-line"></i>
                         <h3>Editar informacões</h3>
