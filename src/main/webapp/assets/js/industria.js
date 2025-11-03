@@ -143,3 +143,12 @@ radiosCategorias.forEach((e) => {
     e.checked = true;
   }
 });
+
+const { selectEstado } = obterElementosFormulario();
+const estadoData = selectEstado.getAttribute("data-estado");
+for (let i of selectEstado.children) {
+  if (i.value === estadoData) {
+    i.setAttribute("selected", "selected");
+    break;
+  }
+}

@@ -17,7 +17,7 @@
 
     <ul>
             <li id="essentia">
-                <a href="/SaveitWeb/index.html">
+                <a href="${pageContext.request.contextPath}/index.html">
                     <img src="${pageContext.request.contextPath}/assets/images/essentia_logo_verde.svg" alt="" />
                 </a>
             </li>

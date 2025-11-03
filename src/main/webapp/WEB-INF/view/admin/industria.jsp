@@ -75,17 +75,18 @@
             <div>
               <label for="inputNome"
                 >Nome do Negócio
-                <input value='<%=session.getAttribute("nome_industria")%'>
+                <input value="<%=session.getAttribute("nome_industria")%>"
                   type="text"
                   name="inputNome"
                   id="inputNome"
                   placeholder="Digite o nome do negócio"
+                       required
                   
                 />
               </label>
               <label for="selectEstado"
                 >Estado
-                <select name="selectEstado" id="selectEstado" disabled>
+                <select name="selectEstado" id="selectEstado" disabled required data-estado="GO">
                   <option value="AC">AC</option>
                   <option value="AL">AL</option>
                   <option value="AM">AM</option>
@@ -124,6 +125,7 @@
                   id="inputCidade"
                   placeholder="Digite a cidade"
                   disabled
+                       required
                 />
               </label>
               <label for="inputCep"
@@ -134,6 +136,7 @@
                   id="inputCep"
                   placeholder="Digite o CEP"
                   disabled
+                       required
                 />
               </label>
               <label for="inputBairro"
@@ -144,6 +147,7 @@
                   id="inputBairro"
                   placeholder="Digite o bairro"
                   disabled
+                       required
                 />
               </label>
             </div>
@@ -160,6 +164,7 @@
                     name="arquivo"
                     id="inputImg"
                     disabled
+                         required
                   />
                 </label>
               </div>
@@ -172,6 +177,7 @@
                   id="inputContato"
                   placeholder="Digite o telefone"
                   disabled
+                         required
                 />
               </label>
 
@@ -183,6 +189,7 @@
                   id="inputOperacao"
                   placeholder="Digite o tipo de operação"
                   disabled
+                         required
                 />
               </label>
 
@@ -194,6 +201,7 @@
                   id="inputRua"
                   placeholder="Digite a rua"
                   disabled
+                         required
                 />
               </label>
 
