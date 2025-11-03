@@ -1,5 +1,6 @@
 package br.com.example.saveit.saveitweb.servlet;
 
+import br.com.example.saveit.saveitweb.model.cliente.Cliente;
 import br.com.example.saveit.saveitweb.model.cliente.ClienteDAO;
 import br.com.example.saveit.saveitweb.model.endereco.EnderecoDAO;
 import br.com.example.saveit.saveitweb.model.imagem.ImagemDAO;
@@ -14,6 +15,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
+import java.util.List;
 
 @WebServlet("/EditarIndustria")
 @MultipartConfig
@@ -31,8 +33,14 @@ public class EditarIndustriaServlet extends HttpServlet {
 
         if (admin != null) {
                 try {
+
+                    String endereco_id_string = (String) sessao.getAttribute("endereco_id");//Colocando o id do endereco em uma variavel
+
+                    int endereco_id = Integer.parseInt(endereco_id_string);
+
+
 //                    Atributos novos
-                    int id = Integer.parseInt(request.getParameter("id"));
+                    int id_industria = (int) sessao.getAttribute("id_estabelecimento");
                     String nomeNovo = request.getParameter("inputNome");
                     String estadoNovo = request.getParameter("inputEstado");
                     String cidadeNova = request.getParameter("inputCidade");
@@ -65,7 +73,7 @@ public class EditarIndustriaServlet extends HttpServlet {
                         byte[] imagemBytes = IOUtils.toByteArray(fileContent);
 
                         // Atualizar imagem no banco de dados
-                        imagemDAO.salvarImagemFuncionario(imagemBytes, id);
+                        imagemDAO.salvarImagemFuncionario(imagemBytes, id_industria);
 
                         // Atualizar imagem na sessão (convertendo para Base64 para exibição)
                         String imagemBytesString = Base64.getEncoder().encodeToString(imagemBytes);
@@ -81,10 +89,6 @@ public class EditarIndustriaServlet extends HttpServlet {
                     }
 
 //                    Industria
-                    if (nomeNovo != null && !nomeNovo.trim().isEmpty() && !nomeNovo.equals(nome)){
-                        industriaDAO.alterarNome(nomeNovo, (int) sessao.getAttribute("id_estabelecimento"));
-                        sessao.setAttribute("nome", nomeNovo);
-                    }
                     if (categoriaNova != null && !categoriaNova.trim().isEmpty() && !categoriaNova.equals(categoria)){
                         industriaDAO.alterarVenda(categoriaNova, (int) sessao.getAttribute("id_estabelecimento"));
                         sessao.setAttribute("categoria", categoriaNova);
@@ -92,40 +96,47 @@ public class EditarIndustriaServlet extends HttpServlet {
 
 //                    Endereco
                     if (estadoNovo != null && !estadoNovo.trim().isEmpty() && !estado.equals(estado)) {
-                        enderecoDAO.alterar("cep_estado", request.getParameter("selectEstado"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarEstado(request.getParameter("selectEstado"), endereco_id);
                         sessao.setAttribute("estado", estadoNovo);
                     }
                     if (cidadeNova != null && !cidadeNova.trim().isEmpty() && !cidadeNova.equals(cidade)){
-                        enderecoDAO.alterar("cep_cidade", request.getParameter("inputCidade"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarCidade(request.getParameter("inputCidade"), endereco_id);
                         sessao.setAttribute("cidade", cidadeNova);
                     }
                     if (cepNovo != null && !cepNovo.trim().isEmpty() && !cepNovo.equals(cep)){
-                        enderecoDAO.alterar("cep", request.getParameter("inputCep"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarCep(request.getParameter("inputCep"), endereco_id);
                         sessao.setAttribute("cep", cepNovo);
                     }
                     if (bairroNovo != null && !bairroNovo.trim().isEmpty() && !bairro.equals(bairro)){
-                        enderecoDAO.alterar("cep_bairro", request.getParameter("inputBairro"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarBairro(request.getParameter("inputBairro"), endereco_id);
                         sessao.setAttribute("bairro", bairroNovo);
                     }
                     if (ruaNova != null && !ruaNova.trim().isEmpty() && !ruaNova.equals(rua)) {
-                        enderecoDAO.alterar("cep_rua", request.getParameter("inputRua"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarRua(request.getParameter("inputRua"), endereco_id);
                         sessao.setAttribute("rua", ruaNova);
                     }
                     if (complementoNovo != null && !complementoNovo.trim().isEmpty() && !complementoNovo.equals(complemento)) {
-                        enderecoDAO.alterar("cep_complemento", request.getParameter("inputComplemento"), "id", (int) sessao.getAttribute("endereco_id"));
+                        enderecoDAO.alterarComplemento(request.getParameter("inputComplemento"), endereco_id);
                         sessao.setAttribute("complemento", complementoNovo);
                     }
 
 
 //                    Cliente
+                    List<Cliente> clientes = clienteDAO.buscar("id_industria", id_industria);
+                    if (nomeNovo != null && !nomeNovo.trim().isEmpty() && !nomeNovo.equals(nome)){
+                        clienteDAO.alterarNome(nomeNovo, clientes.get(0).getId());
+                        sessao.setAttribute("nome", nomeNovo);
+                    }
                     if (operacaoNova != null && !operacaoNova.trim().isEmpty() && !operacaoNova.equals(operacao)) {
-                        clienteDAO.alterarTipoVenda(operacaoNova, id);
+                        clienteDAO.alterarTipoVenda(operacaoNova, clientes.get(0).getId());
                         sessao.setAttribute("tipo_venda", operacaoNova);
                     }
                     request.getRequestDispatcher("/WEB-INF/view/admin/industria.jsp").forward(request, response);
                 } catch (NumberFormatException  nfe) {
                     nfe.printStackTrace();
-            }
+            } catch (NullPointerException npe){
+                    npe.printStackTrace();
+                }
         }
     }
 }

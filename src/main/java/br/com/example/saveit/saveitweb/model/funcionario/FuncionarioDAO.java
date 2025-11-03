@@ -151,7 +151,7 @@ public class FuncionarioDAO {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
         try {
-            String query = "delete from Funcionario where id = ?";//Comando SQL
+            String query = "delete from funcionario where id = ?";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
             pstmt.setInt(1, id);//Setando vlaor
             boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
