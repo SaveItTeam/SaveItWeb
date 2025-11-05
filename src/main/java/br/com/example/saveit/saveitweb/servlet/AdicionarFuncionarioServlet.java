@@ -66,24 +66,24 @@ public class AdicionarFuncionarioServlet extends HttpServlet {
             int idIndustria = (int) sessao.getAttribute("id_estabelecimento");
 
             // Validar campos obrigatórios
-            if (nome == null || nome.trim().isEmpty() ||
-                    cargo == null || cargo.trim().isEmpty() ||
-                    email == null || email.trim().isEmpty()) {
-                request.setAttribute("error", "Nome, cargo e email são obrigatórios!");
-                request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
-                return;
+            if (nome == null || nome.trim().isEmpty()) {
+                throw new Exception("Nome é obrigatório!");
+            }
+            if (cargo == null || cargo.trim().isEmpty()) {
+                throw new Exception("Cargo é obrigatório!");
+            }
+            if (email == null || email.trim().isEmpty()) {
+                throw new Exception("Email é obrigatório!");
             }
 
-            // Validar CPF com Regex
-            if (!validarCpf(cpf)) {
-                request.setAttribute("erro", "CPF inválido! (formato esperado: xxxxxxxxxxx ou xxx.xxx.xxx-xx)");
-                request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
+            // Validar CPF
+            if (cpf != null && !cpf.trim().isEmpty() && !validarCpf(cpf)) {
+                throw new Exception("CPF inválido! (formato esperado: xxx.xxx.xxx-xx)");
             }
 
-            // Validar telefone com Regex
-            if (!validarTelefone(telefone_pessoal)) {
-                request.setAttribute("erro", "Telefone inválido! (formato esperado: (xx) xxxxx-xxxx com ou sem DDD ou xxxxxxxxxxx)");
-                request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
+            // Validar telefone
+            if (telefone_pessoal != null && !telefone_pessoal.trim().isEmpty() && !validarTelefone(telefone_pessoal)) {
+                throw new Exception("Telefone inválido! (formato esperado: (xx) xxxxx-xxxx)");
             }
 
             // Converter data de contratação
@@ -156,7 +156,8 @@ public class AdicionarFuncionarioServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Erro ao adicionar funcionário: " + e.getMessage());
+            request.setAttribute("error", e.getMessage());
+            request.getRequestDispatcher("/WEB-INF/view/admin/funcionario.jsp").forward(request, response);
         }
     }
 }

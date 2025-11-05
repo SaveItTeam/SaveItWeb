@@ -43,6 +43,28 @@ public class ClienteDAO {
 
 //    Update
 
+    public boolean alterarNome(String valorAlterar, int valorOndeAlterar) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
+        try {
+            String query = "Update Cleinte set nome = ? where id = ?";//Comando SQL
+            PreparedStatement pstmt = conn.prepareStatement(query);//Criando PreparedStatement
+            pstmt.setString(1, valorAlterar);
+            pstmt.setInt(2, valorOndeAlterar);
+            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
+//            Validação
+            if (validar) {
+                return validar;//True
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            conexao.desconectar(conn);//Desconectando do banco de dados
+        }
+        return false;
+    }
+
     public boolean alterar(String valorAlterar, String campoAlterar, String ondeAlterar, String valorOndeAlterar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
@@ -66,34 +88,11 @@ public class ClienteDAO {
     }
 
 
-    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, int valorOndeAlterar) {
+    public boolean alterarTipoVenda(String valorAlterar, int valorOndeAlterar) {
         Conexao conexao = new Conexao();
         Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
         try {
-            String query = String.format("Update Cliente set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
-            pstmt.setInt(1, valorAlterar);
-            pstmt.setInt(2, valorOndeAlterar);
-            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-//            Validação
-            if (validar) {
-                pstmt.close();
-                return validar;//True
-            }
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            conexao.desconectar(conn);//Desconectando do banco de dados
-        }
-        return false;
-    }
-
-
-    public boolean alterar(String campoAlterar, String valorAlterar, String ondeAlterar, int valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo a conexão com o banco de dados
-        try {
-            String query = String.format("Update Cliente set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
+            String query = "Update Cliente set tipo_venda = ? where id = ?";//Comando SQL
             PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
             pstmt.setString(1, valorAlterar);
             pstmt.setInt(2, valorOndeAlterar);
@@ -106,66 +105,11 @@ public class ClienteDAO {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
-            conexao.desconectar(conn); // Desconectando do banco
-        }
-        return false;
-    }
-
-
-    public boolean alterar(String campoAlterar, int valorAlterar, String ondeAlterar, String valorOndeAlterar) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-        try {
-            String query = String.format("Update Cliente set %s = ? where %s = ?", campoAlterar, ondeAlterar);//Comando SQL
-            PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
-            pstmt.setInt(1, valorAlterar);
-            pstmt.setString(2, valorOndeAlterar);
-            boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-//            Validação
-            if (validar) {
-                pstmt.close();
-                return validar;//True
-            }
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
             conexao.desconectar(conn);//Desconectando do banco de dados
         }
         return false;
     }
 
-
-    public boolean alterarImagem(File imagem, int id) {
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.conectar();//Abrindo conexão com o banco de dados
-        byte [] imagemBytes;//Iniciando variavel do tipo ByteArray
-
-        try {
-            Part partesAruivo = (Part) imagem;
-            if (partesAruivo != null) {
-                InputStream conteudoAruivo = partesAruivo.getInputStream();
-                imagemBytes = IOUtils.toByteArray(conteudoAruivo);
-                String query = "Update Cliente set imagem = ? where id = ?";//Comando SQL
-                PreparedStatement pstmt = conn.prepareStatement(query);//Criando objeto PreparedStatement
-                pstmt.setBytes(1, imagemBytes);
-                pstmt.setInt(2, id);
-                boolean validar = pstmt.executeUpdate() > 0;//Executando comando SQL
-//            Validação
-                if (validar) {
-                    pstmt.close();
-                    return validar;//True
-                }
-            }
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        finally {
-            conexao.desconectar(conn);//Desconectando do banco de dados
-        }
-        return false;
-    }
 
 
 //    Delete
@@ -309,6 +253,34 @@ public class ClienteDAO {
             String query = "SELECT * FROM cliente WHERE cnpj = ?";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, valorPesquisar);
+            ResultSet rset = pstmt.executeQuery();
+
+            if (rset.next()) {
+                cliente = new Cliente(
+                        rset.getInt(1), rset.getString(2), rset.getString(3),
+                        rset.getString(4), rset.getInt(5), rset.getString(6),
+                        rset.getInt(7), rset.getString(8)
+                );
+            }
+            pstmt.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        } finally {
+            conexao.desconectar(conn);
+            return cliente; // Pode ser null se não encontrou
+        }
+    }
+
+    public Cliente buscarPorID(int id) {
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.conectar();
+        Cliente cliente = null;
+
+        try {
+            String query = "SELECT * FROM cliente WHERE id_industria = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, id);
             ResultSet rset = pstmt.executeQuery();
 
             if (rset.next()) {
